@@ -13,15 +13,29 @@ export { app_1, app_2, app_3, app_4, bg_1, bg_2, bg_3, bg_4, bg_5 };
 const styles = StyleSheet.create({
   home: {
     flex: 1,
-    backgroundColor: "red",
+    backgroundColor: bg_4,
+  },
+  userBoardCon: {
+    justifyContent: "center",
+    alignItems: "center",
+    left: 0,
+    right: 0,
+    padding: 10,
+  },
+  userBoard:{
+    marginTop:20,
+    backgroundColor:app_1,
+    height:210,
+    width:"90%",
+    borderRadius:25
   },
   twoD: {
     flex: 1,
-    backgroundColor: "yellow",
+    backgroundColor: bg_4,
   },
   threeD: {
     flex: 1,
-    backgroundColor: "blue",
+    backgroundColor: bg_4,
   },
 });
 export default styles;
