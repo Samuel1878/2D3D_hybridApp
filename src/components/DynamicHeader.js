@@ -1,10 +1,11 @@
 import { Animated } from "react-native"
 import { Text, View } from "react-native"
-import styles, { app_1, app_4 } from "../libs/style";
+import styles, { app_1, app_3, app_4 } from "../libs/style";
 import { useEffect } from "react";
+import {LoginBtn,RegisterBtn} from "./logRegBtn"
 const Header_Max_Height = 250;
-const Header_Min_Height = 150;
-const DynamicHeader = ({animHeaderValue}) => {
+const Header_Min_Height = 170;
+const DynamicHeader = ({navigation, animHeaderValue}) => {
      const animateHeaderBackgroundColor = animHeaderValue.interpolate({
        inputRange: [0, Header_Max_Height - Header_Min_Height],
        outputRange: [app_4, app_1],
@@ -19,7 +20,7 @@ const DynamicHeader = ({animHeaderValue}) => {
     return (
       <Animated.View
         style={[
-            styles.userBoardCon,
+          styles.homeBoardCon,
           {
             height: animateHeaderHeight,
             backgroundColor: animateHeaderBackgroundColor,
@@ -27,7 +28,9 @@ const DynamicHeader = ({animHeaderValue}) => {
         ]}
       >
         <View style={styles.userBoard}>
-
+          <Text style={styles.liveNo}>63</Text>
+          <Text style={styles.liveDate}>Updated: 05 Sep, 2023 (Tue) 16:30:01</Text>
+         
         </View>
       </Animated.View>
     );

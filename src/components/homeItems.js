@@ -1,21 +1,27 @@
 import { View,Text } from "react-native"
-import { app_4 } from "../libs/style"
-import Services from "./services"
-import TwoDmini from "./2Dmini"
+import styles, { app_4 } from "../libs/style"
+import TwoDmini, { InternetData } from "./2Dmini"
+import HorizonalLine, { ThreeDmini } from "./services"
+import ImageSlider from "./imageSlider"
+
 
 const HomeItems = ({item})=>{
-    console.log(item)
     switch (item.title) {
-        case "services":
-        return<Services/>
-        case "2D":
-            return<TwoDmini/>
+        case "TwoDmini":
+        return<ImageSlider/>;
+        case "line":
+            return <TwoDmini />;
+        case "internet":
+            return <HorizonalLine />;
+        case "imageSlider":
+            return <InternetData/>
         default:
-        return(
-      <View style={{ backgroundColor: app_4, height: 300 }}>
-        <Text>Fulck adfasdf asdfasdf asdf</Text>
-      </View>
-    );
+        return (
+          <View style={{ height: 500 }}>
+            <Text style={styles.threeDTxt}>Latest 3D result</Text>
+            <ThreeDmini />
+          </View>
+        );
     }
 
 }

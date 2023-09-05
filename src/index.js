@@ -13,9 +13,10 @@ import More from "./screens/More";
 import {useFonts} from "expo-font";
 import { useEffect } from "react";
 import * as SplashScreen from "expo-splash-screen";
+import { Text, View } from "react-native";
 const Tab = createBottomTabNavigator();
 SplashScreen.preventAutoHideAsync();
-const Navigations = () => {
+const Navigations = ({navigation}) => {
     let [fontsLoaded] = useFonts({
         Roboto : require("../assets/fonts/Roboto-Regular.ttf"),
         Roboto_Bold: require("../assets/fonts/Roboto-Bold.ttf")
@@ -35,8 +36,10 @@ useEffect(()=>{
     }
     
 },[fontsLoaded])
+if(!fontsLoaded){
+    return<View><Text>Loading</Text></View>}
   return (
-    <NavigationContainer>
+
       <Tab.Navigator
         initialRouteName="Home"
         screenOptions={({ route }) => ({
@@ -117,7 +120,7 @@ useEffect(()=>{
         <Tab.Screen name="3D" component={ThreeD} />
         <Tab.Screen name="More" component={More} />
       </Tab.Navigator>
-    </NavigationContainer>
+   
   );
 };
 export default Navigations;

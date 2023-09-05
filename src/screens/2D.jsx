@@ -1,12 +1,19 @@
-import { View,Text } from "react-native";
+import { View ,Text} from "react-native";
 import styles from "../libs/style";
+import { LoginBtn, RegisterBtn } from "../components/logRegBtn";
+import {BlurView} from "expo-blur";
+import LogReg from "../layouts/logReg";
 
-const TwoD = () => {
+const TwoD = ({navigation}) => {
     return(
-        <View style={styles.twoD}>
-           <Text>
-             Two D
-           </Text>
+       <View style={styles.Container}>
+            <View style={styles.topCon}>
+
+            </View>
+            
+            <View style={styles.bottomCon}>
+            </View>
+            <LogReg navigation={navigation}/>
         </View>
     )
 };

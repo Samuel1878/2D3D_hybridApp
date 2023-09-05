@@ -5,24 +5,24 @@ import HomeItems from "../components/homeItems";
 import DynamicHeader from "../components/DynamicHeader";
 import { useEffect, useRef } from "react";
 import { ScrollView } from "react-native";
-const Home = () => {
+const Home = ({navigation}) => {
     let scrollOffsetY = useRef(new Animated.Value(0)).current;
     const data = [
         {
             id:1,
-            title:"services"
+            title:"TwoDmini"
         },
          {
             id:2,
-            title:"2D"
+            title:"line"
         },
          {
             id:3,
-            title:"3D"
+            title:"internet"
         },
          {
             id:4,
-            title:"Four"
+            title:"imageSlider"
         },
          {
             id:5,
@@ -32,8 +32,9 @@ const Home = () => {
   
     return(
         <View style={styles.home}>
-            <DynamicHeader animHeaderValue={scrollOffsetY}/>
+            <DynamicHeader animHeaderValue={scrollOffsetY} navigation={navigation}/>
            <ScrollView
+            contentContainerStyle={styles.homeDataCon}
             bounces={false}
             scrollEventThrottle={4}
             onScroll={Animated.event(
