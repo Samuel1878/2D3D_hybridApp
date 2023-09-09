@@ -1,19 +1,27 @@
 import { StyleSheet,Platform,Dimensions } from "react-native";
-const app_1 = "rgb(83,99,82)";
-const app_2 = "rgb(149,166,142)";
-const app_3 = "rgb(197,206,183)";
-const app_4 ="rgb(228,230,219)";
+const app_1 = "rgb(243, 186, 47)";
+const app_2 = "rgb(231,187,65)";
+const app_3 = "rgb(246,214,88)";
+const app_4 ="rgb(251,206,41)";
 
-const bg_1 = "#101916";
-const bg_2 = "#121212";
-const bg_3 = "#AFC1B6";
-const bg_4 = "#EFEFE9";
-const bg_5 = "#0E3E30";
-export { app_1, app_2, app_3, app_4, bg_1, bg_2, bg_3, bg_4, bg_5 };
+const text_1 = "rgb(234,236,239)";
+const text_2 = "rgb(200, 204, 210)";
+const text_3 = "rgb(113,123,139)";
+const text_1b = "rgb(31,35,40)";
+const text_2b = "";
+
+const bg_1 = "rgb(12,14,17)";
+const bg_2 = "rgb(24,26,31)";
+const bg_3 = "rgb(44,49,56)";
+const bg_3b = "rgb(125,133,141)";
+const bg_3c = "rgb(235,235,235)";
+const bg_4 = "rgb(250,250,250)";
+const bg_5 = "rgb(255,255,255)";
+export { app_1, app_2, app_3, app_4, bg_1, bg_2, bg_3, bg_4, bg_5,bg_3b,bg_3c,text_1,text_1b,text_2,text_2b,text_3 };
 const styles = StyleSheet.create({
   home: {
     flex: 1,
-    backgroundColor: bg_4,
+    backgroundColor: bg_1,
   },
   ///Home
   homeBoardCon: {
@@ -25,7 +33,7 @@ const styles = StyleSheet.create({
   },
   userBoard: {
     flex: 1,
-    marginTop: 20,
+    marginTop: 30,
     backgroundColor: app_1,
     height: 210,
     width: "90%",
@@ -33,7 +41,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     shadowColor: app_1,
-    shadowOpacity: 0.9,
+    shadowOpacity: 0.2,
     shadowRadius: 10,
     shadowOffset: { x: 10, y: 10 },
   },
@@ -44,12 +52,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 1,
     shadowOffset: { x: 2, y: 5 },
-    color: bg_4,
+    color: bg_1,
     fontFamily: "Roboto_Bold",
   },
   liveDate: {
     fontSize: 12,
-    color: bg_4,
+    color: bg_2,
     fontFamily: "Roboto",
   },
   homeDataCon: {
@@ -65,16 +73,12 @@ const styles = StyleSheet.create({
   dataA: {
     marginVertical: 10,
     flex: 1,
-    backgroundColor: app_4,
+    backgroundColor: bg_2,
     borderRadius: 10,
     alignItems: "center",
-    shadowColor: app_1,
-    shadowOpacity: 0.4,
-    shadowRadius: 10,
-    shadowOffset: { x: 0, y: 5 },
   },
   dataHeader: {
-    color: bg_1,
+    color: app_4,
     fontSize: 21,
     fontFamily: "Roboto_Bold",
     fontWeight: "600",
@@ -93,21 +97,22 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   dataH: {
-    fontSize: 14,
+    fontSize: 15,
     fontFamily: "Roboto_Bold",
     fontWeight: "600",
     color: app_2,
   },
   dataV: {
     fontSize: 18,
-    fontFamily: "Roboto",
-    color: app_1,
+    fontFamily: "Roboto_Bold",
+    color: text_1,
+    fontWeight: "700",
   },
   line: {
     width: "90%",
     height: 2,
     flex: 1,
-    backgroundColor: app_1,
+    backgroundColor: app_2,
     marginVertical: 5,
   },
   //Service Internet and Modern Data
@@ -117,7 +122,7 @@ const styles = StyleSheet.create({
   },
   interData: {
     flexDirection: "row",
-    backgroundColor: app_4,
+    backgroundColor: bg_2,
     padding: 10,
     marginVertical: 10,
     alignItems: "center",
@@ -133,25 +138,25 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   interHeader: {
-    color: bg_1,
+    color: app_4,
     fontSize: 20,
     fontWeight: "600",
     fontFamily: "Roboto_Bold",
   },
   interH: {
     color: app_2,
-    fontSize: 12,
+    fontSize: 13,
     fontFamily: "Roboto",
   },
   interV: {
     color: bg_5,
-    fontSize: 18,
+    fontSize: 17,
     fontFamily: "Roboto_Bold",
     fontWeight: "700",
   },
   interData3D: {
     flexDirection: "row",
-    backgroundColor: app_4,
+    backgroundColor: bg_2,
     padding: 10,
     marginVertical: 10,
     alignItems: "center",
@@ -167,7 +172,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontFamily: "Roboto_Bold",
     fontSize: 16,
-    color: app_1,
+    color: app_4,
     fontWeight: "600",
   },
   //Image
@@ -176,7 +181,7 @@ const styles = StyleSheet.create({
     bottom: 30,
     paddingVertical: 40,
     width: "100%",
-    backgroundColor: app_4,
+    backgroundColor: bg_1,
   },
   //buttons
   btnBlurCon: {
@@ -194,7 +199,7 @@ const styles = StyleSheet.create({
     position: "relative",
   },
   btnLabelTxt: {
-    color: bg_5,
+    color: text_1,
     fontSize: 16,
   },
   regBtn: {
@@ -226,16 +231,16 @@ const styles = StyleSheet.create({
   },
   twoD: {
     flex: 1,
-    backgroundColor: bg_4,
+    backgroundColor: bg_1,
   },
   threeD: {
     flex: 1,
-    backgroundColor: bg_4,
+    backgroundColor: bg_1,
   },
   //Wallet
   wallet: {
     flex: 1,
-    backgroundColor: bg_4,
+    backgroundColor: bg_2,
   },
   walletMainCon: {
     flex: 1,
@@ -253,7 +258,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   walletBtnTxt: {
-    color: bg_4,
+    color: text_1b,
     fontWeight: "500",
     fontSize: 16,
   },
@@ -266,7 +271,7 @@ const styles = StyleSheet.create({
     right: 50,
     borderWidth: 0,
     borderRadius: 15,
-    backgroundColor: app_4,
+    backgroundColor: bg_1,
     shadowColor: bg_1,
     shadowOpacity: 0.5,
     shadowRadius: 0.5,
@@ -275,14 +280,14 @@ const styles = StyleSheet.create({
   ///Screens
   Container: {
     flex: 1,
-    backgroundColor: bg_4,
+    backgroundColor: bg_1,
   },
   topCon: {
     backgroundColor: app_1,
     flex: 1,
   },
   bottomCon: {
-    flex: 2,
+    flex: 3,
   },
   //Login Screen
   loginCon: {
@@ -307,11 +312,10 @@ const styles = StyleSheet.create({
     fontWeight: "900",
     marginVertical: 20,
     color: app_1,
-    shadowColor:bg_1,
-    shadowOpacity:0.4,
-    shadowRadius:10,
-    shadowOffset:{x:10,y:10}
-    
+    shadowColor: bg_1,
+    shadowOpacity: 0.4,
+    shadowRadius: 10,
+    shadowOffset: { x: 10, y: 10 },
   },
   inputName: {
     paddingVertical: 10,
@@ -495,7 +499,7 @@ const styles = StyleSheet.create({
     color: app_1,
     fontSize: 14,
     fontFamily: "Roboto",
-    marginTop:10
+    marginTop: 10,
   },
   regSubBtn: {
     marginTop: 20,
@@ -577,6 +581,150 @@ const styles = StyleSheet.create({
     textAlign: "center",
     left: "10%",
     right: "10%",
+  },
+  /// Service BTN
+  serviceBtnCon: {
+    position: "absolute",
+    right: 20,
+    bottom: 40,
+    borderRadius: "50%",
+    padding: 10,
+    zIndex: 9,
+    backgroundColor: app_1,
+  },
+  ///More
+  topMoreCon: {
+    flex: 1,
+    backgroundColor: bg_1,
+    padding: 10,
+  },
+  userProfileCon: {
+    width: "90%",
+    height: "100%",
+    paddingTop: 20,
+    padding: 10,
+    flexDirection: "row",
+  },
+  userProfile: {
+    alignSelf: "center",
+    width: 100,
+    height: 100,
+  },
+  hiddenProfile: {
+    backgroundColor: bg_1,
+    flex: 1,
+    display: "none",
+  },
+  userDataBox: {
+    alignSelf: "center",
+    flex: 1,
+  },
+  userNameTxt: {
+    fontSize: 28,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+    width: "100%",
+    color: bg_4,
+  },
+  userDataTxt: {
+    fontSize: 18,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+    fontStyle: "italic",
+    padding: 5,
+    color: app_4,
+  },
+  privacySetting: {
+    borderRadius: "25%",
+    backgroundColor: app_2,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    marginVertical: 10,
+    width: 200,
+    // position: "absolute",
+    //bottom: "-10%",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  privacySettingTxt: {
+    color: app_4,
+    fontSize: 16,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+    paddingHorizontal: 10,
+  },
+
+  ///3D UIX
+  threeDCon: {
+    flex: 1,
+    backgroundColor: bg_2,
+  },
+  threeDdataCon: {
+    backgroundColor: bg_2,
+    flex: 1,
+  },
+  threeDItem: {
+    backgroundColor: bg_3,
+    height: 100,
+    width: "80%",
+    margin: 10,
+    alignSelf: "center",
+    borderRadius: 10,
+    shadowColor: bg_1,
+    shadowOffset: { x: 10, y: 20 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+  },
+  //TOp
+  threeDTopCon: {
+    height: 170,
+
+  },
+  //ServerTime 
+  serverTimeCon:{
+    paddingTop:35,
+    flexDirection:"row",
+    backgroundColor:app_1,
+    alignItems:"center",
+  },
+  serverTime:{
+    color:text_1b,
+    padding:10,
+    fontSize:18,
+    fontFamily:"Roboto_Bold",
+    fontWeight:"700"
+  },
+  threeDBtnBox: {
+    flex:1,
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+  },
+  ////History BTNs
+  btnTxt: {
+    fontFamily: "Roboto_Bold",
+    fontSize: 18,
+    fontWeight: "600",
+    color: text_1b,
+  },
+  HistoryBtn: {
+    padding: 10,
+    paddingHorizontal: 25,
+    backgroundColor: app_1,
+    borderRadius: "25%",
+  },
+  WinnerBtn: {
+    padding: 10,
+    paddingHorizontal: 25,
+    backgroundColor: app_1,
+    borderRadius: "25%",
+  },
+  AnalysisBtn: {
+    paddingHorizontal: 25,
+    padding: 10,
+    backgroundColor: app_1,
+    borderRadius: "25%",
   },
 });
 export default styles;

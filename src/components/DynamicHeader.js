@@ -1,6 +1,6 @@
 import { Animated } from "react-native"
 import { Text, View } from "react-native"
-import styles, { app_1, app_3, app_4 } from "../libs/style";
+import styles, { app_1, app_3, app_4, bg_1, bg_2 } from "../libs/style";
 import { useEffect } from "react";
 import {LoginBtn,RegisterBtn} from "./logRegBtn"
 const Header_Max_Height = 250;
@@ -8,7 +8,7 @@ const Header_Min_Height = 170;
 const DynamicHeader = ({navigation, animHeaderValue}) => {
      const animateHeaderBackgroundColor = animHeaderValue.interpolate({
        inputRange: [0, Header_Max_Height - Header_Min_Height],
-       outputRange: [app_4, app_1],
+       outputRange: [bg_1, app_1],
        extrapolate: "clamp",
      });
 

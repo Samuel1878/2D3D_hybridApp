@@ -3,10 +3,13 @@ import styles, { app_1, app_3 } from "../libs/style";
 import { useCollapsibleHeader } from 'react-navigation-collapsible';
 import HomeItems from "../components/homeItems";
 import DynamicHeader from "../components/DynamicHeader";
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { ScrollView } from "react-native";
+import AuthContext from "../services/auth/authContext";
 const Home = ({navigation}) => {
+    const {userToken} = useContext(AuthContext);
     let scrollOffsetY = useRef(new Animated.Value(0)).current;
+
     const data = [
         {
             id:1,
@@ -29,6 +32,7 @@ const Home = ({navigation}) => {
             title:"Five"
         },
     ];
+    console.log(userToken)
   
     return(
         <View style={styles.home}>

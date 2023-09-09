@@ -28,6 +28,7 @@ const Login = ({navigation}) =>{
             case 201:
                 signIn(res.data.token);
                 console.log(res.data.message);
+                navigation.navigate("root")
                 break;
             default:
                 setValidNo(false);

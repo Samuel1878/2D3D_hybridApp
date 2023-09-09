@@ -1,35 +1,36 @@
 import * as SecureStore from "expo-secure-store";
 import { useEffect, useMemo, useReducer } from "react";
 import AuthContext from "./authContext";
-const initialValue = {
-    isLoading : true,
-    isSignout : false,
-    userToken : null
-}
-const reducer = (prevState,action)=> {
-    switch (action.type) {
-        case "RESTORE_TOKEN":
-            return{
-                ...prevState,
-                userToken:action.token,
-                isLoading:false
-            }
-        case "SIGN_IN":
-            return{
-                ...prevState,
-                isSignout:false,
-                userToken:action.token
-            }
-        case "SIGN_OUT":
-            return{
-                ...prevState,
-                isSignout:true,
-                userToken:null
-            }
-    }
-}
+ const initialValue = {
+   isLoading: true,
+   isSignout: false,
+   userToken: null,
+ };
+
 export default function AuthProvider({children}) {
-    const [state,dispatch] = useReducer(reducer,initialValue);
+    const [state,dispatch] = useReducer((prevState, action) => {
+      switch (action.type) {
+        case "RESTORE_TOKEN":
+          return {
+            ...prevState,
+            userToken: action.token,
+            isLoading: false,
+          };
+        case "SIGN_IN":
+          return {
+            ...prevState,
+            isSignout: false,
+            userToken: action.token,
+          };
+        case "SIGN_OUT":
+          return {
+            ...prevState,
+            isSignout: true,
+            userToken: null,
+          };
+      }
+    },initialValue);
+   
     useEffect(()=>{
         const restoreToken = async()=>{
             let userToken;
@@ -40,7 +41,7 @@ export default function AuthProvider({children}) {
                 console.error("Restoring token failed:" + e.message)
             }
             dispatch({type:"RESTORE_TOKEN", token:userToken});
-        }
+        };
         restoreToken();
     },[]);
     const authContext = useMemo(()=>({
@@ -52,7 +53,6 @@ export default function AuthProvider({children}) {
             dispatch({type:"SIGN_OUT"});
             SecureStore.deleteItemAsync("userToken");
         },
-        isLoading:state.isLoading,
         userToken:state.userToken
     }));
     return(
