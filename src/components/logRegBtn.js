@@ -4,7 +4,7 @@ import styles from "../libs/style";
 export const LoginBtn = ({navigation}) =>{
     return(
         <TouchableOpacity
-            onPress={()=>navigation.navigate("login")}
+            onPress={()=>navigation?.navigate("login")}
             style={styles.logBtn}>
                 <Text style={styles.logBtnTxt}>
                     Login
@@ -16,7 +16,7 @@ export const LoginBtn = ({navigation}) =>{
 export const RegisterBtn = ({navigation}) =>{
     return(
         <TouchableOpacity
-            onPress={()=>navigation.navigate("register")}
+            onPress={()=>navigation?.navigate("register")}
             style={styles.regBtn}>
                 <Text style={styles.regBtnTxt}>
                     Register

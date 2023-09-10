@@ -8,6 +8,7 @@ const Global = ({children})=>{
     const [phone, setPhone] = useState(null);
     const [level, setLevel] = useState(null);
     const [profile, setProfile] = useState(null);
+    const [navigation, setNavigation] = useState(null);
     useEffect(() => {
          if (profile === null) {
            setProfile(require("../../../assets/profile.png"));
@@ -31,7 +32,9 @@ const Global = ({children})=>{
                 level,
                 setLevel,
                 profile,
-                setProfile
+                setProfile,
+                navigation,
+                setNavigation
             }}>
                 {children}
         </GlobalContext.Provider>
