@@ -43,6 +43,7 @@ export default function AuthProvider({children}) {
             dispatch({type:"RESTORE_TOKEN", token:userToken});
         };
         restoreToken();
+        
     },[]);
     const authContext = useMemo(()=>({
         signIn:async(userToken)=>{

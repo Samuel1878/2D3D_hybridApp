@@ -15,16 +15,17 @@ import TwoD_Analysis from "../screens/2DAnalysis";
 import ThreeD_Bet from "../screens/3dBet";
 import TwoD_Bet from "../screens/2dBet";
 import Holidays from "../screens/Holiday";
+import Me from "../screens/me";
 
 const Stack = createNativeStackNavigator();
 const BranchContainer = () => {
    const{userToken} = useContext(AuthContext);
   
-   const {name, phone} = useContext(GlobalContext)
-   userToken && restoreUserData(userToken);
-console.log(name, phone);
+   const {name, phone} = useContext(GlobalContext);
+  
 
    
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="root">
@@ -126,6 +127,17 @@ console.log(name, phone);
           name="calender"
           options={{
             headerTitle: "Holidays",
+            headerShown: true,
+            headerTintColor: text_1b,
+            headerStyle: { backgroundColor: app_1 },
+            headerTitleStyle: { color: "transparent" },
+          }}
+        />
+        <Stack.Screen
+          name="me"
+          component={Me}
+          options={{
+            headerTitle: "Profile",
             headerShown: true,
             headerTintColor: text_1b,
             headerStyle: { backgroundColor: app_1 },

@@ -8,7 +8,7 @@ const text_1 = "rgb(234,236,239)";
 const text_2 = "rgb(200, 204, 210)";
 const text_3 = "rgb(113,123,139)";
 const text_1b = "rgb(31,35,40)";
-const text_2b = "";
+const text_2b = "rgb(40,45,50)";
 
 const bg_1 = "rgb(12,14,17)";
 const bg_2 = "rgb(24,26,31)";
@@ -249,7 +249,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: bg_1,
   },
-  //Wallet
+  //Wallet///////////////////////////////////
   wallet: {
     flex: 1,
     backgroundColor: bg_2,
@@ -283,16 +283,44 @@ const styles = StyleSheet.create({
     right: 50,
     borderWidth: 0,
     borderRadius: 15,
-    backgroundColor: bg_1,
+    backgroundColor: bg_3,
     shadowColor: bg_1,
     shadowOpacity: 0.5,
     shadowRadius: 0.5,
     shadowOffset: { x: 5, y: 5 },
+    flexDirection: "row",
+    alignItems: "center",
+    paddingLeft:10,
+
   },
+  ballanceHeader: {
+    color: app_1,
+    fontSize: 19,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+  
+    marginLeft:20
+  },
+  ballanceD: {
+    marginLeft:20,
+    margin:5,
+    color: app_1,
+    fontSize: 21,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+   
+  },
+  eye:{
+   justifyContent:"center",
+   alignItems:"center",
+   flex:1,
+   paddingVertical:5
+  },
+
   ///Screens
   Container: {
     flex: 1,
-    backgroundColor: bg_1,
+    backgroundColor: bg_2,
   },
   topCon: {
     backgroundColor: app_1,
@@ -607,68 +635,153 @@ const styles = StyleSheet.create({
     backgroundColor: app_1,
   },
   ///More
-  topMoreCon: {
+  topmeCon: {
     flex: 1,
-    backgroundColor: bg_1,
+    backgroundColor: app_1,
     padding: 10,
   },
   userProfileCon: {
     width: "90%",
     height: "100%",
     paddingTop: 20,
-    padding: 10,
     flexDirection: "row",
+    alignItems: "center",
   },
   userProfile: {
-    alignSelf: "center",
     width: 100,
     height: 100,
+    borderColor: bg_3c,
+    borderWidth: 2,
+    borderRadius: 50,
+    margin: 5,
   },
-  hiddenProfile: {
-    backgroundColor: bg_1,
-    flex: 1,
-    display: "none",
-  },
+
   userDataBox: {
-    alignSelf: "center",
+    margin: 10,
     flex: 1,
   },
   userNameTxt: {
-    fontSize: 28,
+    fontSize: 22,
     fontFamily: "Roboto_Bold",
     fontWeight: "600",
     width: "100%",
-    color: bg_4,
+    color: text_1b,
   },
   userDataTxt: {
     fontSize: 18,
     fontFamily: "Roboto_Bold",
     fontWeight: "600",
-    fontStyle: "italic",
     padding: 5,
-    color: app_4,
+    color: text_2b,
   },
-  privacySetting: {
-    borderRadius: "25%",
-    backgroundColor: app_2,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    marginVertical: 10,
-    width: 200,
-    // position: "absolute",
-    //bottom: "-10%",
+  bottomMeCon: {
+    flex: 4,
+  },
+  moreItemCon: {
     flexDirection: "row",
+    backgroundColor: bg_3,
+    shadowColor: bg_1,
+    shadowOpacity: 0.4,
+    shadowRadius: 10,
+    shadowOffset: { x: 10, y: 10 },
+    marginHorizontal: 20,
+    marginVertical: 10,
     alignItems: "center",
-    justifyContent: "center",
+    borderRadius: 10,
+    flex: 1,
   },
-  privacySettingTxt: {
-    color: app_4,
-    fontSize: 16,
+  moreItemImg: {
+    width: 60,
+    height: 60,
+  },
+  moreItemTxt: {
+    fontSize: 18,
     fontFamily: "Roboto_Bold",
     fontWeight: "600",
-    paddingHorizontal: 10,
+    padding: 5,
+    color: app_1,
   },
 
+  //Me Screen
+  meTop: {
+    flex: 1,
+    backgroundColor: app_1,
+  },
+  meProfile: {
+    height: 200,
+    width: 200,
+    backgroundColor: app_1,
+    position: "absolute",
+    alignSelf: "center",
+    top: -100,
+    zIndex: 1,
+    borderRadius: "100%",
+    overflow: "hidden",
+  },
+  meImg: {
+    width: "100%",
+    height: "100%",
+  },
+  meBottom: {
+    flex: 2,
+    backgroundColor: bg_2,
+  },
+  meNameChangeCon: {
+    flex: 1,
+    alignItems: "center",
+  },
+  nameChangeInput: {
+    padding: 15,
+    backgroundColor: bg_3,
+    width: "80%",
+    color: app_1,
+    fontSize: 18,
+    borderRadius: 10,
+    marginTop: 120,
+    borderLeftColor: app_1,
+    borderLeftWidth: 20,
+    shadowColor: bg_1,
+    shadowOpacity: 0.9,
+    shadowOffset: { x: 10, y: 20 },
+    shadowRadius: 10,
+  },
+  mePhone: {
+    width: "80%",
+    padding: 15,
+    backgroundColor: bg_3,
+    borderRadius: 10,
+    marginVertical: 20,
+    borderLeftColor: app_1,
+    borderLeftWidth: 20,
+    shadowColor: bg_1,
+    shadowOpacity: 0.9,
+    shadowOffset: { x: 10, y: 20 },
+    shadowRadius: 10,
+  },
+  meTxt: {
+    fontFamily: "Roboto_Bold",
+    fontSize: 19,
+    fontWeight: "600",
+    color: app_1,
+  },
+  nameChangeBtn: {
+    backgroundColor: app_4,
+    padding: 15,
+    width: "50%",
+    borderRadius: "25%",
+    alignItems: "center",
+    justifyContent: "center",
+    shadowColor: bg_1,
+    shadowOpacity: 0.9,
+    shadowOffset: { x: 10, y: 20 },
+    shadowRadius: 10,
+  },
+  saveTxt: {
+    fontFamily: "Roboto_Bold",
+    fontSize: 19,
+    fontWeight: "600",
+    color: text_1b,
+  },
   ///3D UIX
   threeDCon: {
     flex: 1,
@@ -677,6 +790,27 @@ const styles = StyleSheet.create({
   threeDdataCon: {
     backgroundColor: bg_2,
     flex: 1,
+  },
+  _3d_betBtn: {
+    position: "absolute",
+    bottom: 20,
+    left: "25%",
+    right: "25%",
+    borderRadius: "25%",
+    backgroundColor: app_4,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingVertical: 10,
+    shadowColor: bg_1,
+    shadowOpacity: 0.9,
+    shadowOffset: { x: 10, y: 20 },
+    shadowRadius: 10,
+  },
+  _3d_betBtnTxt: {
+    fontFamily: "Roboto_Bold",
+    fontSize: 21,
+    fontWeight: "600",
+    color: text_1b,
   },
   threeDItem: {
     backgroundColor: bg_3,
@@ -734,19 +868,19 @@ const styles = StyleSheet.create({
   HistoryBtn: {
     padding: 10,
     paddingHorizontal: 25,
-    backgroundColor: app_1,
+    backgroundColor: app_4,
     borderRadius: "25%",
   },
   WinnerBtn: {
     padding: 10,
     paddingHorizontal: 25,
-    backgroundColor: app_1,
+    backgroundColor: app_4,
     borderRadius: "25%",
   },
   AnalysisBtn: {
     paddingHorizontal: 25,
     padding: 10,
-    backgroundColor: app_1,
+    backgroundColor: app_4,
     borderRadius: "25%",
   },
 
@@ -981,7 +1115,7 @@ const styles = StyleSheet.create({
   betBtnCon: {
     width: 150,
     height: 150,
-    backgroundColor: "transparent",
+    backgroundColor: bg_2,
     position: "absolute",
     top: "20%",
     left: "-5%",
@@ -989,9 +1123,253 @@ const styles = StyleSheet.create({
   betnow: {
     flex: 1,
   },
-  close:{
-  
-    flex:1
-  }
+  close: {
+    flex: 1,
+  },
+
+  ////3D Bet Screen
+  betContainer: {
+    flex: 1,
+    backgroundColor: bg_2,
+    justifyContent: "center",
+  },
+  wheelContainer: {
+    justifyContent: "center",
+    flexDirection: "row",
+    alignItems: "center",
+    flex: 1,
+  },
+  wheelpicker: {
+    borderColor: app_1,
+    borderWidth: 5,
+  },
+  wheelpickerM: {
+    borderColor: app_2,
+    borderWidth: 5,
+  },
+
+  //
+  betBtnContainer: {
+    flex: 1,
+    backgroundColor: bg_2,
+  },
+  betBtnBox: {
+    height: 100,
+    backgroundColor: bg_2,
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+  },
+  cleanBtnCon: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+  },
+  cleanBtn: {
+    backgroundColor: bg_3b,
+    padding: 20,
+    width: "25%",
+    alignSelf: "center",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: "50%",
+    shadowColor: bg_1,
+    shadowOffset: { x: 10, y: 20 },
+    shadowOpacity: 0.5,
+    shadowRadius: 5,
+  },
+  cleanTxt: {
+    fontFamily: "Roboto_Bold",
+    fontSize: 18,
+    fontWeight: "600",
+    color: text_1b,
+  },
+  BuyTicket: {
+    backgroundColor: app_4,
+    padding: 20,
+    width: "60%",
+    alignSelf: "center",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: "50%",
+    shadowColor: bg_1,
+    shadowOffset: { x: 10, y: 20 },
+    shadowOpacity: 0.5,
+    shadowRadius: 5,
+  },
+  buyTxt: {
+    fontFamily: "Roboto_Bold",
+    fontSize: 18,
+    fontWeight: "600",
+    color: text_1b,
+  },
+  selectBtn: {
+    padding: 12,
+    paddingHorizontal: 30,
+    backgroundColor: app_4,
+    borderRadius: "25%",
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: bg_1,
+    shadowOffset: { x: 10, y: 20 },
+    shadowOpacity: 0.5,
+    shadowRadius: 5,
+  },
+  selectTxt: {
+    fontFamily: "Roboto_Bold",
+    fontSize: 18,
+    fontWeight: "600",
+    color: text_1b,
+  },
+  betInputBox: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 10,
+  },
+  digitInputContainer: {
+    flexDirection: "row",
+    width: "80%",
+    justifyContent: "space-between",
+  },
+  digitInput: {
+    width: "65%",
+    padding: 20,
+    backgroundColor: bg_3,
+    borderLeftColor: app_1,
+    borderLeftWidth: 30,
+    borderRadius: 10,
+    marginVertical: 10,
+    fontSize: 17,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "700",
+    color: app_1,
+  },
+  addBtn: {
+    marginVertical: 10,
+    width: "30%",
+    backgroundColor: app_4,
+    borderRadius: 10,
+    padding: 10,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  addTxt: {
+    fontFamily: "Roboto_Bold",
+    fontSize: 18,
+    fontWeight: "600",
+    color: text_1b,
+  },
+  amountInput: {
+    width: "80%",
+    padding: 20,
+    backgroundColor: bg_3,
+    borderLeftColor: app_1,
+    borderLeftWidth: 30,
+    borderRadius: 10,
+    marginVertical: 10,
+    fontSize: 17,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "700",
+    color: app_1,
+  },
+  digitPairsCon: {
+    flex: 0.5,
+    backgroundColor: bg_2,
+    flexDirection: "row",
+    alignItems: "center",
+    flexWrap: "nowrap",
+    justifyContent: "center",
+    borderBottomColor: app_2,
+    borderBottomWidth: 1,
+    borderTopWidth: 1,
+    borderTopColor: app_2,
+    shadowColor: app_1,
+    shadowOffset: { x: 10, y: 20 },
+    shadowOpacity: 0.2,
+    shadowRadius: 10,
+  },
+  Pairs: {
+    padding: 18,
+    backgroundColor: app_1,
+    borderRadius: "100%",
+    marginHorizontal: 10,
+    shadowColor: bg_1,
+    shadowOffset: { x: 10, y: 20 },
+    shadowOpacity: 0.5,
+    shadowRadius: 5,
+  },
+  pairsTxt: {
+    fontFamily: "Roboto_Bold",
+    fontSize: 15,
+    fontWeight: "600",
+    color: text_1b,
+  },
+  pairPreCon: {
+    height: 50,
+    alignSelf: "center",
+    justifyContent: "center",
+  },
+  pairPreTxt: {
+    fontFamily: "Roboto_Bold",
+    fontSize: 18,
+    fontWeight: "600",
+    color: app_2,
+  },
+
+  ///ballanceContainer
+  ballanceContainer: {
+    flex: 0.5,
+    backgroundColor: bg_2,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  walletBtn: {
+    width: "45%",
+    height: 75,
+    backgroundColor: bg_3,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    borderTopEndRadius: "25%",
+    borderBottomColor: app_2,
+    borderBottomWidth: 2,
+    shadowColor: bg_1,
+    shadowOffset: { x: 10, y: 20 },
+    shadowOpacity: 0.5,
+    shadowRadius: 5,
+  },
+  ballance: {
+    width: "100%",
+  },
+  ballanceH: {
+    fontFamily: "Roboto_Bold",
+    fontSize: 14,
+    color: app_1,
+    fontWeight: "600",
+  },
+  ballanceV: {
+    fontFamily: "Roboto_Bold",
+    fontSize: 17,
+    color: app_4,
+    fontWeight: "600",
+    margin: 3,
+  },
+  walletImg: {
+    width: 70,
+    height: "100%",
+  },
+  timeCon: {
+    width: "30%",
+    height: 75,
+    backgroundColor: bg_3,
+    alignItems: "flex-start",
+    borderBottomLeftRadius: "25%",
+  },
+  clockImg: {
+    width: 60,
+    height: 60,
+  },
 });
 export default styles;

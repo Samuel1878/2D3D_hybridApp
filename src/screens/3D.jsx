@@ -1,9 +1,9 @@
 import { FlatList,SafeAreaView, Text, TouchableOpacity, View } from "react-native";
-import styles, { bg_3, bg_3c } from "../libs/style";
+import styles, { bg_1, bg_3, bg_3c } from "../libs/style";
 import { LoginBtn, RegisterBtn } from "../components/logRegBtn";
 import {BlurView} from "expo-blur";
 import LogReg from "../layouts/logReg";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import GlobalContext from "../services/global/globalContext";
 import ServiceBtn from "../components/ServiceBtn";
 import { Ionicons } from "@expo/vector-icons";
@@ -31,6 +31,7 @@ const Item = ({item})=>{
 
 const ThreeD = () => {
     const {loggedIn,navigation} = useContext(GlobalContext);
+    const [isOpen, setIsOpen] = useState(true)
     
     return (
       <View style={styles.threeDCon}>
@@ -39,8 +40,8 @@ const ThreeD = () => {
           <View style={styles.threeDTopCon}>
             <View style={styles.serverTimeCon}>
               <Text style={styles.serverTime}>
-                <Ionicons name="ios-time" size={24} color={bg_3} />
-                12:89 PM
+                <Ionicons name="ios-time" size={24} color={bg_1} />
+                {isOpen?"Bet close: 16-09-2023 02:30:00 PM":"Bet closed! will be ready soon"}
               </Text>
             </View>
             <View style={styles.threeDBtnBox}>
@@ -72,6 +73,13 @@ const ThreeD = () => {
               keyExtractor={(item) => item.id}
             />
           </SafeAreaView>
+          {
+            isOpen?(
+              <TouchableOpacity style={styles._3d_betBtn} onPress={()=>navigation.navigate("3dBet")}>
+                <Text style={styles._3d_betBtnTxt}>Bet now</Text>
+              </TouchableOpacity>
+            ):(<></>)
+          }
         </View>
       </View>
     );

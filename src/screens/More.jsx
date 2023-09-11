@@ -1,9 +1,9 @@
-import { View, Text, Image, TouchableWithoutFeedback } from "react-native";
-import styles, { app_1, app_3, app_4 } from "../libs/style";
+import { View, Text, Image, TouchableWithoutFeedback, FlatList } from "react-native";
+import styles, { app_1, app_3, app_4, bg_1, bg_3b, bg_3c } from "../libs/style";
 import { LoginBtn, RegisterBtn } from "../components/logRegBtn";
 import { BlurView } from "expo-blur";
 import LogReg from "../layouts/logReg";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import GlobalContext from "../services/global/globalContext";
 import ServiceBtn from "../components/ServiceBtn";
 import { TouchableOpacity } from "react-native";
@@ -11,86 +11,67 @@ import { AntDesign } from "@expo/vector-icons";
 import { TextInput } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { DATA } from "../libs/data";
+import LottieView from "lottie-react-native";
 
 const More = ({ navigation }) => {
-  const [profileShown, setProfileShown] = useState(false);
-  const { loggedIn, profile, name, phone, level } = useContext(GlobalContext);
-  const showProfile = () => {
-    if (profileShown) {
-      setProfileShown(false);
-      return;
+  const animation = useRef(null)
+  const { 
+    loggedIn, 
+    profile, 
+    name, 
+    phone, 
+    level } = useContext(GlobalContext);
+    const renderItem = ({item}) =>{
+        return(
+          <TouchableOpacity style={styles.moreItemCon}>
+            <LottieView
+              autoPlay
+              ref={animation}
+              style={styles.moreItemImg}
+              source={item.src}
+              />
+            <Text style={styles.moreItemTxt}>{item.title}</Text>
+          </TouchableOpacity>
+
+        )
     }
-    setProfileShown(true);
-  };
-  const hideProfile = () => {
-    if (profileShown) {
-      setProfileShown(false);
-    }
-  };
+    useEffect(()=>{
+      animation?.current.play()
+    },[])
+
+
+
   return (
     <View style={styles.Container}>
-      <View style={styles.topMoreCon}>
-        {loggedIn ? (
-          <View style={styles.userProfileCon}>
+      <View style={styles.topmeCon}>
+        {loggedIn && (
+          <TouchableOpacity
+            onPress={() => navigation.navigate("me")}
+            style={styles.userProfileCon}
+          >
+            <Image style={styles.userProfile} source={profile} />
             <View style={styles.userDataBox}>
               <Text style={styles.userNameTxt}>
                 {name}
-                <MaterialIcons name="verified-user" size={21} color={app_4} />
+                <MaterialIcons name="verified-user" size={21} color={bg_3b} />
               </Text>
               <Text style={styles.userDataTxt}>
                 Phone: {phone}{" "}
-                <MaterialIcons name="verified" size={20} color={app_3} />
+                <MaterialIcons name="verified" size={20} color={bg_3b} />
               </Text>
-              <Text style={styles.userDataTxt}>
-                level:{level}{" "}
-                <MaterialCommunityIcons
-                  name="numeric-1-box-multiple"
-                  size={21}
-                  color="black"
-                />
-              </Text>
-              <TouchableOpacity
-                style={styles.privacySetting}
-                onPress={showProfile}
-              >
-                <Text style={styles.privacySettingTxt}>Privacy Setting</Text>
-                <AntDesign
-                  name={profileShown ? "up" : "down"}
-                  size={26}
-                  color={app_1}
-                />
-              </TouchableOpacity>
             </View>
-            <Image style={styles.userProfile} source={profile} />
-          </View>
-        ) : (
-          <></>
+          </TouchableOpacity>
         )}
       </View>
-      <View
-        style={[
-          styles.hiddenProfile,
-          { display: profileShown ? "block" : "none" },
-        ]}
-      >
-        <TouchableOpacity>
-          <Text>Name Change</Text>
-        </TouchableOpacity>
-        <Text>Password Change</Text>
-        <TextInput />
-        <TextInput />
-        <TextInput />
-        <TouchableOpacity>
-          <Text>Upload profile</Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Text>Save</Text>
-        </TouchableOpacity>
+      <View style={styles.bottomMeCon}>
+        <FlatList
+          data={DATA}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+        />
       </View>
 
-      <TouchableWithoutFeedback onPress={hideProfile} style={styles.bottomCon}>
-        <View style={{ flex: 2 }}></View>
-      </TouchableWithoutFeedback>
       {loggedIn ? <ServiceBtn /> : <LogReg navigation={navigation} />}
     </View>
   );

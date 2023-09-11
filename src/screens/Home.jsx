@@ -6,9 +6,11 @@ import DynamicHeader from "../components/DynamicHeader";
 import { useContext, useEffect, useRef } from "react";
 import { ScrollView } from "react-native";
 import AuthContext from "../services/auth/authContext";
+import restoreUserData from "../hooks/fetchUserData";
 const Home = ({navigation}) => {
     const {userToken} = useContext(AuthContext);
     let scrollOffsetY = useRef(new Animated.Value(0)).current;
+    restoreUserData(userToken);
 
     const data = [
         {
