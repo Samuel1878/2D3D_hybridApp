@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
   dataA: {
     marginVertical: 10,
     flex: 1,
-    backgroundColor: bg_2,
+    backgroundColor: bg_3,
     borderRadius: 10,
     alignItems: "center",
   },
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
   },
   interData: {
     flexDirection: "row",
-    backgroundColor: bg_2,
+    backgroundColor: bg_3,
     padding: 10,
     marginVertical: 10,
     alignItems: "center",
@@ -160,14 +160,14 @@ const styles = StyleSheet.create({
     fontFamily: "Roboto",
   },
   interV: {
-    color: bg_5,
+    color: text_1,
     fontSize: 17,
     fontFamily: "Roboto_Bold",
     fontWeight: "700",
   },
   interData3D: {
     flexDirection: "row",
-    backgroundColor: bg_2,
+    backgroundColor: bg_3,
     padding: 10,
     marginVertical: 10,
     alignItems: "center",
@@ -252,7 +252,7 @@ const styles = StyleSheet.create({
   //Wallet///////////////////////////////////
   wallet: {
     flex: 1,
-    backgroundColor: bg_2,
+    backgroundColor: bg_1,
   },
   walletMainCon: {
     flex: 1,
@@ -279,42 +279,135 @@ const styles = StyleSheet.create({
     height: 100,
     position: "absolute",
     bottom: "-25%",
-    left: 50,
-    right: 50,
+    left: 15,
+    right: 15,
     borderWidth: 0,
     borderRadius: 15,
     backgroundColor: bg_3,
     shadowColor: bg_1,
-    shadowOpacity: 0.5,
+    shadowOpacity: .5,
     shadowRadius: 0.5,
     shadowOffset: { x: 5, y: 5 },
     flexDirection: "row",
     alignItems: "center",
-    paddingLeft:10,
-
+    paddingLeft: 10,
   },
   ballanceHeader: {
     color: app_1,
-    fontSize: 19,
+    fontSize: 18,
     fontFamily: "Roboto_Bold",
     fontWeight: "600",
-  
-    marginLeft:20
+
+    marginLeft: 20,
   },
   ballanceD: {
-    marginLeft:20,
-    margin:5,
+    marginLeft: 20,
+    margin: 5,
     color: app_1,
     fontSize: 21,
     fontFamily: "Roboto_Bold",
     fontWeight: "600",
-   
   },
-  eye:{
-   justifyContent:"center",
-   alignItems:"center",
-   flex:1,
-   paddingVertical:5
+  eye: {
+    justifyContent: "center",
+    alignItems: "center",
+    flex: 1,
+    paddingVertical: 5,
+  },
+  ///wallet bottom part
+  walletBottomCon: {
+    flex: 3,
+    alignItems: "center",
+  },
+  walletBtnCon: {
+    width: "95%",
+    height: 220,
+    paddingTop: 65,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    flexWrap: "wrap",
+  },
+  walletBtns: {
+    backgroundColor: bg_3,
+    width: 150,
+    margin: 10,
+    alignItems: "center",
+    flexDirection: "row",
+    borderRadius: "10%",
+  },
+  walletBtnImg: {
+    width: 60,
+    height: 60,
+  },
+  walletBtnsTxt: {
+    color: app_1,
+    fontSize: 14,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+  },
+  walletSliderCon: {
+    height: 150,
+    width: "100%",
+  },
+  carouselCon: {
+    flex: 1,
+
+  },
+
+  paymentsCon: {
+    flex: 1,
+    width: "95%",
+  },
+  paymentHeader: {
+    color: app_4,
+    fontSize: 16,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "700",
+    marginBottom:10,
+    textAlign:"center"
+  },
+  payments: {
+    width: "100%",
+    padding: 5,
+    flexDirection: "row",
+    backgroundColor: bg_3,
+    alignItems: "center",
+    borderRadius: 10,
+    marginVertical:5
+  },
+  paymentImg: {
+    width: 50,
+    height: 50,
+  },
+  payment: {
+    marginHorizontal: 10,
+    flex: 1,
+  },
+  paymentN: {
+    color: app_1,
+    fontSize: 16,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "700",
+  },
+  paymentP: {
+    color: app_1,
+    fontSize: 14,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "500",
+  },
+  paymentEd: {
+    paddingHorizontal: 25,
+    paddingVertical: 10,
+    alignItems: "center",
+    backgroundColor: app_1,
+    borderRadius: 10,
+  },
+  paymentEdTxt: {
+    color: text_1b,
+    fontSize: 14,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "500",
   },
 
   ///Screens

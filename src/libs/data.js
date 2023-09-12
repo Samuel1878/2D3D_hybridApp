@@ -11,8 +11,8 @@ export const DATA = [
   },
   {
     id: 3,
-    title: "Bank Accounts",
-    src: require("../../assets/bank.json"),
+    title: "Pin management",
+    src: require("../../assets/lock.json"),
   },
   {
     id: 4,
@@ -44,4 +44,9 @@ export const DATA = [
     title: "Logout",
     src: require("../../assets/exit.json"),
   },
+];
+export const IMAGES = [
+  require("../../assets/bgA.png"),
+  require("../../assets/bgB.jpg"),
+  require("../../assets/bgE.png")
 ];
