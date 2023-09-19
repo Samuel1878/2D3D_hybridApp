@@ -13,7 +13,7 @@ const ImageSlider = () =>{
           onCurrentImagePressed={(index) =>
             console.warn(`image ${index} pressed`)
           }
-          dotColor={app_1}
+          dotColor={app_1} 
           inactiveDotColor={app_4}
           paginationBoxVerticalPadding={10}
           autoplay

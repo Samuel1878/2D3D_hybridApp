@@ -34,7 +34,7 @@ const Home = ({navigation}) => {
             title:"Five"
         },
     ];
-    console.log(userToken)
+    
   
     return(
         <View style={styles.home}>

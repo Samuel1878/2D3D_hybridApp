@@ -55,7 +55,7 @@ const Wallet = ()=>{
               source={require("../../assets/wallet.json")}
             />
             <View>
-              <Text style={styles.ballanceHeader}>Ballance (Ks)</Text>
+              <Text style={styles.ballanceHeader}>Ballance (Ks) </Text>
               <Text style={styles.ballanceD}>
                 {opened ? money : "**********"}
               </Text>

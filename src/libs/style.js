@@ -285,7 +285,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     backgroundColor: bg_3,
     shadowColor: bg_1,
-    shadowOpacity: .5,
+    shadowOpacity: 0.5,
     shadowRadius: 0.5,
     shadowOffset: { x: 5, y: 5 },
     flexDirection: "row",
@@ -352,7 +352,6 @@ const styles = StyleSheet.create({
   },
   carouselCon: {
     flex: 1,
-
   },
 
   paymentsCon: {
@@ -364,8 +363,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: "Roboto_Bold",
     fontWeight: "700",
-    marginBottom:10,
-    textAlign:"center"
+    marginBottom: 10,
+    textAlign: "center",
   },
   payments: {
     width: "100%",
@@ -374,7 +373,7 @@ const styles = StyleSheet.create({
     backgroundColor: bg_3,
     alignItems: "center",
     borderRadius: 10,
-    marginVertical:5
+    marginVertical: 5,
   },
   paymentImg: {
     width: 50,
@@ -1158,6 +1157,28 @@ const styles = StyleSheet.create({
     fontFamily: "Roboto_Bold",
     fontWeight: "600",
     color: app_2,
+  },
+  //bet Btn
+  bet2DBtn: {
+    position: "absolute",
+    bottom: 30,
+    left: "20%",
+    right: "20%",
+    backgroundColor: bg_2,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 20,
+    borderRadius: "50%",
+    borderTopColor: app_1,
+    borderTopWidth: 1,
+    borderColor: app_1,
+    borderWidth: 2,
+  },
+  bet2DBtnTxt: {
+    fontSize: 19,
+    color: app_4,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
   },
   ///calender lotttie
   calenderCon: {

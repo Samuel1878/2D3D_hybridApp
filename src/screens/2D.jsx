@@ -22,14 +22,6 @@ const TwoD = ({navigation}) => {
     const [bet2D, setBet2D] = useState(false)
     const [selected, setSelected] = useState("7")
 
-    function open() {
-      pickerRef.current.focus();
-    }
-
-    function close() {
-      pickerRef.current.blur();
-    }
-
     useEffect(() => {
       animation.current?.play();
      bet2D ? animation2.current?.play() : animation1.current?.play();
@@ -147,10 +139,11 @@ const TwoD = ({navigation}) => {
                 style={styles.betBtnCon}>
               {bet2D ? (
                 <LottieView
+                    speed={.7}
                   autoPlay
                   ref={animation2}
                   style={styles.betnow}
-                  source={require("../../assets/betnow.json")}
+                  source={require("../../assets/openG.json")}
                 />
               ) : (
                 <LottieView
@@ -209,6 +202,15 @@ const TwoD = ({navigation}) => {
         </View>
 
         {loggedIn ? <ServiceBtn /> : <LogReg navigation={navigation} />}
+        <SafeAreaView>
+            {
+                bet2D?(<TouchableOpacity
+                        onPress={()=>navigation.navigate("2dBet")}
+                     style={styles.bet2DBtn}>
+                    <Text style={styles.bet2DBtnTxt}>Bet Now</Text>
+                </TouchableOpacity>):(<></>)
+            }
+        </SafeAreaView>
       </View>
     );
 };
