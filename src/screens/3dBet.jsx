@@ -1,11 +1,13 @@
 import { View ,Text, TouchableOpacity, TextInput, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard} from "react-native";
 import styles, { app_1, bg_3 } from "../libs/style";
 import WheelPickerExpo from "react-native-wheel-picker-expo";
-import { useEffect, useState,useRef, useCallback } from "react";
+import { useEffect, useState,useRef, useCallback, useContext } from "react";
 import { Entypo } from "@expo/vector-icons";
 import LottieView from "lottie-react-native";
+import GlobalContext from "../services/global/globalContext";
 
 const ThreeD_Bet = ({navigation}) => {
+    const {money} = useContext(GlobalContext)
     const [firstDigit, setFirstDigit] = useState({label:"0"});
     const [secondDigit, setSecondDigit] = useState({ label: "0" });
     const [thirdDigit, setThirdDigit] = useState({ label: "0" });
@@ -65,7 +67,7 @@ const ThreeD_Bet = ({navigation}) => {
             />
             <View style={styles.ballance}>
               <Text style={styles.ballanceH}>Balance (Ks)</Text>
-              <Text style={styles.ballanceV}>1,001,000</Text>
+              <Text style={styles.ballanceV}>{money}</Text>
             </View>
           </View>
           <View style={styles.timeCon}>

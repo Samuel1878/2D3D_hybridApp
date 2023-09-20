@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import DataContext from "../services/data/dataContext";
+
 export const DATA = [
   {
     id: 1,
@@ -50,3 +53,10 @@ export const IMAGES = [
   require("../../assets/bgB.jpg"),
   require("../../assets/bgE.png")
 ];
+export const _3D_DATA = ()=>{
+   const {history3D} = useContext(DataContext);
+   history3D.forEach((value, index) => {
+     value.id = index + 1;
+   });
+   return history3D;
+}

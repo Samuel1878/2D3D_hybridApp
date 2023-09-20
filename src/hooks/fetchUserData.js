@@ -17,6 +17,7 @@ const restoreUserData = token =>{
        setLevel,
        profile,
        setProfile,
+       setHistory
      } = useContext(GlobalContext);
      useEffect(()=>{
           token && axios
@@ -32,6 +33,7 @@ const restoreUserData = token =>{
                    setLevel(res.data.level);
                    setProfile(res.data.image);
                    setPhone(res.data.phone);
+                   setHistory(res.data.history)
 
                  } else {
                    setLoggedIn(false);

@@ -1,12 +1,12 @@
-import { Text, View,Animated,FlatList, Image, SafeAreaView} from "react-native";
-import styles, { app_1, app_3 } from "../libs/style";
-import { useCollapsibleHeader } from 'react-navigation-collapsible';
+import {  View,Animated} from "react-native";
+import styles from "../libs/style";
 import HomeItems from "../components/homeItems";
 import DynamicHeader from "../components/DynamicHeader";
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useRef } from "react";
 import { ScrollView } from "react-native";
 import AuthContext from "../services/auth/authContext";
 import restoreUserData from "../hooks/fetchUserData";
+import { _2d_URL } from "../hooks/config";
 const Home = ({navigation}) => {
     const {userToken} = useContext(AuthContext);
     let scrollOffsetY = useRef(new Animated.Value(0)).current;

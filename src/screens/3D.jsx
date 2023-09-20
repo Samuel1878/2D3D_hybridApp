@@ -7,23 +7,24 @@ import { useContext, useState } from "react";
 import GlobalContext from "../services/global/globalContext";
 import ServiceBtn from "../components/ServiceBtn";
 import { Ionicons } from "@expo/vector-icons";
-const data = [
-    {id:1,result:215,date:"21/23/12"},
-    {id:2,result:923,date:"21/23/12"},
-    {id:3,result:131,date:"21/23/12"},
-    {id:4,result:757,date:"21/23/12"},
-    {id:5,result:435,date:"21/23/112"}
-];
+import { _3D_DATA } from "../libs/data";
+// const data = [
+//     {id:1,result:215,date:"21/23/12"},
+//     {id:2,result:923,date:"21/23/12"},
+//     {id:3,result:131,date:"21/23/12"},
+//     {id:4,result:757,date:"21/23/12"},
+//     {id:5,result:435,date:"21/23/112"}
+// ];
 const Item = ({item})=>{
     return (
-      <View style={styles.threeDItem}>
+      <View style={styles.threeDItem} key={item?.id}>
         <View style={styles.threeDheaderCon}>
           <Text style={styles.dataH}>Date</Text>
-          <Text style={styles.dataV}>{item.date}</Text>
+          <Text style={styles.dataV}>{item?.date}</Text>
         </View>
         <View style={styles.threeDvalueCon}>
           <Text style={styles.dataH}>Result</Text>
-          <Text style={styles.dataV}>{item.result}</Text>
+          <Text style={styles.dataV}>{item?.result}</Text>
         </View>
       </View>
     );
@@ -31,7 +32,8 @@ const Item = ({item})=>{
 
 const ThreeD = () => {
     const {loggedIn,navigation} = useContext(GlobalContext);
-    const [isOpen, setIsOpen] = useState(true)
+    const [isOpen, setIsOpen] = useState(true);
+
     
     return (
       <View style={styles.threeDCon}>
@@ -68,7 +70,7 @@ const ThreeD = () => {
 
           <SafeAreaView style={styles.threeDdataCon}>
             <FlatList
-              data={data}
+              data={_3D_DATA}
               renderItem={({ item }) => <Item item={item} />}
               keyExtractor={(item) => item.id}
             />
