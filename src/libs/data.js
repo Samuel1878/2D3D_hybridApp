@@ -53,10 +53,8 @@ export const IMAGES = [
   require("../../assets/bgB.jpg"),
   require("../../assets/bgE.png")
 ];
-export const _3D_DATA = ()=>{
-   const {history3D} = useContext(DataContext);
-   history3D.forEach((value, index) => {
-     value.id = index + 1;
-   });
-   return history3D;
-}
+// export const _3D_DATA = ()=>{
+//    const {history3D} = useContext(DataContext);
+//    console.log(history3D)
+//    return history3D;
+// }

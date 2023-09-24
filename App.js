@@ -3,6 +3,7 @@ import AuthProvider from './src/services/auth/auth';
 import Global from './src/services/global/global';
 import BranchContainer from './src/layouts/mainBranches';
 import Data from './src/services/data/data';
+import BetProvider from './src/services/bet/bet';
 
 
 export default function App() {
@@ -10,7 +11,9 @@ export default function App() {
     <Global>
       <AuthProvider>
         <Data>
-          <BranchContainer />
+          <BetProvider>
+            <BranchContainer />
+          </BetProvider>
         </Data>
       </AuthProvider>
     </Global>

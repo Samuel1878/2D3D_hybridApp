@@ -8,6 +8,7 @@ import GlobalContext from "../services/global/globalContext";
 import ServiceBtn from "../components/ServiceBtn";
 import { Ionicons } from "@expo/vector-icons";
 import { _3D_DATA } from "../libs/data";
+import DataContext from "../services/data/dataContext";
 // const data = [
 //     {id:1,result:215,date:"21/23/12"},
 //     {id:2,result:923,date:"21/23/12"},
@@ -17,7 +18,7 @@ import { _3D_DATA } from "../libs/data";
 // ];
 const Item = ({item})=>{
     return (
-      <View style={styles.threeDItem} key={item?.id}>
+      <View style={styles.threeDItem} key={item?.date}>
         <View style={styles.threeDheaderCon}>
           <Text style={styles.dataH}>Date</Text>
           <Text style={styles.dataV}>{item?.date}</Text>
@@ -33,6 +34,7 @@ const Item = ({item})=>{
 const ThreeD = () => {
     const {loggedIn,navigation} = useContext(GlobalContext);
     const [isOpen, setIsOpen] = useState(true);
+    const {history3D} = useContext(DataContext)
 
     
     return (
@@ -43,7 +45,9 @@ const ThreeD = () => {
             <View style={styles.serverTimeCon}>
               <Text style={styles.serverTime}>
                 <Ionicons name="ios-time" size={24} color={bg_1} />
-                {isOpen?"Bet close: 16-09-2023 02:30:00 PM":"Bet closed! will be ready soon"}
+                {isOpen
+                  ? "Bet close: 16-09-2023 02:30:00 PM"
+                  : "Bet closed! will be ready soon"}
               </Text>
             </View>
             <View style={styles.threeDBtnBox}>
@@ -70,18 +74,21 @@ const ThreeD = () => {
 
           <SafeAreaView style={styles.threeDdataCon}>
             <FlatList
-              data={_3D_DATA}
+              data={history3D}
               renderItem={({ item }) => <Item item={item} />}
-              keyExtractor={(item) => item.id}
+              keyExtractor={(item) => item.date}
             />
           </SafeAreaView>
-          {
-            isOpen?(
-              <TouchableOpacity style={styles._3d_betBtn} onPress={()=>navigation.navigate("3dBet")}>
-                <Text style={styles._3d_betBtnTxt}>Bet now</Text>
-              </TouchableOpacity>
-            ):(<></>)
-          }
+          {isOpen ? (
+            <TouchableOpacity
+              style={styles._3d_betBtn}
+              onPress={() => navigation.navigate("3dBet")}
+            >
+              <Text style={styles._3d_betBtnTxt}>Bet now</Text>
+            </TouchableOpacity>
+          ) : (
+            <></>
+          )}
         </View>
       </View>
     );

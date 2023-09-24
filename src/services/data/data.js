@@ -14,12 +14,13 @@ const Data = ({children}) => {
     const {history,loadedHis} = fetchHistory({page,limit});
    useEffect(()=>{
     loadedHis && setHistory2D(history);
+    console.log(results)
    },[loadedHis])
     useEffect(() => {
       loaded &&
             setLive2D(response)
           setResults2D(results)
-          setHistory3D(threeD?.data)
+          setHistory3D(threeD?.["data"])
       
     }, [loaded]);
     return (

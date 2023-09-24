@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import styles, { app_1, bg_3 } from "../libs/style";
 import WheelPickerExpo from "react-native-wheel-picker-expo";
-import { useEffect, useState, useRef, useCallback, useContext } from "react";
+import { useEffect, useState, useRef, useCallback, useContext, useMemo } from "react";
 import { Entypo } from "@expo/vector-icons";
 import LottieView from "lottie-react-native";
 import GlobalContext from "../services/global/globalContext";
@@ -25,7 +25,7 @@ const TwoD_Bet = ({ navigation }) => {
   const animation = useRef(null);
   const Digit = "1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9".split(",");
   const addPair = () => {
-    validPair && pairs.length <= 4 && setPairs((prev) => [...prev, digitPair]);
+    validPair && pairs?.length <= 4 && setPairs((prev) => [...prev, digitPair]);
     setDigitPair("");
   };
   const Item = (item) => {
@@ -35,10 +35,10 @@ const TwoD_Bet = ({ navigation }) => {
       </View>
     );
   };
-  const Pairs = ({ pairs }) => {
+  const Pairs = useCallback(() => {
     return (
       <>
-        {pairs.map((e) => {
+        {pairs && pairs?.length>0 && pairs.map((e) => {
           return (
             <View style={styles.Pairs} key={e}>
               <Text style={styles.pairsTxt}>{e}</Text>
@@ -47,7 +47,23 @@ const TwoD_Bet = ({ navigation }) => {
         })}
       </>
     );
-  };
+  },[pairs])
+  const selectFnc = () =>{
+   pairs?.length <= 4 && setPairs((prev) => [...prev, firstDigit.label + secondDigit.label]);
+  }
+  const roundFnc = ()=>{
+  
+    firstDigit.label != secondDigit.label &&
+      setPairs((prev) => [
+        firstDigit.label + firstDigit.label,
+        firstDigit.label + secondDigit.label,
+        secondDigit.label + firstDigit.label,
+        secondDigit.label + secondDigit.label,
+      ]);
+  }
+  const clearFnc = () => {
+    setPairs([])
+  }
   useEffect(() => {
     animation?.current.play();
   }, []);
@@ -58,6 +74,11 @@ const TwoD_Bet = ({ navigation }) => {
     }
     setValidPair(false);
   }, [digitPair]);
+
+    useEffect(() => {
+
+    }, [pairs]);
+  
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -106,8 +127,8 @@ const TwoD_Bet = ({ navigation }) => {
           </View>
         </KeyboardAvoidingView>
         <View style={styles.digitPairsCon}>
-          {pairs.length !== 0 ? (
-            <Pairs pairs={pairs} />
+          {pairs?.length !== 0 ? (
+            <Pairs />
           ) : (
             <View style={styles.pairPreCon}>
               <Text style={styles.pairPreTxt}>Add or Select 2 digit pairs</Text>
@@ -150,10 +171,13 @@ const TwoD_Bet = ({ navigation }) => {
         </View>
         <View style={styles.betBtnContainer}>
           <View style={styles.betBtnBox}>
-            <TouchableOpacity style={styles.selectBtn}>
+            <TouchableOpacity 
+                onPress={selectFnc}
+                style={styles.selectBtn}>
               <Text style={styles.selectTxt}>Select</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.selectBtn}>
+            <TouchableOpacity 
+            onPress={roundFnc} style={styles.selectBtn}>
               <Text style={styles.selectTxt}>Round</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.selectBtn}>
@@ -161,7 +185,9 @@ const TwoD_Bet = ({ navigation }) => {
             </TouchableOpacity>
           </View>
           <View style={styles.cleanBtnCon}>
-            <TouchableOpacity style={styles.cleanBtn}>
+            <TouchableOpacity 
+                onPress={clearFnc}
+                style={styles.cleanBtn}>
               <Text style={styles.cleanTxt}>Clear</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.BuyTicket}>
