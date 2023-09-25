@@ -4,6 +4,7 @@ import Global from './src/services/global/global';
 import BranchContainer from './src/layouts/mainBranches';
 import Data from './src/services/data/data';
 import BetProvider from './src/services/bet/bet';
+import SocketProvider from './src/services/socket/socket';
 
 
 export default function App() {
@@ -11,9 +12,11 @@ export default function App() {
     <Global>
       <AuthProvider>
         <Data>
-          <BetProvider>
-            <BranchContainer />
-          </BetProvider>
+          <SocketProvider>
+            <BetProvider>
+              <BranchContainer />
+            </BetProvider>
+          </SocketProvider>
         </Data>
       </AuthProvider>
     </Global>
