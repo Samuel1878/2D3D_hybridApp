@@ -16,6 +16,7 @@ import ThreeD_Bet from "../screens/3dBet";
 import TwoD_Bet from "../screens/2dBet";
 import Holidays from "../screens/Holiday";
 import Me from "../screens/me";
+import Bet from "../screens/Bet";
 
 const Stack = createNativeStackNavigator();
 const BranchContainer = () => {
@@ -116,6 +117,17 @@ const BranchContainer = () => {
           name="2dBet"
           options={{
             headerTitle: "2D Bet",
+            headerShown: true,
+            headerTintColor: text_1b,
+            headerStyle: { backgroundColor: app_1 },
+            headerTitleStyle: { color: "transparent" },
+          }}
+        />
+        <Stack.Screen
+          component={Bet}
+          name="Bet"
+          options={{
+            headerTitle: "Bet",
             headerShown: true,
             headerTintColor: text_1b,
             headerStyle: { backgroundColor: app_1 },

@@ -13,21 +13,35 @@ import { useEffect, useState, useRef, useCallback, useContext, useMemo } from "r
 import { Entypo } from "@expo/vector-icons";
 import LottieView from "lottie-react-native";
 import GlobalContext from "../services/global/globalContext";
+import BetContext from "../services/bet/betContext";
 
 const TwoD_Bet = ({ navigation }) => {
     const {money} = useContext(GlobalContext)
   const [firstDigit, setFirstDigit] = useState({ label: "0" });
   const [secondDigit, setSecondDigit] = useState({ label: "0" });
   const [digitPair, setDigitPair] = useState("");
+  const [validAmount , setValidAmount] = useState(false)
   const [validPair, setValidPair] = useState(true);
   const [pairs, setPairs] = useState([]);
   const [amount, setAmount] = useState("");
   const animation = useRef(null);
+  const { setBetDigits2D } = useContext(BetContext);
   const Digit = "1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9".split(",");
   const addPair = () => {
     validPair && pairs?.length <= 4 && setPairs((prev) => [...prev, digitPair]);
     setDigitPair("");
   };
+
+  useEffect(()=> {
+    if(amount>money){
+        return setValidAmount(false)
+    }else if(amount == "" || amount <= 100){
+        return setValidAmount(false)
+    }else{
+        return setValidAmount(true);
+    }
+    
+  },[amount])
   const Item = (item) => {
     return (
       <View>
@@ -48,6 +62,7 @@ const TwoD_Bet = ({ navigation }) => {
       </>
     );
   },[pairs])
+  
   const selectFnc = () =>{
    pairs?.length <= 4 && setPairs((prev) => [...prev, firstDigit.label + secondDigit.label]);
   }
@@ -63,6 +78,14 @@ const TwoD_Bet = ({ navigation }) => {
   }
   const clearFnc = () => {
     setPairs([])
+  }
+  const buyTicketsFnc = () =>{
+    validAmount && setBetDigits2D(pairs.map((pair)=>({ pair, amount})) ) ;
+    validAmount && navigation.navigate("Bet")
+
+
+
+    
   }
   useEffect(() => {
     animation?.current.play();
@@ -190,7 +213,9 @@ const TwoD_Bet = ({ navigation }) => {
                 style={styles.cleanBtn}>
               <Text style={styles.cleanTxt}>Clear</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.BuyTicket}>
+            <TouchableOpacity 
+                onPress={buyTicketsFnc}
+                style={styles.BuyTicket}>
               <Text style={styles.buyTxt}>Buy tickets</Text>
             </TouchableOpacity>
           </View>

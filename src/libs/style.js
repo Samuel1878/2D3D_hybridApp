@@ -1180,6 +1180,60 @@ const styles = StyleSheet.create({
     fontFamily: "Roboto_Bold",
     fontWeight: "600",
   },
+  ////bet ROUTE
+  _betContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: bg_2,
+  },
+  _betFormBox: {
+    width: "90%",
+    backgroundColor: bg_3,
+    height: "75%",
+    borderRadius: 10,
+    justifyContent:"space-between",
+    alignItems:"center",
+    paddingTop:10
+  },
+  _betForm: {
+    flexDirection: "row",
+    padding: 10,
+    width:"90%",
+    backgroundColor: bg_2,
+    justifyContent: "space-around",
+    alignItems: "center",
+    borderRadius: 10,
+  },
+  pairInput: {
+    backgroundColor: bg_3,
+    color: app_1,
+    flex:1.5,
+    padding: 10,
+    borderRadius: 5,
+    marginHorizontal: 10,
+  },
+  _betPairTxt: {
+    fontSize: 19,
+    color: app_4,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+  },
+  changeAmountBtn: {
+    backgroundColor: app_2,
+    padding: 10,
+    borderRadius: 10,
+    flex:.5
+  },
+  _confirmOrderBtn: {
+    width: "100%",
+    paddingVertical:20,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: app_1,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+  },
   ///calender lotttie
   calenderCon: {
     position: "absolute",
