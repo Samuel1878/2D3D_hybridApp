@@ -18,9 +18,10 @@ const Login = ({navigation}) =>{
     const [focusedPwd, setFocusedPwd] = useState(false);
     const REGEX_NO = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{5}$/;
   const REGEX_PWD = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
-    const {signIn,userToken} = useContext(AuthContext);
+    const {signIn} = useContext(AuthContext);
     const submitHandler = async()=>{
         if(validNo && validPwd){
+            navigation.navigate("root")
            axios.post(LOGIN_URL,{
             phone:phone,password:password
            },{

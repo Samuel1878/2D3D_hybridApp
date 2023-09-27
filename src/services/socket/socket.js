@@ -39,6 +39,7 @@ const SocketProvider = ({children})=>{
         socket.on(RECEIVE_INFO,(data)=>{
             console.log(data);
         })
+        
     }
     
     return (

@@ -8,3 +8,5 @@ export const _2d_HISTORY = "http://localhost:8080/api/data/2d/history";
 export const _2d_BET = "http://localhost:8080/api/data/2d/history";
 export const _3d_BET = "";
 export const SOCKET_URL = "http://localhost:8080"
+
+export const _2d_BET_URL = "http://localhost:8080/api/bet/2D"

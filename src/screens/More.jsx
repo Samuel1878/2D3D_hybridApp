@@ -13,18 +13,29 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { DATA } from "../libs/data";
 import LottieView from "lottie-react-native";
+import AuthContext from "../services/auth/authContext";
 
 const More = ({ navigation }) => {
   const animation = useRef(null)
-  const { 
-    loggedIn, 
-    profile, 
-    name, 
-    phone, 
-    level } = useContext(GlobalContext);
+  const { profile, name, phone, level } = useContext(GlobalContext);
+    const {signOut,userToken} = useContext(AuthContext)
     const renderItem = ({item}) =>{
+      const pressHandler = ()=>{
+        switch (item.id) {
+          case 9:
+            signOut();
+            navigation.navigate("Home")
+            break;
+        
+          default:
+            break;
+        }
+      }
+      
         return(
-          <TouchableOpacity style={styles.moreItemCon}>
+          <TouchableOpacity 
+            onPress={pressHandler}
+            style={styles.moreItemCon}>
             <LottieView
               autoPlay
               ref={animation}
@@ -45,7 +56,7 @@ const More = ({ navigation }) => {
   return (
     <View style={styles.Container}>
       <View style={styles.topmeCon}>
-        {loggedIn && (
+        {userToken && (
           <TouchableOpacity
             onPress={() => navigation.navigate("me")}
             style={styles.userProfileCon}
@@ -69,10 +80,11 @@ const More = ({ navigation }) => {
           data={DATA}
           renderItem={renderItem}
           keyExtractor={(item) => item.id}
+          extraData={DATA}
         />
       </View>
 
-      {loggedIn ? <ServiceBtn /> : <LogReg navigation={navigation} />}
+      {userToken ? <ServiceBtn /> : <LogReg navigation={navigation} />}
     </View>
   );
 };

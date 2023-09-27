@@ -11,6 +11,7 @@ const restoreUserData = token =>{
        setName,
        money,
        setMoney,
+       history,
        phone,
        setPhone,
        level,
@@ -34,7 +35,7 @@ const restoreUserData = token =>{
                    setProfile(res.data.image);
                    setPhone(res.data.phone);
                    setHistory(res.data.history)
-
+                 
                  } else {
                    setLoggedIn(false);
                    console.debug(res.data?.message);
@@ -43,7 +44,6 @@ const restoreUserData = token =>{
                .catch((err) => console.warn(err));
         
      },[]);
-  
 
 }
 export default restoreUserData;

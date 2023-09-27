@@ -753,7 +753,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   userNameTxt: {
-    fontSize: 22,
+    fontSize: 18,
     fontFamily: "Roboto_Bold",
     fontWeight: "600",
     width: "100%",
@@ -1192,14 +1192,14 @@ const styles = StyleSheet.create({
     backgroundColor: bg_3,
     height: "75%",
     borderRadius: 10,
-    justifyContent:"space-between",
-    alignItems:"center",
-    paddingTop:10
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingTop: 10,
   },
   _betForm: {
     flexDirection: "row",
     padding: 10,
-    width:"90%",
+    width: "90%",
     backgroundColor: bg_2,
     justifyContent: "space-around",
     alignItems: "center",
@@ -1208,7 +1208,7 @@ const styles = StyleSheet.create({
   pairInput: {
     backgroundColor: bg_3,
     color: app_1,
-    flex:1.5,
+    flex: 1.5,
     padding: 10,
     borderRadius: 5,
     marginHorizontal: 10,
@@ -1223,11 +1223,11 @@ const styles = StyleSheet.create({
     backgroundColor: app_2,
     padding: 10,
     borderRadius: 10,
-    flex:.5
+    flex: 0.5,
   },
   _confirmOrderBtn: {
     width: "100%",
-    paddingVertical:20,
+    paddingVertical: 20,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: app_1,
@@ -1538,6 +1538,30 @@ const styles = StyleSheet.create({
   clockImg: {
     width: 60,
     height: 60,
+  },
+
+  //HISTORY 2D
+  History2D: {
+    flex: 1,
+    backgroundColor: bg_2,
+    alignItems:"center"
+  },
+  HistContainer: {
+    flex: 1,
+    width:320
+  },
+  hisItem: {
+    width: "100%",
+    padding: 10,
+    backgroundColor: bg_3,
+    marginVertical: 10,
+    borderRadius: 10,
+    flexDirection:"row",
+    justifyContent:"space-around"
+  },
+  hisTxt: {
+    fontSize: 18,
+    color: app_1,
   },
 });
 export default styles;

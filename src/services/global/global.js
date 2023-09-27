@@ -9,14 +9,14 @@ const Global = ({children})=>{
     const [level, setLevel] = useState(null);
     const [profile, setProfile] = useState(null);
     const [navigation, setNavigation] = useState(null);
-    const [history, setHistory] = useState(null)
+    const [history, setHistory] = useState([]);
+    const [marketOpen, setMarketOpen] = useState(false);
     useEffect(() => {
          if (profile === null) {
            setProfile(require("../../../assets/profile.png"));
            return
          }
     }, [profile]);
-
     return(
         <GlobalContext.Provider
             value={{

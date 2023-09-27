@@ -10,9 +10,12 @@ import Loader from "../components/loader";
 import { Picker } from "@react-native-picker/picker";
 import LottieView from "lottie-react-native";
 import { AntDesign } from "@expo/vector-icons";
+import AuthContext from "../services/auth/authContext";
+import DataContext from "../services/data/dataContext";
 
 const TwoD = ({navigation}) => {
-    const {loggedIn} = useContext(GlobalContext);
+    const {history} = useContext(DataContext)
+    const {userToken} = useContext(AuthContext);
     const [dataRequest, setDataRequest] = useState(7);
     const [blob, setBlob] = useState([]);
     const animation = useRef(null);
@@ -20,8 +23,8 @@ const TwoD = ({navigation}) => {
     const pickerRef = useRef();
         const animation1 = useRef(null);
     const [bet2D, setBet2D] = useState(false)
-    const [selected, setSelected] = useState("7")
-
+    const [selected, setSelected] = useState("7");
+        console.debug(history)
     useEffect(() => {
       animation.current?.play();
      bet2D ? animation2.current?.play() : animation1.current?.play();
@@ -197,11 +200,12 @@ const TwoD = ({navigation}) => {
               getItemCount={getItemCount}
               getItem={getItem}
               refreshing={true}
+              extraData={dataRequest}
             />
           </SafeAreaView>
         </View>
 
-        {loggedIn ? <ServiceBtn /> : <LogReg navigation={navigation} />}
+        {userToken ? <ServiceBtn /> : <LogReg navigation={navigation} />}
         <SafeAreaView>
             {
                 bet2D?(<TouchableOpacity

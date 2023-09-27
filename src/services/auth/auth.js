@@ -44,7 +44,7 @@ export default function AuthProvider({children}) {
         };
         restoreToken();
         
-    },[]);
+    },[state.userToken,state.isSignout]);
     const authContext = useMemo(()=>({
         signIn:async(userToken)=>{
             dispatch({type:"SIGN_IN", token:userToken});

@@ -3,7 +3,7 @@ import styles from "../libs/style";
 import { useContext, useEffect, useRef, useState } from "react";
 import BetContext from "../services/bet/betContext";
 import axios from "axios";
-import { _2d_BET } from "../hooks/config";
+import { _2d_BET, _2d_BET_URL } from "../hooks/config";
 import { dateGenerator } from "../libs/helper/generator";
 import AuthContext from "../services/auth/authContext";
 
@@ -17,11 +17,21 @@ const Bet = () => {
     const {userToken} = useContext(AuthContext)
     const conFirmOrder = ()=>{
        if(is2D){
-        let options = betDigits2D.map((e)=>({number:e.pair,betDate:date,userId:userToken,amount:e.amount}))
-        console.log(options)
-        axios.post(_2d_BET,)
-       }
+        const betDigit2D = betDigits2D.map((e)=>({
+            number:e.pair,
+            amount:e.amount,
+            betDate:date,
+        }))
+           axios.post(_2d_BET_URL, betDigit2D,
+            {params:{
+                userToken:userToken
+                },
+            headers:{
+                "Content-Type":"application/json"
+            }
+            }).then((e)=>console.log(e.status))
     }
+}
     const changeAmount = (e)=>{
         betDigits2D[edited]["amount"] = e
     }
