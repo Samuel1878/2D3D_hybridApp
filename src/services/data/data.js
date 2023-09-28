@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react"
+import { useEffect, useMemo, useState,memo } from "react"
 import DataContext from "./dataContext"
 import fetchData from "../../hooks/fetchData";
 import fetchHistory from "../../hooks/fetchHistory";
@@ -7,16 +7,17 @@ const Data =({children}) => {
   const [results2D, setResults2D] = useState({});
   const [history2D, setHistory2D] = useState([]);
   const [page,setPage] = useState(1);
-  const [limit,setLimit] = useState(5)
+  const [limit,setLimit] = useState(5);
     const [history3D, setHistory3D] = useState([]);
     const { response,
         results,
         threeD, 
         loaded } = fetchData(["live", "results", "threed"]);
-   const {history,loadedHis} = fetchHistory({page, limit});
+   let {history,loadedHis} = fetchHistory({page, limit})
    useEffect(()=>{
-   loadedHis && setHistory2D(history) && console.debug(history)
-   },[loadedHis])
+   loadedHis && setHistory2D(history);
+   console.debug(history) 
+   },[loadedHis,history.length])
     useEffect(() => {
       loaded &&
             setLive2D(response)
@@ -27,11 +28,14 @@ const Data =({children}) => {
     return (
       <DataContext.Provider
         value={{
-        // loaded,
           live2D,
           results2D,
           history2D,
           history3D,
+          setLimit,
+          setPage,
+          page,
+          limit,
         }}
       >
         {children}

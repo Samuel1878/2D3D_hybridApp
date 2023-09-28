@@ -14,30 +14,27 @@ import AuthContext from "../services/auth/authContext";
 import DataContext from "../services/data/dataContext";
 
 const TwoD = ({navigation}) => {
-    const {history} = useContext(DataContext)
+    const {history2D,live2D,limit,setLimit} = useContext(DataContext)
     const {userToken} = useContext(AuthContext);
-    const [dataRequest, setDataRequest] = useState(7);
-    const [blob, setBlob] = useState([]);
     const animation = useRef(null);
         const animation2 = useRef(null);
     const pickerRef = useRef();
         const animation1 = useRef(null);
     const [bet2D, setBet2D] = useState(false)
-    const [selected, setSelected] = useState("7");
-        console.debug(history)
+    const [selected, setSelected] = useState("5");
     useEffect(() => {
       animation.current?.play();
      bet2D ? animation2.current?.play() : animation1.current?.play();
     }, [bet2D]);
     useEffect(()=>{
         console.log(selected);
-        setDataRequest(parseInt(selected))
+        setLimit(parseInt(selected))
        
     },[selected])
    
     const getItem = (_data, index) => ({
       id: index+1,
-      data: blob[index],
+      data: history2D[index],
     });
 
     const getItemCount = (_data) => parseInt(selected);
@@ -45,23 +42,23 @@ const TwoD = ({navigation}) => {
     const Item = ({ item }) => (
       <View style={styles._2d_itemCon}>
         <View style={styles._2d_itemTop}>
-          <Text style={styles._2d_Header}>September 7, 2023 (Thursday)</Text>
+          <Text style={styles._2d_Header}>{item?.current_date}</Text>
         </View>
         <View style={styles._2d_itemBottom}>
-          <Text style={styles._2d_H}>12:01 PM</Text>
+          <Text style={styles._2d_H}>12:00 PM</Text>
           <View style={styles._2d_line}></View>
           <View style={styles._2d_bt_af}>
             <View style={styles._2d_Set}>
               <Text style={styles._2d_h}>set</Text>
-              <Text style={styles._2d_d}>1,2244,2</Text>
+              <Text style={styles._2d_d}>{item?.set_1200}</Text>
             </View>
             <View style={styles._2d_Value}>
               <Text style={styles._2d_h}>value</Text>
-              <Text style={styles._2d_d}>21,298.3</Text>
+              <Text style={styles._2d_d}>{item?.value_1200}</Text>
             </View>
             <View style={styles._2d_Result}>
               <Text style={styles._2d_h}>2D</Text>
-              <Text style={styles._2d_d}>12</Text>
+              <Text style={styles._2d_d}>{item?.result_1200}</Text>
             </View>
           </View>
           <Text style={styles._2d_H}>4:30 PM</Text>
@@ -69,41 +66,41 @@ const TwoD = ({navigation}) => {
           <View style={styles._2d_bt_ev}>
             <View style={styles._2d_Set}>
               <Text style={styles._2d_h}>set</Text>
-              <Text style={styles._2d_d}>1,2244,2</Text>
+              <Text style={styles._2d_d}>{item?.set_430}</Text>
             </View>
             <View style={styles._2d_Value}>
               <Text style={styles._2d_h}>value</Text>
-              <Text style={styles._2d_d}>21,298.3</Text>
+              <Text style={styles._2d_d}>{item?.value_430}</Text>
             </View>
             <View style={styles._2d_Result}>
               <Text style={styles._2d_h}>2D</Text>
-              <Text style={styles._2d_d}>12</Text>
+              <Text style={styles._2d_d}>{item?.result_430}</Text>
             </View>
           </View>
           <View style={styles._2d_interCon}>
             <Text style={styles._2d_interH}>9:30 AM</Text>
             <View style={styles._2d_interBox}>
               <Text style={styles._2d_interh}>modern</Text>
-              <Text style={styles._2d_interD}>51</Text>
+              <Text style={styles._2d_interD}>{item?.modern_930}</Text>
             </View>
             <View style={styles._2d_interBox}>
               <Text style={styles._2d_interh}>Internet</Text>
-              <Text style={styles._2d_interD}>32</Text>
+              <Text style={styles._2d_interD}>{item?.internet_930}</Text>
             </View>
-            <View style={styles._2d_interBox}>
+            {/* <View style={styles._2d_interBox}>
               <Text style={styles._2d_interh}>TW</Text>
               <Text style={styles._2d_interD}>02</Text>
-            </View>
+            </View> */}
           </View>
           <View style={styles._2d_interCon2}>
             <Text style={styles._2d_interH}>2:00 PM</Text>
             <View style={styles._2d_interBox}>
               <Text style={styles._2d_interh}>modern</Text>
-              <Text style={styles._2d_interD}>51</Text>
+              <Text style={styles._2d_interD}>{item?.modern_200}</Text>
             </View>
             <View style={styles._2d_interBox}>
               <Text style={styles._2d_interh}>Internet</Text>
-              <Text style={styles._2d_interD}>32</Text>
+              <Text style={styles._2d_interD}>{item?.internet_200}</Text>
             </View>
           </View>
         </View>
@@ -133,16 +130,17 @@ const TwoD = ({navigation}) => {
             </TouchableOpacity>
           </View>
           <View style={styles._2d_liveCon}>
-            <Text style={styles._2d_liveNo}>63</Text>
+            <Text style={styles._2d_liveNo}>{live2D?.liveResult}</Text>
             <Text style={styles._2d_live}>
-              Updated: 05 Sep, 2023 (Tue) 16:30:01{" "}
+              Updated: {live2D?.currentDate+ " "+ live2D?.currentTime}
             </Text>
-            <TouchableOpacity 
-                onPress={()=>bet2D?setBet2D(false):setBet2D(true)}
-                style={styles.betBtnCon}>
+            <TouchableOpacity
+              onPress={() => (bet2D ? setBet2D(false) : setBet2D(true))}
+              style={styles.betBtnCon}
+            >
               {bet2D ? (
                 <LottieView
-                    speed={.7}
+                  speed={0.7}
                   autoPlay
                   ref={animation2}
                   style={styles.betnow}
@@ -178,9 +176,9 @@ const TwoD = ({navigation}) => {
                 itemStyle={styles._2d_filterItem}
                 onValueChange={(itemValue, itemIndex) => setSelected(itemValue)}
               >
-                <Picker.Item label="Weekly" value="7" />
-                <Picker.Item label="Monthly" value="30" />
-                <Picker.Item label="Biannual" value="180" />
+                <Picker.Item label="Weekly" value="5" />
+                <Picker.Item label="Monthly" value="20" />
+                <Picker.Item label="Biannual" value="120" />
               </Picker>
               <AntDesign
                 name="caretright"
@@ -194,26 +192,29 @@ const TwoD = ({navigation}) => {
         <View style={styles.bottom2DCon}>
           <SafeAreaView style={styles._2d_dataCon}>
             <VirtualizedList
-              initialNumToRender={dataRequest}
-              renderItem={({ item }) => <Item item={item} />}
+              initialNumToRender={parseInt(selected)}
+              renderItem={({ item }) => <Item item={item.data} />}
               keyExtractor={(item) => item.id}
               getItemCount={getItemCount}
               getItem={getItem}
               refreshing={true}
-              extraData={dataRequest}
+              extraData={selected}
             />
           </SafeAreaView>
         </View>
 
         {userToken ? <ServiceBtn /> : <LogReg navigation={navigation} />}
         <SafeAreaView>
-            {
-                bet2D?(<TouchableOpacity
-                        onPress={()=>navigation.navigate("2dBet")}
-                     style={styles.bet2DBtn}>
-                    <Text style={styles.bet2DBtnTxt}>Bet Now</Text>
-                </TouchableOpacity>):(<></>)
-            }
+          {bet2D ? (
+            <TouchableOpacity
+              onPress={() => navigation.navigate("2dBet")}
+              style={styles.bet2DBtn}
+            >
+              <Text style={styles.bet2DBtnTxt}>Bet Now</Text>
+            </TouchableOpacity>
+          ) : (
+            <></>
+          )}
         </SafeAreaView>
       </View>
     );

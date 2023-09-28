@@ -1544,11 +1544,11 @@ const styles = StyleSheet.create({
   History2D: {
     flex: 1,
     backgroundColor: bg_2,
-    alignItems:"center"
+    alignItems: "center",
   },
   HistContainer: {
     flex: 1,
-    width:320
+    width: 320,
   },
   hisItem: {
     width: "100%",
@@ -1556,12 +1556,158 @@ const styles = StyleSheet.create({
     backgroundColor: bg_3,
     marginVertical: 10,
     borderRadius: 10,
-    flexDirection:"row",
-    justifyContent:"space-around"
+    flexDirection: "row",
+    justifyContent: "space-around",
   },
   hisTxt: {
     fontSize: 18,
     color: app_1,
+  },
+
+  ///TWO_D ANALYSIS
+  TwoD_AnalysisCon: {
+    flex: 1,
+    backgroundColor: bg_2,
+    alignItems: "center",
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    backgroundColor: app_1,
+    height: 100,
+  },
+  btnNumber: {
+    backgroundColor: bg_2,
+    padding: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    flex: 1,
+    borderTopLeftRadius: "50%",
+    margin: 5,
+    borderBottomRightRadius: 5,
+  },
+  btnChart: {
+    padding: 10,
+    backgroundColor: bg_2,
+    flex: 1,
+    borderTopRightRadius: "50%",
+    justifyContent: "center",
+    alignItems: "center",
+    margin: 5,
+    borderBottomLeftRadius: 5,
+  },
+  numberTxt: {
+    fontSize: 16,
+    color: app_1,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "700",
+  },
+  ///Numbers
+  analHeader: {
+    width: "95%",
+    backgroundColor: app_4,
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    borderBottomColor: app_1,
+    borderTopRightRadius: 10,
+    borderTopLeftRadius: 10,
+    borderBottomWidth: 6,
+  },
+  analCon: {
+    padding: 5,
+  },
+  analSelectedTxt: {
+    fontSize: 16,
+    color: app_2,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "500",
+  },
+  analHtxt: {
+    fontSize: 15,
+    color: bg_1,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+  },
+  _filter: {
+    flex: 1,
+    shadowColor: app_4,
+    shadowOffset: { x: 10, y: 20 },
+    shadowOpacity: 1,
+    shadowRadius: 10,
+    backgroundColor: "transparent",
+  },
+  _filterItem: {
+    fontSize: 16,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+    color: bg_1,
+  },
+  /////
+  DyCon: {
+    width: "95%",
+    height: 50,
+    margin: 10,
+  },
+  ////DynamicNumbers/
+  DynamicNumbers: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-around",
+    padding: 5,
+  },
+  DyNumbers: {
+    padding: 10,
+    borderRadius: "100%",
+    backgroundColor: app_2,
+    justifyContent: "center",
+  },
+  Numbers: {
+    fontSize: 16,
+    color: bg_1,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+  },
+
+  //DATA
+  analDataContainer: {
+    width: "95%",
+  },
+
+  analItemCon: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-around",
+    backgroundColor: bg_3,
+    marginVertical: 10,
+    borderRadius: 10,
+    // paddingVertical: 10,
+  },
+  analItemBox: {
+    paddingHorizontal: 10,
+    borderLeftWidth: 2,
+    borderLeftColor: bg_2,
+    paddingVertical: 10,
+  },
+  analAf: {
+    fontSize: 16,
+    color: text_1,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+  },
+  analItemBox1: {},
+  analItemTxt: {
+    fontSize: 15,
+    color: text_1,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+  },
+  analItemTxtd: {
+    fontSize: 15,
+    color: app_1,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
   },
 });
 export default styles;
