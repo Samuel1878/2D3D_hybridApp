@@ -17,6 +17,7 @@ import TwoD_Bet from "../screens/2dBet";
 import Holidays from "../screens/Holiday";
 import Me from "../screens/me";
 import Bet from "../screens/Bet";
+import PwdChange from "../screens/PwdChange";
 
 const Stack = createNativeStackNavigator();
 const BranchContainer = () => {
@@ -150,6 +151,17 @@ const BranchContainer = () => {
           component={Me}
           options={{
             headerTitle: "Profile",
+            headerShown: true,
+            headerTintColor: text_1b,
+            headerStyle: { backgroundColor: app_1 },
+            headerTitleStyle: { color: "transparent" },
+          }}
+        />
+        <Stack.Screen
+          name="PwdChange"
+          component={PwdChange}
+          options={{
+            headerTitle: "Change Password",
             headerShown: true,
             headerTintColor: text_1b,
             headerStyle: { backgroundColor: app_1 },

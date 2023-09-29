@@ -1,5 +1,5 @@
 import axios from "axios";
-import { memo, useEffect, useMemo, useState } from "react"
+import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import { InstanceReq } from "../libs/helper/axios_get";
 import { _2d_HISTORY } from "./config";
 import { error } from "jquery";

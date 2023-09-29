@@ -874,6 +874,51 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     color: text_1b,
   },
+  ///Pwd Change Screen
+  PwdContainer: {
+    flex: 1,
+    paddingTop: 20,
+    alignItems: "center",
+    // justifyContent:"center",
+    backgroundColor: bg_2,
+  },
+  pwdInputCon: {
+    flexDirection: "row",
+    alignItems: "center",
+    width: "90%",
+    marginVertical: 10,
+  },
+  pwdChangeInput: {
+   
+    width: "100%",
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    backgroundColor: bg_3,
+    borderRadius: 10,
+    color: text_1,
+    fontSize: 18,
+    borderLeftColor: app_1,
+    borderLeftWidth: 30,
+  },
+  pwdChangeBtn: {
+    backgroundColor: app_1,
+    borderRadius: "25%",
+    padding: 10,
+    width: "90%",
+    marginTop: 20,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  Eye1: {
+    position: "absolute",
+    right: 20,
+  },
+  pwdChangetxt: {
+    fontFamily: "Roboto_Bold",
+    fontSize: 18,
+    fontWeight: "600",
+    color: bg_1,
+  },
   ///3D UIX
   threeDCon: {
     flex: 1,

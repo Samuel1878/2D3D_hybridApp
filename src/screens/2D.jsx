@@ -3,7 +3,7 @@ import styles, { app_1, text_1 } from "../libs/style";
 import { LoginBtn, RegisterBtn } from "../components/logRegBtn";
 import {BlurView} from "expo-blur";
 import LogReg from "../layouts/logReg";
-import { useContext, useEffect,useState,useRef } from "react";
+import { useContext, useEffect,useState,useRef, useMemo } from "react";
 import GlobalContext from "../services/global/globalContext";
 import ServiceBtn from "../components/ServiceBtn";
 import Loader from "../components/loader";
@@ -14,7 +14,7 @@ import AuthContext from "../services/auth/authContext";
 import DataContext from "../services/data/dataContext";
 
 const TwoD = ({navigation}) => {
-    const {history2D,live2D,limit,setLimit} = useContext(DataContext)
+    const {history2D,live2D,limit,setLimit,setPage,page} = useContext(DataContext)
     const {userToken} = useContext(AuthContext);
     const animation = useRef(null);
         const animation2 = useRef(null);
@@ -28,9 +28,23 @@ const TwoD = ({navigation}) => {
     }, [bet2D]);
     useEffect(()=>{
         console.log(selected);
-        setLimit(parseInt(selected))
+        setLimit(parseInt(selected));
+        switch (selected) {
+            case "10":
+                setPage(2)
+                break;
+            case "15":
+                setPage(3)
+                breack;
+            case "20":
+                setPage(4)
+                break;
+            default:
+                break;
+        }
        
     },[selected])
+
    
     const getItem = (_data, index) => ({
       id: index+1,
@@ -198,7 +212,7 @@ const TwoD = ({navigation}) => {
               getItemCount={getItemCount}
               getItem={getItem}
               refreshing={true}
-              extraData={selected}
+              extraData={[limit,history2D]}
             />
           </SafeAreaView>
         </View>

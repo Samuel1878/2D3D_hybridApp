@@ -15,9 +15,9 @@ const Data =({children}) => {
         loaded } = fetchData(["live", "results", "threed"]);
    let {history,loadedHis} = fetchHistory({page, limit})
    useEffect(()=>{
-   loadedHis && setHistory2D(history);
+   setHistory2D(history);
    console.debug(history) 
-   },[loadedHis,history.length])
+   },[loadedHis,history,limit,page])
     useEffect(() => {
       loaded &&
             setLive2D(response)

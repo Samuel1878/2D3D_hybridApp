@@ -26,7 +26,8 @@ const More = ({ navigation }) => {
             signOut();
             navigation.navigate("Home")
             break;
-        
+          case 4:
+            navigation.navigate("PwdChange")
           default:
             break;
         }
@@ -81,6 +82,8 @@ const More = ({ navigation }) => {
           renderItem={renderItem}
           keyExtractor={(item) => item.id}
           extraData={DATA}
+          bounces={false}
+          showsVerticalScrollIndicator={false}
         />
       </View>
 
