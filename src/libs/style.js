@@ -808,7 +808,7 @@ const styles = StyleSheet.create({
     top: -100,
     zIndex: 1,
     borderRadius: "100%",
-    overflow: "hidden",
+   // overflow: "hidden",
   },
   meImg: {
     width: "100%",
@@ -918,6 +918,21 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "600",
     color: bg_1,
+  },
+  ///Change Profile Btn
+  changeProfileBtn:{
+    position:"absolute",
+    bottom:0,
+    right:0,
+  
+    backgroundColor:bg_3b,
+    borderRadius:"100%",
+    justifyContent:"center",
+    alignItems:"center"
+  },
+  cameraImg:{
+    width:50,
+    height:50
   },
   ///3D UIX
   threeDCon: {

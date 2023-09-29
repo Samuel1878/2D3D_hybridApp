@@ -14,7 +14,7 @@ import { IMAGES } from "../libs/data";
 
 
 const Wallet = ()=>{ 
-  const {money} = useContext(GlobalContext);
+  const {money,navigation} = useContext(GlobalContext);
   const [opened, setOpened] = useState(false)
     const scanFunc = ()=>{
 
@@ -90,7 +90,9 @@ const Wallet = ()=>{
               />
               <Text style={styles.walletBtnsTxt}>History</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.walletBtns}>
+            <TouchableOpacity
+              onPress={()=>navigation.navigate("Service")} 
+              style={styles.walletBtns}>
               <LottieView
                 autoPlay
                 style={styles.walletBtnImg}
