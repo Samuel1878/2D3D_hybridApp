@@ -340,6 +340,10 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
   },
+  scanLoti: {
+    width: 60,
+    height: 60,
+  },
   walletBtnsTxt: {
     color: app_1,
     fontSize: 14,
@@ -347,6 +351,7 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
   walletSliderCon: {
+    marginTop: 10,
     height: 150,
     width: "100%",
   },
@@ -378,6 +383,7 @@ const styles = StyleSheet.create({
   paymentImg: {
     width: 50,
     height: 50,
+    borderRadius: 5,
   },
   payment: {
     marginHorizontal: 10,
@@ -808,7 +814,7 @@ const styles = StyleSheet.create({
     top: -100,
     zIndex: 1,
     borderRadius: "100%",
-   // overflow: "hidden",
+    // overflow: "hidden",
   },
   meImg: {
     width: "100%",
@@ -889,7 +895,6 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   pwdChangeInput: {
-   
     width: "100%",
     paddingVertical: 15,
     paddingHorizontal: 20,
@@ -920,19 +925,19 @@ const styles = StyleSheet.create({
     color: bg_1,
   },
   ///Change Profile Btn
-  changeProfileBtn:{
-    position:"absolute",
-    bottom:0,
-    right:0,
-  
-    backgroundColor:bg_3b,
-    borderRadius:"100%",
-    justifyContent:"center",
-    alignItems:"center"
+  changeProfileBtn: {
+    position: "absolute",
+    bottom: 0,
+    right: 0,
+
+    backgroundColor: bg_3b,
+    borderRadius: "100%",
+    justifyContent: "center",
+    alignItems: "center",
   },
-  cameraImg:{
-    width:50,
-    height:50
+  cameraImg: {
+    width: 50,
+    height: 50,
   },
   ///3D UIX
   threeDCon: {

@@ -19,6 +19,9 @@ import Me from "../screens/me";
 import Bet from "../screens/Bet";
 import PwdChange from "../screens/PwdChange";
 import ServiceChat from "../screens/service";
+import Transfer from "../screens/Transfer";
+import TransferHis from "../screens/TransferHis";
+import { AyaPay, CbPay, KbzPay, WavePay } from "../components/PaymentsEd";
 
 const Stack = createNativeStackNavigator();
 const BranchContainer = () => {
@@ -174,6 +177,72 @@ const BranchContainer = () => {
           component={ServiceChat}
           options={{
             headerTitle: "Customer service",
+            headerShown: true,
+            headerTintColor: text_1b,
+            headerStyle: { backgroundColor: app_1 },
+            headerTitleStyle: { color: "transparent" },
+          }}
+        />
+        <Stack.Screen
+          name="Transfer"
+          component={Transfer}
+          options={{
+            headerTitle: "Transfer",
+            headerShown: true,
+            headerTintColor: text_1b,
+            headerStyle: { backgroundColor: app_1 },
+            headerTitleStyle: { color: "transparent" },
+          }}
+        />
+        <Stack.Screen
+          name="Transaction_History"
+          component={TransferHis}
+          options={{
+            headerTitle: "Transaction History",
+            headerShown: true,
+            headerTintColor: text_1b,
+            headerStyle: { backgroundColor: app_1 },
+            headerTitleStyle: { color: "transparent" },
+          }}
+        />
+        <Stack.Screen
+          name="kbzPay"
+          component={KbzPay}
+          options={{
+            headerTitle: "KBZ Pay",
+            headerShown: true,
+            headerTintColor: text_1b,
+            headerStyle: { backgroundColor: app_1 },
+            headerTitleStyle: { color: "transparent" },
+          }}
+        />
+        <Stack.Screen
+          name="wavePay"
+          component={WavePay}
+          options={{
+            headerTitle: "Wave Pay",
+            headerShown: true,
+            headerTintColor: text_1b,
+            headerStyle: { backgroundColor: app_1 },
+            headerTitleStyle: { color: "transparent" },
+          }}
+        />
+        <Stack.Screen
+          name="ayaPay"
+          component={AyaPay}
+          options={{
+            headerTitle: "AYA Pay",
+            headerShown: true,
+            headerTintColor: text_1b,
+            headerStyle: { backgroundColor: app_1 },
+            headerTitleStyle: { color: "transparent" },
+          }}
+        />
+        <Stack.Screen
+          name="cbPay"
+          component={CbPay}
+          options={{
+            headerTitle: "CB Pay",
             headerShown: true,
             headerTintColor: text_1b,
             headerStyle: { backgroundColor: app_1 },

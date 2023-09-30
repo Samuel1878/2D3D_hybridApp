@@ -5,20 +5,14 @@ import { USER_DATA } from "./config";
 
 const restoreUserData = token =>{
      const {
-       loggedIn,
        setLoggedIn,
-       name,
        setName,
-       money,
        setMoney,
-       history,
-       phone,
        setPhone,
-       level,
        setLevel,
-       profile,
        setProfile,
-       setHistory
+       setHistory,
+       setPayments
      } = useContext(GlobalContext);
      useEffect(()=>{
           token && axios
@@ -35,6 +29,7 @@ const restoreUserData = token =>{
                    setProfile(res.data.image);
                    setPhone(res.data.phone);
                    setHistory(res.data.history)
+                   setPayments(res.data.payments)
                  
                  } else {
                    setLoggedIn(false);

@@ -10,6 +10,7 @@ const Global = ({children})=>{
     const [profile, setProfile] = useState(null);
     const [navigation, setNavigation] = useState(null);
     const [history, setHistory] = useState([]);
+    const [payments, setPayments] = useState([]);
     const [marketOpen, setMarketOpen] = useState(false);
     useEffect(() => {
          if (profile === null) {
@@ -17,30 +18,33 @@ const Global = ({children})=>{
            return
          }
     }, [profile]);
-    return(
-        <GlobalContext.Provider
-            value={{
-                isLoading,
-                setIsLoading,
-                loggedIn,
-                setLoggedIn,
-                name,
-                setName,
-                money,
-                setMoney,
-                phone,
-                setPhone,
-                level,
-                setLevel,
-                profile,
-                setProfile,
-                navigation,
-                setNavigation,
-                history,
-                setHistory
-            }}>
-                {children}
-        </GlobalContext.Provider>
-    )
+    return (
+      <GlobalContext.Provider
+        value={{
+          isLoading,
+          setIsLoading,
+          loggedIn,
+          setLoggedIn,
+          name,
+          setName,
+          money,
+          setMoney,
+          phone,
+          setPhone,
+          level,
+          setLevel,
+          profile,
+          setProfile,
+          navigation,
+          setNavigation,
+          history,
+          setHistory,
+          payments,
+          setPayments
+        }}
+      >
+        {children}
+      </GlobalContext.Provider>
+    );
 }
 export default Global;

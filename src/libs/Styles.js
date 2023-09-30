@@ -2,6 +2,12 @@ import { StyleSheet, Platform, Dimensions } from "react-native";
 import { app_1, app_4, bg_1, bg_2, bg_3 } from "./style";
 
 const Styles = StyleSheet.create({
+    Container:{
+flex:1,
+backgroundColor:bg_2,
+justifyContent:"center",
+alignItems:"center"
+    },
   ServiceContainer: {
     flex: 1,
     backgroundColor: bg_2,
