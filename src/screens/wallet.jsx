@@ -1,14 +1,13 @@
-import { TouchableOpacity, View ,Text,Image, TextInput, FlatList} from "react-native";
+import { TouchableOpacity, View ,Text,Image, TextInput, FlatList, RefreshControl} from "react-native";
 import styles, { app_1, app_3, app_4, bg_3, bg_4, text_1, text_1b } from "../libs/style";
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { AntDesign } from '@expo/vector-icons';
 import LottieView from "lottie-react-native";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState ,useCallback} from "react";
 import GlobalContext from "../services/global/globalContext";
 import { Entypo } from "@expo/vector-icons";
-import {SliderBox} from "react-native-image-slider-box"
+import {SliderBox} from "react-native-image-slider-box";
 import { IMAGES } from "../libs/data";
 
+import {wavePay,kbzPay,ayaPay,cbPay}from "../libs/data";
 
 
 
@@ -17,10 +16,8 @@ const Wallet = ()=>{
   const {money,navigation,payments} = useContext(GlobalContext);
   const [data,setData]= useState([]);
   const [opened, setOpened] = useState(false);
-  const kbzPay = require("../../assets/kbzPay.png");
-  const ayaPay = require("../../assets/ayaPay.jpeg");
-  const cbPay = require("../../assets/cb.png");
-  const wavePay = require("../../assets/wavePay.png");
+  const [refreshing, setRefreshing] = useState(false);
+  
 const DATA = [{
   method:"kbzPay",
   name:"Mr/Ms....",
@@ -97,15 +94,23 @@ const DATA = [{
         </View>
       );
 
-    }
+    };
         useEffect(()=>{
+          console.debug(payments)
       if(payments.length <=0){
         setData(DATA);
         return
       }else{
         setData(payments)
       }
-    },[payments])
+    },[payments,refreshing]);
+    const onRefresh = useCallback(() => {
+      setRefreshing(true);
+      setTimeout(() => {
+        setRefreshing(false);
+      }, 2000);
+    }, []);
+  
     return (
       <View style={styles.wallet}>
         <View style={styles.walletMainCon}>
@@ -278,6 +283,8 @@ const DATA = [{
               extraData={data}
               bounces={true}
               showsVerticalScrollIndicator={false}
+              refreshControl={
+            <RefreshControl tintColor={app_1} colors={app_1} refreshing={refreshing} onRefresh={onRefresh} />}
             />
           </View>
         </View>

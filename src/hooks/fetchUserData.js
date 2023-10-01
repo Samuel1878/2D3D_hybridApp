@@ -3,8 +3,8 @@ import GlobalContext from "../services/global/globalContext";
 import axios from "axios"
 import { USER_DATA } from "./config";
 
-const restoreUserData = token =>{
-     const {
+const restoreUserData =  ({
+    token,
        setLoggedIn,
        setName,
        setMoney,
@@ -12,8 +12,8 @@ const restoreUserData = token =>{
        setLevel,
        setProfile,
        setHistory,
-       setPayments
-     } = useContext(GlobalContext);
+       setPayments})=>{
+    
      useEffect(()=>{
           token && axios
                .get(USER_DATA, {

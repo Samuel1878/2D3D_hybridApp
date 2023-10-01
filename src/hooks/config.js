@@ -12,4 +12,6 @@ export const SOCKET_URL = "http://localhost:8080"
 export const _2d_BET_URL = "http://localhost:8080/api/bet/2D";
 export const _CHANGE_PWD_URL = "http://localhost:8080/api/admin/changePwd";
 export const _CHANGE_NAME_URL = "http://localhost:8080/api/auth/changeName";
-export const _CHANGE_PROFILE_URL = "http://localhost:8080/api/auth/changeProfile";
+export const _CHANGE_PROFILE_URL = 
+"http://localhost:8080/api/auth/changeProfile";
+export const _ADD_PAYMENT = "http://localhost:8080/api/auth/addPayments";

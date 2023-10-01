@@ -1,5 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import GlobalContext from "./globalContext";
+import AuthContext from "../auth/authContext";
+import restoreUserData from "../../hooks/fetchUserData";
 const Global = ({children})=>{
     const [isLoading, setIsLoading] = useState(true);
     const [loggedIn, setLoggedIn] = useState(false);
@@ -12,6 +14,19 @@ const Global = ({children})=>{
     const [history, setHistory] = useState([]);
     const [payments, setPayments] = useState([]);
     const [marketOpen, setMarketOpen] = useState(false);
+    const {userToken} = useContext(AuthContext);
+    let data = {
+      token: userToken,
+      setLoggedIn: setLoggedIn,
+      setName: setName,
+      setMoney: setMoney,
+      setPhone: setPhone,
+      setLevel:setLevel,
+      setProfile:setProfile,
+      setHistory:setHistory,
+      setPayments:setPayments,
+    };
+    restoreUserData(data);
     useEffect(() => {
          if (profile === null) {
            setProfile(require("../../../assets/profile.png"));

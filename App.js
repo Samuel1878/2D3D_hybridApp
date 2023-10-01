@@ -9,8 +9,9 @@ import SocketProvider from './src/services/socket/socket';
 
 export default function App() {
   return (
-    <Global>
+    
       <AuthProvider>
+        <Global>
         <Data>
           <SocketProvider>
             <BetProvider>
@@ -18,7 +19,7 @@ export default function App() {
             </BetProvider>
           </SocketProvider>
         </Data>
+        </Global>
       </AuthProvider>
-    </Global>
   );
 };
