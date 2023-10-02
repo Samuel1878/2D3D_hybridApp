@@ -1,44 +1,31 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import GlobalContext from "../services/global/globalContext";
 import axios from "axios"
 import { USER_DATA } from "./config";
 
-const restoreUserData =  ({
-    token,
-       setLoggedIn,
-       setName,
-       setMoney,
-       setPhone,
-       setLevel,
-       setProfile,
-       setHistory,
-       setPayments})=>{
-    
+const restoreUserData = (userToken)=>{
+    const [userData,setUserData] = useState([]);
+    const [loadedD, setLoadedD] = useState(false);
+
      useEffect(()=>{
-          token && axios
+          userToken && axios
                .get(USER_DATA, {
-                 params: { token: token },
+                 params: { token: userToken },
                  headers: { "Content-Type": "application/json" },
                })
                .then((res) => {
-                 if (res.data.code === 201) {
-                    setLoggedIn(true);
-                   setName(res.data.name);
-                   setMoney(res.data.money);
-                   setLevel(res.data.level);
-                   setProfile(res.data.image);
-                   setPhone(res.data.phone);
-                   setHistory(res.data.history)
-                   setPayments(res.data.payments)
-                 
-                 } else {
-                   setLoggedIn(false);
+                 if (res.data.code === 201||200) {
+                    setUserData(res.data);
+                    console.log(res.data.code);
+                    return
+                 } else { 
                    console.debug(res.data?.message);
                  }
                })
+               .finally(()=>setLoadedD(true))
                .catch((err) => console.warn(err));
-        
-     },[]);
+     },[userToken]);
+     return [userData,loadedD]
 
 }
 export default restoreUserData;

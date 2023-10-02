@@ -16,7 +16,6 @@ const Data =({children}) => {
    let {history,loadedHis} = fetchHistory({page, limit})
    useEffect(()=>{
    setHistory2D(history);
-   console.debug(history) 
    },[loadedHis,history,limit,page])
     useEffect(() => {
       loaded &&

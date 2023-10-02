@@ -1,7 +1,9 @@
-import { FlatList, RefreshControl, View } from "react-native";
+import { FlatList, RefreshControl, View,Text,Image } from "react-native";
 import styles, { app_1 } from "../libs/style";
 import Styles from "../libs/Styles";
 import { useEffect, useState ,useCallback} from "react";
+import axios from "axios"
+import { GET_2DWINNERS, GET_3DWINNERS, GET_TOPGAINER } from "../hooks/config";
 
 const Winners = () => {
   const [refreshing,setRefreshing] = useState(false);
@@ -9,7 +11,18 @@ const Winners = () => {
   const [_2dData, set2dData] = useState([]);
   const [_3dData, set3dData] = useState([]);
   useEffect(()=>{
-    
+    axios.get(GET_2DWINNERS,{headers:{"Content-Type":"application/json"}}).then((e)=>{
+      (e.status === 201||200) && set2dData(e.data);
+    });
+    axios.get(GET_3DWINNERS,{headers:{"Content-Type":"application/json"}}).then((e)=>{
+      (e.status === 201||200) && set3dData(e.data);
+
+    });
+    axios.get(GET_TOPGAINER,{headers:{"Content-Type":"application/json"}}).then((e)=>{
+      (e.status === 200) && setTopGainer(e.data);
+
+    })
+
   },[refreshing]);
   const onRefresh = useCallback(() => {
     setRefreshing(true);
@@ -18,27 +31,58 @@ const Winners = () => {
     }, 2000);
   }, []);
   const RenderTopGainer = ({item})=>{
-    return(
+    return (
       <View style={Styles.topGainer}>
-        <Image style={Styles.topImg}/>
+        <Image style={Styles.topImg} />
         <View style={Styles.topGainerBox}>
-          <Text style={Styles.tnameTxt}>asdfasdf</Text>
-          <Text style={Styles.pnameTxt}>
-            asdfasdfadsf
-          </Text>
-          <Text style={Styles.mnameTxt}>asdfasdfadsf</Text>
+          <Text style={Styles.tnameTxt}>{item?.name}</Text>
+          <Text style={Styles.pnameTxt}>{item?.phone}</Text>
+          <Text style={Styles.mnameTxt}>{item?.amount || item?.earn}</Text>
+          {item.luckyNo?<View style={Styles.NoCon}>
+            <Text style={Styles.No}>{item?.luckyNo}</Text>
+          </View>:<></>}
         </View>
       </View>
-    )
+    );
   };
   return (
     <View style={Styles.Container}>
+      <Text style={Styles.winnerH}>Top gainers of all the time</Text>
+      <View style={Styles.topCon}>
+        <FlatList
+          data={topGainer}
+          initialNumToRender={4}
+          renderItem={RenderTopGainer}
+          keyExtractor={(item) => item.phone}
+          extraData={topGainer}
+          bounces={false}
+          showsVerticalScrollIndicator={false}
+        />
+      </View>
+      <Text style={Styles.winnerH}>2D daily winners</Text>
       <FlatList
-        data={topGainer}
+        data={_2dData}
         renderItem={RenderTopGainer}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item._id}
         extraData={topGainer}
-        bounces={false}
+        bounces={true}
+        showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl
+            tintColor={app_1}
+            colors={app_1}
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+          />
+        }
+      />
+      <Text style={Styles.winnerH}>3D on going winners</Text>
+      <FlatList
+        data={_3dData}
+        renderItem={RenderTopGainer}
+        keyExtractor={(item) => item._id}
+        extraData={topGainer}
+        bounces={true}
         showsVerticalScrollIndicator={false}
         refreshControl={
           <RefreshControl

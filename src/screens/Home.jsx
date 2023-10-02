@@ -2,12 +2,21 @@ import {  View,Animated,RefreshControl} from "react-native";
 import styles, { app_1 } from "../libs/style";
 import HomeItems from "../components/homeItems";
 import DynamicHeader from "../components/DynamicHeader";
-import {  useRef, useState ,useCallback} from "react";
+import {  useRef, useState ,useCallback, useContext, useEffect} from "react";
 import { ScrollView } from "react-native";
 import { _2d_URL } from "../hooks/config";
+import GlobalContext from "../services/global/globalContext";
+import restoreUserData from "../hooks/fetchUserData";
+import AuthContext from "../services/auth/authContext";
 const Home = ({navigation}) => {
     let scrollOffsetY = useRef(new Animated.Value(0)).current;
-    const [refreshing, setRefreshing]= useState(false)
+    const [refreshing, setRefreshing]= useState(false);
+    const {userToken} = useContext(AuthContext);
+    const {setIsLoading} = useContext(GlobalContext)
+    useEffect(()=>{
+      refreshing && setIsLoading(true)
+    },[refreshing])
+
     
 
     const data = [

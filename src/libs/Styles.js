@@ -1,5 +1,5 @@
 import { StyleSheet, Platform, Dimensions } from "react-native";
-import { app_1, app_4, bg_1, bg_2, bg_3, bg_3b, bg_3c } from "./style";
+import { app_1, app_2, app_4, bg_1, bg_2, bg_3, bg_3b, bg_3c, text_1 } from "./style";
 
 const Styles = StyleSheet.create({
   Container: {
@@ -132,19 +132,76 @@ const Styles = StyleSheet.create({
     color: app_1,
   },
   ///WINNER
+
+  winnerH: {
+    fontSize: 19,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+    color: app_1,
+    textAlign: "center",
+    marginVertical:10,
+    textDecorationLine:"underline",
+    textDecorationColor:bg_3,
+    textDecorationStyle:"solid",
+    
+  },
+  topCon: {
+    width: "100%",
+    height: "auto",
+    alignItems: "center",
+    borderBottomColor:app_1,
+    borderBottomWidth:2
+  },
   topGainer: {
-    padding: 10,
     backgroundColor: bg_3,
     borderRadius: 10,
-    flexDirection:"row"
+    flexDirection: "row",
+    marginVertical: 5,
+    width: 300,
+    flex: 1,
   },
   topImg: {
     width: 50,
     height: 50,
-    borderRadius: "100%",
+    borderRadius: 50,
   },
-  topGainerBox:{
-    flex:1,
+  topGainerBox: {
+    flex: 1,
+    paddingVertical:5
+  },
+  tnameTxt: {
+    fontSize: 17,
+    fontFamily: "Roboto",
+    color: text_1,
+  },
+  pnameTxt: {
+    fontSize: 17,
+    fontFamily: "Roboto",
+    color: text_1,
+  },
+  mnameTxt: {
+    fontSize: 18,
+    fontFamily: "Roboto_Bold",
+    color: text_1,
+    fontWeight: "600",
+  },
+  NoCon: {
+    position: "absolute",
+    right: 0,
+    top: 0,
+    bottom: 0,
+    width: 50,
+    backgroundColor: app_1,
+    justifyContent: "center",
+    alignItems: "center",
+    borderTopRightRadius: 10,
+    borderBottomRightRadius: 10,
+  },
+  No: {
+    fontSize: 20,
+    fontFamily: "Roboto_Bold",
+    color: bg_2,
+    fontWeight: "600",
   },
 });
 export default Styles

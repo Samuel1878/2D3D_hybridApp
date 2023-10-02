@@ -15,3 +15,6 @@ export const _CHANGE_NAME_URL = "http://localhost:8080/api/auth/changeName";
 export const _CHANGE_PROFILE_URL = 
 "http://localhost:8080/api/auth/changeProfile";
 export const _ADD_PAYMENT = "http://localhost:8080/api/auth/addPayments";
+export const GET_TOPGAINER = "http://localhost:8080/api/data/topGainer";
+export const GET_2DWINNERS = "http://localhost:8080/api/data/2d/winners";
+export const GET_3DWINNERS = "http://localhost:8080/api/data/3d/winners";

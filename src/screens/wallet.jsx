@@ -19,21 +19,21 @@ const Wallet = ()=>{
   const [refreshing, setRefreshing] = useState(false);
   
 const DATA = [{
-  method:"kbzPay",
+  method:"kbz",
   name:"Mr/Ms....",
   phone:"096..."
 },
 {
-  method:"wavePay",
+  method:"wave",
   name:"Mr/Ms....",
   phone:"097..."
 },{
-  method:"cbPay",
+  method:"cb",
   name:"Mr/Ms....",
   phone:"092..."
 },
 {
-  method:"ayaPay",
+  method:"aya",
   name:"Mr/Ms....",
   phone:"098..."
 }
@@ -46,13 +46,13 @@ const DATA = [{
       const RenderImg= ()=>{
         let img ;
         switch (item.method) {
-          case "kbzPay":
+          case "kbz":
             img = kbzPay
             break;
-          case "wavePay":
+          case "wave":
             img = wavePay
             break
-          case "ayaPay":
+          case "aya":
             img = ayaPay
             break;
           default:

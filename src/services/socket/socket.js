@@ -3,7 +3,8 @@ import SocketContext from "./socketContext";
 import { io } from "socket.io-client";
 import AuthContext from "../auth/authContext";
 import { SOCKET_URL } from "../../hooks/config";
-import { FETCH_INFO, RECEIVE_INFO } from "../../libs/actions";
+import { FETCH_INFO, RECEIVE_INFO, UPDATED_INFO } from "../../libs/actions";
+import restoreUserData from "../../hooks/fetchUserData";
 
 const SocketProvider = ({children})=>{
     const [socket, setSocket] = useState(null);
@@ -39,6 +40,10 @@ const SocketProvider = ({children})=>{
         socket.on(RECEIVE_INFO,(data)=>{
             console.log(data);
         })
+        socket.off(UPDATED_INFO).on(UPDATED_INFO, () => {
+            //   const [userData] = restoreUserData(userToken);
+            //   console.debug(userData)
+            });
         
     }
     

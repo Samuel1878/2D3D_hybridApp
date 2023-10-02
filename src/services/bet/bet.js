@@ -12,11 +12,9 @@ const BetProvider =({children})=>{
       const { userToken } = useContext(AuthContext);
 
 
-    useEffect(()=>{
-        socket && socket.on(UPDATED_INFO, ()=>{
-            restoreUserData(userToken)
-        })
-    },[socket])
+    
+      
+
     return(
         <BetContext.Provider
             value={{betDigits2D,setBetDigits2D,betDigits3D,setBetDigits3D}}>

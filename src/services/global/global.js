@@ -3,6 +3,8 @@ import GlobalContext from "./globalContext";
 import AuthContext from "../auth/authContext";
 import restoreUserData from "../../hooks/fetchUserData";
 const Global = ({children})=>{
+    const { userToken } = useContext(AuthContext);
+    const [userData, loadedD] = restoreUserData(userToken);
     const [isLoading, setIsLoading] = useState(true);
     const [loggedIn, setLoggedIn] = useState(false);
     const [name , setName] = useState(null);
@@ -13,20 +15,24 @@ const Global = ({children})=>{
     const [navigation, setNavigation] = useState(null);
     const [history, setHistory] = useState([]);
     const [payments, setPayments] = useState([]);
-    const [marketOpen, setMarketOpen] = useState(false);
-    const {userToken} = useContext(AuthContext);
-    let data = {
-      token: userToken,
-      setLoggedIn: setLoggedIn,
-      setName: setName,
-      setMoney: setMoney,
-      setPhone: setPhone,
-      setLevel:setLevel,
-      setProfile:setProfile,
-      setHistory:setHistory,
-      setPayments:setPayments,
-    };
-    restoreUserData(data);
+    // const [marketOpen, setMarketOpen] = useState(false);
+
+         console.log(userData);
+    useEffect(()=>{
+       if(loadedD){
+        setHistory(userData.history)
+        setLevel(userData.level)
+        setName(userData.name);
+        setMoney(userData.money);
+        setPhone(userData.phone);
+        setIsLoading(false);
+        setProfile(userData.image)
+        setPayments(userData.payments);
+        return
+        }else{
+            setIsLoading(true)
+        }
+    },[loadedD])
     useEffect(() => {
          if (profile === null) {
            setProfile(require("../../../assets/profile.png"));
