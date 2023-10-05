@@ -5,23 +5,70 @@ import { useEffect, useState,useRef, useCallback, useContext } from "react";
 import { Entypo } from "@expo/vector-icons";
 import LottieView from "lottie-react-native";
 import GlobalContext from "../services/global/globalContext";
+import BetContext from "../services/bet/betContext";
 
 const ThreeD_Bet = ({navigation}) => {
     const {money} = useContext(GlobalContext)
     const [firstDigit, setFirstDigit] = useState({label:"0"});
     const [secondDigit, setSecondDigit] = useState({ label: "0" });
+    const [valid,setValid] = useState(false)
     const [thirdDigit, setThirdDigit] = useState({ label: "0" });
     const [digitPair, setDigitPair] = useState("");
     const [validPair, setValidPair] = useState(true);
+    const [validAmount,setValidAmount] = useState(false)
     const [pairs, setPairs] = useState([])
     const [amount, setAmount] = useState("");
      const animation = useRef(null);
+     const { setBetDigits3D } = useContext(BetContext);
     const Digit = "1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9".split(",");
     const addPair = ()=>{
-       
         validPair && pairs.length<= 4 && setPairs((prev)=>([...prev, digitPair]));
         setDigitPair('');
-    }
+    };
+    const clearFnc = ()=>{
+      setPairs([])
+    };
+    const roundFnc = ()=>{ 
+      firstDigit.label != secondDigit.label && pairs.length <= 2 &&
+        setPairs((prev) => [...prev,
+          firstDigit.label + thirdDigit.label + secondDigit.label,
+          firstDigit.label + secondDigit.label + thirdDigit.label,
+          thirdDigit.label + secondDigit.label +firstDigit.label
+        ]);
+        if(firstDigit.label === secondDigit.label === thirdDigit.label){
+          setPairs((prev) => [
+            ...prev,
+            firstDigit.label + secondDigit.label + thirdDigit.label,
+          ]);
+        }
+    };
+    const selectFnc = () =>{
+     pairs.length <= 4 && setPairs((prev)=>[...prev,firstDigit.label + secondDigit.label + thirdDigit.label]);
+    };
+    const buyTicketsFnc = () =>{
+      validAmount && setBetDigits3D(pairs.map((pair)=>({pair,amount})));
+      validAmount && navigation.navigate("Bet3D")
+    };
+  useEffect(()=>{
+    if(digitPair.length ===3){
+      setValidPair(true)
+      return
+    };
+    setValidPair(false)
+  },[digitPair]);
+  useEffect(()=>{
+    if(amount>money){
+      return setValidAmount(false)
+    }else if(amount=="" || amount <= 100){
+      return setValidAmount(false)
+    }else{
+      return setValidAmount(true)
+    };
+  },[amount]);
+  function checkPair (digits) {
+   const db = pairs.filter((e)=>e !== digits);
+   console.log(db)
+  }
     const Item = (item) =>{
         return(<View>
             <Text style={{color:app_1}}>
@@ -29,7 +76,7 @@ const ThreeD_Bet = ({navigation}) => {
             </Text>
         </View>)
        
-    }
+    };
     const Pairs = ({pairs}) => {
             return (
               <>
@@ -43,7 +90,7 @@ const ThreeD_Bet = ({navigation}) => {
               </>
             );
            
-    }
+    };
     useEffect(()=>{
         animation?.current.play()
     },[]);
@@ -156,21 +203,30 @@ const ThreeD_Bet = ({navigation}) => {
         </View>
         <View style={styles.betBtnContainer}>
           <View style={styles.betBtnBox}>
-            <TouchableOpacity style={styles.selectBtn}>
+            <TouchableOpacity
+              onPress={selectFnc} 
+              style={styles.selectBtn}>
               <Text style={styles.selectTxt}>Select</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.selectBtn}>
+            <TouchableOpacity
+              onPress={roundFnc} 
+              style={styles.selectBtn}>
               <Text style={styles.selectTxt}>Round</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.selectBtn}>
+            <TouchableOpacity 
+              style={styles.selectBtn}>
               <Text style={styles.selectTxt}>Dreams</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.cleanBtnCon}>
-            <TouchableOpacity style={styles.cleanBtn}>
+            <TouchableOpacity
+              onPress={clearFnc} 
+              style={styles.cleanBtn}>
               <Text style={styles.cleanTxt}>Clear</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.BuyTicket}>
+            <TouchableOpacity
+              onPress={buyTicketsFnc} 
+              style={styles.BuyTicket}>
               <Text style={styles.buyTxt}>Buy tickets</Text>
             </TouchableOpacity>
           </View>

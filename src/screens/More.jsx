@@ -24,10 +24,31 @@ const More = ({ navigation }) => {
         switch (item.id) {
           case 9:
             signOut();
-            navigation.navigate("Home")
+            navigation.navigate("Home");
+            break;
+          case 8:
+            navigation.navigate("termofus")
+            break;
+          case 7:
+            navigation.navigate("version")
+            break;
+          case 6:
+              //rate us
+            break;
+          case 5:
+            ///invite code
             break;
           case 4:
-            navigation.navigate("PwdChange")
+            navigation.navigate("PwdChange");
+            break;
+          case 3:
+            break;
+          case 2:
+              navigation.navigate("level");
+            break;
+          case 1:
+            navigation.navigate("history")
+            break;
           default:
             break;
         }

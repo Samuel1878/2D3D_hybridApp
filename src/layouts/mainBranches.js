@@ -22,6 +22,11 @@ import ServiceChat from "../screens/service";
 import Transfer from "../screens/Transfer";
 import TransferHis from "../screens/TransferHis";
 import { AyaPay, CbPay, KbzPay, WavePay } from "../components/PaymentsEd";
+import Level from "../screens/Level";
+import TermOfUs from "../screens/termofus";
+import Version from "../screens/version";
+import Bet3D from "../screens/Bet3d";
+import CashInOut from "../screens/cashInOut";
 
 const Stack = createNativeStackNavigator();
 const BranchContainer = () => {
@@ -140,6 +145,17 @@ const BranchContainer = () => {
           }}
         />
         <Stack.Screen
+          component={Bet3D}
+          name="Bet3D"
+          options={{
+            headerTitle: "Bet",
+            headerShown: true,
+            headerTintColor: text_1b,
+            headerStyle: { backgroundColor: app_1 },
+            headerTitleStyle: { color: "transparent" },
+          }}
+        />
+        <Stack.Screen
           component={Holidays}
           name="calender"
           options={{
@@ -247,6 +263,50 @@ const BranchContainer = () => {
             headerTintColor: text_1b,
             headerStyle: { backgroundColor: app_1 },
             headerTitleStyle: { color: "transparent" },
+          }}
+        />
+        <Stack.Screen
+          name="level"
+          component={Level}
+          options={{
+            headerTitle: "Level",
+            headerShown: true,
+            headerTintColor: text_1b,
+            headerStyle: { backgroundColor: app_1 },
+            headerTitleStyle: { color: "transparent" },
+          }}
+        />
+        <Stack.Screen
+          name="termofus"
+          component={TermOfUs}
+          options={{
+            headerTitle: "Term of us",
+            headerShown: true,
+            headerTintColor: text_1b,
+            headerStyle: { backgroundColor: app_1 },
+            headerTitleStyle: { color: "transparent" },
+          }}
+        />
+        <Stack.Screen
+          name="version"
+          component={Version}
+          options={{
+            headerTitle: "Version",
+            headerShown: true,
+            headerTintColor: text_1b,
+            headerStyle: { backgroundColor: app_1 },
+            headerTitleStyle: { color: "transparent" },
+          }}
+        />
+        <Stack.Screen
+          name="cashinout"
+          component={CashInOut}
+          options={{
+            headerTitle: "Finance",
+            headerShown: true,
+            headerTintColor: text_1b,
+            headerStyle: { backgroundColor: app_1 },
+            headerTitleStyle: { color: text_1b },
           }}
         />
       </Stack.Navigator>

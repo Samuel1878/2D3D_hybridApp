@@ -10,11 +10,6 @@ const BetProvider =({children})=>{
     const [betDigits3D, setBetDigits3D] = useState([]);
     const {socket}= useContext(SocketContext);
       const { userToken } = useContext(AuthContext);
-
-
-    
-      
-
     return(
         <BetContext.Provider
             value={{betDigits2D,setBetDigits2D,betDigits3D,setBetDigits3D}}>

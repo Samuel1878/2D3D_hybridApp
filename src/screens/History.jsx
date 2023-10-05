@@ -1,11 +1,18 @@
-import { FlatList, View,Text } from "react-native";
-import styles from "../libs/style";
-import { useContext } from "react";
+import { FlatList, View,Text, RefreshControl } from "react-native";
+import styles, { app_1 } from "../libs/style";
+import { useCallback, useContext, useState } from "react";
 import GlobalContext from "../services/global/globalContext";
 
 const History = () => {
    const{history}  = useContext(GlobalContext);
+   const [refreshing,setRefreshing] = useState(false)
    console.log(history)
+    const onRefresh = useCallback(() => {
+      setRefreshing(true);
+      setTimeout(() => {
+        setRefreshing(false);
+      }, 2000);
+    }, []);
    const Item = ({item})=>{
    let betDate =  item?.date
    let time 
@@ -22,23 +29,32 @@ const History = () => {
     return (
       <View style={styles.hisItem}>
         <Text style={styles.hisTxt}>{item?.number}</Text>
-        <Text style={styles.hisTxt}>{betDate}</Text>
+        <Text style={styles.hisTxt}>{item?.date}</Text>
 
         <Text style={styles.hisTxt}>{item?.amount}</Text>
       </View>
     );
    }
 
-  return (<View style={styles.History2D}>
-    <FlatList
+  return (
+    <View style={styles.History2D}>
+      <FlatList
         data={history}
-        keyExtractor={item=> Math.random()}
-        renderItem={({item})=><Item item={item}/>}
+        keyExtractor={(item) => Math.random()}
+        renderItem={({ item }) => <Item item={item} />}
         showsVerticalScrollIndicator={false}
         style={styles.HistContainer}
         extraData={history}
-        />
-
-  </View>)
+        refreshControl={
+          <RefreshControl
+            tintColor={app_1}
+            colors={app_1}
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+          />
+        }
+      />
+    </View>
+  );
 };
 export default History;

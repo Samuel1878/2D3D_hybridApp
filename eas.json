@@ -1,4 +1,7 @@
 {
+  "cli": {
+    "version": ">= 5.3.1"
+  },
   "build": {
     "development": {
       "developmentClient": true,
@@ -8,5 +11,23 @@
       "distribution": "internal"
     },
     "production": {}
+  },
+  "submit": {
+    "production": {
+      "android": {
+        "serviceAccountKeyPath": "../path/to/api-xxx-yyy-zzz.json",
+        "track": "internal"
+      },
+      "ios": {
+        "appleId": "samuelchost1878@gmail.com",
+        "ascAppId": "Aa112211@",
+        "appleTeamId":""
+      }}
   }
 }
+
+
+
+    
+  
+

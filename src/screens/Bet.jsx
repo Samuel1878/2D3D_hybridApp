@@ -16,7 +16,6 @@ const Bet = () => {
     const [date,setDate] = useState(null);
     const {userToken} = useContext(AuthContext)
     const conFirmOrder = ()=>{
-       if(is2D){
         const betDigit2D = betDigits2D.map((e)=>({
             number:e.pair,
             amount:e.amount,
@@ -30,7 +29,7 @@ const Bet = () => {
                 "Content-Type":"application/json"
             }
             }).then((e)=>console.log(e.status))
-    }
+    
 }
     const changeAmount = (e)=>{
         betDigits2D[edited]["amount"] = e
@@ -41,18 +40,12 @@ const Bet = () => {
     
 
     },[])
-    useEffect(()=>{
-        if(betDigits2D.length<=0 && betDigits3D.length>0 ){
-            setIs2D(false)
-        }
-    },betDigits2D,betDigits3D);
    
     return (
       <TouchableWithoutFeedback onPress={()=>Keyboard.dismiss()&& setIsEditable(false)}>
         <View style={styles._betContainer}>
           <View style={styles._betFormBox}>
-            {is2D &&
-              betDigits2D.map((pair,index) => (
+            {betDigits2D.map((pair,index) => (
                 <View style={styles._betForm} key={index}>
                   <Text style={styles._betPairTxt}>{pair.pair}</Text>
                   <TextInput

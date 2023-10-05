@@ -10,10 +10,14 @@ import { IMAGES } from "../libs/data";
 import {wavePay,kbzPay,ayaPay,cbPay}from "../libs/data";
 
 
-
+import { MaterialCommunityIcons,AntDesign, } from "@expo/vector-icons";
+import AuthContext from "../services/auth/authContext";
+import ServiceBtn from "../components/ServiceBtn";
+import LogReg from "../layouts/logReg";
 
 const Wallet = ()=>{ 
   const {money,navigation,payments} = useContext(GlobalContext);
+  const {userToken} = useContext(AuthContext)
   const [data,setData]= useState([]);
   const [opened, setOpened] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
@@ -97,7 +101,7 @@ const DATA = [{
     };
         useEffect(()=>{
           console.debug(payments)
-      if(payments.length <=0){
+      if(payments?.length <=0){
         setData(DATA);
         return
       }else{
@@ -113,57 +117,72 @@ const DATA = [{
   
     return (
       <View style={styles.wallet}>
+        {userToken ? <ServiceBtn /> : <LogReg navigation={navigation} />}
         <View style={styles.walletMainCon}>
           <View style={styles.walletMain}>
             <TouchableOpacity onPress={scanFunc} style={styles.scanBtn}>
-              {/* <MaterialCommunityIcons
+              <MaterialCommunityIcons
                 name="line-scan"
                 size={45}
                 color={text_1b}
-              /> */}
-              <LottieView
+              />
+              {/* <LottieView
                 speed={1}
                 autoPlay
                 style={styles.scanLoti}
                 source={require("../../assets/scan.json")}
-              />
+              /> */}
 
               <Text style={styles.walletBtnTxt}>Scan</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={scanFunc} style={styles.scanBtn}>
-              {/* <MaterialCommunityIcons name="qrcode" size={45} color={text_1b} /> */}
-              <LottieView
+              <MaterialCommunityIcons name="qrcode" size={45} color={text_1b} />
+              {/* <LottieView
                 speed={1}
                 autoPlay
                 style={styles.scanLoti}
                 source={require("../../assets/qrCode.json")}
-              />
+              /> */}
               <Text style={styles.walletBtnTxt}>Receive</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={scanFunc} style={styles.scanBtn}>
-              {/* <MaterialCommunityIcons
+            <TouchableOpacity
+              onPress={() => navigation.navigate("cashinout")}
+              style={styles.scanBtn}
+            >
+              <MaterialCommunityIcons
                 name="wallet-plus-outline"
                 size={45}
                 color={text_1b}
+              />
+              {/* <LottieView
+                speed={1}
+                autoPlay
+                style={styles.scanLoti}
+                source={require("../../assets/cashIn.json")}
               /> */}
-              <LottieView
-                speed={1}
-                autoPlay
+              {/* <Image
+                source={require("../../assets/deposit.png")}
                 style={styles.scanLoti}
-                source={require("../../assets/qrCode.json")}
-              />
+              /> */}
 
-              <Text style={styles.walletBtnTxt}>Cash In</Text>
+              <Text style={styles.walletBtnTxt}>Deposit</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={scanFunc} style={styles.scanBtn}>
-              {/* <AntDesign name="export" size={45} color={text_1b} /> */}
-              <LottieView
+            <TouchableOpacity
+              onPress={() => navigation.navigate("cashinout")}
+              style={styles.cashInOut}
+            >
+              <AntDesign name="export" size={45} color={text_1b} />
+              {/* <LottieView
                 speed={1}
                 autoPlay
+                style={styles.cashInOut}
+                source={require("../../assets/withdraw.json")}
+              /> */}
+              {/* <Image
+                source={require("../../assets/withdraw.png")}
                 style={styles.scanLoti}
-                source={require("../../assets/qrCode.json")}
-              />
-              <Text style={styles.walletBtnTxt}>Cash Out</Text>
+              /> */}
+              <Text style={styles.walletBtnTxt}>Withdraw</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.ballanceCon}>
@@ -284,7 +303,13 @@ const DATA = [{
               bounces={true}
               showsVerticalScrollIndicator={false}
               refreshControl={
-            <RefreshControl tintColor={app_1} colors={app_1} refreshing={refreshing} onRefresh={onRefresh} />}
+                <RefreshControl
+                  tintColor={app_1}
+                  colors={app_1}
+                  refreshing={refreshing}
+                  onRefresh={onRefresh}
+                />
+              }
             />
           </View>
         </View>

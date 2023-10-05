@@ -67,7 +67,6 @@ const TwoD_Bet = ({ navigation }) => {
    pairs?.length <= 4 && setPairs((prev) => [...prev, firstDigit.label + secondDigit.label]);
   }
   const roundFnc = ()=>{
-  
     firstDigit.label != secondDigit.label &&
       setPairs((prev) => [
         firstDigit.label + firstDigit.label,
@@ -82,11 +81,7 @@ const TwoD_Bet = ({ navigation }) => {
   const buyTicketsFnc = () =>{
     validAmount && setBetDigits2D(pairs.map((pair)=>({ pair, amount})) ) ;
     validAmount && navigation.navigate("Bet")
-
-
-
-    
-  }
+  };
   useEffect(() => {
     animation?.current.play();
   }, []);

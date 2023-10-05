@@ -341,8 +341,18 @@ const styles = StyleSheet.create({
     height: 60,
   },
   scanLoti: {
-    width: 60,
-    height: 60,
+    width: 70,
+    height: 70,
+  },
+  cashInOut: {
+    width: 70,
+    height: 70,
+  },
+  walletBtnTxt: {
+    color: bg_1,
+    fontSize: 13,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "500",
   },
   walletBtnsTxt: {
     color: app_1,

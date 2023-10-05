@@ -139,18 +139,17 @@ const Styles = StyleSheet.create({
     fontWeight: "600",
     color: app_1,
     textAlign: "center",
-    marginVertical:10,
-    textDecorationLine:"underline",
-    textDecorationColor:bg_3,
-    textDecorationStyle:"solid",
-    
+    marginVertical: 10,
+    textDecorationLine: "underline",
+    textDecorationColor: bg_3,
+    textDecorationStyle: "solid",
   },
   topCon: {
     width: "100%",
     height: "auto",
     alignItems: "center",
-    borderBottomColor:app_1,
-    borderBottomWidth:2
+    borderBottomColor: app_1,
+    borderBottomWidth: 2,
   },
   topGainer: {
     backgroundColor: bg_3,
@@ -167,7 +166,7 @@ const Styles = StyleSheet.create({
   },
   topGainerBox: {
     flex: 1,
-    paddingVertical:5
+    paddingVertical: 5,
   },
   tnameTxt: {
     fontSize: 17,
@@ -202,6 +201,30 @@ const Styles = StyleSheet.create({
     fontFamily: "Roboto_Bold",
     color: bg_2,
     fontWeight: "600",
+  },
+  ///Cash In Out
+  cashServiceCon: {
+    flex:1,
+    backgroundColor: bg_3,
+    borderRadius: 10,
+    margin: 10,
+    alignItems: "center",
+    justifyContent:"space-around"
+  },
+  customerBtn: {
+    width:170,
+    borderRadius: "100%",
+    overflow: "hidden",
+    marginHorizontal: 10,
+    backgroundColor: app_1,
+    flexDirection: "row",
+    alignItems: "center",
+
+  },
+  customer: {
+    width: 70,
+    height: 70,
+    marginRight:10,
   },
 });
 export default Styles
