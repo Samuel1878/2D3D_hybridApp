@@ -6,13 +6,14 @@ import {  useRef, useState ,useCallback, useContext, useEffect} from "react";
 import { ScrollView } from "react-native";
 import { _2d_URL } from "../hooks/config";
 import GlobalContext from "../services/global/globalContext";
-import restoreUserData from "../hooks/fetchUserData";
-import AuthContext from "../services/auth/authContext";
+import { useTranslation } from "react-i18next"; 
+import i18n from "../libs/lang";
 const Home = ({navigation}) => {
     let scrollOffsetY = useRef(new Animated.Value(0)).current;
     const [refreshing, setRefreshing]= useState(false);
-    const {userToken} = useContext(AuthContext);
-    const {setIsLoading} = useContext(GlobalContext)
+    const {setIsLoading} = useContext(GlobalContext);
+
+    console.log(i18n.languages)
     useEffect(()=>{
       refreshing && setIsLoading(true)
     },[refreshing])

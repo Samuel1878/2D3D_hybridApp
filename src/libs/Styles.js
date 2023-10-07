@@ -1,5 +1,5 @@
 import { StyleSheet, Platform, Dimensions } from "react-native";
-import { app_1, app_2, app_4, bg_1, bg_2, bg_3, bg_3b, bg_3c, text_1 } from "./style";
+import { app_1, app_2, app_4, bg_1, bg_2, bg_3, bg_3b, bg_3c, text_1, text_1b } from "./style";
 
 const Styles = StyleSheet.create({
   Container: {
@@ -204,27 +204,182 @@ const Styles = StyleSheet.create({
   },
   ///Cash In Out
   cashServiceCon: {
-    flex:1,
+    flex: 1,
     backgroundColor: bg_3,
     borderRadius: 10,
     margin: 10,
     alignItems: "center",
-    justifyContent:"space-around"
+    justifyContent: "space-around",
   },
   customerBtn: {
-    width:170,
+    width: 170,
     borderRadius: "100%",
     overflow: "hidden",
     marginHorizontal: 10,
     backgroundColor: app_1,
     flexDirection: "row",
     alignItems: "center",
-
   },
   customer: {
     width: 70,
     height: 70,
-    marginRight:10,
+    marginRight: 10,
+  },
+
+  ///LEVEL PAGE ////////////////////////
+  levelTop: {
+    flex: 1,
+    width: "100%",
+    backgroundColor: app_1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  levelTxt: {
+    fontSize: 75,
+    color: text_1b,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "900",
+  },
+  levelXTxt: {
+    fontSize: 250,
+    color: app_1,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "900",
+  },
+  levelBottom: {
+    flex: 2,
+    backgroundColor: bg_2,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  //VERSION ?
+  versionTop: {
+    flex: 1,
+    backgroundColor: app_1,
+    width: "100%",
+  },
+  versionBt: {
+    flex: 2,
+    backgroundColor: bg_2,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  versionTxt: {
+    fontSize: 20,
+    color: app_1,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "500",
+  },
+  //TERMS OF US
+  termofusH: {
+    fontSize: 19,
+    color: app_1,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "500",
+    textAlign: "center",
+    margin: 10,
+  },
+  termofusP: {
+    fontSize: 15,
+    color: app_1,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "400",
+    margin: 10,
+  },
+  termofusG: {
+    height: 4,
+    width: "90%",
+    alignSelf: "center",
+    backgroundColor: bg_3,
+  },
+  ////TRANSFER SCREEN
+  TransferTopCon: {
+    flex: 1,
+    backgroundColor: app_1,
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  tphoneCon: {
+    padding: 15,
+    borderRadius: 15,
+    width: "90%",
+    backgroundColor: bg_2,
+  },
+  tphoneH: {
+    fontSize: 18,
+    color: text_1,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "400",
+    margin: 10,
+  },
+  tphoneInput: {
+    padding: 10,
+    backgroundColor: bg_2,
+    borderBottomColor: bg_3b,
+    borderBottomWidth: 4,
+    marginVertical: 10,
+    color: text_1,
+    fontSize: 21,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+  },
+  contactBookCon: {
+    position: "absolute",
+    right: 10,
+    top: "50%",
+  },
+  contactBook: {
+    width: 60,
+    height: 60,
+  },
+  TransferBtCon: {
+    flex: 3,
+    backgroundColor: bg_2,
+    width: "100%",
+    alignItems: "center",
+  },
+  NextBtn: {
+    width: "90%",
+    paddingVertical: 20,
+    alignItems: "center",
+    borderRadius: 5,
+    color: text_1,
+    backgroundColor: app_1,
+    marginVertical: 25,
+  },
+  btnTxt: {
+    fontSize: 21,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+    color: text_1b,
+  },
+  recentTlist: {
+    flex: 1,
+    backgroundColor: bg_3,
+    width: "90%",
+    marginVertical: 35,
+    borderRadius: 15,
+    justifyContent: "flex-end",
+  },
+  //delete
+  transDBtn: {
+    width: "100%",
+    paddingVertical: 20,
+    borderRadius: 5,
+    backgroundColor: bg_3b,
+    alignItems: "center",
+  },
+  transDTxt: {
+    fontSize: 18,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+    color: app_4,
+  },
+  ///ADDRESS BOOK
+  addressBookCon:{
+    flex:1,
+    width:"100%"
   },
 });
 export default Styles

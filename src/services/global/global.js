@@ -16,7 +16,7 @@ const Global = ({children})=>{
     const [history, setHistory] = useState([]);
     const [payments, setPayments] = useState([]);
     // const [marketOpen, setMarketOpen] = useState(false);
-
+ useEffect(()=>{history?.reverse()},[history])
          console.log(userData);
     useEffect(()=>{
        if(loadedD){

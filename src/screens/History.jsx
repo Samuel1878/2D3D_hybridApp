@@ -29,7 +29,7 @@ const History = () => {
     return (
       <View style={styles.hisItem}>
         <Text style={styles.hisTxt}>{item?.number}</Text>
-        <Text style={styles.hisTxt}>{item?.date}</Text>
+        <Text style={styles.hisTxt}>{time + ":" + item?.date}</Text>
 
         <Text style={styles.hisTxt}>{item?.amount}</Text>
       </View>

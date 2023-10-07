@@ -64,7 +64,7 @@ const More = ({ navigation }) => {
               style={styles.moreItemImg}
               source={item.src}
               />
-            <Text style={styles.moreItemTxt}>{item.title}</Text>
+            <Text style={styles.moreItemTxt}> {" "}{item.title}</Text>
           </TouchableOpacity>
 
         )
@@ -87,11 +87,11 @@ const More = ({ navigation }) => {
             <View style={styles.userDataBox}>
               <Text style={styles.userNameTxt}>
                 {name}
-                <MaterialIcons name="verified-user" size={21} color={bg_3b} />
+                {phone&&<MaterialIcons name="verified-user" size={21} color={bg_3b} />}
               </Text>
               <Text style={styles.userDataTxt}>
-                Phone: {phone}{" "}
-                <MaterialIcons name="verified" size={20} color={bg_3b} />
+                {phone}{" "}
+                {phone&&(<MaterialIcons name="verified" size={20} color={bg_3b} />)}
               </Text>
             </View>
           </TouchableOpacity>

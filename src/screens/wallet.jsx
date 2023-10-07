@@ -67,14 +67,14 @@ const DATA = [{
       }
       const EditPayment = () =>{
          switch (item.method) {
-           case "kbzPay":
+           case "kbz":
          navigation.navigate("kbzPay");
              break;
-           case "wavePay":
+           case "wave":
                navigation.navigate("wavePay");
          
              break;
-           case "ayaPay":
+           case "aya":
                navigation.navigate("ayaPay");
              
              break;

@@ -27,6 +27,7 @@ import TermOfUs from "../screens/termofus";
 import Version from "../screens/version";
 import Bet3D from "../screens/Bet3d";
 import CashInOut from "../screens/cashInOut";
+import AddressBook from "../screens/address";
 
 const Stack = createNativeStackNavigator();
 const BranchContainer = () => {
@@ -303,6 +304,17 @@ const BranchContainer = () => {
           component={CashInOut}
           options={{
             headerTitle: "Finance",
+            headerShown: true,
+            headerTintColor: text_1b,
+            headerStyle: { backgroundColor: app_1 },
+            headerTitleStyle: { color: text_1b },
+          }}
+        />
+        <Stack.Screen
+          name="addressbook"
+          component={AddressBook}
+          options={{
+            headerTitle: "Address Book",
             headerShown: true,
             headerTintColor: text_1b,
             headerStyle: { backgroundColor: app_1 },

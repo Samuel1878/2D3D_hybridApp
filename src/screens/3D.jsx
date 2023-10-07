@@ -9,6 +9,7 @@ import ServiceBtn from "../components/ServiceBtn";
 import { Ionicons } from "@expo/vector-icons";
 import { _3D_DATA } from "../libs/data";
 import DataContext from "../services/data/dataContext";
+import AuthContext from "../services/auth/authContext";
 // const data = [
 //     {id:1,result:215,date:"21/23/12"},
 //     {id:2,result:923,date:"21/23/12"},
@@ -32,14 +33,15 @@ const Item = ({item})=>{
 }
 
 const ThreeD = () => {
-    const {loggedIn,navigation} = useContext(GlobalContext);
+    const {navigation} = useContext(GlobalContext);
     const [isOpen, setIsOpen] = useState(true);
-    const {history3D} = useContext(DataContext)
+    const {history3D} = useContext(DataContext);
+    const {userToken} = useContext(AuthContext);
 
     
     return (
       <View style={styles.threeDCon}>
-        {loggedIn ? <ServiceBtn /> : <LogReg navigation={navigation} />}
+        { userToken? <ServiceBtn /> : <LogReg navigation={navigation} />}
         <View style={styles.threeDCon}>
           <View style={styles.threeDTopCon}>
             <View style={styles.serverTimeCon}>
