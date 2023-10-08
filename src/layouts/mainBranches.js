@@ -29,6 +29,8 @@ import Bet3D from "../screens/Bet3d";
 import CashInOut from "../screens/cashInOut";
 import AddressBook from "../screens/address";
 import TransferMain from "../screens/TransferM";
+import { Details } from "../screens/detail";
+import Pin from "../screens/pin";
 
 const Stack = createNativeStackNavigator();
 const BranchContainer = () => {
@@ -224,6 +226,17 @@ const BranchContainer = () => {
           }}
         />
         <Stack.Screen
+          name="detail"
+          component={Details}
+          options={{
+            headerTitle: "Details",
+            headerShown: true,
+            headerTintColor: text_1b,
+            headerStyle: { backgroundColor: app_1 },
+            headerTitleStyle: { color: text_1b },
+          }}
+        />
+        <Stack.Screen
           name="Transaction_History"
           component={TransferHis}
           options={{
@@ -309,6 +322,17 @@ const BranchContainer = () => {
             headerTintColor: text_1b,
             headerStyle: { backgroundColor: app_1 },
             headerTitleStyle: { color: "transparent" },
+          }}
+        />
+        <Stack.Screen
+          name="pin"
+          component={Pin}
+          options={{
+            headerTitle: "Pin Management",
+            headerShown: true,
+            headerTintColor: text_1b,
+            headerStyle: { backgroundColor: app_1 },
+            headerTitleStyle: { color: text_1b },
           }}
         />
         <Stack.Screen

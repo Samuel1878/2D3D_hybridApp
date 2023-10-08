@@ -4,10 +4,11 @@ const Local = ({children}) =>{
     const [lang,setLang] = useState("en");
     const [mode, setMode] = useState("dark");
     const [sendTo, setSendTo] = useState("");
+    const [detail, setDetail] = useState({});
 
     return(
         <LocalContext.Provider 
-            value={{mode,lang,setLang,setMode,setSendTo,sendTo}}>
+            value={{mode,lang,setLang,setMode,setSendTo,sendTo,detail,setDetail}}>
             {children}
         </LocalContext.Provider>
     )

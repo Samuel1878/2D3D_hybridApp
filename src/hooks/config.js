@@ -19,3 +19,6 @@ export const _ADD_PAYMENT = "http://localhost:8080/api/auth/addPayments";
 export const GET_TOPGAINER = "http://localhost:8080/api/data/topGainer";
 export const GET_2DWINNERS = "http://localhost:8080/api/data/2d/winners";
 export const GET_3DWINNERS = "http://localhost:8080/api/data/3d/winners";
+export const isUserRegistered = "http://localhost:8080/api/data/isUserRegistered";
+export const TRANSFER = "http://localhost:8080/api/admin/transfer";
+export const PIN = "http://localhost:8080/api/admin/changePin";

@@ -15,6 +15,9 @@ const Global = ({children})=>{
     const [navigation, setNavigation] = useState(null);
     const [history, setHistory] = useState([]);
     const [payments, setPayments] = useState([]);
+    const [transactions, setTransactions] = useState([]);
+    const [receive,setReceive] = useState([]);
+    const [pin, setPin] = useState(null)
     // const [marketOpen, setMarketOpen] = useState(false);
  useEffect(()=>{history?.reverse()},[history])
          console.log(userData);
@@ -28,6 +31,9 @@ const Global = ({children})=>{
         setIsLoading(false);
         setProfile(userData.image)
         setPayments(userData.payments);
+        setTransactions(userData.transactions);
+        setReceive(userData.receive);
+        setPin(userData.pin)
         return
         }else{
             setIsLoading(true)
@@ -61,7 +67,11 @@ const Global = ({children})=>{
           history,
           setHistory,
           payments,
-          setPayments
+          setPayments,
+          transactions,
+          setTransactions,
+          receive,
+          setReceive
         }}
       >
         {children}

@@ -61,3 +61,4 @@ export const IMAGES = [
 //    console.log(history3D)
 //    return history3D;
 // }
+export const pinREGEX = /^[0-9]{6,6}$/g;

@@ -42,6 +42,7 @@ const More = ({ navigation }) => {
             navigation.navigate("PwdChange");
             break;
           case 3:
+            navigation.navigate("pin")
             break;
           case 2:
               navigation.navigate("level");

@@ -1,5 +1,5 @@
 import { StyleSheet, Platform, Dimensions } from "react-native";
-import { app_1, app_2, app_4, bg_1, bg_2, bg_3, bg_3b, bg_3c, text_1, text_1b } from "./style";
+import { app_1, app_2, app_3, app_4, bg_1, bg_2, bg_3, bg_3b, bg_3c, text_1, text_1b, text_2, text_3 } from "./style";
 
 const Styles = StyleSheet.create({
   Container: {
@@ -463,8 +463,284 @@ const Styles = StyleSheet.create({
     fontWeight: "600",
     color: text_1,
   },
-  tranCon:{
-    
+  tranCon: {
+    width: "90%",
+    flex: 1,
+    marginVertical: 15,
+    backgroundColor: bg_3,
+    borderRadius: 10,
+  },
+  ToCon: {
+    width: "100%",
+    padding: 20,
+    backgroundColor: bg_3b,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+  },
+  ToH: {
+    fontSize: 18,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+    color: app_4,
+  },
+  toName: {
+    fontSize: 35,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+    color: text_1,
+  },
+  toNo: {
+    fontSize: 17,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+    color: text_2,
+  },
+  amountCon: {
+    padding: 10,
+    width: "100%",
+    justifyContent: "center",
+  },
+  amountH: {
+    fontSize: 16,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+    color: app_2,
+  },
+  amountInput: {
+    paddingVertical: 20,
+    paddingHorizontal: 10,
+    width: "90%",
+    borderBottomColor: bg_3b,
+    borderBottomWidth: 2,
+    color: text_1,
+    fontSize: 21,
+    alignSelf: "center",
+    marginVertical: 10,
+  },
+  pinCon: {
+    width: "100%",
+    padding: 5,
+    backgroundColor: bg_2,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-around",
+    borderRadius: 5,
+    marginVertical: 10,
+  },
+  pinH: {
+    fontSize: 16,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+    color: app_2,
+  },
+  pinBtn: {
+    padding: 10,
+    backgroundColor: app_1,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 5,
+  },
+  pin: {},
+  transferBtn: {
+    padding: 20,
+    backgroundColor: app_1,
+    width: "90%",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 5,
+    alignSelf: "center",
+    marginVertical: 10,
+  },
+  transferTxt: {
+    fontSize: 21,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+    color: text_1b,
+  },
+  transferedCon: {
+    padding: 20,
+    borderRadius: 10,
+    backgroundColor: bg_1,
+    position: "absolute",
+    left: "50%",
+    top: "50%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  transferedTxt: {
+    fontSize: 21,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+    color: app_1,
+  },
+  ///TRANSACTION HISTORY
+  TranHisCon: {
+    width: "100%",
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 10,
+  },
+  hisTopCon: {
+    flexDirection: "row",
+    height: 75,
+    width: "100%",
+    paddingVertical: 10,
+  },
+  hisTopBtn: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: bg_3,
+  },
+  RecHisCon: {
+    width: "100%",
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  TranHisH: {
+    fontSize: 18,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+    color: app_1,
+    marginVertical: 10,
+  },
+  hisItemCon: {
+    backgroundColor: bg_3,
+    padding: 10,
+    borderRadius: 5,
+    marginVertical: 10,
+    width: "100%",
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  hisItemImg: {
+    width: 50,
+    height: 50,
+  },
+  hisItem: {
+    padding: 5,
+  },
+  hisH: {
+    fontSize: 17,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+    color: app_1,
+  },
+  hisDate: {
+    fontSize: 15,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+    color: text_1,
+  },
+  hisAmount: {
+    fontSize: 21,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+    color: app_1,
+  },
+  ///Details
+  detailTop: {
+    marginVertical: 20,
+  },
+  detailTxt: {
+    fontSize: 17,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+    color: text_1,
+    marginVertical: 5,
+  },
+  detailAmount: {
+    fontSize: 40,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "500",
+    color: text_2,
+    marginVertical: 10,
+  },
+  details: {
+    flexDirection: "row",
+
+    justifyContent: "space-between",
+    width: "95%",
+    marginVertical: 5,
+  },
+  detailsTxt: {
+    fontSize: 15,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "500",
+    color: app_2,
+    marginVertical: 5,
+  },
+  line: {
+    height: 2,
+    width: "90%",
+    backgroundColor: bg_3,
+    marginVertical: 10,
+  },
+  ////PIN MANAGEMENT
+  SetPinCon: {
+    width: "90%",
+    flex: 1,
+    backgroundColor: bg_2,
+    alignItems: "center",
+  },
+  setPinH: {
+    fontSize: 18,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "500",
+    color: app_3,
+    marginVertical: 20,
+  },
+  setPinInCon: {
+    padding: 5,
+    flexDirection: "row",
+    marginVertical:10
+  },
+  setPinInput: {
+    backgroundColor: bg_2,
+    padding: 10,
+    color: text_1,
+    flex: 1,
+    textAlign: "center",
+    fontSize: 18,
+    borderBottomColor: bg_3b,
+    borderBottomWidth: 2,
+    marginVertical: 10,
+  },
+  setPinBtn: {
+    padding: 20,
+    backgroundColor: app_1,
+    borderRadius: 10,
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    marginVertical: 20,
+  },
+  changePinCon: {
+    padding: 5,
+    flexDirection: "row",
+    marginVertical:20
+  },
+  setPinTxt:{
+    fontSize: 18,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "500",
+    color: text_1b,
+  },
+
+  ////INPUTSSS
+  good: {
+    fontSize: 15,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "500",
+    color: app_2,
+  },
+  warn: {
+    fontSize: 13,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "500",
+    color: text_3,
   },
 });
 export default Styles

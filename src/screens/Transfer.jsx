@@ -6,7 +6,7 @@ import GlobalContext from "../services/global/globalContext";
 import LocalContext from "../services/localization/localContext";
 
 const Transfer = () => {
-    const [tphone,setTphone]=useState("");
+    const [tphone,setTphone]=useState("09");
     const {navigation} = useContext(GlobalContext);
     const {setSendTo} = useContext(LocalContext)
     const contactFnc = ()=>{
@@ -27,7 +27,7 @@ const Transfer = () => {
               <Text style={Styles.tphoneH}>Transfer to Phone Number</Text>
               <TextInput
                 inputMode="tel"
-                placeholder="Phone"
+                autoFocus
                 value={tphone}
                 style={Styles.tphoneInput}
                 onChangeText={(e) => setTphone(e)}
