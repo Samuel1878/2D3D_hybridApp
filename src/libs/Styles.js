@@ -377,9 +377,94 @@ const Styles = StyleSheet.create({
     color: app_4,
   },
   ///ADDRESS BOOK
-  addressBookCon:{
-    flex:1,
-    width:"100%"
+  searchCon: {
+    paddingVertical: 20,
+    paddingHorizontal: 30,
+    width: "100%",
+    backgroundColor: bg_2,
+    borderBottomColor: bg_3,
+    borderbottomWidth: 4,
+    marginVertical: 10,
+  },
+  searchInput: {
+    height: 40,
+    width: "100%",
+    padding: 5,
+    backgroundColor: bg_3,
+    borderLeftColor: app_1,
+    borderLeftWidth: 30,
+    color: app_4,
+    fontSize: 18,
+    borderRadius: 5,
+  },
+  addressContainer: {
+    flex: 1,
+    backgroundColor: bg_2,
+    width: "100%",
+  },
+  addressBookCon: {
+    color: app_1,
+    fontSize: 17,
+  },
+  addressBook: {
+    width: "100%",
+    padding: 10,
+    backgroundColor: bg_3,
+    flexDirection: "row",
+  },
+  addressProfile: {
+    width: 50,
+    height: 50,
+  },
+  addressD: {
+    padding: 5,
+    justifyContent: "center",
+  },
+  addressHCon: {
+    width: "100%",
+    padding: 10,
+    backgroundColor: bg_2,
+    flexDirection: "row",
+  },
+  addressHeader: {
+    fontSize: 18,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+    color: app_4,
+  },
+  addressN: {
+    fontSize: 16,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+    color: text_1,
+  },
+  ///TRANFERMAIN
+  tranContainer: {
+    flex: 1,
+    backgroundColor: bg_2,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  notfoundTran: {
+    padding: 20,
+    backgroundColor: bg_3,
+    borderRadius: 10,
+  },
+  notfoundH: {
+    fontSize: 18,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+    color: app_4,
+    textAlign: "center",
+  },
+  notfoundTxt: {
+    fontSize: 15,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+    color: text_1,
+  },
+  tranCon:{
+    
   },
 });
 export default Styles

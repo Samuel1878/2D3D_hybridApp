@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import Login from "../screens/login";
 import Register from "../screens/register";
 import { useContext, useEffect } from "react";
-import { app_1, app_2, app_3, app_4, text_1b } from "../libs/style";
+import { app_1, app_2, app_3, app_4, bg_2, text_1b } from "../libs/style";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AuthContext from "../services/auth/authContext";
 import restoreUserData from "../hooks/fetchUserData";
@@ -28,6 +28,7 @@ import Version from "../screens/version";
 import Bet3D from "../screens/Bet3d";
 import CashInOut from "../screens/cashInOut";
 import AddressBook from "../screens/address";
+import TransferMain from "../screens/TransferM";
 
 const Stack = createNativeStackNavigator();
 const BranchContainer = () => {
@@ -209,6 +210,17 @@ const BranchContainer = () => {
             headerTintColor: text_1b,
             headerStyle: { backgroundColor: app_1 },
             headerTitleStyle: { color: "transparent" },
+          }}
+        />
+        <Stack.Screen
+          name="TransferMain"
+          component={TransferMain}
+          options={{
+            headerTitle: "Transfer",
+            headerShown: true,
+            headerTintColor: text_1b,
+            headerStyle: { backgroundColor: app_1 },
+            headerTitleStyle: { color: text_1b },
           }}
         />
         <Stack.Screen
