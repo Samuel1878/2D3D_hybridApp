@@ -1072,9 +1072,9 @@ const Styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    backgroundColor:bg_3,
-    marginVertical:15,
-    borderRadius:5
+    backgroundColor: bg_3,
+    marginVertical: 15,
+    borderRadius: 5,
   },
   withdrawInput: {
     padding: 20,
@@ -1082,6 +1082,11 @@ const Styles = StyleSheet.create({
     backgroundColor: bg_3,
     borderRadius: 5,
     marginVertical: 10,
+    fontSize: 18,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+    color: text_1,
+
   },
   selectedData: {
     flex: 1,
@@ -1090,6 +1095,7 @@ const Styles = StyleSheet.create({
   Img: {
     width: 75,
     height: 75,
+    borderRadius: 5,
   },
   SubmitBtn: {
     marginVertical: 25,
@@ -1099,6 +1105,13 @@ const Styles = StyleSheet.create({
     alignItems: "center",
     padding: 20,
     borderRadius: 10,
+  },
+  chanegBtn: {
+    backgroundColor: bg_2,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 20,
+    borderRadius: 5,
   },
   ////Common TXT
   Txt1: {
@@ -1136,14 +1149,13 @@ const Styles = StyleSheet.create({
     fontFamily: "Roboto_Bold",
     fontWeight: "600",
     color: app_1,
-    textAlign:"center"
+    textAlign: "center",
   },
   Txt3M: {
     fontSize: 18,
     fontFamily: "Roboto_Bold",
     fontWeight: "600",
     color: app_1,
-    
   },
 });
 export default Styles
