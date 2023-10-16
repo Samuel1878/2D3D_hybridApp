@@ -6,7 +6,7 @@ const CashInOut = () => {
   return (
     <View style={Styles.Container}>
       <View style={Styles.cashServiceCon}>
-        <View style={Styles.qchatCon}>
+        <View style={Styles.qchatCon}>git 
             <Text>Quick chat</Text>
             <Text>We provide quick chat for real time services</Text>
         </View>

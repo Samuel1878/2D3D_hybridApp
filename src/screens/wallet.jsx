@@ -5,7 +5,7 @@ import { useContext, useEffect, useState ,useCallback} from "react";
 import GlobalContext from "../services/global/globalContext";
 import { Entypo } from "@expo/vector-icons";
 import {SliderBox} from "react-native-image-slider-box";
-import { IMAGES } from "../libs/data";
+import { Data, IMAGES } from "../libs/data";
 
 import {wavePay,kbzPay,ayaPay,cbPay}from "../libs/data";
 
@@ -22,26 +22,7 @@ const Wallet = ()=>{
   const [opened, setOpened] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
   
-const DATA = [{
-  method:"kbz",
-  name:"Mr/Ms....",
-  phone:"096..."
-},
-{
-  method:"wave",
-  name:"Mr/Ms....",
-  phone:"097..."
-},{
-  method:"cb",
-  name:"Mr/Ms....",
-  phone:"092..."
-},
-{
-  method:"aya",
-  name:"Mr/Ms....",
-  phone:"098..."
-}
-]
+
     const scanFunc = ()=>{
 
     }
@@ -101,8 +82,8 @@ const DATA = [{
     };
         useEffect(()=>{
           console.debug(payments)
-      if(payments?.length <=0){
-        setData(DATA);
+      if(!payments){
+        setData(Data);
         return
       }else{
         setData(payments)
@@ -146,7 +127,7 @@ const DATA = [{
               <Text style={styles.walletBtnTxt}>Receive</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => navigation.navigate("cashinout")}
+              onPress={() => navigation.navigate("deposit")}
               style={styles.scanBtn}
             >
               <MaterialCommunityIcons
@@ -168,7 +149,7 @@ const DATA = [{
               <Text style={styles.walletBtnTxt}>Deposit</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => navigation.navigate("cashinout")}
+              onPress={() => navigation.navigate("withdrawl")}
               style={styles.cashInOut}
             >
               <AntDesign name="export" size={45} color={text_1b} />
@@ -245,13 +226,13 @@ const DATA = [{
               />
               <Text style={styles.walletBtnsTxt}>Services</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.walletBtns}>
+            <TouchableOpacity style={styles.walletBtns} onPress={()=>navigation.navigate("payments")}>
               <LottieView
                 autoPlay
-                style={[styles.walletBtnImg, { margin: 5 }]}
-                source={require("../../assets/moneyGrow.json")}
+                style={[styles.walletBtnImg]}
+                source={require("../../assets/bank.json")}
               />
-              <Text style={styles.walletBtnsTxt}>Coin</Text>
+              <Text style={styles.walletBtnsTxt}>Payments</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.walletSliderCon}>

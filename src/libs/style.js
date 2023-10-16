@@ -387,7 +387,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     backgroundColor: bg_3,
     alignItems: "center",
-    borderRadius: 10,
+    borderRadius: 5,
     marginVertical: 5,
   },
   paymentImg: {
@@ -416,7 +416,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     alignItems: "center",
     backgroundColor: app_1,
-    borderRadius: 10,
+    borderRadius: 5,
   },
   paymentEdTxt: {
     color: text_1b,

@@ -4,6 +4,28 @@ export const kbzPay = require("../../assets/kbzPay.png");
 export const ayaPay = require("../../assets/ayaPay.jpeg");
 export const cbPay = require("../../assets/cb.png");
 export const wavePay = require("../../assets/wavePay.png");
+export const Data = [
+  {
+    method: "kbz",
+    name: "Mr/Ms....",
+    phone: "096...",
+  },
+  {
+    method: "wave",
+    name: "Mr/Ms....",
+    phone: "097...",
+  },
+  {
+    method: "cb",
+    name: "Mr/Ms....",
+    phone: "092...",
+  },
+  {
+    method: "aya",
+    name: "Mr/Ms....",
+    phone: "098...",
+  },
+];
 export const DATA = [
   {
     id: 1,
@@ -62,3 +84,59 @@ export const IMAGES = [
 //    return history3D;
 // }
 export const pinREGEX = /^[0-9]{6,6}$/g;
+export const kbzAccounts = [
+  { name: "pave faef", phone: "092333444", qr: require("../../assets/qr.png") },
+  {
+    name: "laeveMOney",
+    phone: "091232222",
+    qr: require("../../assets/qr.png"),
+  },
+  {
+    name: "lasdfa adf",
+    phone: "0912334233",
+    qr: require("../../assets/qr.png"),
+  },
+];
+export const waveAccounts = [
+  {
+    name: "Pave Vayoi",
+    phone: "092333444",
+    qr: require("../../assets/qr.png"),
+  },
+  {
+    name: "laeveMOney",
+    phone: "091232222",
+    qr: require("../../assets/qr.png"),
+  },
+  {
+    name: "lasdfa fdfa",
+    phone: "0912334233",
+    qr: require("../../assets/qr.png"),
+  },
+];
+export const ayaAccounts = [
+  { name: "pave", phone: "092333444", qr: require("../../assets/qr.png") },
+  {
+    name: "laeveMOney",
+    phone: "091232222",
+    qr: require("../../assets/qr.png"),
+  },
+  {
+    name: "lasdfa faa",
+    phone: "0912334233",
+    qr: require("../../assets/qr.png"),
+  },
+];
+export const cbAccounts = [
+  { name: "pave faasdfa", phone: "092333444" , qr: require("../../assets/qr.png") },
+  {
+    name: "Express aa",
+    phone: "091232222",
+    qr: require("../../assets/qr.png"),
+  },
+  {
+    name: "U Aye Myit",
+    phone: "09898883331",
+    qr: require("../../assets/qr.png"),
+  },
+];

@@ -31,6 +31,10 @@ import AddressBook from "../screens/address";
 import TransferMain from "../screens/TransferM";
 import { Details } from "../screens/detail";
 import Pin from "../screens/pin";
+import Deposit from "../screens/depositt";
+import WithDrawl from "../screens/withDrawl";
+import DepositLayout from "../components/deposit";
+import Payments from "../screens/payments";
 
 const Stack = createNativeStackNavigator();
 const BranchContainer = () => {
@@ -248,6 +252,17 @@ const BranchContainer = () => {
           }}
         />
         <Stack.Screen
+          name="payments"
+          component={Payments}
+          options={{
+            headerTitle: "Payments",
+            headerShown: true,
+            headerTintColor: text_1b,
+            headerStyle: { backgroundColor: app_1 },
+            headerTitleStyle: { color: text_1b },
+          }}
+        />
+        <Stack.Screen
           name="kbzPay"
           component={KbzPay}
           options={{
@@ -340,6 +355,39 @@ const BranchContainer = () => {
           component={CashInOut}
           options={{
             headerTitle: "Finance",
+            headerShown: true,
+            headerTintColor: text_1b,
+            headerStyle: { backgroundColor: app_1 },
+            headerTitleStyle: { color: text_1b },
+          }}
+        />
+        <Stack.Screen
+          name="depositLayout"
+          component={DepositLayout}
+          options={{
+            headerTitle: "Deposit",
+            headerShown: true,
+            headerTintColor: text_1b,
+            headerStyle: { backgroundColor: app_1 },
+            headerTitleStyle: { color: text_1b },
+          }}
+        />
+        <Stack.Screen
+          name="deposit"
+          component={Deposit}
+          options={{
+            headerTitle: "Deposit",
+            headerShown: true,
+            headerTintColor: text_1b,
+            headerStyle: { backgroundColor: app_1 },
+            headerTitleStyle: { color: text_1b },
+          }}
+        />
+        <Stack.Screen
+          name="withdrawl"
+          component={WithDrawl}
+          options={{
+            headerTitle: "WithDrawl",
             headerShown: true,
             headerTintColor: text_1b,
             headerStyle: { backgroundColor: app_1 },
