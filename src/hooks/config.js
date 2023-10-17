@@ -22,3 +22,8 @@ export const GET_3DWINNERS = "http://localhost:8080/api/data/3d/winners";
 export const isUserRegistered = "http://localhost:8080/api/data/isUserRegistered";
 export const TRANSFER = "http://localhost:8080/api/admin/transfer";
 export const PIN = "http://localhost:8080/api/admin/changePin";
+export const DEPOSIT = "http://localhost:8080/api/admin/deposit";
+export const WITHDRAWL = "http://localhost:8080/api/admin/withdrawl";
+
+export const PAYMENTS = "http://localhost:8080/api/admin/payments";
+export const CASHINOUTHIS = "http://localhost:8080/api/admin/cashinout";

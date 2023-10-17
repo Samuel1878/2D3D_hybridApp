@@ -71,7 +71,8 @@ const Global = ({children})=>{
           transactions,
           setTransactions,
           receive,
-          setReceive
+          setReceive,
+          pin
         }}
       >
         {children}

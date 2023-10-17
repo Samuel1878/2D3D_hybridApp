@@ -25,7 +25,7 @@ const TransferMain = ()=>{
          axios
            .post(
              TRANSFER,
-             { phone: sendTo, name: name, amount: amount, pin: pin },
+             { phone: sendTo, name: name, amount: parseInt(amount), pin: pin },
              { headers: { "Content-Type": "application/json" } ,params:{userToken:userToken}}
            )
            .then((e) => {
@@ -71,7 +71,7 @@ const TransferMain = ()=>{
               <View style={Styles.amountCon}>
                 <Text style={Styles.amountH}>Amount</Text>
                 <TextInput
-                  inputMode="tel"
+                  inputMode="numeric"
                   textContentType="telephoneNumber"
                   autoFocus
                   style={Styles.amountInput}

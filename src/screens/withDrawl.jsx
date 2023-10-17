@@ -5,22 +5,38 @@ import GlobalContext from "../services/global/globalContext";
 import { AntDesign } from '@expo/vector-icons';
 import { app_1, text_1b } from "../libs/style";
 import { ayaPay, cbPay, kbzPay, wavePay } from "../libs/data";
+import axios from "axios"
+import { WITHDRAWL } from "../hooks/config";
+import AuthContext from "../services/auth/authContext";
 const WithDrawl = () => {
-    const {payments,money} = useContext(GlobalContext);
-
-    const [pin, setPin] = useState("");
+    const {payments,money,pin,navigation} = useContext(GlobalContext);
+    const {userToken} = useContext(AuthContext)
+    const [pinn, setPinn] = useState("");
     const [amount, setAmount] = useState("");
     const [selected, setSelected] = useState(0);
+    const submitFnc = ()=>{
+    
+        pinn == pin&& money>amount && axios.post(WITHDRAWL,{name:payments[selected].name,phone:payments[selected].phone,method:payments[selected].method,type:"withdrawl",amount:amount},{headers:{
+            "Content-Type":"application/json"
+        },params:{
+            userToken:userToken
+        }}).then((e)=>{
+            if(e.status===200||201){
+                console.log(e.data);
+                navigation.navigate("wallet")
+            }
+        })
+    };
     const changeFnc = () => {
         console.log(selected)
         if(selected<payments?.length-1){
-  setSelected((prev) => prev+1);
+            setSelected((prev) => prev+1);
 
-  return
+            return
         }
         setSelected(0)
       
-    }
+    };
   return (
     <View style={Styles.Container}>
       {!payments && (
@@ -77,10 +93,10 @@ const WithDrawl = () => {
           <TextInput
             placeholder="Enter 6-digit pin"
             style={Styles.withdrawInput}
-            value={pin}
-            onChangeText={(e) => setPin(e)}
+            value={pinn}
+            onChangeText={(e) => setPinn(e)}
           />
-          <TouchableOpacity style={Styles.SubmitBtn}>
+          <TouchableOpacity style={Styles.SubmitBtn} onPress={submitFnc}>
             <Text style={Styles.btnTxt}>Submit</Text>
           </TouchableOpacity>
         </View>

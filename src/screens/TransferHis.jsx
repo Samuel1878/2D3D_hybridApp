@@ -1,4 +1,4 @@
-import { FlatList, Text, TouchableOpacity, View } from "react-native"
+import { FlatList, Text, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native"
 import Styles from "../libs/Styles";
 import { useContext, useState } from "react";
 import GlobalContext from "../services/global/globalContext";
@@ -29,6 +29,7 @@ const TransferHis = ()=> {
                 style={Styles.hisItemImg}
                 autoPlay
                 source={require("../../assets/transfered.json")}
+                loop
               />
               <View style={Styles.hisItem}>
                 <Text style={Styles.hisH}>
@@ -48,6 +49,15 @@ const TransferHis = ()=> {
     return (
       <View style={Styles.Container}>
         <Text style={Styles.TranHisH}>Transactions</Text>
+
+        <View style={Styles.hisTopHeaderCon}>
+          <TouchableOpacity
+            style={Styles.hisCashInOutBtn} 
+            onPress={()=>navigation.navigate("cashinout")}>
+            <Text style={Styles.btnTxt3}> Cash  
+                in/out</Text>
+          </TouchableOpacity>
+        </View>
         <View style={Styles.hisTopCon}>
           <TouchableOpacity
             style={[
@@ -56,7 +66,7 @@ const TransferHis = ()=> {
             ]}
             onPress={transferFnc}
           >
-            <Text>Transfer</Text>
+            <Text style={Styles.btnTxt2}>Transfer</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={[
@@ -65,14 +75,14 @@ const TransferHis = ()=> {
             ]}
             onPress={receiveFnc}
           >
-            <Text>Receive</Text>
+            <Text style={Styles.btnTxt2}>Receive</Text>
           </TouchableOpacity>
         </View>
         {isTran ? (
           <View style={Styles.TranHisCon}>
             {transactions && (
               <FlatList
-                keyExtractor={(item) => item?.id}
+                keyExtractor={(item) => item.date}
                 renderItem={renderItem}
                 data={transactions}
                 extraData={transactions}
@@ -83,7 +93,7 @@ const TransferHis = ()=> {
           <View style={Styles.RecHisCon}>
             {receive && (
               <FlatList
-                keyExtractor={(item) => item?.id}
+                keyExtractor={(item) => item.date}
                 renderItem={renderItem}
                 extraData={receive}
                 data={receive}

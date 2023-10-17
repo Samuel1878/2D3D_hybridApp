@@ -1,5 +1,5 @@
 import { StyleSheet, Platform, Dimensions } from "react-native";
-import { app_1, app_2, app_3, app_4, bg_1, bg_2, bg_3, bg_3b, bg_3c, text_1, text_1b, text_2, text_3 } from "./style";
+import { app_1, app_2, app_3, app_4, bg_1, bg_2, bg_3, bg_3b, bg_3c, bg_4, text_1, text_1b, text_2, text_3 } from "./style";
 
 const Styles = StyleSheet.create({
   Container: {
@@ -201,29 +201,6 @@ const Styles = StyleSheet.create({
     fontFamily: "Roboto_Bold",
     color: bg_2,
     fontWeight: "600",
-  },
-  ///Cash In Out
-  cashServiceCon: {
-    flex: 1,
-    backgroundColor: bg_3,
-    borderRadius: 10,
-    margin: 10,
-    alignItems: "center",
-    justifyContent: "space-around",
-  },
-  customerBtn: {
-    width: 170,
-    borderRadius: "100%",
-    overflow: "hidden",
-    marginHorizontal: 10,
-    backgroundColor: app_1,
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  customer: {
-    width: 70,
-    height: 70,
-    marginRight: 10,
   },
 
   ///LEVEL PAGE ////////////////////////
@@ -581,6 +558,22 @@ const Styles = StyleSheet.create({
     alignItems: "center",
     padding: 10,
   },
+  hisTopHeaderCon: {
+    width: 100,
+    height: 50,
+    position: "absolute",
+    top: 5,
+    right: 15,
+  },
+  hisCashInOutBtn: {
+    flex: 1,
+    backgroundColor: app_1,
+    borderRadius: 25,
+    alignItems: "center",
+    justifyContent: "center",
+    margin: 5,
+    zIndex: 99,
+  },
   hisTopCon: {
     flexDirection: "row",
     height: 75,
@@ -604,7 +597,7 @@ const Styles = StyleSheet.create({
     fontFamily: "Roboto_Bold",
     fontWeight: "600",
     color: app_1,
-    marginVertical: 10,
+    marginVertical: 15,
   },
   hisItemCon: {
     backgroundColor: bg_3,
@@ -616,8 +609,8 @@ const Styles = StyleSheet.create({
     alignItems: "center",
   },
   hisItemImg: {
-    width: 50,
-    height: 50,
+    width: 60,
+    height: 60,
   },
   hisItem: {
     padding: 5,
@@ -877,8 +870,12 @@ const Styles = StyleSheet.create({
     width: "90%",
     backgroundColor: bg_3,
     borderRadius: 5,
-    marginVertical: 5,
+    marginVertical: 2.5,
     padding: 10,
+    shadowColor: bg_3,
+    shadowOffset: { x: 10, y: 10 },
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
   },
   depositRowCon: {
     flexDirection: "row",
@@ -888,7 +885,7 @@ const Styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   qrToggleBtn: {
-    width: 150,
+    width: 175,
     backgroundColor: bg_3b,
     justifyContent: "center",
     alignItems: "center",
@@ -968,8 +965,13 @@ const Styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 5,
   },
+  changeBtn: {
+    flex: 0.5,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   depositUploadBtn: {
-    width: "100%",
+    width: 150,
     backgroundColor: bg_3b,
     justifyContent: "center",
     alignItems: "center",
@@ -1046,6 +1048,24 @@ const Styles = StyleSheet.create({
     marginVertical: 10,
     textAlign: "center",
   },
+  depositImageCon: {
+    flex: 1,
+    borderColor: app_1,
+    borderWidth: 2,
+    borderRadius: 5,
+    justifyContent: "center",
+    alignItems: "center",
+    overflow: "scroll",
+  },
+  depositImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 5,
+  },
+  clickhere: {
+    flex: 1,
+    marginHorizontal: 5,
+  },
   ////WITHDRAW
   addPaymentsBtn: {
     padding: 20,
@@ -1086,7 +1106,6 @@ const Styles = StyleSheet.create({
     fontFamily: "Roboto_Bold",
     fontWeight: "600",
     color: text_1,
-
   },
   selectedData: {
     flex: 1,
@@ -1113,6 +1132,49 @@ const Styles = StyleSheet.create({
     padding: 20,
     borderRadius: 5,
   },
+  ///Cash In Out
+  cashServiceCon: {
+    flex: 1,
+    backgroundColor: bg_3,
+    borderRadius: 10,
+    margin: 10,
+    alignItems: "center",
+    justifyContent: "space-around",
+  },
+  itemContainer:{
+    padding:5,
+    flexDirection:"row",
+    justifyContent:"space-between",
+    marginVertical:5,
+    width:"95%",
+    backgroundColor:bg_3,
+    alignItems:"center",
+    borderRadius:5
+
+  },
+  img:{
+    width:70,
+    height:70
+  },
+  itemCashInOut:{
+
+  },
+
+  customerBtn: {
+    width: 170,
+    borderRadius: "100%",
+    overflow: "hidden",
+    marginHorizontal: 10,
+    backgroundColor: app_1,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  customer: {
+    width: 70,
+    height: 70,
+    marginRight: 10,
+  },
+
   ////Common TXT
   Txt1: {
     fontSize: 13,
@@ -1156,6 +1218,29 @@ const Styles = StyleSheet.create({
     fontFamily: "Roboto_Bold",
     fontWeight: "600",
     color: app_1,
+  },
+  btnTxt1: {
+    fontSize: 19,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+    color: text_1b,
+  },
+  btnTxt2: {
+    fontSize: 17,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+    color: text_1b,
+  },
+  btnTxt3: {
+    fontSize: 15,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+    color: text_1b,
+  },
+  //loader
+  loader: {
+    width: 50,
+    height: 50,
   },
 });
 export default Styles
