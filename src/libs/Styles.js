@@ -333,7 +333,7 @@ const Styles = StyleSheet.create({
   },
   recentTlist: {
     flex: 1,
-    backgroundColor: bg_3,
+    backgroundColor: bg_2,
     width: "90%",
     marginVertical: 35,
     borderRadius: 15,
@@ -344,7 +344,7 @@ const Styles = StyleSheet.create({
     width: "100%",
     paddingVertical: 20,
     borderRadius: 5,
-    backgroundColor: bg_3b,
+    backgroundColor: bg_3,
     alignItems: "center",
   },
   transDTxt: {
@@ -549,6 +549,35 @@ const Styles = StyleSheet.create({
     fontFamily: "Roboto_Bold",
     fontWeight: "600",
     color: app_1,
+  },
+  ///////Transfer RECENT HISTORY ITEM
+  recentItem: {
+    padding: 10,
+    width: "100%",
+    borderColor: bg_2,
+    backgroundColor: bg_3,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-around",
+    borderLeftColor:bg_3b,
+    borderLeftWidth:10,
+    marginVertical:2,
+    borderTopRightRadius:10,
+    borderBottomLeftRadius:5,
+    borderTopLeftRadius:5
+  
+  },
+  recentImg: {
+    width:50,
+    height:50,
+    borderRadius:50,
+    marginHorizontal:20
+  },
+  recentTxt: {
+    fontSize: 21,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+    color: text_1,
   },
   ///TRANSACTION HISTORY
   TranHisCon: {
@@ -1141,24 +1170,21 @@ const Styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-around",
   },
-  itemContainer:{
-    padding:5,
-    flexDirection:"row",
-    justifyContent:"space-between",
-    marginVertical:5,
-    width:"95%",
-    backgroundColor:bg_3,
-    alignItems:"center",
-    borderRadius:5
-
+  itemContainer: {
+    padding: 5,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginVertical: 5,
+    width: "95%",
+    backgroundColor: bg_3,
+    alignItems: "center",
+    borderRadius: 5,
   },
-  img:{
-    width:70,
-    height:70
+  img: {
+    width: 70,
+    height: 70,
   },
-  itemCashInOut:{
-
-  },
+  itemCashInOut: {},
 
   customerBtn: {
     width: 170,

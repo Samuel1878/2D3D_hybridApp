@@ -1,4 +1,4 @@
-import { Keyboard, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native"
+import { FlatList, Keyboard, Text, TextInput,Image, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native"
 import Styles from "../libs/Styles";
 import { useContext, useEffect, useState } from "react";
 import AnimatedLottieView from "lottie-react-native";
@@ -7,15 +7,45 @@ import LocalContext from "../services/localization/localContext";
 
 const Transfer = () => {
     const [tphone,setTphone]=useState("09");
-    const {navigation} = useContext(GlobalContext);
-    const {setSendTo} = useContext(LocalContext)
+    const {navigation,transactions} = useContext(GlobalContext);
+    const {setSendTo} = useContext(LocalContext);
+    const recentTransfer = new Map();
+    const [recentArray ,setRecentArray]= useState([]);
     const contactFnc = ()=>{
        navigation.navigate("addressbook")
     };
     const nextFnc = () =>{
         setSendTo(tphone)
         navigation.navigate("TransferMain")
+    };
+    
+    const renderRecent = ({item,index})=>{
+        const pressFnc = () => {
+          setTphone(recentArray[index][1]);
+          nextFnc();
+
+        };
+        return(
+            <TouchableOpacity style={Styles.recentItem} onPress={pressFnc}>
+                <Image style={Styles.recentImg} source={require("../../assets/profile.png")}/>
+                <Text style={Styles.recentTxt}>{item[0]}</Text>
+            </TouchableOpacity>
+        )
     }
+    useEffect(()=>{
+      transactions.map((e)=>{
+       recentTransfer.set(e.name,e.to);
+      });
+        recentTransfer.forEach((value,key)=>{
+            const data = [];
+            data.push(key,value)
+            console.log(data)
+        setRecentArray((prev)=>[...prev,data])
+        });
+
+
+         console.log(recentArray);
+    },[])
     return (
       <TouchableWithoutFeedback
         style={{ flex: 1 }}
@@ -49,6 +79,7 @@ const Transfer = () => {
               <Text style={Styles.btnTxt}>Next</Text>
             </TouchableOpacity>
             <View style={Styles.recentTlist}>
+                <FlatList renderItem={renderRecent} data={recentArray}/>
               <TouchableOpacity style={Styles.transDBtn}>
                 <Text style={Styles.transDTxt}>Delete history</Text>
               </TouchableOpacity>

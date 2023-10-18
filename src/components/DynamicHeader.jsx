@@ -1,4 +1,4 @@
-import { Animated } from "react-native"
+import { Animated, Switch } from "react-native"
 import { Text, View } from "react-native"
 import styles, { app_1, app_3, app_4, bg_1, bg_2 } from "../libs/style";
 import { useContext, useEffect } from "react";
@@ -21,6 +21,8 @@ const DynamicHeader = ({navigation, animHeaderValue}) => {
        outputRange: [Header_Max_Height, Header_Min_Height],
        extrapolate: "clamp",
      });
+     const toggleMode = () => setMode((previousState) => !previousState);
+
      useEffect(()=>{
         console.debug(live2D)
      },[live2D])
@@ -36,9 +38,25 @@ const DynamicHeader = ({navigation, animHeaderValue}) => {
         ]}
       >
         <View style={styles.userBoard}>
-          <Text style={styles.liveNo}>{live2D?.liveResult}</Text>
-          <Text style={styles.liveDate}>{t("updated")}{live2D?.currentDate+ " " +live2D?.currentTime}</Text>
-         
+          <View style={styles.dataLeftCon}>
+            <Text style={styles.liveNo}>{live2D?.liveResult || "35"}</Text>
+            <Text style={styles.liveDate}>
+              {live2D?.currentDate || "19/2/2023"}
+            </Text>
+            <Text style={styles.liveDate}>
+              {live2D?.currentTime || "18:00 AM"}
+            </Text>
+          </View>
+          <View style={styles.dataMidCon}></View>
+          <View style={styles.dataRightCon}>
+            <Switch
+              trackColor={{ false: "#767577", true: "#81b0ff" }}
+              thumbColor={mode ? "#f5dd4b" : "#f4f3f4"}
+              ios_backgroundColor="#3e3e3e"
+              onValueChange={toggleMode}
+              value={mode}
+            />
+          </View>
         </View>
       </Animated.View>
     );

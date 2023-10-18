@@ -2,7 +2,8 @@ import { useState } from "react";
 import LocalContext from "./localContext"
 const Local = ({children}) =>{
     const [lang,setLang] = useState("en");
-    const [mode, setMode] = useState("dark");
+    const [mode, setMode] = useState(false);
+    const [theme, setTheme] = useState("dark")
     const [sendTo, setSendTo] = useState("");
     const [detail, setDetail] = useState({});
     const [depoMethod, setDepoMethod] = useState("");

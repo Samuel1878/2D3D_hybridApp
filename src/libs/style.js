@@ -5,8 +5,9 @@ const app_3 = "rgb(246,214,88)";
 const app_4 ="rgb(251,206,41)";
 
 const text_1 = "rgb(234,236,239)";
-const text_2 = "rgb(200, 204, 210)";
-const text_3 = "rgb(113,123,139)";
+const text_2 = "rgb(190, 202, 205)";
+const text_3 = "rgb(160,158,163)";
+const text_4 = "rgb(113,123,139)";
 const text_1b = "rgb(31,35,40)";
 const text_2b = "rgb(40,45,50)";
 
@@ -49,15 +50,24 @@ const styles = StyleSheet.create({
     height: 210,
     width: "90%",
     borderRadius: 25,
-    justifyContent: "center",
-    alignItems: "center",
+    // justifyContent: "center",
+    // alignItems: "center",
+    flexDirection:"row",
     shadowColor: app_1,
     shadowOpacity: 0.2,
     shadowRadius: 10,
     shadowOffset: { x: 10, y: 10 },
   },
+  dataLeftCon:{
+    width:100,
+    padding:5,
+    alignItems:"center",
+    justifyContent:"flex-end"
+    
+  },
+  
   liveNo: {
-    fontSize: 75,
+    fontSize: 25,
     fontWeight: "900",
     shadowColor: bg_1,
     shadowOpacity: 0.5,
@@ -70,6 +80,16 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: bg_2,
     fontFamily: "Roboto",
+  },
+  dataMidCon:{
+    flex:1,
+  },
+  dataRightCon:{
+  flex:1,
+    width:75,
+    alignItems:"center",
+    justifyContent:"flex-end",
+    padding:10
   },
   homeDataCon: {
     justifyContent: "center",
@@ -250,12 +270,21 @@ const styles = StyleSheet.create({
     backgroundColor: bg_1,
   },
   //Wallet///////////////////////////////////
+  wallets:{
+    height:"120%",
+    backgroundColor:app_1,
+    padding:0,
+  },
+  WALLETscrollView:{
+    flex:1,
+    padding:0
+  },
   wallet: {
     flex: 1,
     backgroundColor: bg_1,
   },
   walletMainCon: {
-    flex: 1,
+    flex: .9,
     backgroundColor: app_1,
     position: "relative",
   },
@@ -330,7 +359,7 @@ const styles = StyleSheet.create({
   },
   walletBtns: {
     backgroundColor: bg_3,
-    width: 150,
+    width: 175,
     margin: 10,
     alignItems: "center",
     flexDirection: "row",
@@ -370,7 +399,7 @@ const styles = StyleSheet.create({
   },
 
   paymentsCon: {
-    flex: 1,
+    height:500,
     width: "95%",
   },
   paymentHeader: {
@@ -378,7 +407,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: "Roboto_Bold",
     fontWeight: "700",
-    marginBottom: 10,
+    marginBottom: 5,
     textAlign: "center",
   },
   payments: {
