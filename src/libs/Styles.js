@@ -739,6 +739,12 @@ const Styles = StyleSheet.create({
     alignItems: "center",
     marginVertical: 20,
   },
+  //FORGET BTN
+  
+  forgetBtn:{
+    flexDirection:"row",
+    alignItems:"center"
+  },
   changePinCon: {
     padding: 5,
     flexDirection: "row",
@@ -749,6 +755,22 @@ const Styles = StyleSheet.create({
     fontFamily: "Roboto_Bold",
     fontWeight: "500",
     color: text_1b,
+  },
+  ///FORGET PAGE
+  forgetContainer:{
+    flex:1,
+    justifyContent:"space-between",
+    alignItems:"center",
+    backgroundColor:bg_2,
+    paddingVertical:20
+  },
+  phoneCon:{
+    backgroundColor:bg_3,
+    width:"90%"
+  },
+  phoneInput:{
+    padding:20,
+
   },
 
   ////INPUTSSS

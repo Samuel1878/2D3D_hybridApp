@@ -113,6 +113,7 @@ const Login = ({navigation}) =>{
           <TouchableOpacity onPress={submitHandler} style={styles.loginSubBtn}>
             <Text style={styles.loginBtnTxt}>Login</Text>
           </TouchableOpacity>
+          <Text>forget password? Click here to reset password</Text>
           <View style={styles.loginLine}></View>
           <Text style={styles.loginRegTxt}>
             Don't have account yet? Create One!

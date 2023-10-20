@@ -1,4 +1,4 @@
-import { TextInput, Touchable, TouchableOpacity, View,Text } from "react-native"
+import { TextInput, Touchable, TouchableOpacity, View,Text, TouchableHighlight } from "react-native"
 import Styles from "../libs/Styles"
 import { useContext, useEffect, useState } from "react"
 import GlobalContext from "../services/global/globalContext"
@@ -45,15 +45,14 @@ const Pin = ({navigation})=>{
           {isNew ? (
             <Text style={Styles.setPinH}>Set up new pin for fund security</Text>
           ) : (
-         
-              <View style={Styles.changePinCon}>
-                <TextInput
-                  placeholder="Old Pin"
-                  style={Styles.setPinInput}
-                  value={oPin}
-                  onChangeText={(e) => setOPin(e)}
-                />
-              </View>
+            <View style={Styles.changePinCon}>
+              <TextInput
+                placeholder="Old Pin"
+                style={Styles.setPinInput}
+                value={oPin}
+                onChangeText={(e) => setOPin(e)}
+              />
+            </View>
           )}
 
           <View style={Styles.setPinInCon}>
@@ -88,6 +87,13 @@ const Pin = ({navigation})=>{
               <Text style={Styles.setPinTxt}> Change </Text>
             </TouchableOpacity>
           )}
+          <TouchableOpacity
+            style={Styles.forgetBtn}
+            onPress={() => navigation.navigate("2fa")}
+          >
+            <Text style={Styles.Txt2}>Forget fund Pin?</Text>
+            <Text style={Styles.Txt2M}> Reset now</Text>
+          </TouchableOpacity>
         </View>
       </View>
     );

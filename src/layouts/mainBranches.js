@@ -35,6 +35,7 @@ import Deposit from "../screens/depositt";
 import WithDrawl from "../screens/withDrawl";
 import DepositLayout from "../components/deposit";
 import Payments from "../screens/payments";
+import { ForgetMain, ForgetPin } from "../components/forgets";
 
 const Stack = createNativeStackNavigator();
 const BranchContainer = () => {
@@ -399,6 +400,39 @@ const BranchContainer = () => {
           component={AddressBook}
           options={{
             headerTitle: "Address Book",
+            headerShown: true,
+            headerTintColor: text_1b,
+            headerStyle: { backgroundColor: app_1 },
+            headerTitleStyle: { color: text_1b },
+          }}
+        />
+        <Stack.Screen
+          name="2fa"
+          component={ForgetMain}
+          options={{
+            headerTitle: "Verification",
+            headerShown: true,
+            headerTintColor: text_1b,
+            headerStyle: { backgroundColor: app_1 },
+            headerTitleStyle: { color: text_1b },
+          }}
+        />
+        <Stack.Screen
+          name="forgetpin"
+          component={ForgetPin}
+          options={{
+            headerTitle: "Reset Pin",
+            headerShown: true,
+            headerTintColor: text_1b,
+            headerStyle: { backgroundColor: app_1 },
+            headerTitleStyle: { color: text_1b },
+          }}
+        />
+        <Stack.Screen
+          name="forgetpassword"
+          component={ForgetPin}
+          options={{
+            headerTitle: "Reset Password",
             headerShown: true,
             headerTintColor: text_1b,
             headerStyle: { backgroundColor: app_1 },

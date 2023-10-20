@@ -87,8 +87,8 @@ const styles = StyleSheet.create({
   dataRightCon:{
   flex:1,
     width:75,
-    alignItems:"center",
-    justifyContent:"flex-end",
+    alignItems:"flex-end",
+    justifyContent:"flex-start",
     padding:10
   },
   homeDataCon: {
@@ -935,7 +935,7 @@ const styles = StyleSheet.create({
   },
   pwdChangeInput: {
     width: "100%",
-    paddingVertical: 15,
+    paddingVertical: 20,
     paddingHorizontal: 20,
     backgroundColor: bg_3,
     borderRadius: 10,
@@ -946,8 +946,8 @@ const styles = StyleSheet.create({
   },
   pwdChangeBtn: {
     backgroundColor: app_1,
-    borderRadius: "25%",
-    padding: 10,
+    borderRadius: 10,
+    padding: 20,
     width: "90%",
     marginTop: 20,
     justifyContent: "center",

@@ -145,8 +145,11 @@ const TwoD = ({navigation}) => {
           </View>
           <View style={styles._2d_liveCon}>
             <Text style={styles._2d_liveNo}>{live2D?.liveResult}</Text>
+             <Text style={styles._2d_live}>
+              Last updated
+             </Text>
             <Text style={styles._2d_live}>
-              Updated: {live2D?.currentDate+ " "+ live2D?.currentTime}
+              {live2D?.currentDate+ " "+ live2D?.currentTime}
             </Text>
             <TouchableOpacity
               onPress={() => (bet2D ? setBet2D(false) : setBet2D(true))}

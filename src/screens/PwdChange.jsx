@@ -5,9 +5,11 @@ import { FontAwesome } from "@expo/vector-icons";
 import AuthContext from "../services/auth/authContext";
 import { _CHANGE_PWD_URL } from "../hooks/config";
 import axios from "axios";
+import Styles from "../libs/Styles";
 
-const PwdChange = () =>{
-    const {userToken} = useContext(AuthContext)
+const PwdChange = ({navigation}) =>{
+    const {userToken} = useContext(AuthContext);
+
     const[oldPwd, setOldPwd] = useState("");
     const [newPwd, setNewPwd] = useState("");
     const [confirmPwd, setConfirmPwd] = useState("");
@@ -62,7 +64,11 @@ const PwdChange = () =>{
             style={styles.Eye1}
             onPress={() => (showPwd1 ? setShowPwd1(false) : setShowPwd1(true))}
           >
-            <FontAwesome name={showPwd1?"eye-slash":"eye"} size={24} color={app_1} />
+            <FontAwesome
+              name={showPwd1 ? "eye-slash" : "eye"}
+              size={24}
+              color={app_1}
+            />
           </TouchableOpacity>
         </View>
         <View style={styles.pwdInputCon}>
@@ -96,11 +102,19 @@ const PwdChange = () =>{
             style={styles.Eye1}
             onPress={() => (showPwd3 ? setShowPwd3(false) : setShowPwd3(true))}
           >
-            <FontAwesome name={showPwd3?"eye-slash":"eye"} size={24} color={app_1} />
+            <FontAwesome
+              name={showPwd3 ? "eye-slash" : "eye"}
+              size={24}
+              color={app_1}
+            />
           </TouchableOpacity>
         </View>
         <TouchableOpacity style={styles.pwdChangeBtn} onPress={ChangePwdFnc}>
           <Text style={styles.pwdChangetxt}>Confirm</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={Styles.forgetBtn} onPress={()=>navigation.navigate("2fa")}>
+          <Text style={Styles.Txt2}>Forget password?</Text>
+          <Text style={Styles.Txt2M}> Reset now</Text>
         </TouchableOpacity>
       </View>
     );
