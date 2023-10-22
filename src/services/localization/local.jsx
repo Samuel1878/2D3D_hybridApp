@@ -10,12 +10,33 @@ const Local = ({children}) =>{
     const [withMethod,setWithMethod] = useState("");
     const [deposit,setDeposit] = useState("");
     const [withDraw,setWithdraw] = useState("");
+    const [forgetNo, setForgetNo] = useState("");
 
-    return(
-        <LocalContext.Provider 
-            value={{mode,lang,setLang,setMode,setSendTo,sendTo,detail,setDetail,depoMethod,setDepoMethod,withMethod,setWithMethod, deposit,setDeposit,withDraw,setWithdraw}}>
-            {children}
-        </LocalContext.Provider>
-    )
+    return (
+      <LocalContext.Provider
+        value={{
+          mode,
+          lang,
+          setLang,
+          setMode,
+          setSendTo,
+          sendTo,
+          detail,
+          setDetail,
+          depoMethod,
+          setDepoMethod,
+          withMethod,
+          setWithMethod,
+          deposit,
+          setDeposit,
+          withDraw,
+          setWithdraw,
+          forgetNo,
+          setForgetNo,
+        }}
+      >
+        {children}
+      </LocalContext.Provider>
+    );
 }
 export default Local ;

@@ -559,19 +559,18 @@ const Styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-around",
-    borderLeftColor:bg_3b,
-    borderLeftWidth:10,
-    marginVertical:2,
-    borderTopRightRadius:10,
-    borderBottomLeftRadius:5,
-    borderTopLeftRadius:5
-  
+    borderLeftColor: bg_3b,
+    borderLeftWidth: 10,
+    marginVertical: 2,
+    borderTopRightRadius: 10,
+    borderBottomLeftRadius: 5,
+    borderTopLeftRadius: 5,
   },
   recentImg: {
-    width:50,
-    height:50,
-    borderRadius:50,
-    marginHorizontal:20
+    width: 50,
+    height: 50,
+    borderRadius: 50,
+    marginHorizontal: 20,
   },
   recentTxt: {
     fontSize: 21,
@@ -740,10 +739,10 @@ const Styles = StyleSheet.create({
     marginVertical: 20,
   },
   //FORGET BTN
-  
-  forgetBtn:{
-    flexDirection:"row",
-    alignItems:"center"
+
+  forgetBtn: {
+    flexDirection: "row",
+    alignItems: "center",
   },
   changePinCon: {
     padding: 5,
@@ -757,22 +756,38 @@ const Styles = StyleSheet.create({
     color: text_1b,
   },
   ///FORGET PAGE
-  forgetContainer:{
-    flex:1,
+  forgetContainer: {
+    flex: 1,
+    justifyContent: "space-between",
+    alignItems: "center",
+    backgroundColor: bg_2,
+    paddingVertical: 20,
+  },
+  phoneCon: {
+    backgroundColor: bg_3,
+    width: "90%",
+  },
+  phoneInput: {
+    padding: 20,
+    backgroundColor: bg_3,
+    borderRadius: 5,
+  },
+  _2fa: {
+    padding: 20,
+    backgroundColor: bg_3,
+    borderRadius: 5,
+  },
+  _2faCon:{
+    flexDirection:"row",
     justifyContent:"space-between",
-    alignItems:"center",
-    backgroundColor:bg_2,
-    paddingVertical:20
+    alignItems:"center"
   },
-  phoneCon:{
-    backgroundColor:bg_3,
-    width:"90%"
-  },
-  phoneInput:{
-    padding:20,
-
-  },
-
+_2faBtns:{
+  padding:20,
+  backgroundColor:bg_3b,
+  borderRadius:5,
+  marginHorizontal:5
+},
   ////INPUTSSS
   good: {
     fontSize: 15,
