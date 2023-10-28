@@ -18,22 +18,21 @@ const viewItem = ()=>{
 };
 const RenderItem = ({item}) =>{
  return (
-   <TouchableOpacity onPress={viewItem}>
-     <View style={Styles.itemContainer}>
-       <LottieView
-         style={Styles.img}
-         autoPlay
-         source={require("../../assets/deposit.json")}
-       />
-       <Text style={Styles.hisAmount}>
-         {item.type === "withdrawl" ? " - " : " + "}
-         {item.amount}
-       </Text>
-       <View style={Styles.itemCashInOut}>
-         <Text style={Styles.hisH}>{item.name}</Text>
-         <Text style={Styles.hisDate}>{item.phone}</Text>
-       </View>
+   <TouchableOpacity onPress={viewItem} style={Styles.itemContainer}>
+     <LottieView
+       style={Styles.img}
+       autoPlay
+       source={require("../../assets/deposit.json")}
+     />
+
+     <View style={Styles.itemCashInOut}>
+       <Text style={Styles.hisH}>{item.name}</Text>
+       <Text style={Styles.hisDate}>{item.phone}</Text>
      </View>
+     <Text style={Styles.hisAmount}>
+       {item.type === "withdrawl" ? " - " : " + "}
+       {item.amount}
+     </Text>
    </TouchableOpacity>
  );
 
@@ -82,7 +81,7 @@ useEffect(()=>{
           <Text style={Styles.btnTxt2}>Withdrawl</Text>
         </TouchableOpacity>
       </View>
-      <View style={Styles.TranHisCon}>
+      <View style={Styles.cashServiceCon}>
         {!isDepo ? (
           <FlatList
             keyExtractor={(item) => item._id}
@@ -90,6 +89,7 @@ useEffect(()=>{
             data={withDrawl}
             extraData={data}
             bounces={false}
+            horizontal={false}
             showsHorizontalScrollIndicator={false}
             showsVerticalScrollIndicator={false}
           />
@@ -100,6 +100,7 @@ useEffect(()=>{
             data={deposit}
             extraData={data}
             bounces={false}
+            horizontal={false}
             showsHorizontalScrollIndicator={false}
             showsVerticalScrollIndicator={false}
           />

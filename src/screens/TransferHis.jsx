@@ -52,10 +52,10 @@ const TransferHis = ()=> {
 
         <View style={Styles.hisTopHeaderCon}>
           <TouchableOpacity
-            style={Styles.hisCashInOutBtn} 
-            onPress={()=>navigation.navigate("cashinout")}>
-            <Text style={Styles.btnTxt3}> Cash  
-                in/out</Text>
+            style={Styles.hisCashInOutBtn}
+            onPress={() => navigation.navigate("cashinout")}
+          >
+            <Text style={Styles.btnTxt3}> Cash in/out</Text>
           </TouchableOpacity>
         </View>
         <View style={Styles.hisTopCon}>
@@ -86,6 +86,7 @@ const TransferHis = ()=> {
                 renderItem={renderItem}
                 data={transactions}
                 extraData={transactions}
+                bounces={false}
               />
             )}
           </View>
@@ -97,6 +98,7 @@ const TransferHis = ()=> {
                 renderItem={renderItem}
                 extraData={receive}
                 data={receive}
+                bounces={false}
               />
             )}
           </View>

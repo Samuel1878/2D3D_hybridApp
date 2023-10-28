@@ -15,14 +15,19 @@ const Transfer = () => {
        navigation.navigate("addressbook")
     };
     const nextFnc = () =>{
-        setSendTo(tphone)
-        navigation.navigate("TransferMain")
+      setSendTo(tphone)
+       navigation.navigate("TransferMain");
+      
     };
     
     const renderRecent = ({item,index})=>{
-        const pressFnc = () => {
-          setTphone(recentArray[index][1]);
-          nextFnc();
+        const pressFnc = async() => {
+         setTphone(recentArray[index][1]);
+         setSendTo(tphone)
+        //  setTimeout(() => {
+        //     navigation.navigate("TransferMain");
+        //  }, 3000);
+        // 
 
         };
         return(

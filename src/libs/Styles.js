@@ -631,7 +631,7 @@ const Styles = StyleSheet.create({
     backgroundColor: bg_3,
     padding: 10,
     borderRadius: 5,
-    marginVertical: 10,
+    marginVertical: 5,
     width: "100%",
     flexDirection: "row",
     alignItems: "center",
@@ -1202,26 +1202,31 @@ _2faBtns:{
   cashServiceCon: {
     flex: 1,
     backgroundColor: bg_3,
-    borderRadius: 10,
+    borderRadius: 5,
     margin: 10,
     alignItems: "center",
     justifyContent: "space-around",
   },
   itemContainer: {
-    padding: 5,
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     marginVertical: 5,
     width: "95%",
     backgroundColor: bg_3,
     alignItems: "center",
     borderRadius: 5,
+    borderBottomWidth:2,
+    borderBottomColor:bg_2,
+    height:72
   },
   img: {
     width: 70,
     height: 70,
   },
-  itemCashInOut: {},
+  itemCashInOut: {
+    paddingHorizontal:10
+
+  },
 
   customerBtn: {
     width: 170,

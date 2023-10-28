@@ -419,6 +419,27 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginVertical: 5,
   },
+  Payments:{
+    width:125,
+    height:250,
+    backgroundColor:bg_3,
+    alignItems:"center",
+    marginHorizontal:5,
+    borderRadius:10,
+    justifyContent:"space-between"
+  },
+  Payment:{
+    alignItems:"center",
+    padding:10,
+    // justifyContent:"space-between"
+  },
+  PaymentImg:{
+    width:"100%",
+    height:125,
+    borderTopLeftRadius:10,
+    borderTopRightRadius:10,
+
+  },
   paymentImg: {
     width: 50,
     height: 50,
@@ -433,6 +454,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: "Roboto_Bold",
     fontWeight: "700",
+    margin:5
   },
   paymentP: {
     color: app_1,
@@ -446,6 +468,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: app_1,
     borderRadius: 5,
+    margin:5
   },
   paymentEdTxt: {
     color: text_1b,

@@ -47,7 +47,7 @@ const Wallet = ()=>{
             img = cbPay
             break;
         }
-        return(<Image style={styles.paymentImg} source={img}/>)
+        return(<Image style={styles.PaymentImg} source={img}/>)
       }
       const EditPayment = () =>{
          switch (item.method) {
@@ -70,27 +70,30 @@ const Wallet = ()=>{
         
       }
       return (
-        <View style={styles.payments}>
+        <View style={styles.Payments}>
           <RenderImg />
-          <View style={styles.payment}>
+          <View style={styles.Payment}>
             <Text style={styles.paymentN}>{item?.name}</Text>
             <Text style={styles.paymentP}> {item?.phone}</Text>
+
+            <TouchableOpacity style={styles.paymentEd} onPress={EditPayment}>
+              <Text style={styles.paymentEdTxt}>Edit</Text>
+            </TouchableOpacity>
           </View>
-          <TouchableOpacity style={styles.paymentEd} onPress={EditPayment}>
-            <Text style={styles.paymentEdTxt}>Edit</Text>
-          </TouchableOpacity>
         </View>
       );
 
     };
         useEffect(()=>{
-          console.debug(payments)
+          
+          setData(payments);
       if(!payments){
         setData(Data);
         return
-      }else{
-        setData(payments)
       }
+      console.debug(data);
+        
+      
     },[payments,refreshing]);
     const onRefresh = useCallback(() => {
       setRefreshing(true);
@@ -305,10 +308,12 @@ const Wallet = ()=>{
                 <FlatList
                   data={data}
                   renderItem={RenderPayments}
-                  keyExtractor={(item) => item.phone}
+                  keyExtractor={(item) => item.method}
                   extraData={data}
+                  //initialScrollIndex={1}
                   bounces={false}
-                  showsVerticalScrollIndicator={false}
+                  horizontal={true}
+                  showsHorizontalScrollIndicator={false}
                   // refreshControl={
                   //   <RefreshControl
                   //
@@ -320,7 +325,7 @@ const Wallet = ()=>{
               </View>
             </View>
           </View>
-          <Text style={Styles.Txt2}>
+          <Text style={Styles.Txt4}>
             quos eos nihil voluptas ipsa aliquid. Veniam.
           </Text>
         </ScrollView>
