@@ -52,20 +52,19 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     // justifyContent: "center",
     // alignItems: "center",
-    flexDirection:"row",
+    flexDirection: "row",
     shadowColor: app_1,
     shadowOpacity: 0.2,
     shadowRadius: 10,
     shadowOffset: { x: 10, y: 10 },
   },
-  dataLeftCon:{
-    width:100,
-    padding:5,
-    alignItems:"center",
-    justifyContent:"flex-end"
-    
+  dataLeftCon: {
+    width: 100,
+    padding: 5,
+    alignItems: "center",
+    justifyContent: "flex-end",
   },
-  
+
   liveNo: {
     fontSize: 25,
     fontWeight: "900",
@@ -81,15 +80,15 @@ const styles = StyleSheet.create({
     color: bg_2,
     fontFamily: "Roboto",
   },
-  dataMidCon:{
-    flex:1,
+  dataMidCon: {
+    flex: 1,
   },
-  dataRightCon:{
-  flex:1,
-    width:75,
-    alignItems:"flex-end",
-    justifyContent:"flex-start",
-    padding:10
+  dataRightCon: {
+    flex: 1,
+    width: 75,
+    alignItems: "flex-end",
+    justifyContent: "flex-start",
+    padding: 10,
   },
   homeDataCon: {
     justifyContent: "center",
@@ -270,33 +269,64 @@ const styles = StyleSheet.create({
     backgroundColor: bg_1,
   },
   //Wallet///////////////////////////////////
-  wallets:{
-    height:"120%",
-    backgroundColor:app_1,
-    padding:0,
-  },
-  WALLETscrollView:{
-    flex:1,
-    padding:0
-  },
-  wallet: {
+  linearCon: {
     flex: 1,
+    justifyContent:"space-between"
+  },
+  wallets: {
+    height: "100%",
+    backgroundColor: bg_2,
+    padding: 0,
+  },
+  WALLETscrollView: {
+    flex: 1,
+    padding: 0,
+    backgroundColor: bg_2,
+  },
+  walletTopCon: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingHorizontal: 20,
+    paddingTop: 20,
+    flex: 1,
+    backgroundColor: bg_2,
+  },
+  walletTopL: {
+    padding: 5,
+    borderRadius: "10%",
     backgroundColor: bg_1,
   },
+
+  walletTopR: {
+    padding: 5,
+    borderRadius: "100%",
+    backgroundColor: bg_1,
+  },
+  walletImage: {
+    width: 60,
+    height: 60,
+  },
+  wallet: {
+    flex: 6,
+    backgroundColor: bg_2,
+  },
   walletMainCon: {
-    flex: .9,
-    backgroundColor: app_1,
-    position: "relative",
+    flex: 1.5,
+    flexDirection: "row",
   },
   walletMain: {
     flex: 1,
-    flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
   },
   scanBtn: {
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: bg_1,
+    borderRadius: "15%",
+    width: "80%",
+    height: 90,
   },
   walletBtnTxt: {
     color: text_1b,
@@ -304,26 +334,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   ballanceCon: {
-    width: "auto",
-    height: 100,
-    position: "absolute",
-    bottom: "-25%",
-    left: 15,
-    right: 15,
-    borderWidth: 0,
-    borderRadius: 15,
-    backgroundColor: bg_3,
-    shadowColor: bg_1,
-    shadowOpacity: 0.5,
-    shadowRadius: 0.5,
-    shadowOffset: { x: 5, y: 5 },
-    flexDirection: "row",
-    alignItems: "center",
-    paddingLeft: 10,
+    flex: 2,
+    backgroundColor: app_1,
+    margin: 10,
+    borderRadius: 10,
+    overflow: "hidden",
   },
   ballanceHeader: {
-    color: app_1,
-    fontSize: 18,
+    color: text_1b,
+    fontSize: 13,
     fontFamily: "Roboto_Bold",
     fontWeight: "600",
 
@@ -332,10 +351,39 @@ const styles = StyleSheet.create({
   ballanceD: {
     marginLeft: 20,
     margin: 5,
-    color: app_1,
-    fontSize: 21,
+    color: text_1b,
+    fontSize: 32,
     fontFamily: "Roboto_Bold",
     fontWeight: "600",
+  },
+  ballanceBox: {
+    flexDirection: "row",
+    marginVertical: 10,
+  },
+  balanceCon:{
+    flexDirection:"row",
+    alignItems:"center",
+    justifyContent:"space-around"
+  },
+  balanceNo: {
+    color: text_1b,
+    fontSize: 19,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+  },
+  userTxt: {
+    color: bg_2,
+    fontSize: 17,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "400",
+    marginLeft:20,
+    
+  },
+  qrCodeBtn:{
+    backgroundColor:bg_2,
+    padding:10,
+    borderRadius:"20%",
+    margin:5
   },
   eye: {
     justifyContent: "center",
@@ -349,31 +397,27 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   walletBtnCon: {
-    width: "95%",
-    height: 220,
-    paddingTop: 65,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
-    flexWrap: "wrap",
+    justifyContent: "space-around",
+    padding: 15,
+  },
+  walletBtnCons: {
+    alignItems: "center",
+    flex: 1,
   },
   walletBtns: {
     backgroundColor: bg_3,
-    width: 175,
-    margin: 10,
+    width: 85,
+    marginBottom: 5,
     alignItems: "center",
-    flexDirection: "row",
-    borderRadius: "10%",
+    borderRadius: "16%",
   },
   walletBtnImg: {
     width: 60,
     height: 60,
   },
   scanLoti: {
-    width: 70,
-    height: 70,
-  },
-  cashInOut: {
     width: 70,
     height: 70,
   },
@@ -384,7 +428,7 @@ const styles = StyleSheet.create({
     fontWeight: "500",
   },
   walletBtnsTxt: {
-    color: app_1,
+    color: text_1,
     fontSize: 14,
     fontFamily: "Roboto_Bold",
     fontWeight: "600",
@@ -399,7 +443,7 @@ const styles = StyleSheet.create({
   },
 
   paymentsCon: {
-    height:500,
+    height: 500,
     width: "95%",
   },
   paymentHeader: {
@@ -419,26 +463,25 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginVertical: 5,
   },
-  Payments:{
-    width:125,
-    height:250,
-    backgroundColor:bg_3,
-    alignItems:"center",
-    marginHorizontal:5,
-    borderRadius:10,
-    justifyContent:"space-between"
+  Payments: {
+    width: 125,
+    height: 250,
+    backgroundColor: bg_3,
+    alignItems: "center",
+    marginHorizontal: 5,
+    borderRadius: 10,
+    justifyContent: "space-between",
   },
-  Payment:{
-    alignItems:"center",
-    padding:10,
+  Payment: {
+    alignItems: "center",
+    padding: 10,
     // justifyContent:"space-between"
   },
-  PaymentImg:{
-    width:"100%",
-    height:125,
-    borderTopLeftRadius:10,
-    borderTopRightRadius:10,
-
+  PaymentImg: {
+    width: "100%",
+    height: 125,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
   },
   paymentImg: {
     width: 50,
@@ -454,7 +497,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: "Roboto_Bold",
     fontWeight: "700",
-    margin:5
+    margin: 5,
   },
   paymentP: {
     color: app_1,
@@ -468,7 +511,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: app_1,
     borderRadius: 5,
-    margin:5
+    margin: 5,
   },
   paymentEdTxt: {
     color: text_1b,
