@@ -13,13 +13,11 @@ const Bet = () => {
     const [is2D, setIs2D] = useState(true);
     const [isEditable, setIsEditable] = useState(false);
     const [edited, setEdited] = useState(null);
-    const [date,setDate] = useState(null);
     const {userToken} = useContext(AuthContext)
     const conFirmOrder = ()=>{
         const betDigit2D = betDigits2D.map((e)=>({
             number:e.pair,
             amount:e.amount,
-            betDate:date,
         }))
            axios.post(_2d_BET_URL, betDigit2D,
             {params:{
@@ -28,18 +26,12 @@ const Bet = () => {
             headers:{
                 "Content-Type":"application/json"
             }
-            }).then((e)=>console.log(e.status))
+            }).then((e)=>console.log(e.status,e.data.message)).catch((e)=>console.log(e))
     
 }
     const changeAmount = (e)=>{
         betDigits2D[edited]["amount"] = e
     }
-    useEffect(()=>{
-        const res = dateGenerator();
-        setDate(res._j);
-    
-
-    },[])
    
     return (
       <TouchableWithoutFeedback onPress={()=>Keyboard.dismiss()&& setIsEditable(false)}>

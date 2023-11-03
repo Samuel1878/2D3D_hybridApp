@@ -13,9 +13,10 @@ const Home = ({navigation}) => {
     const [refreshing, setRefreshing]= useState(false);
     const {setIsLoading} = useContext(GlobalContext);
 
-    console.log(i18n.languages)
+    
     useEffect(()=>{
-      refreshing && setIsLoading(true)
+      refreshing && setIsLoading(true);
+      refreshing && console.log(i18n.languages);
     },[refreshing])
 
     

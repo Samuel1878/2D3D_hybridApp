@@ -271,7 +271,7 @@ const styles = StyleSheet.create({
   //Wallet///////////////////////////////////
   linearCon: {
     flex: 1,
-    justifyContent:"space-between"
+    justifyContent: "space-between",
   },
   wallets: {
     height: "100%",
@@ -360,30 +360,44 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginVertical: 10,
   },
-  balanceCon:{
-    flexDirection:"row",
-    alignItems:"center",
-    justifyContent:"space-around"
+  balanceCon: {
+    padding: 10,
   },
+
   balanceNo: {
     color: text_1b,
     fontSize: 19,
     fontFamily: "Roboto_Bold",
     fontWeight: "600",
+    marginLeft: 20,
   },
   userTxt: {
     color: bg_2,
     fontSize: 17,
     fontFamily: "Roboto_Bold",
     fontWeight: "400",
-    marginLeft:20,
-    
+    marginLeft: 10,
   },
-  qrCodeBtn:{
-    backgroundColor:bg_2,
-    padding:10,
-    borderRadius:"20%",
-    margin:5
+  qrCodePressed: {
+    backgroundColor: bg_1,
+    padding: 10,
+    borderRadius: "10%",
+    height: "100%",
+    width:"100%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  qrCodeBtn: {
+    backgroundColor: bg_1,
+    borderRadius: "20%",
+    margin: 5,
+    position: "absolute",
+    width: 70,
+    height: 70,
+    right: 10,
+    bottom: 10,
+    justifyContent: "center",
+    alignItems: "center",
   },
   eye: {
     justifyContent: "center",
@@ -1724,14 +1738,14 @@ const styles = StyleSheet.create({
     width: "100%",
     padding: 10,
     backgroundColor: bg_3,
-    marginVertical: 10,
-    borderRadius: 10,
+    marginVertical: 5,
+    borderRadius: 5,
     flexDirection: "row",
     justifyContent: "space-around",
   },
   hisTxt: {
     fontSize: 18,
-    color: app_1,
+    color: text_1,
   },
 
   ///TWO_D ANALYSIS

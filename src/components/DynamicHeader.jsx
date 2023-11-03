@@ -23,9 +23,6 @@ const DynamicHeader = ({navigation, animHeaderValue}) => {
      });
      const toggleMode = () => setMode((previousState) => !previousState);
 
-     useEffect(()=>{
-        console.debug(live2D)
-     },[live2D])
 
     return (
       <Animated.View

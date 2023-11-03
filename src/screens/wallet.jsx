@@ -17,11 +17,15 @@ import LogReg from "../layouts/logReg";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Styles from "../libs/Styles";
 import { LinearGradient } from "expo-linear-gradient";
+import SocketContext from "../services/socket/socketContext";
+import { FETCH_INFO } from "../libs/actions";
 const Wallet = ()=>{ 
   const {money,navigation,payments} = useContext(GlobalContext);
-  const {userToken} = useContext(AuthContext)
+  const {userToken} = useContext(AuthContext);
+  const {socket} = useContext(SocketContext)
   const [data,setData]= useState([]);
   const [opened, setOpened] = useState(false);
+  const [qr,setQr] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
 
   
@@ -84,15 +88,12 @@ const Wallet = ()=>{
       );
 
     };
-        useEffect(()=>{
-          
-          setData(payments);
-      if(!payments){
+  useEffect(()=>{
+    refreshing && socket.emit(FETCH_INFO,userToken)
+    payments&&setData(payments);
+    if(!payments){
         setData(Data);
-      }
-      console.debug(data);
-        
-      
+      }   
     },[payments,refreshing]);
     const onRefresh = useCallback(() => {
       setRefreshing(true);
@@ -177,32 +178,23 @@ const Wallet = ()=>{
                         />
                       </TouchableOpacity>
                     </View>
-                    <View>
+                    <View style={styles.balanceCon}>
                       <Text style={styles.userTxt}>LEVEL ONE USER</Text>
-                      <View style={styles.balanceCon}>
-                        <Text style={styles.balanceNo}>*** ***** **830</Text>
-                        <TouchableOpacity style={styles.qrCodeBtn}>
-                          <MaterialCommunityIcons
-                            name="qrcode"
-                            size={45}
-                            color={app_1}
-                          />
-                        </TouchableOpacity>
-                      </View>
+                      <Text style={styles.balanceNo}>09 6822 88830</Text>
                     </View>
                   </LinearGradient>
+                  <TouchableOpacity
+                    style={!qr ? styles.qrCodeBtn : styles.qrCodePressed}
+                    onPress={() => (!qr && setQr(true)) || (qr && setQr(false))}
+                  >
+                    <MaterialCommunityIcons
+                      name="qrcode"
+                      size={qr ? 200 : 45}
+                      color={app_1}
+                    />
+                  </TouchableOpacity>
                 </View>
                 <View style={styles.walletMain}>
-                  {/* <TouchableOpacity onPress={scanFunc} style={styles.scanBtn}>
-                  <MaterialCommunityIcons
-                    name="line-scan"
-                    size={45}
-                    color={text_1b}
-                  />
-
-                  <Text style={styles.walletBtnTxt}>Scan</Text>
-                </TouchableOpacity> */}
-
                   <TouchableOpacity
                     onPress={() => navigation.navigate("deposit")}
                     style={styles.scanBtn}
@@ -260,7 +252,7 @@ const Wallet = ()=>{
                         source={require("../../assets/historyBlue.json")}
                       />
                     </TouchableOpacity>
-                    <Text style={styles.walletBtnsTxt}>History</Text>
+                    <Text style={styles.walletBtnsTxt}>Receipt</Text>
                   </View>
 
                   <View style={styles.walletBtnCons}>
