@@ -6,6 +6,7 @@ const Local = ({children}) =>{
     const [theme, setTheme] = useState("dark")
     const [sendTo, setSendTo] = useState("");
     const [detail, setDetail] = useState({});
+    const [receipts,setReceipts] = useState({});
     const [depoMethod, setDepoMethod] = useState("");
     const [withMethod,setWithMethod] = useState("");
     const [deposit,setDeposit] = useState("");
@@ -35,7 +36,9 @@ const Local = ({children}) =>{
           forgetNo,
           setForgetNo,
           vouchers,
-          setVouchers
+          setVouchers,
+          receipts,
+          setReceipts
         }}
       >
         {children}

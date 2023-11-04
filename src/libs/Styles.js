@@ -580,42 +580,40 @@ const Styles = StyleSheet.create({
   },
   ///TRANSACTION HISTORY
   TranHisCon: {
-    width: "100%",
-    flex: 1,
+    width: "95%",
     justifyContent: "center",
     alignItems: "center",
-    padding: 10,
   },
-  hisTopHeaderCon: {
-    width: 100,
-    height: 50,
-    position: "absolute",
-    top: 5,
-    right: 15,
-  },
-  hisCashInOutBtn: {
-    flex: 1,
-    backgroundColor: app_1,
-    borderRadius: 25,
-    alignItems: "center",
-    justifyContent: "center",
-    margin: 5,
-    zIndex: 99,
-  },
+  // hisTopHeaderCon: {
+  //   width: 100,
+  //   height: 50,
+  //   position: "absolute",
+  //   top: 5,
+  //   right: 15,
+  // },
+  // hisCashInOutBtn: {
+  //   flex: 1,
+  //   backgroundColor: app_1,
+  //   borderRadius: 25,
+  //   alignItems: "center",
+  //   justifyContent: "center",
+  //   margin: 5,
+  //   zIndex: 99,
+  // },
   hisTopCon: {
     flexDirection: "row",
-    height: 75,
+    height: 50,
     width: "100%",
-    paddingVertical: 10,
+    backgroundColor: bg_2,
   },
   hisTopBtn: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: bg_3,
+    backgroundColor: bg_2,
   },
   RecHisCon: {
-    width: "100%",
+    width: "95%",
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
@@ -625,26 +623,25 @@ const Styles = StyleSheet.create({
     fontFamily: "Roboto_Bold",
     fontWeight: "600",
     color: app_1,
-    marginVertical: 15,
   },
   hisItemCon: {
     backgroundColor: bg_3,
-    padding: 10,
+    padding: 5,
     borderRadius: 5,
     marginVertical: 5,
-    width: "100%",
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "space-between",
   },
   hisItemImg: {
-    width: 60,
-    height: 60,
+    width: 50,
+    height: 50,
   },
   hisItem: {
     padding: 5,
   },
   hisH: {
-    fontSize: 17,
+    fontSize: 16,
     fontFamily: "Roboto_Bold",
     fontWeight: "600",
     color: app_1,
@@ -660,6 +657,33 @@ const Styles = StyleSheet.create({
     fontFamily: "Roboto_Bold",
     fontWeight: "600",
     color: app_1,
+  },
+  ///Cash In Out
+  cashServiceCon: {
+    flex: 1,
+    backgroundColor: bg_3,
+    borderRadius: 5,
+    margin: 10,
+    alignItems: "center",
+    justifyContent: "space-around",
+  },
+  cashInItemCon: {
+    backgroundColor: bg_3,
+    padding: 5,
+    borderRadius: 5,
+    marginVertical: 5,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width:365
+  },
+
+  img: {
+    width: 70,
+    height: 70,
+  },
+  itemCashInOut: {
+    paddingHorizontal: 10,
   },
   ///Details
   detailTop: {
@@ -1197,49 +1221,6 @@ const Styles = StyleSheet.create({
     alignItems: "center",
     padding: 20,
     borderRadius: 5,
-  },
-  ///Cash In Out
-  cashServiceCon: {
-    flex: 1,
-    backgroundColor: bg_3,
-    borderRadius: 5,
-    margin: 10,
-    alignItems: "center",
-    justifyContent: "space-around",
-  },
-  itemContainer: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    marginVertical: 5,
-    width: "95%",
-    backgroundColor: bg_3,
-    alignItems: "center",
-    borderRadius: 5,
-    borderBottomWidth: 2,
-    borderBottomColor: bg_2,
-    height: 72,
-  },
-  img: {
-    width: 70,
-    height: 70,
-  },
-  itemCashInOut: {
-    paddingHorizontal: 10,
-  },
-
-  customerBtn: {
-    width: 170,
-    borderRadius: "100%",
-    overflow: "hidden",
-    marginHorizontal: 10,
-    backgroundColor: app_1,
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  customer: {
-    width: 70,
-    height: 70,
-    marginRight: 10,
   },
 
   ////Common TXT
