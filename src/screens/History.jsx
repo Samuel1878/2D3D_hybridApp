@@ -1,17 +1,22 @@
-import { FlatList, View,Text, RefreshControl } from "react-native";
+import { FlatList, View,Text, RefreshControl, TouchableOpacity } from "react-native";
 import styles, { app_1 } from "../libs/style";
 import { useCallback, useContext, useEffect, useState } from "react";
 import GlobalContext from "../services/global/globalContext";
 import SocketContext from "../services/socket/socketContext";
 import { TWODHISTORY } from "../libs/actions";
 import AuthContext from "../services/auth/authContext";
+import LocalContext from "../services/localization/localContext";
+import { Picker } from "@react-native-picker/picker";
 
 const History = () => {
   const [loading,setLoading] = useState(true);
   const {userToken} = useContext(AuthContext);
-  const {history_2D,setHistory_2D} = useContext(GlobalContext);
+  const {history_2D,setHistory_2D,navigation} = useContext(GlobalContext);
+  const {setVouchers} = useContext(LocalContext);
   const {socket} = useContext(SocketContext);
   const [refreshing,setRefreshing] = useState(false);
+  const [page,setPage] = useState("1")
+
     
   const onRefresh = useCallback(() => {
     setRefreshing(true);
@@ -23,23 +28,43 @@ const History = () => {
       socket && socket.emit(TWODHISTORY,userToken);
      socket.off(TWODHISTORY).on(TWODHISTORY, (data)=>{
         console.log(data);
-        setHistory_2D(data)
+        setHistory_2D(data);
       })
   },[refreshing])
    const Item = ({item})=>{
-    let time = item?.section==="af"?"PM":"AM"
+    let time = item?.section==="af"?"PM":"AM";
+    const pressFnc = () => {
+      setVouchers(item);
+      navigation.navigate("vouchers");
+
+      
+    };
     return (
-      <View style={styles.hisItem}>
+      <TouchableOpacity style={styles.hisItem} onPress={pressFnc}>
         <Text style={styles.hisTxt}>{item?.number}</Text>
         <Text style={styles.hisTxt}>{item?.date+"/"+item?.month+"/"+item?.year}{" : "+time}</Text>
 
         <Text style={styles.hisTxt}>{item?.amount}</Text>
-      </View>
+        <Text>{item.finished?"expired":"new"}</Text>
+      </TouchableOpacity>
     );
    }
 
   return (
     <View style={styles.History2D}>
+      <View style={styles.pickerCon}>
+        <Picker
+          selectedValue={page}
+          style={styles.picker}
+          dropdownIconColor={app_1}
+          itemStyle={styles._2d_filterItem}
+          onValueChange={(itemValue, itemIndex) => setPage(itemValue)}
+        >
+          <Picker.Item label="30 Day" value="30" />
+          <Picker.Item label="3 Month" value="90" />
+          <Picker.Item label="1 Year" value="365" />
+        </Picker>
+      </View>
       <FlatList
         data={history_2D}
         keyExtractor={(item) => Math.random()}

@@ -18,7 +18,7 @@ const Global = ({children})=>{
     const [history_2D, setHistory_2D] = useState([]);
     const [history_3D, setHistory_3D] = useState([]);
     // const [marketOpen, setMarketOpen] = useState(false);
-//  useEffect(()=>{history?.reverse()},[history])
+//  useEffect(()=>{history_2D?.reverse()},[history_2D])
         
     // useEffect(()=>{
     //    if(loadedD){

@@ -11,6 +11,7 @@ const Local = ({children}) =>{
     const [deposit,setDeposit] = useState("");
     const [withDraw,setWithdraw] = useState("");
     const [forgetNo, setForgetNo] = useState("");
+    const [vouchers ,setVouchers] = useState({});
 
     return (
       <LocalContext.Provider
@@ -33,6 +34,8 @@ const Local = ({children}) =>{
           setWithdraw,
           forgetNo,
           setForgetNo,
+          vouchers,
+          setVouchers
         }}
       >
         {children}

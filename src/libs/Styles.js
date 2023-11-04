@@ -777,17 +777,17 @@ const Styles = StyleSheet.create({
     backgroundColor: bg_3,
     borderRadius: 5,
   },
-  _2faCon:{
-    flexDirection:"row",
-    justifyContent:"space-between",
-    alignItems:"center"
+  _2faCon: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
-_2faBtns:{
-  padding:20,
-  backgroundColor:bg_3b,
-  borderRadius:5,
-  marginHorizontal:5
-},
+  _2faBtns: {
+    padding: 20,
+    backgroundColor: bg_3b,
+    borderRadius: 5,
+    marginHorizontal: 5,
+  },
   ////INPUTSSS
   good: {
     fontSize: 15,
@@ -1215,17 +1215,16 @@ _2faBtns:{
     backgroundColor: bg_3,
     alignItems: "center",
     borderRadius: 5,
-    borderBottomWidth:2,
-    borderBottomColor:bg_2,
-    height:72
+    borderBottomWidth: 2,
+    borderBottomColor: bg_2,
+    height: 72,
   },
   img: {
     width: 70,
     height: 70,
   },
   itemCashInOut: {
-    paddingHorizontal:10
-
+    paddingHorizontal: 10,
   },
 
   customerBtn: {
@@ -1309,6 +1308,27 @@ _2faBtns:{
   loader: {
     width: 50,
     height: 50,
+  },
+  ///Voucher
+  voucherCon: {
+    flex: 1,
+    backgroundColor: bg_2,
+    alignItems: "center",
+    paddingTop: 20,
+  },
+  Vounumber: {
+    marginVertical: 25,
+    fontSize: 30,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+    color: app_1,
+  },
+  rowCon: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: 10,
+    width: "90%",
   },
 });
 export default Styles
