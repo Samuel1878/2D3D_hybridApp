@@ -10,7 +10,7 @@ import SocketContext from "../services/socket/socketContext";
 import { TOPUP, TRANSACTION } from "../libs/actions";
 import AuthContext from "../services/auth/authContext";
 const TransferHis = ()=> {
-  const { transactions, setTransactions, topUp, setTopUp, navigation } =
+  const { transactions, setTransactions, topUp, setTopUp, navigation,name,phone } =
     useContext(GlobalContext);
   const { socket } = useContext(SocketContext);
   const { setDetail ,setReceipts} = useContext(LocalContext);
@@ -88,7 +88,7 @@ const TransferHis = ()=> {
         />
         <View style={Styles.hisItem}>
           <Text style={Styles.hisH}>
-            {item.to
+            {item.fromName === name || item.fromPhone === phone
               ? "Transfer To " + item.toName
               : "Received from" + item.fromName}
           </Text>
@@ -98,7 +98,7 @@ const TransferHis = ()=> {
           </Text>
         </View>
         <Text style={Styles.hisAmount}>
-          {item.to ? " - " : " + "}
+          {item.fromName === name || item.fromPhone === phone ? " - " : " + "}
           {item.amount}
         </Text>
       </TouchableOpacity>

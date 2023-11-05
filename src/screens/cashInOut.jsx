@@ -22,32 +22,52 @@ export const CashInOut = () => {
       </Text>
       <View style={Styles.line}></View>
       <View style={Styles.details}>
-        <Text style={Styles.detailsTxt}>Type</Text>
-        <Text style={Styles.detailTxt}>{receipts?.date}</Text>
+        <Text style={Styles.detailsTxt}>Date</Text>
+        <Text style={Styles.detailTxt}>{receipts?.createdAt}</Text>
       </View>
       <View style={Styles.details}>
         <Text style={Styles.detailsTxt}>Transaction Id</Text>
-        <Text style={Styles.detailTxt}>{receipts?.id}</Text>
+        <Text style={Styles.detailTxt}>{receipts?._id}</Text>
       </View>
+      {receipts?.oneTimeNo ? (
+        <View style={Styles.details}>
+          <Text style={Styles.detailsTxt}>Security code</Text>
+          <Text style={Styles.detailTxt}>{receipts?.oneTimeNo}</Text>
+        </View>
+      ) : (
+        <View style={Styles.details}>
+          <Text style={Styles.detailsTxt}>Receipt Photo</Text>
+          <Text style={Styles.detailTxt}>{receipts?.ontimeNo}</Text>
+        </View>
+      )}
+
       <View style={Styles.details}>
         <Text style={Styles.detailsTxt}>Transaction Type</Text>
-        <Text style={Styles.detailTxt}>Transfer</Text>
+        <Text style={Styles.detailTxt}>{receipts?.type}</Text>
       </View>
       <View style={Styles.details}>
-        <Text style={Styles.detailsTxt}>
-          {receipts?.to ? "Transfer To" : "Receive from"}
-        </Text>
+        <Text style={Styles.detailsTxt}>Payment method</Text>
+
+        <Text style={Styles.detailTxt}>{receipts?.method}</Text>
+      </View>
+      <View style={Styles.details}>
+        <Text style={Styles.detailsTxt}>Account</Text>
         <View>
-          <Text style={Styles.detailTxt}>{receipts?.to || receipts?.from}</Text>
           <Text style={Styles.detailTxt}>{receipts?.name}</Text>
+          <Text style={Styles.detailTxt}>{receipts?.phone}</Text>
         </View>
       </View>
       <View style={Styles.details}>
         <Text style={Styles.detailsTxt}>Amount</Text>
         <Text style={Styles.detailTxt}>
-          {receipts.to ? "-" : "+"}
+          {receipts.type === "depsit" ? "+" : "-"}
           {receipts?.amount}
         </Text>
+      </View>
+      <View style={Styles.details}>
+        <Text style={Styles.detailsTxt}>Status</Text>
+
+        <Text style={Styles.detailTxt}>{receipts?.status}</Text>
       </View>
     </View>
   );
