@@ -675,7 +675,7 @@ const Styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    width:365
+    width: 365,
   },
 
   img: {
@@ -788,29 +788,76 @@ const Styles = StyleSheet.create({
     paddingVertical: 20,
   },
   phoneCon: {
-    backgroundColor: bg_3,
     width: "90%",
+    borderRadius: 5,
   },
   phoneInput: {
     padding: 20,
     backgroundColor: bg_3,
     borderRadius: 5,
+    color: app_1,
+    fontSize: 18,
+    marginVertical:10
   },
   _2fa: {
     padding: 20,
     backgroundColor: bg_3,
     borderRadius: 5,
+    marginVertical: 10,
+    color: app_1,
+    fontSize: 18,
+  },
+  _2faTime:{
+    backgroundColor:app_1,
+    marginHorizontal:5,
+    borderRadius:5,
+    justifyContent:"center",
+    alignItems:"center",
+    padding:10,
+    paddingHorizontal:25
   },
   _2faCon: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    marginVertical:10,
   },
   _2faBtns: {
     padding: 20,
     backgroundColor: bg_3b,
     borderRadius: 5,
     marginHorizontal: 5,
+  },
+  ////Forget MainPage.
+  forgetCon:{
+    width:"100%",
+    paddingVertical:10,
+    alignItems:"center"
+  },
+  itemCon:{
+    padding:20,
+    width:"95%",
+    borderRadius:10,
+    marginVertical:5,
+    backgroundColor:bg_3
+  },
+  forgetInput:{
+    borderBottomWidth:2,
+    borderBottomColor:bg_3b,
+    padding:10,
+    marginVertical:20,
+    width:"80%",
+    fontSize:18,
+    color:app_1
+  },
+  forgetbtn: {
+    justifyContent:"center",
+    alignItems: "center",
+    padding:20,
+    width:"90%",
+    backgroundColor:app_1,
+    marginVertical:20,
+    borderRadius:5
   },
   ////INPUTSSS
   good: {
@@ -1310,6 +1357,33 @@ const Styles = StyleSheet.create({
     justifyContent: "space-between",
     padding: 10,
     width: "90%",
+  },
+
+  //HOLIDAY PAGE /////////
+  holiItemCon: {
+    backgroundColor: bg_3b,
+    borderRadius: 10,
+    marginVertical: 10,
+    width: 365,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  itemCON: {
+    backgroundColor: bg_3,
+    flex: 0.5,
+    height: "100%",
+    borderTopLeftRadius: 5,
+    borderBottomLeftRadius: 5,
+    alignItems: "center",
+  },
+  reasonTxt: {
+    flex: 1,
+    fontSize: 18,
+    fontFamily: "Roboto_Bold",
+    fontWeight: "600",
+    color: app_2,
+    margin: 5,
   },
 });
 export default Styles

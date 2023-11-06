@@ -88,7 +88,6 @@ const More = ({ navigation }) => {
             <View style={styles.userDataBox}>
               <Text style={styles.userNameTxt}>
                 {name}
-                {phone&&<MaterialIcons name="verified-user" size={21} color={bg_3b} />}
               </Text>
               <Text style={styles.userDataTxt}>
                 {phone}{" "}

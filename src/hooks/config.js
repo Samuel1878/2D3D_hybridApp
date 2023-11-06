@@ -27,3 +27,6 @@ export const WITHDRAWL = "http://localhost:8080/api/admin/withdrawl";
 
 export const PAYMENTS = "http://localhost:8080/api/admin/payments";
 export const CASHINOUTHIS = "http://localhost:8080/api/admin/cashinout";
+
+export const RESETPIN = "http://localhost:8080/api/admin/resetPin";
+export const RESETPWD = "http://localhost:8080/api/admin/resetPwd";

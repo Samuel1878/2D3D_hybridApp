@@ -14,7 +14,7 @@ const text_2b = "rgb(40,45,50)";
 const bg_1 = "rgb(12,14,17)";
 const bg_2 = "rgb(24,26,31)";
 const bg_3 = "rgb(44,49,56)";
-const bg_3b = "rgb(125,133,141)";
+const bg_3b = "rgb(85,93,101)";
 const bg_3c = "rgb(235,235,235)";
 const bg_4 = "rgb(250,250,250)";
 const bg_5 = "rgb(255,255,255)";
@@ -878,11 +878,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   userNameTxt: {
-    fontSize: 18,
+    fontSize: 19,
     fontFamily: "Roboto_Bold",
     fontWeight: "600",
     width: "100%",
     color: text_1b,
+    margin:5
   },
   userDataTxt: {
     fontSize: 18,
@@ -905,7 +906,8 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     alignItems: "center",
     borderRadius: 10,
-    flex: 1,
+    padding:5,
+    height:75
   },
   moreItemImg: {
     width: 60,
@@ -915,7 +917,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: "Roboto_Bold",
     fontWeight: "600",
-    padding: 5,
+    margin:5,
     color: app_1,
   },
 

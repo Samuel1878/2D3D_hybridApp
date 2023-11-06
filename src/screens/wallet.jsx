@@ -20,7 +20,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import SocketContext from "../services/socket/socketContext";
 import { FETCH_INFO } from "../libs/actions";
 const Wallet = ()=>{ 
-  const {money,navigation,payments} = useContext(GlobalContext);
+  const {money,navigation,payments,level,phone,name} = useContext(GlobalContext);
   const {userToken} = useContext(AuthContext);
   const {socket} = useContext(SocketContext)
   const [data,setData]= useState([]);
@@ -179,8 +179,8 @@ const Wallet = ()=>{
                       </TouchableOpacity>
                     </View>
                     <View style={styles.balanceCon}>
-                      <Text style={styles.userTxt}>LEVEL ONE USER</Text>
-                      <Text style={styles.balanceNo}>09 6822 88830</Text>
+                      <Text style={styles.userTxt}>{level=="1"?"LEVEL ONE USER":"VIP USER"}</Text>
+                      <Text style={styles.balanceNo}>{phone}</Text>
                     </View>
                   </LinearGradient>
                   <TouchableOpacity

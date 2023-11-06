@@ -84,6 +84,7 @@ export const IMAGES = [
 //    return history3D;
 // }
 export const pinREGEX = /^[0-9]{6,6}$/g;
+export const REGEX_PWD = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
 export const kbzAccounts = [
   { name: "pave faef", phone: "092333444", qr: require("../../assets/qr.png") },
   {
