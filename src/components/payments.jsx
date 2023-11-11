@@ -48,14 +48,14 @@ const PaymentEdids = ({method}) => {
 
       <View style={Styles.policyContainer}>
         <Text style={Styles.policyH}>Proclaimer:</Text>
-        <Text>
+        <Text style={Styles.Txt2}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
           doloremque delectus alias inventore? Fuga quas blanditiis, consequatur
           vero, quae fugit iure quo cumque velit pariatur eius? Porro mollitia
           velit id.
         </Text>
         <Text style={Styles.policyH}>Guarenttee</Text>
-        <Text>
+        <Text style={Styles.Txt2}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod fugit
           dicta amet facilis recusandae, accusantium consequatur id debitis
           officia architecto exercitationem quam pariatur sit delectus, iusto

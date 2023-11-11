@@ -6,6 +6,7 @@ import { pinREGEX } from "../libs/data"
 import { PIN } from "../hooks/config"
 import AuthContext from "../services/auth/authContext"
 import axios from "axios"
+import { ChangeModel } from "../components/modals"
 
 const Pin = ({navigation})=>{
     const {pin,setPin} = useContext(GlobalContext);
@@ -15,10 +16,11 @@ const Pin = ({navigation})=>{
     const [oPin, setOPin] = useState("");
     const [isNew, setIsNew] = useState(true);
     const [validPin, setValidPin] = useState(false);
+    const [changed, setChanged] = useState(false);
     const setUpPin= ()=>{
         validPin && axios.post(PIN,{userToken:userToken,pin:fPin}).then((e)=>{
             if(e.status===200){
-                navigation.navigate("More")
+                setChanged(true)
             }
         })
     };
@@ -26,8 +28,10 @@ const Pin = ({navigation})=>{
          validPin && (pin === oPin) &&
            axios.post(PIN, { userToken: userToken, pin: fPin }).then((e) => {
              if (e.status === 200) {
-               navigation.navigate("More");
+               setChanged(true);
+               return
              }
+             
            });
     }
     useEffect(()=>{
@@ -38,9 +42,16 @@ const Pin = ({navigation})=>{
         }
         setIsNew(true);
 
-    },[pin,fPin,sPin])
+    },[pin,fPin,sPin]);
+    useEffect(()=>{
+      changed && setTimeout(()=>{
+        setChanged(false);
+        navigation.navigate("More");
+      },1500)
+    },[changed])
     return (
       <View style={Styles.Container}>
+        <ChangeModel changed={changed}/>
         <View style={Styles.SetPinCon}>
           {isNew ? (
             <Text style={Styles.setPinH}>Set up new pin for fund security</Text>

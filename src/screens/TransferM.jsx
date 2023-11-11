@@ -1,4 +1,4 @@
-import { View,Text, TouchableOpacity,TextInput, TouchableWithoutFeedback, Keyboard } from "react-native";
+import { View,Text, TouchableOpacity,TextInput, TouchableWithoutFeedback, Keyboard, Modal, Pressable } from "react-native";
 import Styles from "../libs/Styles";
 import { useContext, useEffect, useState } from "react";
 import LocalContext from "../services/localization/localContext";
@@ -7,6 +7,7 @@ import { TRANSFER, isUserRegistered } from "../hooks/config";
 import AuthContext from "../services/auth/authContext";
 import GlobalContext from "../services/global/globalContext";
 import { pinREGEX } from "../libs/data";
+import { BlurView } from "expo-blur";
 
 
 const TransferMain = ()=>{
@@ -18,7 +19,7 @@ const TransferMain = ()=>{
     const [pin,setPin] = useState("");
     const [validPin, setValidPin] = useState(false);
     const [amount, setAmount] = useState("");
-    const [transfered,setTransfered] = useState(false);
+    const [modal,setModal] = useState(false);
     const transferFnc = () =>{
        validPin &&
          isUser &&
@@ -30,14 +31,18 @@ const TransferMain = ()=>{
            )
            .then((e) => {
              if (e.status === 200 || 201) {
-               console.log(e.data);
-               setTransfered(true);
+              setModal(true)
              } else {
-               setTransfered(false);
+               setModal(false);
              }
            })
            .catch((err) => console.log(err));
+    };
+    const hideModalFnc = () => {
+      setModal(!modal);
+      navigation.navigate("Transfer")
     }
+
     
     useEffect(()=>{
         axios.get(isUserRegistered, {
@@ -55,12 +60,32 @@ const TransferMain = ()=>{
     useEffect(()=>{
         setValidPin(pinREGEX.test(pin))
     },[pin])
-    useEffect(()=>{
-        transfered && setTimeout(()=>{setTransfered(false);navigation.navigate("Transfer")},2000)
-    },[transfered])
     return (
-      <TouchableWithoutFeedback onPress={()=>Keyboard.dismiss()}>
+      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <View style={Styles.tranContainer}>
+          <Modal
+            animationType="fade"
+            transparent={true}
+            visible={modal}
+            onRequestClose={() => {
+              Alert.alert("Modal has been closed.");
+              setModal(!modal);
+            }}
+          >
+            <BlurView intensity={50} tint="dark" style={Styles.modal}>
+              <View style={Styles.modalBox}>
+                <Text style={Styles.Txt2M}>Transaction completed!</Text>
+                <Text style={Styles.Txt3}>
+                 You have successfully transferred { amount } MMK to  
+                 { " "+ name} { ": "+ sendTo}
+                </Text>
+                <Text>Please check receipts.</Text>
+                <Pressable style={Styles.modalBtn} onPress={hideModalFnc}>
+                  <Text style={Styles.Txt3}>OK</Text>
+                </Pressable>
+              </View>
+            </BlurView>
+          </Modal>
           {isUser ? (
             <View style={Styles.tranCon}>
               <View style={Styles.ToCon}>
@@ -79,10 +104,12 @@ const TransferMain = ()=>{
                   onChangeText={(e) => setAmount(e)}
                 />
                 <Text style={Styles.amountH}>Fund Security Pin</Text>
-                <TextInput 
-                    value={pin}
-                    onChangeText={(e)=>setPin(e)}
-                    inputMode="numeric" style={Styles.amountInput} />
+                <TextInput
+                  value={pin}
+                  onChangeText={(e) => setPin(e)}
+                  inputMode="numeric"
+                  style={Styles.amountInput}
+                />
                 <View style={Styles.pinCon}>
                   <Text style={Styles.pinH}>Click here to manage pin</Text>
                   <TouchableOpacity style={Styles.pinBtn}>
@@ -90,7 +117,10 @@ const TransferMain = ()=>{
                   </TouchableOpacity>
                 </View>
               </View>
-              <TouchableOpacity style={Styles.transferBtn} onPress={transferFnc}>
+              <TouchableOpacity
+                style={Styles.transferBtn}
+                onPress={transferFnc}
+              >
                 <Text style={Styles.transferTxt}>Transfer</Text>
               </TouchableOpacity>
             </View>
@@ -103,13 +133,7 @@ const TransferMain = ()=>{
               </Text>
             </View>
           )}
-          {
-            transfered&&(
-            <View style={Styles.transferedCon}>
-                <Text style={Styles.transferedTxt}>Transaction complete</Text>
-            </View>
-            )
-          }
+          
         </View>
       </TouchableWithoutFeedback>
     );

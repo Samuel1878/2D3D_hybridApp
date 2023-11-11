@@ -534,22 +534,6 @@ const Styles = StyleSheet.create({
     fontWeight: "600",
     color: text_1b,
   },
-  transferedCon: {
-    padding: 20,
-    borderRadius: 10,
-    backgroundColor: bg_1,
-    position: "absolute",
-    left: "50%",
-    top: "50%",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  transferedTxt: {
-    fontSize: 21,
-    fontFamily: "Roboto_Bold",
-    fontWeight: "600",
-    color: app_1,
-  },
   ///////Transfer RECENT HISTORY ITEM
   recentItem: {
     padding: 10,
@@ -577,6 +561,7 @@ const Styles = StyleSheet.create({
     fontFamily: "Roboto_Bold",
     fontWeight: "600",
     color: text_1,
+    flex: 1,
   },
   ///TRANSACTION HISTORY
   TranHisCon: {
@@ -797,7 +782,7 @@ const Styles = StyleSheet.create({
     borderRadius: 5,
     color: app_1,
     fontSize: 18,
-    marginVertical:10
+    marginVertical: 10,
   },
   _2fa: {
     padding: 20,
@@ -807,20 +792,20 @@ const Styles = StyleSheet.create({
     color: app_1,
     fontSize: 18,
   },
-  _2faTime:{
-    backgroundColor:app_1,
-    marginHorizontal:5,
-    borderRadius:5,
-    justifyContent:"center",
-    alignItems:"center",
-    padding:10,
-    paddingHorizontal:25
+  _2faTime: {
+    backgroundColor: app_1,
+    marginHorizontal: 5,
+    borderRadius: 5,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 10,
+    paddingHorizontal: 25,
   },
   _2faCon: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginVertical:10,
+    marginVertical: 10,
   },
   _2faBtns: {
     padding: 20,
@@ -829,35 +814,35 @@ const Styles = StyleSheet.create({
     marginHorizontal: 5,
   },
   ////Forget MainPage.
-  forgetCon:{
-    width:"100%",
-    paddingVertical:10,
-    alignItems:"center"
+  forgetCon: {
+    width: "100%",
+    paddingVertical: 10,
+    alignItems: "center",
   },
-  itemCon:{
-    padding:20,
-    width:"95%",
-    borderRadius:10,
-    marginVertical:5,
-    backgroundColor:bg_3
+  itemCon: {
+    padding: 20,
+    width: "95%",
+    borderRadius: 10,
+    marginVertical: 5,
+    backgroundColor: bg_3,
   },
-  forgetInput:{
-    borderBottomWidth:2,
-    borderBottomColor:bg_3b,
-    padding:10,
-    marginVertical:20,
-    width:"80%",
-    fontSize:18,
-    color:app_1
+  forgetInput: {
+    borderBottomWidth: 2,
+    borderBottomColor: bg_3b,
+    padding: 10,
+    marginVertical: 20,
+    width: "80%",
+    fontSize: 18,
+    color: app_1,
   },
   forgetbtn: {
-    justifyContent:"center",
+    justifyContent: "center",
     alignItems: "center",
-    padding:20,
-    width:"90%",
-    backgroundColor:app_1,
-    marginVertical:20,
-    borderRadius:5
+    padding: 20,
+    width: "90%",
+    backgroundColor: app_1,
+    marginVertical: 20,
+    borderRadius: 5,
   },
   ////INPUTSSS
   good: {
@@ -1384,6 +1369,41 @@ const Styles = StyleSheet.create({
     fontWeight: "600",
     color: app_2,
     margin: 5,
+  },
+
+  ///MODAL
+  blurCon:{
+    position:"absolute",
+    top:0,bottom:0,right:0,
+    left:0,
+    flex:1,
+    justifyContent:"center",
+    alignItems:"center"
+    
+  },
+  modal:{
+    justifyContent:"center",
+    alignItems:"center",
+    flex:1,
+  },
+  modalBox: {
+    width: 220,
+    padding: 20,
+    alignSelf:"center",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: bg_1,
+    borderRadius: "10%",
+    elevation:5,
+  },
+  modalBtn: {
+    borderRadius: 20,
+    padding: 20,
+    elevation: 2,
+    width:150,
+    backgroundColor:app_1,
+    justifyContent:"center",
+    alignItems:"center"
   },
 });
 export default Styles

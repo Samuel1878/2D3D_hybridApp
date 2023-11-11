@@ -1,11 +1,12 @@
-import { TouchableOpacity, View ,Text, TextInput, Image} from "react-native";
+import { TouchableOpacity, View ,Text, TextInput, Image, Modal, Pressable} from "react-native";
 import Styles from "../libs/Styles";
 import { useContext, useEffect, useState } from "react";
 import GlobalContext from "../services/global/globalContext";
 import { AntDesign } from '@expo/vector-icons';
 import { app_1, text_1b } from "../libs/style";
 import { ayaPay, cbPay, kbzPay, wavePay } from "../libs/data";
-import axios from "axios"
+import axios from "axios";
+import { BlurView } from 'expo-blur';
 import { WITHDRAWL } from "../hooks/config";
 import AuthContext from "../services/auth/authContext";
 const WithDrawl = () => {
@@ -14,6 +15,11 @@ const WithDrawl = () => {
     const [pinn, setPinn] = useState("");
     const [amount, setAmount] = useState("");
     const [selected, setSelected] = useState(0);
+    const [modal,setModal] = useState(false);
+    const hideModalFnc = () => {
+      setModal(!modal);
+      navigation.navigate("Wallet");
+    }
     const submitFnc = ()=>{
     
         pinn == pin&& money>amount && axios.post(WITHDRAWL,{name:payments[selected].name,phone:payments[selected].phone,method:payments[selected].method,type:"withdrawl",amount:amount},{headers:{
@@ -22,8 +28,7 @@ const WithDrawl = () => {
             userToken:userToken
         }}).then((e)=>{
             if(e.status===200||201){
-                console.log(e.data);
-                navigation.navigate("wallet")
+                setModal(true);
             }
         })
     };
@@ -31,14 +36,37 @@ const WithDrawl = () => {
         console.log(selected)
         if(selected<payments?.length-1){
             setSelected((prev) => prev+1);
-
             return
         }
         setSelected(0)
       
     };
+
   return (
-    <View style={Styles.Container}>
+    <View style={[Styles.Container]}>
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={modal}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+          setModal(!modal);
+        }}
+      >
+        <BlurView intensity={50} tint="dark" style={Styles.modal}>
+          <View style={Styles.modalBox}>
+            <Text style={Styles.Txt2M}>Successed!</Text>
+            <Text style={Styles.Txt3}>
+              Your withdrawl request has been placed. This may take 24 business
+              hours to be accomplished
+            </Text>
+            <Text>Please check your receipts.</Text>
+            <Pressable style={Styles.modalBtn} onPress={hideModalFnc}>
+              <Text style={Styles.Txt3}>OK</Text>
+            </Pressable>
+          </View>
+        </BlurView>
+      </Modal>
       {!payments && (
         <>
           <TouchableOpacity style={Styles.addPaymentsBtn}>
@@ -103,5 +131,6 @@ const WithDrawl = () => {
       )}
     </View>
   );
+  
 };
 export default WithDrawl;

@@ -1,5 +1,4 @@
-import { useContext } from "react";
-import DataContext from "../services/data/dataContext";
+
 export const kbzPay = require("../../assets/kbzPay.png");
 export const ayaPay = require("../../assets/ayaPay.jpeg");
 export const cbPay = require("../../assets/cb.png");

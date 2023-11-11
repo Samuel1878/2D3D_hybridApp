@@ -5,6 +5,8 @@ import { REGEX_PWD, pinREGEX } from "../libs/data";
 import axios from "axios";
 import { RESETPIN, RESETPWD } from "../hooks/config";
 import AuthContext from "../services/auth/authContext";
+import { ChangeModel } from "./modals";
+import GlobalContext from "../services/global/globalContext";
 
 export const Forget = ({navigation}) => {
 
@@ -23,26 +25,34 @@ export const Forget = ({navigation}) => {
 };
 export const ForgetPin = () => {
     const {userToken} = useContext(AuthContext);
-    const [succeed, setSucceed] = useState(false);
+    const {navigation} = useContext(GlobalContext);
     const [pin,setPin] = useState("");
     const [conPin,setConPin] = useState("");
     const [validPin, setValidPin] = useState(false);
+    const [changed, setChanged] = useState(false);
     const saveFnc = () => {
     validPin &&
    pin == conPin &&
    axios
      .post(RESETPIN, { userToken: userToken, newPin: pin })
-     .then((e) => e.status===201&&setSucceed(true))
+     .then((e) => {
+        if(e.status===201||200){
+          setChanged(true)}
+        })
      .catch((e) => console.log(e));
     };
     useEffect(()=>{
         setValidPin(pinREGEX.test(pin));
     },[pin]);
     useEffect(()=>{
-        console.log(succeed)
-    },[succeed])
+        changed && setTimeout(()=>{
+          setChanged(false);
+          navigation.navigate("More")
+        },2000)
+    },[changed])
     return (
       <View style={Styles.Container}>
+        <ChangeModel changed={changed}/>
         <TextInput
           style={Styles.forgetInput}
           keyboardType="numeric"
@@ -66,16 +76,28 @@ export const ForgetPin = () => {
 };
 export const ForgetPassword = () => {
     const { userToken } = useContext(AuthContext);
+    const {navigation} = useContext(GlobalContext);
     const [pwd, setPwd] = useState("");
     const [conPwd, setConPwd] = useState("");
     const [validPwd,setValidPwd] = useState(false);
-    const [succeed, setSucceed] = useState(false);
+    const [changed, setChanged] = useState(false);
     const saveFnc = () => {
-        validPwd&& pwd==conPwd&& axios.post(RESETPWD,{userToken:userToken,newPwd:pwd}).then((e)=>e.status===201&&setSucceed(true)).catch((e)=>console.log(e));
+        validPwd&& pwd==conPwd&& axios.post(RESETPWD,{userToken:userToken,newPwd:pwd}).then((e)=>{
+           if(e.status===201){
+            setChanged(true);
+              }
+            }).catch((e)=>console.log(e));
     };
     useEffect(()=>{
         setValidPwd(REGEX_PWD.test(pwd));
     },[pwd]);
+    useEffect(() => {
+      changed &&
+        setTimeout(() => {
+          setChanged(false);
+          navigation.navigate("More");
+        }, 2000);
+    }, [changed]);
     return (
       <View style={Styles.Container}>
         <TextInput

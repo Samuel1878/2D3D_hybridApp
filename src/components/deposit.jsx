@@ -1,4 +1,4 @@
-import { View ,Text,TextInput, Image} from "react-native"
+import { View ,Text,TextInput, Image, Modal, Pressable} from "react-native"
 import Styles from "../libs/Styles"
 import { useContext, useEffect, useState } from "react"
 import LocalContext from "../services/localization/localContext"
@@ -14,6 +14,7 @@ import AnimatedLoader from "react-native-animated-loader";
 import * as Clipboard from "expo-clipboard";
 import * as FileSystem from "expo-file-system";
 import GlobalContext from "../services/global/globalContext"
+import { BlurView } from "expo-blur"
 const DepositLayout = () =>{
     const {depoMethod,deposit,setDeposit} = useContext(LocalContext);
     const {navigation} = useContext(GlobalContext)
@@ -22,7 +23,7 @@ const DepositLayout = () =>{
     const [isQr, setIsQr] = useState(false);
     const [isNote, setIsNote] = useState(true);
     const [image, setImage] = useState(null);
-    const [succeed, setSucceed] = useState(false);
+    const [modal, setModal] = useState(false);
     const [payments, setPayments ] = useState([]);
     const [loaded, setLoaded] = useState(false);
     const [index, setIndex] = useState(0);
@@ -47,12 +48,15 @@ const submitFnc = () =>{
         }
       ).then((e)=>{
         if(e.status === 201 || 200){
-            setSucceed(true);
-            console.log(e.data.message)
+            setModal(true);
         }
       }).catch((e)=>console.log(e));
 };
 
+const hideModalFnc = async()=> {
+    setModal(!modal);
+  await navigation.navigate("Wallet")
+}
 const uploadImage = async() => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -92,9 +96,9 @@ const downloadFnc = ()=>{
             })
             .catch((e)=>console.log(e)).finally(()=>setLoaded(true))
     },[])
-     useEffect(() => {
-       succeed&&setTimeout(()=>{setSucceed(false); navigation.navigate("deposit");},2000)
-     }, [succeed]);
+    //  useEffect(() => {
+    //    succeed&&setTimeout(()=>{setSucceed(false); navigation.navigate("deposit");},2000)
+    //  }, [succeed]);
      useEffect(() => {
             console.log(index);
         if(index>=payments?.length-1){
@@ -103,15 +107,35 @@ const downloadFnc = ()=>{
         }
         
      }, [index]);
-    if(succeed){
-        return(
-            <View style={Styles.Container}>
-
-            </View>
-        )
-    }
     return (
       <View style={Styles.depositContainer}>
+          <Modal
+            animationType="fade"
+            transparent={true}
+            visible={modal}
+            onRequestClose={() => {
+              Alert.alert("Modal has been closed.");
+              setModal(!modal);
+            }}
+          >
+            <BlurView intensity={50} tint="dark" style={Styles.modal}>
+              <View style={Styles.modalBox}>
+                <Text style={Styles.Txt2M}>Successed!</Text>
+                <Text style={Styles.Txt3}>
+                  Your deposit has been placed. This may take 24
+                  business hours to be accomplished.
+                </Text>
+                <Text>Please check your receipts.</Text>
+                <Pressable
+                  style={Styles.modalBtn}
+                  onPress={hideModalFnc}
+                >
+                  <Text style={Styles.Txt3}>OK</Text>
+                </Pressable>
+              </View>
+            </BlurView>
+          </Modal>
+
         {depoMethod === "kbzPay" ? (
           <Image style={Styles.MethodImg} source={kbzPay} />
         ) : (
@@ -222,7 +246,10 @@ const downloadFnc = ()=>{
               >
                 <Text style={Styles.Txt2M}>Change</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={Styles.depositCopyBtn} onPress={downloadFnc}>
+              <TouchableOpacity
+                style={Styles.depositCopyBtn}
+                onPress={downloadFnc}
+              >
                 <Text style={Styles.depositBtnTxt1}>Download</Text>
               </TouchableOpacity>
             </View>

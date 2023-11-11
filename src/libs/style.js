@@ -883,7 +883,7 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     width: "100%",
     color: text_1b,
-    margin:5
+    margin: 5,
   },
   userDataTxt: {
     fontSize: 18,
@@ -906,8 +906,8 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     alignItems: "center",
     borderRadius: 10,
-    padding:5,
-    height:75
+    padding: 5,
+    height: 75,
   },
   moreItemImg: {
     width: 60,
@@ -917,7 +917,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: "Roboto_Bold",
     fontWeight: "600",
-    margin:5,
+    margin: 5,
     color: app_1,
   },
 
@@ -940,6 +940,7 @@ const styles = StyleSheet.create({
   meImg: {
     width: "100%",
     height: "100%",
+    borderRadius: 300,
   },
   meBottom: {
     flex: 2,
@@ -1000,6 +1001,13 @@ const styles = StyleSheet.create({
     fontSize: 19,
     fontWeight: "600",
     color: text_1b,
+  },
+  red: {
+    fontFamily: "Roboto_Bold",
+    fontSize: 14,
+    fontWeight: "600",
+    color: "red",
+    margin:10
   },
   ///Pwd Change Screen
   PwdContainer: {
@@ -1733,15 +1741,15 @@ const styles = StyleSheet.create({
   },
   picker: {
     flex: 1,
-    width:"100%",
-    height:100
+    width: "100%",
+    height: 100,
   },
   pickerCon: {
-    top:-70,
+    top: -70,
     width: "80%",
-    height:100,
+    height: 100,
     alignItems: "center",
-    justifyContent:"center"
+    justifyContent: "center",
   },
   HistContainer: {
     flex: 1,

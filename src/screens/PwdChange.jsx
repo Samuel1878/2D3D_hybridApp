@@ -1,4 +1,4 @@
-import { Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native"
+import { Modal, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native"
 import styles, { app_1 } from "../libs/style";
 import { useContext, useEffect, useReducer, useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
@@ -6,6 +6,8 @@ import AuthContext from "../services/auth/authContext";
 import { _CHANGE_PWD_URL } from "../hooks/config";
 import axios from "axios";
 import Styles from "../libs/Styles";
+import { BlurView } from "expo-blur";
+import { ChangeModel } from "../components/modals";
 
 const PwdChange = ({navigation}) =>{
     const {userToken} = useContext(AuthContext);
@@ -44,7 +46,13 @@ const PwdChange = ({navigation}) =>{
                     console.log(err)
                 })
 
-    }
+    };
+    useEffect(()=>{
+      changed && setTimeout(()=>{
+        setChanged(false);
+        navigation.navigate("More")
+      },1500)
+    },[changed])
     useEffect(()=>{
         setValid1(REGEX_PWD.test(oldPwd));
         setValid2(REGEX_PWD.test(newPwd));
@@ -52,6 +60,7 @@ const PwdChange = ({navigation}) =>{
     },[oldPwd,newPwd,confirmPwd]);
     return (
       <View style={styles.PwdContainer}>
+        <ChangeModel changed={changed}/>
         <View style={styles.pwdInputCon}>
           <TextInput
             secureTextEntry={showPwd1}
@@ -112,7 +121,10 @@ const PwdChange = ({navigation}) =>{
         <TouchableOpacity style={styles.pwdChangeBtn} onPress={ChangePwdFnc}>
           <Text style={styles.pwdChangetxt}>Confirm</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={Styles.forgetBtn} onPress={()=>navigation.navigate("2fa")}>
+        <TouchableOpacity
+          style={Styles.forgetBtn}
+          onPress={() => navigation.navigate("2fa")}
+        >
           <Text style={Styles.Txt2}>Forget password?</Text>
           <Text style={Styles.Txt2M}> Reset now</Text>
         </TouchableOpacity>

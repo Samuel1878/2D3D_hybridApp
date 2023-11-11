@@ -45,7 +45,8 @@ const TwoDmini = () => {
   );
 };
 export const InternetData = () => {
-  const {results2D} = useContext(DataContext)
+  const {results2D} = useContext(DataContext);
+  console.log(results2D)
     return (
       <View style={styles.internetDataCon}>
         <View style={styles.interData}>

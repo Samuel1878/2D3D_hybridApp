@@ -6,6 +6,7 @@ import Data from './src/services/data/data';
 import BetProvider from './src/services/bet/bet';
 import SocketProvider from './src/services/socket/socket';
 import Local from './src/services/localization/local';
+import {ViewPropTypes} from "deprecated-react-native-prop-types";
 
 
 export default function App() {

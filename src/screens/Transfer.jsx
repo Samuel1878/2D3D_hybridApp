@@ -19,8 +19,12 @@ const Transfer = () => {
        navigation.navigate("TransferMain");
       
     };
+    const deleteHis = () => {
+      setRecentArray([]);
+    };
     
     const renderRecent = ({item,index})=>{
+      
         const pressFnc = async() => {
          setTphone(recentArray[index][1]);
          setSendTo(tphone)
@@ -39,17 +43,13 @@ const Transfer = () => {
     }
     useEffect(()=>{
       transactions.map((e)=>{
-       recentTransfer.set(e.name,e.to);
+       recentTransfer.set(e.toName,e.toPhone);
       });
         recentTransfer.forEach((value,key)=>{
             const data = [];
             data.push(key,value)
-            console.log(data)
         setRecentArray((prev)=>[...prev,data])
         });
-
-
-         console.log(recentArray);
     },[])
     return (
       <TouchableWithoutFeedback
@@ -84,8 +84,13 @@ const Transfer = () => {
               <Text style={Styles.btnTxt}>Next</Text>
             </TouchableOpacity>
             <View style={Styles.recentTlist}>
-                <FlatList renderItem={renderRecent} data={recentArray}/>
-              <TouchableOpacity style={Styles.transDBtn}>
+                <FlatList 
+                  renderItem={renderRecent}
+                  data={recentArray} 
+                  bounces={false} 
+                  extraData={recentArray} 
+                  showsVerticalScrollIndicator={false}/>
+              <TouchableOpacity style={Styles.transDBtn} onPress={deleteHis}>
                 <Text style={Styles.transDTxt}>Delete history</Text>
               </TouchableOpacity>
             </View>
