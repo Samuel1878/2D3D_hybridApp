@@ -17,7 +17,20 @@ const Me = ()=>{
     const [changed,setChanged] = useState(false);
     const [image, setImage] = useState(null);
     const REG_NAME = /^[a-zA-Z0-9]+$/;
+    const createFormData = (uri) => {
+      const fileName = uri.split('/').pop();
+      const fileType = fileName.split('.').pop();
+      const formData = new FormData();
+      formData.append('image', {
+        name: fileName,
+        uri,
+        type: `image/${fileType}`,
+      });
+      return formData;
+    };
     const SaveFnc = () => {
+      const data = createFormData(image);
+      console.log(data)
             name!= nameChange && valid && axios.post(_CHANGE_NAME_URL, {name:nameChange,userToken:userToken}).then((e)=>{
                if(e.status===200||201){
                 setChanged(true);
@@ -25,9 +38,14 @@ const Me = ()=>{
             }).catch((E)=>console.log(E))
             image &&
               axios
-                .post(_CHANGE_PROFILE_URL, {
-                  image: image,
-                  userToken: userToken,
+                .post(_CHANGE_PROFILE_URL,data, {
+                 headers:{
+                  Accept:"application/json",
+                  "Content-Type":"multipart/form-data"
+                 },
+                 params:{
+                  userToken:userToken
+                 }
                 })
                 .then((e) => {
                   if (e.status === 200 || 201) {

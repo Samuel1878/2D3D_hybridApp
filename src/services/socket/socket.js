@@ -18,6 +18,7 @@ const SocketProvider = ({children})=>{
         setIsLoading,
         setProfile,
         setPayments,
+        setProType,
         setPin}= useContext(GlobalContext)
      useEffect(() => {
         cleanUp()
@@ -53,7 +54,8 @@ const SocketProvider = ({children})=>{
                   setName(data.name);
                   setMoney(data.money);
                   setPhone(data.phone);
-                  setProfile(data.image)
+                  setProfile(data.image);
+                  setProType(data.imageType);
                   setPayments(data.payments);
                   setPin(data.pin);
                   setIsLoading(false);

@@ -37,7 +37,6 @@ useEffect(()=>{
 if(!fontsLoaded){
     return<View><Loader/></View>}
   return (
-
       <Tab.Navigator
         initialRouteName="Home"
         screenOptions={({ route }) => ({

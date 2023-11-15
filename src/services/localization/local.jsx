@@ -1,9 +1,9 @@
-import { useState } from "react";
-import LocalContext from "./localContext"
+import { useEffect, useState } from "react";
+import LocalContext from "./localContext";
 const Local = ({children}) =>{
     const [lang,setLang] = useState("en");
-    const [mode, setMode] = useState(false);
-    const [theme, setTheme] = useState("dark")
+    const [mode, setMode] = useState("dark");
+    //const [theme, setTheme] = useState("dark")
     const [sendTo, setSendTo] = useState("");
     const [detail, setDetail] = useState({});
     const [receipts,setReceipts] = useState({});
@@ -13,6 +13,10 @@ const Local = ({children}) =>{
     const [withDraw,setWithdraw] = useState("");
     const [forgetNo, setForgetNo] = useState("");
     const [vouchers ,setVouchers] = useState({});
+
+    useEffect(()=>{
+
+    },[]);
 
     return (
       <LocalContext.Provider

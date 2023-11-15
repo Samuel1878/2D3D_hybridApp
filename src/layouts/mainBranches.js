@@ -38,18 +38,22 @@ import Payments from "../screens/payments";
 import { ForgetMain } from "../components/forgets";
 import Vouchers from "../hooks/vouchers";
 import { Forget, ForgetPassword, ForgetPin } from "../components/forget";
+import { useColorScheme ,Appearance} from "react-native";
+import {Colors} from "../libs/theme";
+import LocalContext from "../services/localization/localContext";
+
 
 const Stack = createNativeStackNavigator();
 const BranchContainer = () => {
-   const{userToken} = useContext(AuthContext);
-  
-   const {name, phone} = useContext(GlobalContext);
-  
-
-   
-
+    const{userToken} = useContext(AuthContext);
+    const theme = useColorScheme();
+    const {mode,setMode} = useContext(LocalContext);
+    const {name, phone} = useContext(GlobalContext);
+    useEffect(()=>{
+        setMode(theme)
+    },[theme])
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={theme==="dark"?Colors.dark:Colors.light}>
       <Stack.Navigator initialRouteName="root">
         <Stack.Screen
           name="root"

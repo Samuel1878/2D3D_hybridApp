@@ -17,7 +17,7 @@ import AuthContext from "../services/auth/authContext";
 
 const More = ({ navigation }) => {
   const animation = useRef(null)
-  const { profile, name, phone, level } = useContext(GlobalContext);
+  const { profile, proType, name, phone, level } = useContext(GlobalContext);
     const {signOut,userToken} = useContext(AuthContext)
     const renderItem = ({item}) =>{
       const pressHandler = ()=>{
@@ -71,7 +71,9 @@ const More = ({ navigation }) => {
         )
     }
     useEffect(()=>{
-      animation?.current.play()
+      animation?.current.play();
+      console.log(profile,proType);
+      
     },[])
 
 
