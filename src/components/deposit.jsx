@@ -15,7 +15,9 @@ import * as Clipboard from "expo-clipboard";
 import * as FileSystem from "expo-file-system";
 import GlobalContext from "../services/global/globalContext"
 import { BlurView } from "expo-blur"
+import { useTheme } from "@react-navigation/native"
 const DepositLayout = () =>{
+   const colors = useTheme().colors;
     const {depoMethod,deposit,setDeposit} = useContext(LocalContext);
     const {navigation} = useContext(GlobalContext)
     const {userToken} = useContext(AuthContext);
