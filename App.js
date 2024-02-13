@@ -10,16 +10,19 @@ import Local from "./src/services/localization/local";
 export default function App() {
   return (
     <Local>
+
       <AuthProvider>
+       
         <Global>
           <Data>
-            <SocketProvider>
+             <SocketProvider>
               <BetProvider>
                 <BranchContainer />
               </BetProvider>
             </SocketProvider>
           </Data>
         </Global>
+        
       </AuthProvider>
     </Local>
   );

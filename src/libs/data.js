@@ -4,28 +4,6 @@ export const kbzPay = require("../../assets/kbzPay.png");
 export const ayaPay = require("../../assets/ayaPay.jpeg");
 export const cbPay = require("../../assets/cb.png");
 export const wavePay = require("../../assets/wavePay.png");
-export const Data = [
-  {
-    method: "kbz",
-    name: "Mr/Ms....",
-    phone: "096...",
-  },
-  {
-    method: "wave",
-    name: "Mr/Ms....",
-    phone: "097...",
-  },
-  {
-    method: "cb",
-    name: "Mr/Ms....",
-    phone: "092...",
-  },
-  {
-    method: "aya",
-    name: "Mr/Ms....",
-    phone: "098...",
-  },
-];
 export const DATA = ()=>{
   const { t, i18n } = useTranslation();
   return (

@@ -5,7 +5,7 @@ import StylesCon from "../libs/Styles";
 export const Footer = () => {
   const Styles = StylesCon();
     return (
-      <>
+      <View style={Styles.footer}>
         <Text style={Styles.needHelpTxt}>Need Help? Contact us</Text>
         <View style={Styles.footerCon}>
           <Image
@@ -21,6 +21,6 @@ export const Footer = () => {
             source={require("../../assets/telegram.png")}
           />
         </View>
-      </>
+      </View>
     );
 }

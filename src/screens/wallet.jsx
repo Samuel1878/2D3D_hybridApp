@@ -19,15 +19,12 @@ const Wallet = ()=>{
   const styles = stylesCon();
   const colors = themeProvider().colors;
   const {t} = useTranslation();
-  const {money,navigation,payments,level,phone,name} = useContext(GlobalContext);
+  const {money,navigation,payments,level,phone,name,userRef,setUserRef} = useContext(GlobalContext);
   const {userToken} = useContext(AuthContext);
   const {socket} = useContext(SocketContext)
   const [data,setData]= useState([]);
   const [opened, setOpened] = useState(false);
   const [qr,setQr] = useState(false);
-  const [refreshing, setRefreshing] = useState(false);
-
-
 
     const scanFunc = ()=>{
 
@@ -87,17 +84,11 @@ const Wallet = ()=>{
       );
 
     };
-  useEffect(()=>{
-    refreshing && socket.emit(FETCH_INFO,userToken)
-    payments&&setData(payments);
-    if(!payments){
-        setData(Data);
-      }   
-    },[payments,refreshing]);
+ 
     const onRefresh = useCallback(() => {
-      setRefreshing(true);
+      setUserRef(true);
       setTimeout(() => {
-        setRefreshing(false);
+        setUserRef(false);
       }, 2000);
     }, []);
     
@@ -115,7 +106,7 @@ const Wallet = ()=>{
             refreshControl={
               <RefreshControl
                 tintColor={colors.app_1}
-                refreshing={refreshing}
+                refreshing={userRef}
                 onRefresh={onRefresh}
                 colors={colors.app_1}
               />
@@ -197,6 +188,7 @@ const Wallet = ()=>{
                   <TouchableOpacity
                     onPress={() => navigation.navigate("deposit")}
                     style={styles.scanBtn}
+                  
                   >
                     <MaterialCommunityIcons
                       name="wallet-plus-outline"
@@ -209,18 +201,9 @@ const Wallet = ()=>{
                   <TouchableOpacity
                     onPress={() => navigation.navigate("withdrawl")}
                     style={styles.scanBtn}
+                    disabled={payments && payments.length>0 ?false:true}
                   >
                     <AntDesign name="export" size={50} color={colors.app_1} />
-                    {/* <LottieView
-                speed={1}
-                autoPlay
-                style={styles.cashInOut}
-                source={require("../../assets/withdraw.json")}
-              /> */}
-                    {/* <Image
-                source={require("../../assets/withdraw.png")}
-                style={styles.scanLoti}
-              /> */}
                     <Text style={styles.walletBtnTxt}>{t("withdraw")}</Text>
                   </TouchableOpacity>
                 </View>
@@ -323,10 +306,11 @@ const Wallet = ()=>{
                 </View>
                 <View style={styles.paymentsCon}>
                   <Text style={styles.paymentHeader}>{t("payment methods")}</Text>
-                  <FlatList
-                    data={data}
+                  {
+                  payments.length >0 ?<FlatList
+                    data={payments}
                     renderItem={RenderPayments}
-                    keyExtractor={(item) => item.method}
+                    keyExtractor={(item) => item.name + Math.random()}
                     extraData={data}
                     //initialScrollIndex={1}
                     bounces={false}
@@ -339,7 +323,11 @@ const Wallet = ()=>{
                     //     onRefresh={onRefresh}
                     //   />
                     // }
-                  />
+                  />:(
+                    <TouchableOpacity style={styles.gotoPayBtn} onPress={()=>navigation.navigate("payments")}>
+                      <Text>Add Payments</Text>
+                    </TouchableOpacity>
+                  )}
                 </View>
               </View>
             </View>

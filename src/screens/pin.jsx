@@ -54,16 +54,19 @@ const Pin = ({navigation})=>{
     },[changed])
     return (
       <View style={Styles.Container}>
-        <ChangeModel changed={changed}/>
+        <ChangeModel changed={changed} />
         <View style={Styles.SetPinCon}>
           {isNew ? (
-            <Text style={Styles.setPinH}>{t("set up new pin for fund security")}</Text>
+            <Text style={Styles.setPinH}>
+              {t("set up new pin for fund security")}
+            </Text>
           ) : (
             <View style={Styles.changePinCon}>
               <TextInput
                 placeholder={t("old pin")}
                 style={Styles.setPinInput}
                 value={oPin}
+                placeholderTextColor={"rgb(234,188,78)"}
                 onChangeText={(e) => setOPin(e)}
               />
             </View>
@@ -74,11 +77,13 @@ const Pin = ({navigation})=>{
               placeholder={t("new pin")}
               style={Styles.setPinInput}
               value={fPin}
+              placeholderTextColor={"rgb(234,188,78)"}
               onChangeText={(e) => setFPin(e)}
             />
           </View>
           <View style={Styles.setPinInCon}>
             <TextInput
+              placeholderTextColor={"rgb(234,188,78)"}
               placeholder={t("confirm pin")}
               style={Styles.setPinInput}
               value={sPin}
@@ -89,7 +94,7 @@ const Pin = ({navigation})=>{
             <Text style={Styles.good}>{t("good to go")}</Text>
           ) : (
             <Text style={Styles.warn}>
-             {t("pin must be a 6-digit pair and only numbers are allowed")}
+              {t("pin must be a 6-digit pair and only numbers are allowed")}
             </Text>
           )}
           {isNew ? (

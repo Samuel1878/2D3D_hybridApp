@@ -134,7 +134,7 @@ const TwoD = ({navigation}) => {
                   source={require("../../assets/mn.jpg")}
                 >
                   <Text style={styles._2dBtnTxt}>12:00 PM</Text>
-                  <Text style={styles._2d_liveNo}>23</Text>
+                  <Text style={styles._2d_liveNo}>??</Text>
                 </ImageBackground>
               </View>
               <View style={styles.morningCon}>
@@ -143,7 +143,7 @@ const TwoD = ({navigation}) => {
                   source={require("../../assets/ev.jpg")}
                 >
                   <Text style={styles._2dBtnTxt}>40:30 PM</Text>
-                  <Text style={styles._2d_liveNo}>35</Text>
+                  <Text style={styles._2d_liveNo}>??</Text>
                 </ImageBackground>
               </View>
             </View>

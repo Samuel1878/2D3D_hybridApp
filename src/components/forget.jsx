@@ -14,15 +14,27 @@ export const Forget = ({navigation}) => {
   const {t} = useTranslation();
 
   return (
-    <View style={Styles.Container}>
+    <View style={Styles.ContainerF}>
       <View style={Styles.forgetCon}>
-        <TouchableOpacity style={Styles.itemCon} onPress={()=>navigation.navigate("forgetPin")}>
+        <TouchableOpacity
+          style={Styles.itemCon}
+          onPress={() => navigation.navigate("forgetPin")}
+        >
           <Text style={Styles.Txt2}>{t("change pin")}</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={Styles.itemCon} onPress={()=>navigation.navigate("forgetPassword")}>
+        <TouchableOpacity
+          style={Styles.itemCon}
+          onPress={() => navigation.navigate("forgetPassword")}
+        >
           <Text style={Styles.Txt2}>{t("change password")}</Text>
         </TouchableOpacity>
       </View>
+      <TouchableOpacity
+        style={Styles.exitBtn}
+        onPress={() => navigation.navigate("Home")}
+      >
+        <Text style={Styles.btnTxt1}>{t("exit")}</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -55,31 +67,36 @@ export const ForgetPin = () => {
         },2000)
     },[changed])
     return (
-      <View style={Styles.Container}>
-        <ChangeModel changed={changed}/>
-        <TextInput
-          style={Styles.forgetInput}
-          keyboardType="numeric"
-          placeholder="Enter new 6-digit pin"
-          value={pin}
-          onChangeText={(e)=>setPin(e)}
-        />
-        <TextInput
-          style={Styles.forgetInput}
-          keyboardType="numeric"
-          placeholder="Confirm 6-digit pin"
-          value={conPin}
-          onChangeText={(e)=>setConPin(e)}
-        />
-        <TouchableOpacity style={Styles.forgetbtn} onPress={saveFnc}>
-            <Text style={Styles.setPinTxt}>Save</Text>
-        </TouchableOpacity>
+      <View style={Styles.ContainerF}>
+        <ChangeModel changed={changed} />
+        <View style={Styles.ContainerX}>
+          <TextInput
+            style={Styles.forgetInput}
+            keyboardType="numeric"
+            placeholder="Enter new 6-digit pin"
+            placeholderTextColor={"rgb(234,188,78)"}
+            value={pin}
+            onChangeText={(e) => setPin(e)}
+          />
+          <TextInput
+            style={Styles.forgetInput}
+            keyboardType="numeric"
+            placeholder="Confirm 6-digit pin"
+            placeholderTextColor={"rgb(234,188,78)"}
+            value={conPin}
+            onChangeText={(e) => setConPin(e)}
+          />
+        </View>
 
+        <TouchableOpacity style={Styles.forgetbtn} onPress={saveFnc}>
+          <Text style={Styles.setPinTxt}>Save</Text>
+        </TouchableOpacity>
       </View>
     );
 };
 export const ForgetPassword = () => {
-    const {t} = useTranslation()
+    const {t} = useTranslation();
+    const Styles = StylesCon();
     const { userToken } = useContext(AuthContext);
     const {navigation} = useContext(GlobalContext);
     const [pwd, setPwd] = useState("");
@@ -104,21 +121,26 @@ export const ForgetPassword = () => {
         }, 2000);
     }, [changed]);
     return (
-      <View style={Styles.Container}>
-        <TextInput
-          style={Styles.forgetInput}
-          textContentType="password"
-          placeholder="Enter new password"
-          value={pwd}
-          onChangeText={(e)=>setPwd(e)}
-        />
-        <TextInput
-          style={Styles.forgetInput}
-          textContentType="password"
-          placeholder="Confirm new password"
-          value={conPwd}
-          onChangeText={(e)=>setConPwd(e)}
-        />
+      <View style={Styles.ContainerF}>
+        <View style={Styles.ContainerX}>
+          <TextInput
+            style={Styles.forgetInput}
+            textContentType="password"
+            placeholder="Enter new password"
+            value={pwd}
+            placeholderTextColor={"rgb(234,188,78)"}
+            onChangeText={(e) => setPwd(e)}
+          />
+          <TextInput
+            style={Styles.forgetInput}
+            textContentType="password"
+            placeholder="Confirm new password"
+            placeholderTextColor={"rgb(234,188,78)"}
+            value={conPwd}
+            onChangeText={(e) => setConPwd(e)}
+          />
+        </View>
+
         <TouchableOpacity style={Styles.forgetbtn} onPress={saveFnc}>
           <Text style={Styles.setPinTxt}>{t("save")}</Text>
         </TouchableOpacity>

@@ -15,7 +15,7 @@ const TransferMain = ()=>{
     const {t} = useTranslation();
     const Styles = StylesCon();
     const {userToken} = useContext(AuthContext);
-    const {navigation} = useContext(GlobalContext)
+    const {navigation,phone} = useContext(GlobalContext)
     const {sendTo} = useContext(LocalContext);
     const [isUser, setIsUser] = useState(false);
     const [name,setName] = useState("");
@@ -25,6 +25,7 @@ const TransferMain = ()=>{
     const [modal,setModal] = useState(false);
     const transferFnc = () =>{
        validPin &&
+       sendTo != phone &&
          isUser &&
          axios
            .post(
@@ -48,7 +49,7 @@ const TransferMain = ()=>{
 
     
     useEffect(()=>{
-        axios.get(isUserRegistered, {
+       sendTo != phone && axios.get(isUserRegistered, {
           params: {number:sendTo},
           headers: { "Content-Type": "application/json" },
         }).then((e)=>{

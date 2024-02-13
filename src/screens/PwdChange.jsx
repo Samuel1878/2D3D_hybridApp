@@ -9,9 +9,11 @@ import StylesCon from "../libs/Styles";
 import { ChangeModel } from "../components/modals";
 import themeProvider from "../libs/theme";
 import { useTranslation } from "react-i18next";
+import stylesCon from "../libs/style";
 
 const PwdChange = ({navigation}) =>{
     const Styles = StylesCon();
+    const styles = stylesCon();
     const {userToken} = useContext(AuthContext);
     const colors = themeProvider().colors;
     const {t} = useTranslation();

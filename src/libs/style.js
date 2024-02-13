@@ -501,6 +501,15 @@ const stylesCon = () => {
        borderRadius: 5,
        marginVertical: 5,
      },
+     gotoPayBtn: {
+      padding:10,
+      borderRadius:"25%",
+      backgroundColor:colors.app_1,
+      margin:35,
+      alignItems:"center",
+      justifyContent:"center"
+
+     },
      Payments: {
        width: 125,
        height: 250,

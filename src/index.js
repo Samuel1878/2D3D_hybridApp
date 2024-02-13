@@ -15,16 +15,21 @@ import Loader from "./components/loader";
 import GlobalContext from "./services/global/globalContext";
 import themeProvider from "./libs/theme";
 import {  useTranslation } from 'react-i18next';
+import SocketContext from './services/socket/socketContext';
+import AuthContext from './services/auth/authContext';
+import { FETCH_INFO } from './libs/actions';
 const Tab = createBottomTabNavigator();
 SplashScreen.preventAutoHideAsync();
 const Navigations = ({navigation}) => {
+  const {socket}  = useContext(SocketContext);
+  const {userToken} = useContext(AuthContext);
   const colors = themeProvider().colors;
   const {t} = useTranslation();
     let [fontsLoaded] = useFonts({
         Roboto : require("../assets/fonts/Roboto-Regular.ttf"),
         Roboto_Bold: require("../assets/fonts/Roboto-Bold.ttf")
     });
-     const { loggedIn, setNavigation } = useContext(GlobalContext);
+  const {  setNavigation, userRef } = useContext(GlobalContext);
 useEffect(()=>{
   setNavigation(navigation)
 },[])
@@ -34,7 +39,10 @@ useEffect(()=>{
          return
     }
     
-},[fontsLoaded])
+},[fontsLoaded]);
+  useEffect(() => {
+    userRef && socket && socket.emit(FETCH_INFO, userToken);
+  }, [userRef]);
 if(!fontsLoaded){
     return<View><Loader/></View>}
   return (
@@ -119,8 +127,8 @@ if(!fontsLoaded){
     >
       <Tab.Screen name={t("home")} component={Home} />
       <Tab.Screen name={t("2D")} component={TwoD} />
-      <Tab.Screen name={t("3D")} component={ThreeD} />
       <Tab.Screen name={t("wallet")} component={Wallet} />
+      <Tab.Screen name={t("3D")} component={ThreeD} />
       <Tab.Screen name={t("more")} component={More} />
     </Tab.Navigator>
   );

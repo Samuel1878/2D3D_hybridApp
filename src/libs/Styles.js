@@ -259,7 +259,7 @@ const StylesCon = () => {
     },
     termofusP: {
       fontSize: 15,
-      color: colors.app_1,
+      color: colors.text_2,
       fontFamily: "Roboto_Bold",
       fontWeight: "400",
       margin: 10,
@@ -280,7 +280,7 @@ const StylesCon = () => {
     },
     tphoneCon: {
       padding: 15,
-      borderRadius: 15,
+      borderRadius: 10,
       width: "90%",
       backgroundColor: colors.bg_2,
     },
@@ -295,7 +295,7 @@ const StylesCon = () => {
       padding: 10,
       backgroundColor: colors.bg_2,
       borderBottomColor: colors.bg_3b,
-      borderBottomWidth: 4,
+      borderBottomWidth: 2.5,
       marginVertical: 10,
       color: colors.text_1,
       fontSize: 21,
@@ -566,9 +566,10 @@ const StylesCon = () => {
     },
     ///TRANSACTION HISTORY
     TranHisCon: {
-      width: "95%",
+      width: "100%",
       justifyContent: "center",
       alignItems: "center",
+      flex:1,
     },
     // hisTopHeaderCon: {
     //   width: 100,
@@ -599,7 +600,7 @@ const StylesCon = () => {
       backgroundColor: colors.bg_2,
     },
     RecHisCon: {
-      width: "95%",
+      width: "100%",
       flex: 1,
       justifyContent: "center",
       alignItems: "center",
@@ -612,12 +613,13 @@ const StylesCon = () => {
     },
     hisItemCon: {
       backgroundColor: colors.bg_3,
+      width:"100%",
       padding: 5,
       borderRadius: 5,
       marginVertical: 5,
       flexDirection: "row",
       alignItems: "center",
-      justifyContent: "space-between",
+      justifyContent: "center",
     },
     hisItemImg: {
       width: 50,
@@ -649,7 +651,7 @@ const StylesCon = () => {
       flex: 1,
       backgroundColor: colors.bg_3,
       borderRadius: 5,
-      margin: 10,
+      margin: 5,
       alignItems: "center",
       justifyContent: "space-around",
     },
@@ -660,8 +662,10 @@ const StylesCon = () => {
       marginVertical: 5,
       flexDirection: "row",
       alignItems: "center",
-      justifyContent: "space-between",
-      width: 365,
+      gap:10,
+      //justifyContent: "center",
+      width: "100%",
+      //flex:1,
     },
 
     img: {
@@ -815,10 +819,32 @@ const StylesCon = () => {
       marginHorizontal: 5,
     },
     ////Forget MainPage.
+    exitBtn:{
+      padding:20,
+      marginVertical:25,
+      borderRadius:10,
+      width:"90%",
+      backgroundColor:colors.app_1,
+      justifyContent:"center",
+      alignItems:"center",
+  
+    },
+    ContainerF: {
+      justifyContent: "space-between",
+      alignItems: "center",
+      flex: 1,
+      backgroundColor: colors.bg_2,
+    },
+    ContainerX: {
+      justifyContent: "space-between",
+      alignItems: "center",
+      width:"100%"
+    },
     forgetCon: {
-      width: "100%",
+      flex:1,
       paddingVertical: 10,
       alignItems: "center",
+      width:"100%"
     },
     itemCon: {
       padding: 20,
@@ -832,7 +858,7 @@ const StylesCon = () => {
       borderBottomColor: colors.bg_3b,
       padding: 10,
       marginVertical: 20,
-      width: "80%",
+      width: "85%",
       fontSize: 18,
       color: colors.app_1,
     },
@@ -840,9 +866,9 @@ const StylesCon = () => {
       justifyContent: "center",
       alignItems: "center",
       padding: 20,
-      width: "90%",
+      width: "85%",
       backgroundColor: colors.app_1,
-      marginVertical: 20,
+      marginVertical: 25,
       borderRadius: 5,
     },
     ////INPUTSSS
@@ -1122,6 +1148,9 @@ const StylesCon = () => {
       height: 50,
     },
     ///Need Help FOOTER COM
+    footer: {
+      margin: 2,
+    },
     needHelpTxt: {
       fontSize: 17,
       fontFamily: "Roboto_Bold",
@@ -1136,18 +1165,34 @@ const StylesCon = () => {
       borderRadius: 5,
       flexDirection: "row",
       marginVertical: 5,
+      justifyContent: "center",
     },
     ////Payments
     payContainer: {
       flex: 1,
       backgroundColor: colors.bg_2,
       padding: 10,
-      justifyContent: "space-around",
+      flexDirection: "column",
+      justifyContent: "space-between",
+    },
+    payCon: {
+      height: "80%",
+    },
+    noPayment: {
+      flex: 1,
+      backgroundColor: colors.bg_3,
+      padding: 20,
+    },
+
+    addCon: {
+      height: "15%",
+      backgroundColor: colors.bg_1,
+      borderTopLeftRadius: 10,
+      borderTopLeftRadius: 10,
     },
     addPayments: {
       flexDirection: "row",
-      flex: 1,
-      backgroundColor: colors.bg_2,
+      backgroundColor: colors.bg_1,
       flexWrap: "wrap",
       justifyContent: "center",
     },
@@ -1435,14 +1480,14 @@ const StylesCon = () => {
       marginVertical: 25,
       flexDirection: "row",
       alignItems: "center",
-      gap:25
+      gap: 25,
     },
     langChoseCon: {
-      shadowColor:colors.app_1,
-      shadowOffset:{x:10,y:10},
-      shadowOpacity:.5,
-      shadowRadius:10,
-      borderRadius:10
+      shadowColor: colors.app_1,
+      shadowOffset: { x: 10, y: 10 },
+      shadowOpacity: 0.5,
+      shadowRadius: 10,
+      borderRadius: 10,
     },
     flagImg: {
       width: 65,

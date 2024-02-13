@@ -421,6 +421,9 @@ const BranchContainer = () => {
           options={{
             headerTitle: "Reset",
             headerShown: true,
+            headerBackButtonMenuEnabled: false,
+            headerBackTitleVisible:false,
+            headerBackVisible:false,
             headerTintColor: colors.text_1b,
             headerStyle: { backgroundColor: colors.app_1 },
             headerTitleStyle: { color: colors.text_1b },

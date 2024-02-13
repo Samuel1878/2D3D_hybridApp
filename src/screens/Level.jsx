@@ -2,6 +2,7 @@ import { View ,Text} from "react-native"
 import StylesCon from "../libs/Styles"
 import { useContext } from "react"
 import GlobalContext from "../services/global/globalContext"
+import { useTranslation } from "react-i18next"
 
 const Level = () =>{
    const Styles = StylesCon();

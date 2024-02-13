@@ -1,9 +1,7 @@
 
 import { useContext, useEffect, useState } from "react";
 import GlobalContext from "./globalContext";
-import AuthContext from "../auth/authContext";
 const Global = ({ children }) => {
-  // const { userToken } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(true);
   const [name, setName] = useState(null);
   const [money, setMoney] = useState(null);
@@ -19,6 +17,9 @@ const Global = ({ children }) => {
   const [history_2D, setHistory_2D] = useState([]);
   const [history_3D, setHistory_3D] = useState([]);
   const [isMarketOpen, setIsMarketOpen] = useState(false);
+
+  const [dataRef, setDataRef] = useState(false);
+  const [userRef, setUserRef] = useState(false);
   useEffect(() => {
     if (!profile && !proType) {
       setProfile(require("../../../assets/profile.png"));
@@ -28,6 +29,7 @@ const Global = ({ children }) => {
       
     
   }, [profile]);
+
   return (
     <GlobalContext.Provider
       value={{
@@ -61,6 +63,8 @@ const Global = ({ children }) => {
         setIsMarketOpen,
         proType,
         setProType,
+        userRef,
+        setUserRef
       }}
     >
       {children}

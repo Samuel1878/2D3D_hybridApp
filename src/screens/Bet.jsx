@@ -9,10 +9,12 @@ import AuthContext from "../services/auth/authContext";
 import GlobalContext from "../services/global/globalContext";
 import { BlurView } from "expo-blur";
 import StylesCon from "../libs/Styles";
+import stylesCon from "../libs/style";
 
 
 const Bet = () => {
     const Styles = StylesCon();
+    const styles = stylesCon();
     const {betDigits2D} = useContext(BetContext);
     const {navigation} = useContext(GlobalContext);
     const [modal, setModal] = useState(false);

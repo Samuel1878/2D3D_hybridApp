@@ -6,16 +6,20 @@ import { Data, ayaPay, cbPay, kbzPay, wavePay } from "../libs/data"
 import stylesCon from "../libs/style";
 import { Footer } from "../components/footer";
 import { useTranslation } from "react-i18next";
+import { AntDesign } from "@expo/vector-icons";
+import axios from "axios";
+import { _DELETE_PAYMENT } from "../hooks/config";
+import AuthContext from "../services/auth/authContext";
 
 const Payments = () =>{
   const {t} = useTranslation();
   const styles = stylesCon();
   const Styles = StylesCon();
-  const {payments,navigation} = useContext(GlobalContext);
+  const {payments,navigation,setUserRef} = useContext(GlobalContext);
+  const {userToken} = useContext(AuthContext)
   const [data,setData] = useState(null);
     useEffect(()=>{
         payments && setData(payments);
-        !payments && setData(Data);
     },[payments]);
     const RenderPayments = ({ item }) => {
       const RenderImg = () => {
@@ -55,6 +59,25 @@ const Payments = () =>{
             break;
         }
       };
+      const deleteFnc = () => {
+        
+        axios
+        .post(_DELETE_PAYMENT, {
+            name:item.name,
+            phone:item.phone
+            ,method:item.method,
+            userToken:userToken})
+        .then((res)=>{
+            if(res.status===201 ||200){
+              setUserRef(true);
+              setTimeout(()=>{
+                setUserRef(false)
+              },1000)
+             
+            }
+        })
+        .catch((e)=>console.log(e))
+      }
       return (
         <View style={styles.payments}>
           <RenderImg />
@@ -62,55 +85,70 @@ const Payments = () =>{
             <Text style={styles.paymentN}>{item.name}</Text>
             <Text style={styles.paymentP}> {item.phone}</Text>
           </View>
+          <TouchableOpacity onPress={deleteFnc}>
+            <AntDesign name="delete" size={26} color={"red"} />
+          </TouchableOpacity>
           <TouchableOpacity style={styles.paymentEd} onPress={EditPayment}>
-            <Text style={styles.paymentEdTxt}>{t("edit")}</Text>
+            <Text style={styles.paymentEdTxt}>{t("add")}</Text>
           </TouchableOpacity>
         </View>
       );
     };
     return (
       <View style={Styles.payContainer}>
-        {data && (
-          <FlatList
-            data={data}
-            renderItem={RenderPayments}
-            keyExtractor={(item) => item.phone}
-            extraData={data}
-            bounces={false}
-            showsVerticalScrollIndicator={false}
-          />
-        )}
-        <Text style={Styles.Txt}>
-          {t(
-            "the more payment methods you set up, the faster you can withdraw in cash"
-          )}
-        </Text>
-        <View style={Styles.addPayments}>
-          <TouchableOpacity
-            style={Styles.payment}
-            onPress={() => navigation.navigate("kbzPay")}
+          <View style={Styles.payCon}>
+             {data && data.length>0 ? (
+            <FlatList
+              data={data}
+              
+              renderItem={RenderPayments}
+              keyExtractor={(item) => item.phone + Math.random()}
+              extraData={data}
+              bounces={true}
+              showsVerticalScrollIndicator={false}
+            />):
+
+            <View style={Styles.noPayment}
           >
-            <Image source={kbzPay} style={Styles.payments} />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={Styles.payment}
-            onPress={() => navigation.navigate("wavePay")}
-          >
-            <Image source={wavePay} style={Styles.payments} />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={Styles.payment}
-            onPress={() => navigation.navigate("ayaPay")}
-          >
-            <Image source={ayaPay} style={Styles.payments} />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={Styles.payment}
-            onPress={() => navigation.navigate("cbPay")}
-          >
-            <Image source={cbPay} style={Styles.payments} />
-          </TouchableOpacity>
-        </View>
+            <Text style={Styles.Txt}>No payment method</Text>
+            <Text style={Styles.Txt4}>Choose and add payment method for depository and withdrawl below</Text>
+          </View>
+}
+            <View style={Styles.addCon}>
+              <Text style={Styles.Txt}>
+                {t(
+                  "the more payment methods you set up, the faster you can withdraw in cash"
+                )}
+              </Text>
+              <View style={Styles.addPayments}>
+                <TouchableOpacity
+                  style={Styles.payment}
+                  onPress={() => navigation.navigate("kbzPay")}
+                >
+                  <Image source={kbzPay} style={Styles.payments} />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={Styles.payment}
+                  onPress={() => navigation.navigate("wavePay")}
+                >
+                  <Image source={wavePay} style={Styles.payments} />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={Styles.payment}
+                  onPress={() => navigation.navigate("ayaPay")}
+                >
+                  <Image source={ayaPay} style={Styles.payments} />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={Styles.payment}
+                  onPress={() => navigation.navigate("cbPay")}
+                >
+                  <Image source={cbPay} style={Styles.payments} />
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+    
         <Footer />
       </View>
     );
