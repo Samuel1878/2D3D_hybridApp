@@ -25,7 +25,7 @@ const Bet = () => {
         const betDigit2D = betDigits2D.map((e)=>({
             number:e.pair,
             amount:e.amount,
-        }))
+        }));
            axios.post(_2d_BET_URL, betDigit2D,
             {params:{
                 userToken:userToken
@@ -36,6 +36,8 @@ const Bet = () => {
             }).then((e)=>{
               if(e.status===200||201){
                 setModal(true);
+              } else if (e.status===401||404){
+                
               }
             }
             ).catch((e)=>console.log(e))

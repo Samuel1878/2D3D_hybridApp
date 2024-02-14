@@ -58,6 +58,8 @@ const BranchContainer = () => {
           options={{
             headerTitle: "Login",
             headerShown: true,
+            headerBackTitleVisible: false,
+            headerBackVisible: false,
             headerTintColor: colors.text_1b,
             headerStyle: { backgroundColor: colors.app_1 },
             headerTitleStyle: { color: "transparent" },
@@ -68,6 +70,8 @@ const BranchContainer = () => {
           component={Register}
           options={{
             headerTitle: "Register",
+            headerBackTitleVisible: false,
+            headerBackVisible: false,
             headerShown: true,
             headerTintColor: colors.text_1b,
             headerStyle: { backgroundColor: colors.app_1 },
@@ -422,8 +426,8 @@ const BranchContainer = () => {
             headerTitle: "Reset",
             headerShown: true,
             headerBackButtonMenuEnabled: false,
-            headerBackTitleVisible:false,
-            headerBackVisible:false,
+            headerBackTitleVisible: false,
+            headerBackVisible: false,
             headerTintColor: colors.text_1b,
             headerStyle: { backgroundColor: colors.app_1 },
             headerTitleStyle: { color: colors.text_1b },

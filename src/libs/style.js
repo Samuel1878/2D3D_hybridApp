@@ -1499,6 +1499,15 @@ const stylesCon = () => {
        borderBottomLeftRadius: 10,
        borderBottomRightRadius: 10,
      },
+     _2d_WinnerBtnCon:{
+      position:"absolute",
+      left:20,
+      top:30
+     },
+     _2d_WinnerBtn:{
+      width:95,
+      height:95
+     },
      ///calender lotttie
      calenderCon: {
        position: "absolute",

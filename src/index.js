@@ -49,12 +49,11 @@ if(!fontsLoaded){
     <Tab.Navigator
       initialRouteName="Home"
       screenOptions={({ route }) => ({
-        headerStyle: { backgroundColor: colors.bg_1, fontWeight: "bolder" },
-        headerTitleStyle: { fontWeight: "600" },
         tabBarActiveTintColor: colors.app_4,
-        tabBarInactiveTintColor: colors.bg_1,
+        tabBarInactiveTintColor: colors.text_2,
         tabBarLabelStyle: { fontSize: 12 },
         headerShown: false,
+        tabBarShowLabel:true,
         tabBarStyle: {
           backgroundColor: colors.bg_2,
           paddingHorizontal: 15,
@@ -64,7 +63,7 @@ if(!fontsLoaded){
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
           let iconSize;
-          let iconColor = focused ? colors.app_1 : colors.bg_3b;
+          let iconColor = focused ? colors.app_1 : colors.text_3;
           switch (route.name) {
             case "Home":
               iconName = focused ? "home" : "home-outline";
@@ -125,11 +124,11 @@ if(!fontsLoaded){
         },
       })}
     >
-      <Tab.Screen name={t("home")} component={Home} />
+      <Tab.Screen name={t("home") || "Home"} component={Home} />
       <Tab.Screen name={t("2D")} component={TwoD} />
       <Tab.Screen name={t("wallet")} component={Wallet} />
       <Tab.Screen name={t("3D")} component={ThreeD} />
-      <Tab.Screen name={t("more")} component={More} />
+      <Tab.Screen name={t("more") || "More"} component={More} />
     </Tab.Navigator>
   );
 };

@@ -42,7 +42,7 @@ const ImageSlider = () =>{
             margin: 0,
             backgroundColor: "rgba(128, 128, 128, 0.92)",
           }}
-          ImageComponentStyle={{ borderRadius: 15, width: "97%", marginTop: 5 }}
+          ImageComponentStyle={{ borderRadius:0, width: "100%", marginTop: 5 }}
           imageLoadingColor="#2196F3"
         />
       </View>

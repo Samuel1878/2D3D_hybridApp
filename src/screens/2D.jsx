@@ -10,13 +10,14 @@ import AuthContext from "../services/auth/authContext";
 import DataContext from "../services/data/dataContext";
 import themeProvider from "../libs/theme";
 import { useTranslation } from "react-i18next";
+import AnimatedLottieView from "lottie-react-native";
 
 
 const TwoD = ({navigation}) => {
     const colors = themeProvider().colors;
     const styles = stylesCon();
     const {t} = useTranslation();
-    const {history2D,live2D,limit,setLimit,setPage,page} = useContext(DataContext)
+    const {history2D,live2D,limit,setLimit,setPage,page,results2D} = useContext(DataContext)
     const {userToken} = useContext(AuthContext);
     const animation = useRef(null);
         const animation2 = useRef(null);
@@ -134,7 +135,9 @@ const TwoD = ({navigation}) => {
                   source={require("../../assets/mn.jpg")}
                 >
                   <Text style={styles._2dBtnTxt}>12:00 PM</Text>
-                  <Text style={styles._2d_liveNo}>??</Text>
+                  <Text style={styles._2d_liveNo}>
+                    {results2D?.afResult ? results2D : "??"}
+                  </Text>
                 </ImageBackground>
               </View>
               <View style={styles.morningCon}>
@@ -143,7 +146,9 @@ const TwoD = ({navigation}) => {
                   source={require("../../assets/ev.jpg")}
                 >
                   <Text style={styles._2dBtnTxt}>40:30 PM</Text>
-                  <Text style={styles._2d_liveNo}>??</Text>
+                  <Text style={styles._2d_liveNo}>
+                    {(results2D && results2D.evResult) || "??"}
+                  </Text>
                 </ImageBackground>
               </View>
             </View>
@@ -179,6 +184,13 @@ const TwoD = ({navigation}) => {
                 ref={animation}
                 style={styles.calender}
                 source={require("../../assets/calender1.json")}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles._2d_WinnerBtnCon} onPress={()=>navigation.navigate("winners")}>
+              <AnimatedLottieView
+                autoPlay
+                style={styles._2d_WinnerBtn}
+                source={require("../../assets/winnerCup.json")}
               />
             </TouchableOpacity>
             <View style={styles._2d_filterCon}>
