@@ -10,13 +10,6 @@ import DataContext from "../services/data/dataContext";
 import AuthContext from "../services/auth/authContext";
 import themeProvider from "../libs/theme";
 import { useTranslation } from "react-i18next";
-// const data = [
-//     {id:1,result:215,date:"21/23/12"},
-//     {id:2,result:923,date:"21/23/12"},
-//     {id:3,result:131,date:"21/23/12"},
-//     {id:4,result:757,date:"21/23/12"},
-//     {id:5,result:435,date:"21/23/112"}
-// ];
 const Item = ({item})=>{
     const styles = stylesCon();
     const {t} = useTranslation();
@@ -53,31 +46,9 @@ const ThreeD = () => {
             <View style={styles.serverTimeCon}>
               <Text style={styles.serverTime}>
                 <Ionicons name="ios-time" size={24} color={colors.bg_1} />
-                {isOpen
-                  ? "Bet close: 16-09-2023 02:30:00 PM"
-                  : "Bet closed! will be ready soon"}
+                Open
               </Text>
             </View>
-            {/* <View style={styles.threeDBtnBox}>
-              <TouchableOpacity
-                onPress={() => navigation?.navigate("history")}
-                style={styles.HistoryBtn}
-              >
-                <Text style={styles.btnTxt}>{t("history")}</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation?.navigate("winners")}
-                style={styles.WinnerBtn}
-              >
-                <Text style={styles.btnTxt}>{t("winner")}</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => navigation?.navigate("3dAnalysis")}
-                style={styles.AnalysisBtn}
-              >
-                <Text style={styles.btnTxt}>{t("analysis")}</Text>
-              </TouchableOpacity>
-            </View> */}
           </View>
 
           <SafeAreaView style={styles.threeDdataCon}>

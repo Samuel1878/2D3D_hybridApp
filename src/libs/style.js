@@ -888,12 +888,12 @@ const stylesCon = () => {
      topmeCon: {
        flex: 1,
        backgroundColor: colors.app_1,
-       padding: 10,
+  
      },
      userProfileCon: {
        width: "90%",
        height: "100%",
-       paddingTop: 20,
+      // paddingTop: 20,
        flexDirection: "row",
        alignItems: "center",
      },
@@ -903,7 +903,7 @@ const stylesCon = () => {
        borderColor: colors.bg_3c,
        borderWidth: 2,
        borderRadius: 50,
-       margin: 5,
+       margin: 10,
      },
 
      userDataBox: {
@@ -926,7 +926,7 @@ const stylesCon = () => {
        color: colors.text_2b,
      },
      bottomMeCon: {
-       flex: 4,
+       flex: 6,
      },
      moreItemCon: {
        flexDirection: "row",
@@ -1117,9 +1117,13 @@ const stylesCon = () => {
        flex: 1,
        backgroundColor: colors.bg_2,
      },
+     threeDTopCon:{
+      flex:.7,
+      backgroundColor:colors.app_1,
+     },
      threeDdataCon: {
        backgroundColor: colors.bg_2,
-       flex: 1,
+       flex: 6,
      },
      _3d_betBtn: {
        position: "absolute",
@@ -1195,24 +1199,24 @@ const stylesCon = () => {
        fontWeight: "600",
        color: colors.text_1b,
      },
-     HistoryBtn: {
-       padding: 10,
-       paddingHorizontal: 25,
-       backgroundColor: colors.app_4,
-       borderRadius: "25%",
-     },
-     WinnerBtn: {
-       padding: 10,
-       paddingHorizontal: 25,
-       backgroundColor: colors.app_4,
-       borderRadius: "25%",
-     },
-     AnalysisBtn: {
-       paddingHorizontal: 25,
-       padding: 10,
-       backgroundColor: colors.app_4,
-       borderRadius: "25%",
-     },
+    //  HistoryBtn: {
+    //    padding: 10,
+    //    paddingHorizontal: 25,
+    //    backgroundColor: colors.app_4,
+    //    borderRadius: "25%",
+    //  },
+    //  WinnerBtn: {
+    //    padding: 10,
+    //    paddingHorizontal: 25,
+    //    backgroundColor: colors.app_4,
+    //    borderRadius: "25%",
+    //  },
+    //  AnalysisBtn: {
+    //    paddingHorizontal: 25,
+    //    padding: 10,
+    //    backgroundColor: colors.app_4,
+    //    borderRadius: "25%",
+    //  },
 
      //2D Screen
      top2DCon: {

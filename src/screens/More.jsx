@@ -1,4 +1,4 @@
-import { View, Text, Image,FlatList } from "react-native";
+import { View, Text, Image,FlatList, SafeAreaView } from "react-native";
 import stylesCon from "../libs/style";
 import LogReg from "../layouts/logReg";
 import { useContext, useEffect, useRef} from "react";
@@ -80,7 +80,7 @@ const More = ({ navigation }) => {
 
   return (
     <View style={styles.Container}>
-      <View style={styles.topmeCon}>
+      <SafeAreaView style={styles.topmeCon}>
         {userToken && (
           <TouchableOpacity
             onPress={() => navigation.navigate("me")}
@@ -92,13 +92,13 @@ const More = ({ navigation }) => {
                 {name}
               </Text>
               <Text style={styles.userDataTxt}>
-                {phone}{" "}
-                {phone&&(<MaterialIcons name="verified" size={20} color={colors.bg_3b} />)}
+                {phone}
+                {/* {phone&&(<MaterialIcons name="verified" size={20} color={colors.bg_3b} />)} */}
               </Text>
             </View>
           </TouchableOpacity>
         )}
-      </View>
+      </SafeAreaView>
       <View style={styles.bottomMeCon}>
         <FlatList
           data={DATA()}
