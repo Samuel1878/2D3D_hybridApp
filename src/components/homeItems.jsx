@@ -14,18 +14,22 @@ const HomeItems = ({item})=>{
     const {t, i18n} = useTranslation();
     switch (item.title) {
         case "TwoDmini":
-        return<ImageSlider/>;
-        case "line":
             return <TwoDmini />;
-        case "internet":
+        
+        case "line":
             return <HorizonalLine />;
+            
+        case "internet":
+            return <InternetData />;
         case "imageSlider":
-            return <InternetData/>
+            return <ImageSlider />;
+        case "ThreeDmini":
+            return <ThreeDmini/>;
         default:
         return (
-          <View style={{ height: 600, alignItems: "center" }}>
-            <Text style={styles.threeDTxt}>{t("latest 3D result")}</Text>
-            <ThreeDmini />
+          <View style={{alignItems: "center" }}>
+            {/* <Text style={styles.threeDTxt}>{t("latest 3D result")}</Text> */}
+            
             <View style={styles.homeBottom}>
               <TouchableOpacity
                 style={styles.homeBtns}
@@ -35,9 +39,9 @@ const HomeItems = ({item})=>{
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.homeBtns}
-                onPress={() => navigation.navigate("2dAnalysis")}
+                onPress={() => navigation.navigate("3dAnalysis")}
               >
-                <Text style={styles.btnTxt}>{"2D " + t("Analysis")}</Text>
+                <Text style={styles.btnTxt}>{t("2D History")}</Text>
               </TouchableOpacity>
             </View>
             <View style={styles.homeBottom}>
@@ -49,9 +53,9 @@ const HomeItems = ({item})=>{
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.homeBtns}
-                onPress={() => navigation.navigate("3dAnalysis")}
+                onPress={() => navigation.navigate("2dAnalysis")}
               >
-                <Text style={styles.btnTxt}>{"3D " + t("Analysis")}</Text>
+                <Text style={styles.btnTxt}>{ t("Analysis")}</Text>
               </TouchableOpacity>
             </View>
           </View>

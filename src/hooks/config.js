@@ -1,14 +1,21 @@
-const HOST = "http://13.250.223.218:8080"
+// const HOST = "http://13.250.223.218:8080"
+const HOST = "http://localhost:8080";
 export const REGISTER_URL = HOST + "/api/auth/register";
 export const LOGIN_URL = HOST + "/api/auth/login";
 export const OTP_URL = HOST + "/api/auth/verification";
 export const USER_DATA = HOST + "/api/auth/userData";
 
 export const _2d_URL = HOST + "/api/data/2d";
+//API DATA 
+export const _Live = "https://api.thaistock2d.com/live";
+export const _2D_RESULT = "https://api.thaistock2d.com/2d_result";
+export const _2D_HISTORY = "https://api.thaistock2d.com/history";
+
+
 export const _2d_HISTORY = HOST + "/api/data/2d/history";
 export const _2d_BET = HOST + "/api/data/2d/history";
 export const _3d_BET = "";
-export const SOCKET_URL = "http://13.250.223.218:8080"
+export const SOCKET_URL = HOST;
 
 export const _2d_BET_URL = HOST + "/api/bet/2D";
 export const _3d_BET_URL = HOST + "/api/bet/3D";

@@ -22,26 +22,30 @@ const Home = ({navigation}) => {
       refreshing && console.log(i18n.languages);
     },[refreshing]);
     const data = [
-        {
-            id:1,
-            title:"TwoDmini"
-        },
-         {
-            id:2,
-            title:"line"
-        },
-         {
-            id:3,
-            title:"internet"
-        },
-         {
-            id:4,
-            title:"imageSlider"
-        },
-         {
-            id:5,
-            title:"Five"
-        },
+      {
+        id: 1,
+        title: "internet",
+      },
+      {
+        id: 2,
+        title: "ThreeDmini",
+      },
+      {
+        id: 3,
+        title: "line",
+      },
+      {
+        id: 4,
+        title: "TwoDmini",
+      },
+      {
+        id: 5,
+        title: "imageSlider",
+      },
+      {
+        id: 6,
+        title: "bottom",
+      },
     ];
     const onRefresh = useCallback(() => {
       setRefreshing(true);

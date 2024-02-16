@@ -158,34 +158,47 @@ const stylesCon = () => {
      internetDataCon: {
        flex: 1,
        width: "90%",
+       borderRadius: 10,
+       backgroundColor: colors.bg_2,
+       overflow: "hidden",
      },
      interData: {
        flexDirection: "row",
-       backgroundColor: colors.bg_3,
-       padding: 10,
-       marginVertical: 10,
+       height: 100,
        alignItems: "center",
-       justifyContent: "space-around",
-       borderRadius: 5,
-       shadowColor: colors.bg_1,
-       shadowOffset: { x: 5, y: 5 },
+       justifyContent: "space-between",
+       borderRadius: 10,
+       shadowColor: colors.app_1,
+       shadowOffset: { x: 10, y: 10 },
        shadowRadius: 10,
        shadowOpacity: 0.3,
+     },
+     interLeft: {
+       flex: 1,
+       alignItems: "center",
+       justifyContent: "space-between",
+       gap: 20,
+     },
+     interRight: {
+       flex: 1,
+       alignItems: "center",
+       justifyContent: "space-between",
+       gap: 20,
      },
      inter: {
        padding: 5,
        alignItems: "center",
      },
      interHeader: {
-       color: colors.text_1,
-       fontSize: 20,
-       fontWeight: "600",
+       color: colors.app_2,
+       fontSize: 16,
+       fontWeight: "500",
        fontFamily: "Roboto_Bold",
      },
      interH: {
-       color: colors.text_2,
-       fontSize: 13,
-       fontFamily: "Roboto",
+       color: colors.app_3,
+       fontSize: 21,
+       fontFamily: "Roboto_Bold",
      },
      interV: {
        color: colors.text_1,
@@ -205,7 +218,7 @@ const stylesCon = () => {
        shadowOffset: { x: 5, y: 5 },
        shadowRadius: 10,
        shadowOpacity: 0.3,
-       width: "80%",
+       width: "90%",
      },
      threeDTxt: {
        textAlign: "center",
@@ -231,12 +244,15 @@ const stylesCon = () => {
      },
      //Image
      imageSliderCon: {
-       position: "absolute",
-       bottom: 30,
-       paddingVertical: 40,
-       width: "100%",
+        height:200,
+        borderRadius:10,
+       width: "98%",
        backgroundColor: colors.bg_1,
+       alignSelf:"center",
+       overflow:"hidden",
+       marginVertical:10,
      },
+
      //buttons
      btnBlurCon: {
        width: "100%",
@@ -502,13 +518,12 @@ const stylesCon = () => {
        marginVertical: 5,
      },
      gotoPayBtn: {
-      padding:10,
-      borderRadius:"25%",
-      backgroundColor:colors.app_1,
-      margin:35,
-      alignItems:"center",
-      justifyContent:"center"
-
+       padding: 10,
+       borderRadius: "25%",
+       backgroundColor: colors.app_1,
+       margin: 35,
+       alignItems: "center",
+       justifyContent: "center",
      },
      Payments: {
        width: 125,
@@ -888,12 +903,11 @@ const stylesCon = () => {
      topmeCon: {
        flex: 1,
        backgroundColor: colors.app_1,
-  
      },
      userProfileCon: {
        width: "90%",
        height: "100%",
-      // paddingTop: 20,
+       // paddingTop: 20,
        flexDirection: "row",
        alignItems: "center",
      },
@@ -1117,9 +1131,9 @@ const stylesCon = () => {
        flex: 1,
        backgroundColor: colors.bg_2,
      },
-     threeDTopCon:{
-      flex:.7,
-      backgroundColor:colors.app_1,
+     threeDTopCon: {
+       flex: 0.7,
+       backgroundColor: colors.app_1,
      },
      threeDdataCon: {
        backgroundColor: colors.bg_2,
@@ -1169,9 +1183,9 @@ const stylesCon = () => {
        alignItems: "center",
      },
      //TOP
-    //  threeDTopCon: {
-    //    height: 170,
-    //  },
+     //  threeDTopCon: {
+     //    height: 170,
+     //  },
      //ServerTime
      serverTimeCon: {
        paddingTop: 35,
@@ -1199,24 +1213,24 @@ const stylesCon = () => {
        fontWeight: "600",
        color: colors.text_1b,
      },
-    //  HistoryBtn: {
-    //    padding: 10,
-    //    paddingHorizontal: 25,
-    //    backgroundColor: colors.app_4,
-    //    borderRadius: "25%",
-    //  },
-    //  WinnerBtn: {
-    //    padding: 10,
-    //    paddingHorizontal: 25,
-    //    backgroundColor: colors.app_4,
-    //    borderRadius: "25%",
-    //  },
-    //  AnalysisBtn: {
-    //    paddingHorizontal: 25,
-    //    padding: 10,
-    //    backgroundColor: colors.app_4,
-    //    borderRadius: "25%",
-    //  },
+     //  HistoryBtn: {
+     //    padding: 10,
+     //    paddingHorizontal: 25,
+     //    backgroundColor: colors.app_4,
+     //    borderRadius: "25%",
+     //  },
+     //  WinnerBtn: {
+     //    padding: 10,
+     //    paddingHorizontal: 25,
+     //    backgroundColor: colors.app_4,
+     //    borderRadius: "25%",
+     //  },
+     //  AnalysisBtn: {
+     //    paddingHorizontal: 25,
+     //    padding: 10,
+     //    backgroundColor: colors.app_4,
+     //    borderRadius: "25%",
+     //  },
 
      //2D Screen
      top2DCon: {
@@ -1236,24 +1250,22 @@ const stylesCon = () => {
        height: 120,
        position: "absolute",
        left: 0,
-       flexDirection:"row",
+       flexDirection: "row",
        right: 0,
        top: "50%",
        padding: 10,
        gap: 10,
-
      },
      bg: {
        height: "100%",
        flex: 1,
        opacity: 1,
-     
+
        alignItems: "center",
        justifyContent: "space-between",
-    
      },
      morningCon: {
-       flex:1,
+       flex: 1,
        borderRadius: 10,
        overflow: "hidden",
        backgroundColor: colors.text_1b,
@@ -1280,12 +1292,12 @@ const stylesCon = () => {
        justifyContent: "center",
        alignItems: "center",
      },
-      _2d_liveNo: {
-        fontSize: 70,
-        fontFamily: "Roboto_Bold",
-        fontWeight: "900",
-        color: colors.bg_1,
-      },
+     _2d_liveNo: {
+       fontSize: 70,
+       fontFamily: "Roboto_Bold",
+       fontWeight: "900",
+       color: colors.bg_1,
+     },
      //  _2d_live: {
      //    fontSize: 12,
      //    fontFamily: "Roboto_Bold",
@@ -1320,7 +1332,7 @@ const stylesCon = () => {
      },
      _2d_Header: {
        fontFamily: "Roboto_Bold",
-       fontSize: 17,
+       fontSize: 19,
        fontWeight: "600",
        color: colors.text_1b,
      },
@@ -1333,7 +1345,7 @@ const stylesCon = () => {
      },
      _2d_H: {
        margin: 10,
-       fontSize: 22,
+       fontSize: 21,
        color: colors.text_1,
        fontFamily: "Roboto_Bold",
        fontWeight: "700",
@@ -1503,14 +1515,14 @@ const stylesCon = () => {
        borderBottomLeftRadius: 10,
        borderBottomRightRadius: 10,
      },
-     _2d_WinnerBtnCon:{
-      position:"absolute",
-      left:20,
-      top:30
+     _2d_WinnerBtnCon: {
+       position: "absolute",
+       left: 20,
+       top: 30,
      },
-     _2d_WinnerBtn:{
-      width:95,
-      height:95
+     _2d_WinnerBtn: {
+       width: 95,
+       height: 95,
      },
      ///calender lotttie
      calenderCon: {
@@ -1531,9 +1543,8 @@ const stylesCon = () => {
        backgroundColor: "transparent",
        width: 110,
        flex: 1,
-        position: "absolute",
-        top: -25,
-      
+       position: "absolute",
+       top: -25,
      },
      _2d_filter: {
        flex: 1,
@@ -1564,7 +1575,6 @@ const stylesCon = () => {
        position: "absolute",
        top: "20%",
        right: "-5%",
-   
      },
      betnow: {
        flex: 1,

@@ -22,7 +22,7 @@ const Item = ({item})=>{
         </View>
         <View style={styles.threeDvalueCon}>
           <Text style={styles.dataH}>{t("result")}</Text>
-          <Text style={styles.dataV}>{item?.result}</Text>
+          <Text style={styles.dataV}>{item?.num}</Text>
         </View>
       </View>
     );
@@ -55,7 +55,7 @@ const ThreeD = () => {
             <FlatList
               data={history3D}
               renderItem={({ item }) => <Item item={item} />}
-              keyExtractor={(item) => item.date}
+              keyExtractor={(item) => Math.random()}
             />
           </SafeAreaView>
           {isOpen ? (
