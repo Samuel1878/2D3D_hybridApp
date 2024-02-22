@@ -25,8 +25,6 @@ const Global = ({ children }) => {
       setProfile(require("../../../assets/profile.png"));
       return;
     }  
-       console.debug(profile);
-      
     
   }, [profile]);
 

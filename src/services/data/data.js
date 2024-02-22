@@ -8,22 +8,16 @@ const Data =({children}) => {
   const [live2D,setLive2D] = useState({});
   const [results2D, setResults2D] = useState({});
   const [history2D, setHistory2D] = useState([]);
-  const [page,setPage] = useState(1);
-  const [limit,setLimit] = useState(5);
-    const [history3D, setHistory3D] = useState([]);
+  const [history3D, setHistory3D] = useState([]);
+  const [resfLive, setResfLive] = useState(false);
+  const [resfTwoD, setResfTwoD] = useState(false);
 
-   //const {results, Loaded} = fetch2dResult();
-   let {history,loadedHis} = fetchHistory({page, limit})
-   useEffect(()=>{
-   setHistory2D(history);
-   },[loadedHis,history,limit,page])
-    // useEffect(() => {
-    //   loaded && setLive2D(live)
-      
-    // }, [loaded]);
-    // useEffect(()=>{
-    //   Loaded && setResults2D(results)
-    // },[Loaded])
+  //  //const {results, Loaded} = fetch2dResult();
+  // //  let {history,loadedHis} = fetchHistory({page, limit})
+  //  useEffect(()=>{
+  //  setHistory2D(history);
+  //  },[loadedHis,history])
+ 
     useEffect(() => {
       const fetch = () => {
         axios
@@ -32,21 +26,22 @@ const Data =({children}) => {
           })
           .then((e) => e.status === 200 && setLive2D(e.data))
           .catch((error) => console.log(error))
-          .finally(()=>console.debug(live2D))
           
       };
       fetch();
-    }, []);
+    }, [resfLive]);
    useEffect(() => {
-     axios
+    const fetch = () =>{
+      axios
        .get(_2D_RESULT, {
          headers: { "Content-Type": "application/json" },
        })
        .then((e) => e.status === 200 && setResults2D(e.data))
-       .finally(()=>console.log(results2D))
+      //  .finally(()=>console.log(results2D))
        .catch((error) => console.debug(error))
-      
-   }, []);
+    };
+    fetch();
+   }, [resfTwoD]);
    useEffect(() => {
      const fetch = () => {
        axios
@@ -65,11 +60,13 @@ const Data =({children}) => {
           live2D,
           results2D,
           history2D,
+          setHistory2D,
           history3D,
-          setLimit,
-          setPage,
-          page,
-          limit,
+          setResfLive,
+          resfLive,
+          setResfTwoD,
+          resfTwoD
+        
         }}
       >
         {children}

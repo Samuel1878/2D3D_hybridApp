@@ -53,7 +53,7 @@ if(!fontsLoaded){
         tabBarInactiveTintColor: colors.text_2,
         tabBarLabelStyle: { fontSize: 12 },
         headerShown: false,
-        tabBarShowLabel:true,
+        tabBarShowLabel: true,
         tabBarStyle: {
           backgroundColor: colors.bg_2,
           paddingHorizontal: 15,
@@ -76,7 +76,7 @@ if(!fontsLoaded){
               iconName = focused
                 ? "numeric-2-box-multiple"
                 : "numeric-2-box-multiple-outline";
-              iconSize = focused ? 28 : 26;
+              iconSize = focused ? 28 : 25;
               return (
                 <MaterialCommunityIcons
                   name={iconName}
@@ -89,7 +89,7 @@ if(!fontsLoaded){
               iconName = focused
                 ? "numeric-3-box-multiple"
                 : "numeric-3-box-multiple-outline";
-              iconSize = focused ? 28 : 26;
+              iconSize = focused ? 28 : 25;
               return (
                 <MaterialCommunityIcons
                   name={iconName}
@@ -100,7 +100,7 @@ if(!fontsLoaded){
               break;
             case "Wallet":
               iconName = focused ? "wallet" : "wallet-outline";
-              iconSize = focused ? 28 : 26;
+              iconSize = focused ? 28 : 25;
               return (
                 <Ionicons name={iconName} size={iconSize} color={iconColor} />
               );
@@ -124,11 +124,14 @@ if(!fontsLoaded){
         },
       })}
     >
-      <Tab.Screen name={t("home") || "Home"} component={Home} />
+      <Tab.Screen
+        name={t("home")}
+        component={Home}
+      />
       <Tab.Screen name={t("2D")} component={TwoD} />
-      <Tab.Screen name={t("wallet")} component={Wallet} />
       <Tab.Screen name={t("3D")} component={ThreeD} />
-      <Tab.Screen name={t("more") || "More"} component={More} />
+      <Tab.Screen name={t("wallet")} component={Wallet} />
+      <Tab.Screen name={t("more")} component={More} />
     </Tab.Navigator>
   );
 };

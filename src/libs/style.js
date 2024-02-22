@@ -61,7 +61,7 @@ const stylesCon = () => {
        marginBottom: 5,
      },
      liveDate: {
-       fontSize: 12,
+       fontSize: 13,
        color: colors.text_1b,
        fontFamily: "Roboto",
      },
@@ -208,7 +208,7 @@ const stylesCon = () => {
      },
      interData3D: {
        flexDirection: "row",
-       backgroundColor: colors.bg_3,
+       backgroundColor: colors.bg_2,
        padding: 10,
        marginVertical: 10,
        alignItems: "center",
@@ -1403,16 +1403,18 @@ const stylesCon = () => {
        flex: 1,
        flexDirection: "row",
        alignItems: "center",
-       justifyContent: "space-around",
+       justifyContent: "space-between",
        width: "100%",
        borderBottomColor: colors.bg_2,
        borderBottomWidth: 4,
+       paddingHorizontal:10
      },
      _2d_interCon2: {
+      paddingHorizontal:10,
        flex: 1,
        flexDirection: "row",
        alignItems: "center",
-       justifyContent: "space-around",
+       justifyContent: "space-between",
        width: "100%",
        borderBottomColor: colors.app_1,
        borderBottomWidth: 4,
@@ -1539,34 +1541,13 @@ const stylesCon = () => {
        shadowOpacity: 0.5,
        shadowRadius: 10,
      },
-     _2d_filterCon: {
-       backgroundColor: "transparent",
-       width: 110,
-       flex: 1,
-       position: "absolute",
-       top: -25,
-     },
-     _2d_filter: {
-       flex: 1,
-       shadowColor: colors.bg_3,
-       shadowOffset: { x: 10, y: 20 },
-       shadowOpacity: 1,
-       shadowRadius: 10,
-       backgroundColor: "transparent",
-     },
-     _2d_filterItem: {
-       fontSize: 13,
-       fontFamily: "Roboto_Bold",
-       fontWeight: "600",
-       color: colors.app_1,
-     },
-     filter: {
-       flex: 1,
-       position: "absolute",
-       left: -5,
-       top: "45%",
-       bottom: "45%",
-     },
+     //Timmer
+     _2d_Timer :{
+      justifyContent:"center",
+      paddingTop:20,
+
+     }
+    ,
      //bet button
      betBtnCon: {
        width: 150,
@@ -1827,6 +1808,7 @@ const stylesCon = () => {
        width: 60,
        height: 60,
      },
+     
 
      //HISTORY 2D
      History2D: {
@@ -1834,21 +1816,16 @@ const stylesCon = () => {
        backgroundColor: colors.bg_2,
        alignItems: "center",
      },
-     picker: {
-       flex: 1,
-       width: "100%",
-       height: 100,
-     },
      pickerCon: {
-       top: -70,
        width: "80%",
        height: 100,
        alignItems: "center",
-       justifyContent: "center",
+       justifyContent: "space-around",
+       flexDirection:"row"
      },
      HistContainer: {
        flex: 1,
-       width: 320,
+       width: 350,
      },
      hisItem: {
        width: "100%",

@@ -120,12 +120,12 @@ const Wallet = ()=>{
                   color={colors.app_1}
                 />
               </View>
-              <View style={styles.walletTopR}>
+              <TouchableOpacity style={styles.walletTopR} onPress={()=>navigation.navigate("me")}>
                 <Image
                   style={styles.walletImage}
                   source={require("../../assets/profile.png")}
                 />
-              </View>
+              </TouchableOpacity>
             </View>
             <View style={styles.wallet}>
               <View style={styles.walletMainCon}>
@@ -239,16 +239,16 @@ const Wallet = ()=>{
 
                   <View style={styles.walletBtnCons}>
                     <TouchableOpacity
-                      onPress={() => navigation.navigate("Service")}
+                      onPress={() => navigation.navigate("Form")}
                       style={styles.walletBtns}
                     >
                       <LottieView
                         autoPlay
                         style={styles.walletBtnImg}
-                        source={require("../../assets/services.json")}
+                        source={require("../../assets/moneyGrow.json")}
                       />
                     </TouchableOpacity>
-                    <Text style={styles.walletBtnsTxt}>{t("services")}</Text>
+                    <Text style={styles.walletBtnsTxt}>{t("form")}</Text>
                   </View>
 
                   <View style={styles.walletBtnCons}>

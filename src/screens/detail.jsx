@@ -10,6 +10,7 @@ export const Details = ()=>{
       const Styles = StylesCon();
     const {detail} = useContext(LocalContext);
     const {name,phone} = useContext(GlobalContext);
+    console.log(detail)
     return (
       <View style={Styles.Container}>
         <AntDesign

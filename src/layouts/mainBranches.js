@@ -38,6 +38,7 @@ import Vouchers from "../hooks/vouchers";
 import { Forget, ForgetPassword, ForgetPin } from "../components/forget";
 import themeProvider from "../libs/theme";
 import LanguageChoose from "../components/language";
+import Form from "../screens/form";
 
 
 const Stack = createNativeStackNavigator();
@@ -208,6 +209,17 @@ const BranchContainer = () => {
             headerTintColor: colors.text_1b,
             headerStyle: { backgroundColor: colors.app_1 },
             headerTitleStyle: { color: "transparent" },
+          }}
+        />
+        <Stack.Screen
+          name="Form"
+          component={Form}
+          options={{
+            headerTitle: "Forms",
+            headerShown: true,
+            headerTintColor: colors.text_1b,
+            headerStyle: { backgroundColor: colors.app_1 },
+            headerTitleStyle: { color: colors.text_1b },
           }}
         />
         <Stack.Screen

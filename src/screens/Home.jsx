@@ -9,18 +9,19 @@ import GlobalContext from "../services/global/globalContext";
 import { useTranslation } from "react-i18next"; 
 import i18n from "../libs/lang";
 import themeProvider from "../libs/theme";
+import DataContext from "../services/data/dataContext";
 const Home = ({navigation}) => {
   const colors = themeProvider().colors;
     const styles = stylesCon();
     let scrollOffsetY = useRef(new Animated.Value(0)).current;
-    const [refreshing, setRefreshing]= useState(false);
     const {setIsLoading} = useContext(GlobalContext);
+    const {resfLive, setResfLive} = useContext(DataContext);
 
     
     useEffect(()=>{
-      refreshing && setIsLoading(true);
-      refreshing && console.log(i18n.languages);
-    },[refreshing]);
+      resfLive && setIsLoading(true);
+      resfLive && console.log(i18n.languages, resfLive);
+    },[resfLive]);
     const data = [
       {
         id: 1,
@@ -48,10 +49,10 @@ const Home = ({navigation}) => {
       },
     ];
     const onRefresh = useCallback(() => {
-      setRefreshing(true);
+      setResfLive(true);
       setTimeout(() => {
-        setRefreshing(false);
-      }, 2000);
+        setResfLive(false);
+      }, 1500);
     }, []);
   
     return (
@@ -66,7 +67,7 @@ const Home = ({navigation}) => {
           scrollEventThrottle={4}
           showsVerticalScrollIndicator={false}
           refreshControl={
-            <RefreshControl tintColor={colors.app_1} colors={colors.app_1} refreshing={refreshing} onRefresh={onRefresh} />
+            <RefreshControl tintColor={colors.app_1} colors={colors.app_1} refreshing={resfLive} onRefresh={onRefresh} />
           }
           onScroll={Animated.event(
             [{ nativeEvent: { contentOffset: { y: scrollOffsetY } } }],

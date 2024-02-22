@@ -13,7 +13,7 @@ const TwoDmini = () => {
       {live2D &&
         live2D.result?.map((e) => {
           return (
-            <View style={styles.dataA}>
+            <View style={styles.dataA} key={e.open_time}>
               <Text style={styles.dataHeader}>{e.open_time}</Text>
               <View style={styles.dataACon}>
                 <View style={styles.dataCon}>

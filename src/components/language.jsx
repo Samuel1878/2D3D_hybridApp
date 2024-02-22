@@ -12,7 +12,7 @@ const LanguageChoose = ({navigation}) => {
     const { t, i18n } = useTranslation();
     const Styles = StylesCon();
     const changeLang = (lang) => {
-            navigation.navigate("Home");
+            navigation.navigate(t("home"));
             i18n.changeLanguage(lang);
     }
     const MM = () => {

@@ -138,7 +138,7 @@ const StylesCon = () => {
       fontSize: 19,
       fontFamily: "Roboto_Bold",
       fontWeight: "600",
-      color: colors.app_1,
+      color: colors.text_1,
       textAlign: "center",
       marginVertical: 10,
       textDecorationLine: "underline",
@@ -147,7 +147,7 @@ const StylesCon = () => {
     },
     topCon: {
       width: "100%",
-      height: "auto",
+      height: "30%",
       alignItems: "center",
       borderBottomColor: colors.app_1,
       borderBottomWidth: 2,
@@ -157,8 +157,16 @@ const StylesCon = () => {
       borderRadius: 10,
       flexDirection: "row",
       marginVertical: 5,
-      width: 300,
+      width: 350,
       flex: 1,
+    },
+    noRecordBox: {
+      margin: 10,
+      backgroundColor: colors.bg_3,
+      width: "100%",
+      height: "100%",
+      borderRadius: "25%",
+      padding: 10,
     },
     topImg: {
       width: 50,
@@ -569,7 +577,7 @@ const StylesCon = () => {
       width: "100%",
       justifyContent: "center",
       alignItems: "center",
-      flex:1,
+      flex: 1,
     },
     // hisTopHeaderCon: {
     //   width: 100,
@@ -599,12 +607,6 @@ const StylesCon = () => {
       alignItems: "center",
       backgroundColor: colors.bg_2,
     },
-    RecHisCon: {
-      width: "100%",
-      flex: 1,
-      justifyContent: "center",
-      alignItems: "center",
-    },
     TranHisH: {
       fontSize: 18,
       fontFamily: "Roboto_Bold",
@@ -613,13 +615,13 @@ const StylesCon = () => {
     },
     hisItemCon: {
       backgroundColor: colors.bg_3,
-      width:"100%",
+      // width: "100%",
       padding: 5,
       borderRadius: 5,
       marginVertical: 5,
       flexDirection: "row",
       alignItems: "center",
-      justifyContent: "center",
+      justifyContent: "space-between",
     },
     hisItemImg: {
       width: 50,
@@ -629,13 +631,13 @@ const StylesCon = () => {
       padding: 5,
     },
     hisH: {
-      fontSize: 16,
+      fontSize: 15,
       fontFamily: "Roboto_Bold",
       fontWeight: "600",
       color: colors.app_1,
     },
     hisDate: {
-      fontSize: 15,
+      fontSize: 11,
       fontFamily: "Roboto_Bold",
       fontWeight: "600",
       color: colors.text_1,
@@ -646,14 +648,14 @@ const StylesCon = () => {
       fontWeight: "600",
       color: colors.app_1,
     },
-    ///Cash In Out
-    cashServiceCon: {
-      flex: 1,
-      backgroundColor: colors.bg_3,
-      borderRadius: 5,
-      margin: 5,
+    //FORM
+    formCon: {
+      flex:1,
+      backgroundColor: colors.bg_2,
       alignItems: "center",
-      justifyContent: "space-around",
+      // padding:10,
+      height: "100%",
+      width: "100%",
     },
     cashInItemCon: {
       backgroundColor: colors.bg_3,
@@ -662,10 +664,11 @@ const StylesCon = () => {
       marginVertical: 5,
       flexDirection: "row",
       alignItems: "center",
-      gap:10,
-      //justifyContent: "center",
-      width: "100%",
-      //flex:1,
+      gap: 10,
+      justifyContent:"space-between",
+      width:360,
+
+
     },
 
     img: {
@@ -819,15 +822,14 @@ const StylesCon = () => {
       marginHorizontal: 5,
     },
     ////Forget MainPage.
-    exitBtn:{
-      padding:20,
-      marginVertical:25,
-      borderRadius:10,
-      width:"90%",
-      backgroundColor:colors.app_1,
-      justifyContent:"center",
-      alignItems:"center",
-  
+    exitBtn: {
+      padding: 20,
+      marginVertical: 25,
+      borderRadius: 10,
+      width: "90%",
+      backgroundColor: colors.app_1,
+      justifyContent: "center",
+      alignItems: "center",
     },
     ContainerF: {
       justifyContent: "space-between",
@@ -838,13 +840,13 @@ const StylesCon = () => {
     ContainerX: {
       justifyContent: "space-between",
       alignItems: "center",
-      width:"100%"
+      width: "100%",
     },
     forgetCon: {
-      flex:1,
+      flex: 1,
       paddingVertical: 10,
       alignItems: "center",
-      width:"100%"
+      width: "100%",
     },
     itemCon: {
       padding: 20,

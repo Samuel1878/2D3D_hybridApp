@@ -57,10 +57,10 @@ const DynamicHeader = ({navigation, animHeaderValue}) => {
           <View style={styles.dataMidCon}>
             <Text style={styles.liveNo}>{live2D?.live?.twod }</Text>
             <Text style={styles.liveDate}>
-              {live2D?.live?.date || "no data"}
+              {live2D?.server_time}
             </Text>
             <Text style={styles.liveDate}>
-              {live2D?.live?.time || "check internet"}
+              {live2D?.holiday?.name=="NULL"?"on":"off day - " + live2D?.holiday?.name}
             </Text>
           </View>
           <View style={styles.dataRightCon}>
