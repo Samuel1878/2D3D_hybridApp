@@ -6,67 +6,72 @@ import axios from "axios"
 import { TRANSFER, isUserRegistered } from "../hooks/config";
 import AuthContext from "../services/auth/authContext";
 import GlobalContext from "../services/global/globalContext";
-import { pinREGEX } from "../libs/data";
+import { amountREGEX, pinREGEX } from "../libs/data";
 import { BlurView } from "expo-blur";
 import { useTranslation } from "react-i18next";
+import { NoPinErr } from "../components/modals";
 
 
 const TransferMain = ()=>{
     const {t} = useTranslation();
     const Styles = StylesCon();
     const {userToken} = useContext(AuthContext);
-    const {navigation,phone} = useContext(GlobalContext)
+    const {navigation,phone,money} = useContext(GlobalContext)
     const {sendTo} = useContext(LocalContext);
     const [isUser, setIsUser] = useState(false);
     const [name,setName] = useState("");
     const [pin,setPin] = useState("");
     const [validPin, setValidPin] = useState(false);
-    const [amount, setAmount] = useState("");
+    const [amounT, setAmounT] = useState("");
     const [modal,setModal] = useState(false);
+    const [noPin, setNoPin] = useState(false);
+    const [validMoney, setValidMoney] = useState(false);
     const transferFnc = () =>{
+      validMoney&&
        validPin &&
        sendTo != phone &&
          isUser &&
          axios
            .post(
              TRANSFER,
-             { phone: sendTo, name: name, amount: parseInt(amount), pin: pin },
+             { phone: sendTo, name: name, amount: parseInt(amounT), pin: pin },
              { headers: { "Content-Type": "application/json" } ,params:{userToken:userToken}}
            )
            .then((e) => {
              if (e.status === 200 || 201) {
               setModal(true)
              } else {
-               setModal(false);
+               setNoPin(true);
              }
            })
-           .catch((err) => console.log(err));
+           .catch((err) => setNoPin(true));
     };
     const hideModalFnc = () => {
       setModal(!modal);
       navigation.navigate("Transfer")
     }
-
-    
     useEffect(()=>{
        sendTo != phone && axios.get(isUserRegistered, {
           params: {number:sendTo},
           headers: { "Content-Type": "application/json" },
         }).then((e)=>{
             if(e.status===200){
-                console.log(e.data)
                 setName(e.data.name)
                 setIsUser(true)
                 return
-            }
+            } 
         }).catch((err)=>console.log(err))
     },[])
     useEffect(()=>{
-        setValidPin(pinREGEX.test(pin))
-    },[pin])
+        setValidPin(pinREGEX.test(pin));
+    },[pin]);
+    useEffect(()=>{
+      setValidMoney(money>=amounT)
+    },[amounT])
     return (
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <View style={Styles.tranContainer}>
+          <NoPinErr setModal={setNoPin} modal={noPin} />
           <Modal
             animationType="fade"
             transparent={true}
@@ -79,9 +84,18 @@ const TransferMain = ()=>{
             <BlurView intensity={50} tint="dark" style={Styles.modal}>
               <View style={Styles.modalBox}>
                 <Text style={Styles.Txt2M}>{t("transaction completed")}</Text>
-                <Text style={Styles.Txt3}>{
-                  t("you have successfully transferred") + " " + amount + " " + t("MMK") + " " + t("to") + " " + name + ": " + sendTo
-                }
+                <Text style={Styles.Txt3}>
+                  {t("you have successfully transferred") +
+                    " " +
+                    amounT +
+                    " " +
+                    t("MMK") +
+                    " " +
+                    t("to") +
+                    " " +
+                    name +
+                    ": " +
+                    sendTo}
                 </Text>
                 <Text>{t("please check receipts")}</Text>
                 <Pressable style={Styles.modalBtn} onPress={hideModalFnc}>
@@ -93,20 +107,30 @@ const TransferMain = ()=>{
           {isUser ? (
             <View style={Styles.tranCon}>
               <View style={Styles.ToCon}>
-                <Text style={Styles.ToH}>{t("transfer") + " " + t("to")}</Text>
+                
                 <Text style={Styles.toName}>{name}</Text>
-                <Text style={Styles.toNo}>{sendTo}</Text>
+                <Text style={Styles.toName}>{sendTo}</Text>
               </View>
               <View style={Styles.amountCon}>
-                <Text style={Styles.amountH}>{t("amount")}</Text>
+                <Text style={Styles.amountH}>{t("Amount")}</Text>
                 <TextInput
                   inputMode="numeric"
                   textContentType="telephoneNumber"
                   autoFocus
+                  placeholder="Enter Amount"
+                  placeholderTextColor={"#f4f2f1"}
                   style={Styles.amountInput}
-                  value={amount}
-                  onChangeText={(e) => setAmount(e)}
+                  value={amounT}
+                  onChangeText={(e) => setAmounT(e)}
+                  
                 />
+                <View style={Styles.rowCon}>
+                  <Text style={Styles.Txt4}>
+                    {t("availiable") + " " + t("balance")}
+                  </Text>
+                  <Text style={Styles.Txt4}>{money + " Ks"}</Text>
+                </View>
+
                 <Text style={Styles.amountH}>{t("fund security pin")}</Text>
                 <TextInput
                   value={pin}
@@ -136,7 +160,6 @@ const TransferMain = ()=>{
               </Text>
             </View>
           )}
-          
         </View>
       </TouchableWithoutFeedback>
     );

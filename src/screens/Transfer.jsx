@@ -5,13 +5,18 @@ import AnimatedLottieView from "lottie-react-native";
 import GlobalContext from "../services/global/globalContext";
 import LocalContext from "../services/localization/localContext";
 import { useTranslation } from "react-i18next";
+import axios from "axios"
+import { GET_TRANSACTIONS } from "../hooks/config";
+import AuthContext from "../services/auth/authContext";
 
 const Transfer = () => {
     const Styles = StylesCon();
     const {t} = useTranslation();
     const [tphone,setTphone]=useState("09");
-    const {navigation,transactions} = useContext(GlobalContext);
+    const {navigation} = useContext(GlobalContext);
+    const [transactions, setTransactions] = useState([]);
     const {setSendTo} = useContext(LocalContext);
+    const {userToken} = useContext(AuthContext)
     const recentTransfer = new Map();
     const [recentArray ,setRecentArray]= useState([]);
     const contactFnc = ()=>{
@@ -24,6 +29,13 @@ const Transfer = () => {
     };
     const deleteHis = () => {
       setRecentArray([]);
+    };
+    const emptyListFnc = () => {
+      return (
+        <View style={Styles.emptyListCon}>
+          <Text style={Styles.Txt1}>No data found</Text>
+        </View>
+      );
     };
     
     const renderRecent = ({item,index})=>{
@@ -43,9 +55,21 @@ const Transfer = () => {
                 <Text style={Styles.recentTxt}>{item[0]}</Text>
             </TouchableOpacity>
         )
-    }
+    };
     useEffect(()=>{
-      transactions.map((e)=>{
+      axios.get(GET_TRANSACTIONS,{headers:{
+        "Content-Type":"application/json",
+      },
+    params:{userToken:userToken}}).then((e)=>{
+      if(e.status===200||201){
+        setTransactions(e.data);
+        return
+      }
+      console.log(e.data.message)
+    }).catch((e)=>console.log(e))
+    },[]);
+    useEffect(()=>{
+      transactions && transactions.map((e)=>{
        recentTransfer.set(e.toName,e.toPhone);
       });
         recentTransfer.forEach((value,key)=>{
@@ -53,7 +77,7 @@ const Transfer = () => {
             data.push(key,value)
         setRecentArray((prev)=>[...prev,data])
         });
-    },[])
+    },[transactions])
     return (
       <TouchableWithoutFeedback
         style={{ flex: 1 }}
@@ -62,7 +86,9 @@ const Transfer = () => {
         <View style={Styles.Container}>
           <View style={Styles.TransferTopCon}>
             <View style={Styles.tphoneCon}>
-              <Text style={Styles.tphoneH}>{t("transfer to phone number")}</Text>
+              <Text style={Styles.tphoneH}>
+                {t("transfer to phone number")}
+              </Text>
               <TextInput
                 inputMode="tel"
                 autoFocus
@@ -87,12 +113,14 @@ const Transfer = () => {
               <Text style={Styles.btnTxt}>{t("next")}</Text>
             </TouchableOpacity>
             <View style={Styles.recentTlist}>
-                <FlatList 
-                  renderItem={renderRecent}
-                  data={recentArray} 
-                  bounces={false} 
-                  extraData={recentArray} 
-                  showsVerticalScrollIndicator={false}/>
+              <FlatList
+                renderItem={renderRecent}
+                data={recentArray}
+                bounces={false}
+                extraData={recentArray}
+                ListEmptyComponent={emptyListFnc}
+                showsVerticalScrollIndicator={false}
+              />
               <TouchableOpacity style={Styles.transDBtn} onPress={deleteHis}>
                 <Text style={Styles.transDTxt}>{t("delete history")}</Text>
               </TouchableOpacity>

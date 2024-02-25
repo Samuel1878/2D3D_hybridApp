@@ -29,7 +29,14 @@ const Form = () => {
     setTimeout(()=>{
         setRefresh(false)
     },1000)
-   }
+   };
+    const emptyListFnc = () => {
+        return (
+           <View style={Styles.emptyListCon}>
+             <Text style={Styles.Txt1}>No data found</Text>
+           </View>
+         );
+    };
    useEffect(() => {
     socket && socket.emit(TOPUP, userToken);
      socket.off(TOPUP).on(TOPUP, (data) => {
@@ -98,6 +105,7 @@ const Form = () => {
            bounces={true}
            horizontal={false}
            showsHorizontalScrollIndicator={false}
+           ListEmptyComponent={emptyListFnc}
            refreshControl={
              <RefreshControl
                tintColor={colors.app_1}

@@ -463,14 +463,9 @@ const StylesCon = () => {
       borderTopLeftRadius: 10,
       borderTopRightRadius: 10,
     },
-    ToH: {
-      fontSize: 18,
-      fontFamily: "Roboto_Bold",
-      fontWeight: "600",
-      color: colors.app_4,
-    },
+    
     toName: {
-      fontSize: 35,
+      fontSize: 23,
       fontFamily: "Roboto_Bold",
       fontWeight: "600",
       color: colors.text_1,
@@ -487,21 +482,24 @@ const StylesCon = () => {
       justifyContent: "center",
     },
     amountH: {
-      fontSize: 16,
+      fontSize: 15,
       fontFamily: "Roboto_Bold",
       fontWeight: "600",
-      color: colors.app_2,
+      color: colors.text_2,
+      marginLeft:10
     },
     amountInput: {
-      paddingVertical: 20,
+      paddingVertical: 10,
       paddingHorizontal: 10,
       width: "90%",
       borderBottomColor: colors.bg_3b,
       borderBottomWidth: 2,
       color: colors.text_1,
-      fontSize: 21,
+      fontSize: 32,
       alignSelf: "center",
-      marginVertical: 10,
+      marginVertical: 5,
+      fontFamily:"Roboto_Bold",
+      fontWeight:"700"
     },
     pinCon: {
       width: "100%",
@@ -525,6 +523,7 @@ const StylesCon = () => {
       justifyContent: "center",
       alignItems: "center",
       borderRadius: 5,
+      margin:5
     },
     pin: {},
     transferBtn: {
@@ -579,22 +578,6 @@ const StylesCon = () => {
       alignItems: "center",
       flex: 1,
     },
-    // hisTopHeaderCon: {
-    //   width: 100,
-    //   height: 50,
-    //   position: "absolute",
-    //   top: 5,
-    //   right: 15,
-    // },
-    // hisCashInOutBtn: {
-    //   flex: 1,
-    //   backgroundColor: colors.app_1,
-    //   borderRadius: 25,
-    //   alignItems: "center",
-    //   justifyContent: "center",
-    //   margin: 5,
-    //   zIndex: 99,
-    // },
     hisTopCon: {
       flexDirection: "row",
       height: 50,
@@ -615,13 +598,19 @@ const StylesCon = () => {
     },
     hisItemCon: {
       backgroundColor: colors.bg_3,
-      // width: "100%",
       padding: 5,
+      minHeight: 70,
       borderRadius: 5,
       marginVertical: 5,
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "space-between",
+      maxWidth: 360,
+    },
+    transactionItem: {
+      flexDirection: "row",
+      alignItems: "center",
+      width: 260,
     },
     hisItemImg: {
       width: 50,
@@ -631,16 +620,17 @@ const StylesCon = () => {
       padding: 5,
     },
     hisH: {
-      fontSize: 15,
+      fontSize: 16,
       fontFamily: "Roboto_Bold",
       fontWeight: "600",
-      color: colors.app_1,
+      color: colors.text_2,
     },
     hisDate: {
-      fontSize: 11,
+      fontSize: 12,
       fontFamily: "Roboto_Bold",
       fontWeight: "600",
       color: colors.text_1,
+      marginLeft: 4,
     },
     hisAmount: {
       fontSize: 21,
@@ -648,9 +638,21 @@ const StylesCon = () => {
       fontWeight: "600",
       color: colors.app_1,
     },
+    times: {
+      fontSize: 31,
+      fontFamily: "Roboto_Bold",
+      fontWeight: "600",
+      color: colors.text_4,
+      marginLeft: 20,
+    },
+    //EMPTY LIST
+    emptyListCon: {
+      alignItems: "center",
+      justifyContent: "center",
+    },
     //FORM
     formCon: {
-      flex:1,
+      flex: 1,
       backgroundColor: colors.bg_2,
       alignItems: "center",
       // padding:10,
@@ -665,10 +667,8 @@ const StylesCon = () => {
       flexDirection: "row",
       alignItems: "center",
       gap: 10,
-      justifyContent:"space-between",
-      width:360,
-
-
+      justifyContent: "space-between",
+      width: 360,
     },
 
     img: {
@@ -1311,14 +1311,14 @@ const StylesCon = () => {
       marginVertical: 5,
     },
     Txt2: {
-      fontSize: 22,
+      fontSize: 20,
       fontFamily: "Roboto_Bold",
       fontWeight: "600",
       color: colors.text_2,
       marginVertical: 5,
     },
     Txt3: {
-      fontSize: 18,
+      fontSize: 17,
       fontFamily: "Roboto_Bold",
       fontWeight: "600",
       color: colors.text_3,
@@ -1326,15 +1326,15 @@ const StylesCon = () => {
       // textAlign: "center",
     },
     Txt4: {
-      fontSize: 16,
+      fontSize: 15,
       fontFamily: "Roboto_Bold",
       fontWeight: "700",
-      color: colors.text_3,
+      color: colors.text_4,
       marginVertical: 5,
       textAlign: "center",
     },
     Txt5: {
-      fontSize: 15,
+      fontSize: 11,
       fontFamily: "Roboto_Bold",
       fontWeight: "700",
       color: colors.text_1,
@@ -1361,6 +1361,12 @@ const StylesCon = () => {
       fontWeight: "600",
       color: colors.app_1,
     },
+    Txt4M: {
+      fontSize: 12,
+      fontFamily: "Roboto_Bold",
+      fontWeight: "600",
+      color: colors.app_1,
+    },
     btnTxt1: {
       fontSize: 19,
       fontFamily: "Roboto_Bold",
@@ -1368,22 +1374,18 @@ const StylesCon = () => {
       color: colors.text_1b,
     },
     btnTxt2: {
-      fontSize: 17,
+      fontSize: 16.5,
       fontFamily: "Roboto_Bold",
       fontWeight: "600",
       color: colors.text_1b,
     },
     btnTxt3: {
-      fontSize: 15,
+      fontSize: 13,
       fontFamily: "Roboto_Bold",
       fontWeight: "600",
       color: colors.text_1b,
     },
-    //loader
-    loader: {
-      width: 50,
-      height: 50,
-    },
+
     ///Voucher
     voucherCon: {
       flex: 1,
@@ -1467,6 +1469,15 @@ const StylesCon = () => {
       backgroundColor: colors.app_1,
       justifyContent: "center",
       alignItems: "center",
+    },
+    loader: {
+      width: 60,
+      height: 60,
+    },
+    okayCon:{
+      padding:10,
+      justifyContent:"center",
+      alignItems:"center"
     },
     ////LanguageChoose
     langContainer: {

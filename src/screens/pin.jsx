@@ -54,7 +54,7 @@ const Pin = ({navigation})=>{
     },[changed])
     return (
       <View style={Styles.Container}>
-        <ChangeModel changed={changed} />
+        <ChangeModel modal={changed} setModal={setChanged}/>
         <View style={Styles.SetPinCon}>
           {isNew ? (
             <Text style={Styles.setPinH}>
