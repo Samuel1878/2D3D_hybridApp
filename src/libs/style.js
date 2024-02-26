@@ -244,13 +244,13 @@ const stylesCon = () => {
      },
      //Image
      imageSliderCon: {
-        height:200,
-        borderRadius:10,
+       height: 200,
+       borderRadius: 10,
        width: "98%",
        backgroundColor: colors.bg_1,
-       alignSelf:"center",
-       overflow:"hidden",
-       marginVertical:10,
+       alignSelf: "center",
+       overflow: "hidden",
+       marginVertical: 10,
      },
 
      //buttons
@@ -1086,14 +1086,18 @@ const stylesCon = () => {
        flex: 1,
        paddingTop: 20,
        alignItems: "center",
-       // justifyContent:"center",
+       justifyContent: "space-between",
        backgroundColor: colors.bg_2,
+     },
+     pwdInputConM: {
+       alignItems: "center",
      },
      pwdInputCon: {
        flexDirection: "row",
        alignItems: "center",
        width: "90%",
        marginVertical: 10,
+       alignSelf: "center",
      },
      pwdChangeInput: {
        width: "100%",
@@ -1104,16 +1108,19 @@ const stylesCon = () => {
        color: colors.text_1,
        fontSize: 18,
        borderLeftColor: colors.app_1,
-       borderLeftWidth: 30,
+       borderLeftWidth: 5,
+       borderRightWidth: 5,
+       borderRightColor: colors.app_1,
      },
      pwdChangeBtn: {
        backgroundColor: colors.app_1,
        borderRadius: 10,
        padding: 20,
        width: "90%",
-       marginTop: 20,
+       marginVertical: 5,
        justifyContent: "center",
        alignItems: "center",
+       minWidth: "90%",
      },
      Eye1: {
        position: "absolute",
@@ -1407,10 +1414,10 @@ const stylesCon = () => {
        width: "100%",
        borderBottomColor: colors.bg_2,
        borderBottomWidth: 4,
-       paddingHorizontal:10
+       paddingHorizontal: 10,
      },
      _2d_interCon2: {
-      paddingHorizontal:10,
+       paddingHorizontal: 10,
        flex: 1,
        flexDirection: "row",
        alignItems: "center",
@@ -1519,12 +1526,27 @@ const stylesCon = () => {
      },
      _2d_WinnerBtnCon: {
        position: "absolute",
-       left: 20,
-       top: 30,
+       left: 10,
+       top: 10,
      },
      _2d_WinnerBtn: {
-       width: 95,
-       height: 95,
+       width: 80,
+       height: 80,
+     },
+     //his btn
+     _2d_historyBtnCon: {
+       position: "absolute",
+       left: 25,
+       bottom: 20,
+       padding: 10,
+       borderRadius: 10,
+       backgroundColor: colors.app_1,
+     },
+     btnTxt1: {
+       fontSize: 14,
+       color: colors.text_1b,
+       fontFamily: "Roboto_Bold",
+       fontWeight: "900",
      },
      ///calender lotttie
      calenderCon: {
@@ -1542,12 +1564,10 @@ const stylesCon = () => {
        shadowRadius: 10,
      },
      //Timmer
-     _2d_Timer :{
-      justifyContent:"center",
-      paddingTop:20,
-
-     }
-    ,
+     _2d_Timer: {
+       justifyContent: "center",
+       paddingTop: 20,
+     },
      //bet button
      betBtnCon: {
        width: 150,
@@ -1808,7 +1828,6 @@ const stylesCon = () => {
        width: 60,
        height: 60,
      },
-     
 
      //HISTORY 2D
      History2D: {
@@ -1821,7 +1840,7 @@ const stylesCon = () => {
        height: 100,
        alignItems: "center",
        justifyContent: "space-around",
-       flexDirection:"row"
+       flexDirection: "row",
      },
      HistContainer: {
        flex: 1,
@@ -1881,6 +1900,7 @@ const stylesCon = () => {
        fontWeight: "700",
      },
      ///Numbers
+     ////
      analHeader: {
        width: "95%",
        backgroundColor: colors.app_4,
@@ -1985,6 +2005,14 @@ const stylesCon = () => {
        color: colors.app_1,
        fontFamily: "Roboto_Bold",
        fontWeight: "600",
+     },
+
+     ///
+     txt: {
+       fontSize: 11,
+       color: colors.text_1b,
+       fontFamily: "Roboto",
+       textAlign: "center",
      },
    });
    return stylesS

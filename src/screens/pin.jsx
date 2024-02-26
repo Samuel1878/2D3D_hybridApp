@@ -6,7 +6,7 @@ import { pinREGEX } from "../libs/data"
 import { PIN } from "../hooks/config"
 import AuthContext from "../services/auth/authContext"
 import axios from "axios"
-import { ChangeModel } from "../components/modals"
+import { ChangeModel, NoPinErr } from "../components/modals"
 import { useTranslation } from "react-i18next"
 
 const Pin = ({navigation})=>{
@@ -20,6 +20,7 @@ const Pin = ({navigation})=>{
     const [isNew, setIsNew] = useState(true);
     const [validPin, setValidPin] = useState(false);
     const [changed, setChanged] = useState(false);
+    const [valid, setValid] = useState(false);
     const setUpPin= ()=>{
         validPin && axios.post(PIN,{userToken:userToken,pin:fPin}).then((e)=>{
             if(e.status===200){
@@ -28,14 +29,22 @@ const Pin = ({navigation})=>{
         })
     };
     const changePin = ()=>{
-         validPin && (pin === oPin) &&
-           axios.post(PIN, { userToken: userToken, pin: fPin }).then((e) => {
-             if (e.status === 200) {
-               setChanged(true);
-               return
-             }
-             
-           });
+        if (oPin.length!=0 && pin != oPin && validPin){
+          setValid(true);
+            return
+        }
+          validPin &&
+            axios
+              .post(PIN, { userToken: userToken, pin: fPin })
+              .then((e) => {
+                if (e.status === 200) {
+                  setChanged(true);
+                  return;
+                } else if (e.status === 401 || 403) {
+                  console.log(e.data);
+                }
+              })
+              .catch((e) => console.log(e.message));
     }
     useEffect(()=>{
         setValidPin(pinREGEX.test(fPin) && fPin===sPin);
@@ -55,6 +64,7 @@ const Pin = ({navigation})=>{
     return (
       <View style={Styles.Container}>
         <ChangeModel modal={changed} setModal={setChanged}/>
+        <NoPinErr setModal={setValid} modal={valid}/>
         <View style={Styles.SetPinCon}>
           {isNew ? (
             <Text style={Styles.setPinH}>
@@ -110,8 +120,8 @@ const Pin = ({navigation})=>{
             style={Styles.forgetBtn}
             onPress={() => navigation.navigate("2fa")}
           >
-            <Text style={Styles.Txt2}>{t("forget fund pin?")}</Text>
-            <Text style={Styles.Txt2M}>{t("click here to reset")}</Text>
+            <Text style={Styles.Txt4}>{t("forget fund pin?") + "  "}</Text>
+            <Text style={Styles.Txt3M}>{t("click here to reset")}</Text>
           </TouchableOpacity>
         </View>
       </View>

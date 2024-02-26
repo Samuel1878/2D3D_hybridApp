@@ -17,10 +17,11 @@ const Payments = () =>{
   const Styles = StylesCon();
   const {payments,navigation,setUserRef} = useContext(GlobalContext);
   const {userToken} = useContext(AuthContext)
-  const [data,setData] = useState(null);
-    useEffect(()=>{
-        payments && setData(payments);
-    },[payments]);
+  // const [data,setData] = useState(null);
+   
+    // useEffect(()=>{
+    //     payments && setData(payments);
+    // },[payments]);
     const RenderPayments = ({ item }) => {
       const RenderImg = () => {
         let img;
@@ -59,6 +60,7 @@ const Payments = () =>{
             break;
         }
       };
+     
       const deleteFnc = () => {
         
         axios
@@ -72,7 +74,7 @@ const Payments = () =>{
               setUserRef(true);
               setTimeout(()=>{
                 setUserRef(false)
-              },1000)
+              },100)
              
             }
         })
@@ -97,13 +99,12 @@ const Payments = () =>{
     return (
       <View style={Styles.payContainer}>
           <View style={Styles.payCon}>
-             {data && data.length>0 ? (
+             {payments && payments.length>0 ? (
             <FlatList
-              data={data}
-              
+              data={payments}
               renderItem={RenderPayments}
               keyExtractor={(item) => item.phone + Math.random()}
-              extraData={data}
+              extraData={payments}
               bounces={true}
               showsVerticalScrollIndicator={false}
             />):

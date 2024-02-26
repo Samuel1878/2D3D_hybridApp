@@ -42,6 +42,7 @@ const TwoD = ({navigation}) => {
    const getItemCount = (_data) => 29
 
   useEffect(()=>{
+
     setTime(0);
     const date = new Date();
     const hour = date.getHours();
@@ -58,7 +59,7 @@ const TwoD = ({navigation}) => {
       console.log("Server has closed, temporiary");
       setTime(0)
       return
-    } else if (hour >= 13 && (hour < 16 && mini < 30)) {
+    } else if (hour >= 13 && (hour <= 16 || mini<30)) {
       let h = 16.5 - hour;
       let m =(h * 60) - mini;
       let s = (m * 60) - sec;
@@ -253,6 +254,12 @@ const TwoD = ({navigation}) => {
                 source={require("../../assets/winnerCup.json")}
               />
             </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("3dAnalysis")}
+              style={styles._2d_historyBtnCon}
+            >
+              <Text style={styles.btnTxt1}>{t("history")}</Text>
+            </TouchableOpacity>
             <View style={styles._2d_Timer}>
               <CountDown
                 size={21}
@@ -271,9 +278,7 @@ const TwoD = ({navigation}) => {
                 showSeparator
                 running={bet2D}
               />
-              <Text>
-               ---
-              </Text>
+              <Text>---</Text>
             </View>
           </View>
         </View>

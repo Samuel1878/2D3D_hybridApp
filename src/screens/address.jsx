@@ -7,36 +7,44 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import GlobalContext from "../services/global/globalContext";
 import LocalContext from "../services/localization/localContext";
 import { useTranslation } from "react-i18next";
+import { XDLoader } from "../components/modals";
 
 
 const AddressBook = () => {
     const Styles = StylesCon();
     const{t} = useTranslation();
-
     const {navigation} = useContext(GlobalContext);
     const {setSendTo} = useContext(LocalContext)
     const [contacts, setContacts] = useState([]);
     const [filtered,setFiltered] = useState([]);
     const [data,setData] = useState([])
     const [sName, setSName] = useState("");
-    const [loaded, setLoaded] = useState(false)
-    const renderArray = ()=> contacts?.sort((a,b)=>{return(a.firstName||a.name) - ( b.firstName ||b.name ) });
+  
     const selectFnc = (e) =>()=>{
         setSendTo(e);
         navigation.navigate("TransferMain")
     };
-    const createData = () => {
-        setData(()=>filtered?.map((e) => ({
-           value:e.name,
-           key:e.phoneNumbers[0].number
-         })));
-         return setLoaded(true);
-    };
-    function readyData () {
-        setFiltered(()=>renderArray());
-        createData();
-        console.log(filtered)
-    };
+  useEffect(()=>{
+    setData(() =>
+      filtered.map((e) => ({
+        value: e.name,
+        key: e.phoneNumbers[0].number,
+      }))
+    );
+ return; 
+},[filtered])
+    useEffect(()=>{    
+      if(contacts.length>0){
+
+         setFiltered(
+           contacts.sort((a, b) => {
+             return (a.firstName || a.name) - (b.firstName || b.name);
+           })
+         );
+         return
+      }
+
+    },[contacts]);
      useEffect(() => {
        (async () => {
          const { status } = await Contacts.requestPermissionsAsync();
@@ -45,27 +53,23 @@ const AddressBook = () => {
              fields: [Contacts.Fields.PhoneNumbers],
            });
            setContacts(data);
-           readyData();
+
            return
-         }
+         };
        })();
-      
-       
      }, []);
      useEffect(() => {
-      if ( sName === "" || sName.length===0){
-        readyData()
-        return
-      } else {
+      if (sName){
         let s = contacts.filter((e) => e.name.includes(sName));
         setFiltered(s);
-        createData();
       }
       
-     }, [sName,contacts]);
+     }, [sName]);
+
     
     return (
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+        
         <View style={Styles.Container}>
           <View style={Styles.searchCon}>
             <TextInput
@@ -73,10 +77,12 @@ const AddressBook = () => {
               onChangeText={(e) => setSName(e)}
               placeholder={t("enter name")}
               style={Styles.searchInput}
+              placeholderTextColor={"#f4f5f6"}
+              
             />
           </View>
           <SafeAreaView style={Styles.addressContainer}>
-           { loaded&&<AlphabetList
+              <AlphabetList
                 uncategorizedAtTop={true}
                 data={data}
                 renderCustomItem={(item) => {
@@ -100,7 +106,7 @@ const AddressBook = () => {
                   </View>
                 )}
               />
-                }
+       
           </SafeAreaView>
         </View>
       </TouchableWithoutFeedback>

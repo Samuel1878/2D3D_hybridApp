@@ -39,6 +39,7 @@ export const Forget = ({navigation}) => {
   );
 };
 export const ForgetPin = () => {
+    const {t} = useTranslation();
     const Styles = StylesCon();
     const {userToken} = useContext(AuthContext);
     const {navigation} = useContext(GlobalContext);
@@ -46,7 +47,15 @@ export const ForgetPin = () => {
     const [conPin,setConPin] = useState("");
     const [validPin, setValidPin] = useState(false);
     const [changed, setChanged] = useState(false);
+    const [error, setError] = useState("")
     const saveFnc = () => {
+      if(!validPin){
+        setError(t("invalid"));
+        return
+      } else if (pin != conPin) {
+        setError(t("not match"));
+        return
+      }
     validPin &&
    pin == conPin &&
    axios
@@ -65,10 +74,18 @@ export const ForgetPin = () => {
           setChanged(false);
           navigation.navigate("More")
         },2000)
-    },[changed])
+    },[changed]);
+    useEffect(()=>{
+      if(error){
+        validPin && setError("");
+        return
+      }else if(pin == conPin){
+        setError("")
+      }
+    },[pin,conPin])
     return (
       <View style={Styles.ContainerF}>
-        <ChangeModel changed={changed} />
+        <ChangeModel modal={changed} setModal={setChanged} />
         <View style={Styles.ContainerX}>
           <TextInput
             style={Styles.forgetInput}
@@ -86,6 +103,7 @@ export const ForgetPin = () => {
             value={conPin}
             onChangeText={(e) => setConPin(e)}
           />
+          <Text style={Styles.Txt3M}>{error}</Text>
         </View>
 
         <TouchableOpacity style={Styles.forgetbtn} onPress={saveFnc}>
@@ -103,12 +121,25 @@ export const ForgetPassword = () => {
     const [conPwd, setConPwd] = useState("");
     const [validPwd,setValidPwd] = useState(false);
     const [changed, setChanged] = useState(false);
+    const [error,setError] = useState("");
     const saveFnc = () => {
-        validPwd&& pwd==conPwd&& axios.post(RESETPWD,{userToken:userToken,newPwd:pwd}).then((e)=>{
-           if(e.status===201){
-            setChanged(true);
+      if(!validPwd){
+        setError(t("invalid password"))
+        return
+      } else if (pwd != conPwd){
+        setError(t("password not match"));
+        return
+      } 
+        validPwd &&
+          pwd == conPwd &&
+          axios
+            .post(RESETPWD, { userToken: userToken, newPwd: pwd })
+            .then((e) => {
+              if (e.status === 201 || 200) {
+                setChanged(true);
               }
-            }).catch((e)=>console.log(e));
+            })
+            .catch((e) => console.log(e));
     };
     useEffect(()=>{
         setValidPwd(REGEX_PWD.test(pwd));
@@ -122,6 +153,7 @@ export const ForgetPassword = () => {
     }, [changed]);
     return (
       <View style={Styles.ContainerF}>
+        <ChangeModel setModal={setChanged} modal={changed}/>
         <View style={Styles.ContainerX}>
           <TextInput
             style={Styles.forgetInput}
@@ -139,6 +171,7 @@ export const ForgetPassword = () => {
             value={conPwd}
             onChangeText={(e) => setConPwd(e)}
           />
+          <Text style={Styles.Txt3M}>{error}</Text>
         </View>
 
         <TouchableOpacity style={Styles.forgetbtn} onPress={saveFnc}>

@@ -8,6 +8,50 @@ const StylesCon = () => {
       backgroundColor: colors.bg_2,
       alignItems: "center",
     },
+    ////TWOD HISTORY
+    top: {
+      flex: 1,
+      backgroundColor: colors.app_1,
+      width: "100%",
+      alignItems:"center",
+      justifyContent:"center"
+    },
+    liveNo: {
+      fontSize: 75,
+      color: colors.text_1b,
+      fontFamily: "Roboto_Bold",
+      fontWeight:"800"
+    },
+    item:{
+      flexDirection:"row",
+      alignItems:"center",
+      justifyContent:"space-between",
+      padding:20,
+      margin:0
+    },
+    btnCon:{
+      padding:10,
+      borderRadius:5,
+      backgroundColor:colors.bg_2,
+      minWidth:150,
+      justifyContent:"center",
+      alignItems:"center",
+
+    },
+    analHeader: {
+       width: "100%",
+       backgroundColor: colors.app_1,
+       flexDirection: "row",
+       justifyContent: "space-around",
+       alignItems: "center",
+       borderBottomRightRadius: 20,
+       borderBottomLeftRadius: 20,
+     },
+    bottom: {
+      flex: 4,
+      width: "100%",
+    },
+    //Service Con//////////////////////////////////////////
     ServiceContainer: {
       flex: 1,
       backgroundColor: colors.bg_2,
@@ -69,7 +113,7 @@ const StylesCon = () => {
       width: 60,
       height: 60,
     },
-    ///Payment edit pages
+    ///Payment edit pages //////////////////////////////////////////
     editInput: {
       padding: 20,
       backgroundColor: colors.bg_3,
@@ -110,7 +154,7 @@ const StylesCon = () => {
       backgroundColor: colors.bg_3,
       borderRadius: 20,
     },
-    policyH: {
+    Txt6M: {
       fontSize: 18,
       fontWeight: "600",
       color: colors.app_1,
@@ -129,7 +173,7 @@ const StylesCon = () => {
     successTxt: {
       textAlign: "center",
       fontStyle: "italic",
-      fontSize: 17,
+      fontSize: 12,
       color: colors.app_1,
     },
     ///WINNER
@@ -463,7 +507,7 @@ const StylesCon = () => {
       borderTopLeftRadius: 10,
       borderTopRightRadius: 10,
     },
-    
+
     toName: {
       fontSize: 23,
       fontFamily: "Roboto_Bold",
@@ -486,7 +530,7 @@ const StylesCon = () => {
       fontFamily: "Roboto_Bold",
       fontWeight: "600",
       color: colors.text_2,
-      marginLeft:10
+      marginLeft: 10,
     },
     amountInput: {
       paddingVertical: 10,
@@ -498,8 +542,8 @@ const StylesCon = () => {
       fontSize: 32,
       alignSelf: "center",
       marginVertical: 5,
-      fontFamily:"Roboto_Bold",
-      fontWeight:"700"
+      fontFamily: "Roboto_Bold",
+      fontWeight: "700",
     },
     pinCon: {
       width: "100%",
@@ -523,7 +567,7 @@ const StylesCon = () => {
       justifyContent: "center",
       alignItems: "center",
       borderRadius: 5,
-      margin:5
+      margin: 5,
     },
     pin: {},
     transferBtn: {
@@ -760,6 +804,8 @@ const StylesCon = () => {
     forgetBtn: {
       flexDirection: "row",
       alignItems: "center",
+      justifyContent: "center",
+      marginBottom: 15,
     },
     changePinCon: {
       padding: 5,
@@ -1367,6 +1413,14 @@ const StylesCon = () => {
       fontWeight: "600",
       color: colors.app_1,
     },
+    Txt5M: {
+      fontSize: 11,
+      fontFamily: "Roboto_Bold",
+      fontWeight: "600",
+      color: colors.app_1,
+      textAlign: "center",
+      flexWrap: "wrap",
+    },
     btnTxt1: {
       fontSize: 19,
       fontFamily: "Roboto_Bold",
@@ -1474,10 +1528,10 @@ const StylesCon = () => {
       width: 60,
       height: 60,
     },
-    okayCon:{
-      padding:10,
-      justifyContent:"center",
-      alignItems:"center"
+    okayCon: {
+      padding: 10,
+      justifyContent: "center",
+      alignItems: "center",
     },
     ////LanguageChoose
     langContainer: {

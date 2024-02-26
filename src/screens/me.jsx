@@ -22,6 +22,7 @@ const Me = ()=>{
     const [changed,setChanged] = useState(false);
     const [saved, setSaved] = useState(false);
     const [image, setImage] = useState(null);
+
     const REG_NAME = /^[a-zA-Z0-9]+$/;
     const changeNameFnc = () => {
       nameRef.current.focus();
@@ -93,7 +94,7 @@ const Me = ()=>{
     return (
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <View style={styles.Container}>
-          <ChangeModel changed={changed} />
+          <ChangeModel modal={changed} setModal={setChanged}/>
           <View style={styles.meTop}>
             <View style={styles.meProfile}>
               {image ? (

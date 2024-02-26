@@ -40,4 +40,4 @@ export const CASHINOUTHIS = HOST + "/api/admin/cashinout";
 export const RESETPIN = HOST + "/api/admin/resetPin";
 export const RESETPWD = HOST + "/api/admin/resetPwd";
 
-export const GET_TRANSACTIONS = HOST + "/api/data/transactions"
+export const GET_TRANSACTIONS = HOST + "/api/data/transactions";

@@ -27,8 +27,23 @@ const PwdChange = ({navigation}) =>{
     const [valid2, setValid2] = useState(false);
     const [valid3, setValid3] = useState(false);
     const [changed, setChanged] = useState(false);
+    const [error, setError] = useState("");
     const REGEX_PWD = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
     const ChangePwdFnc = async() => {
+      if(!valid1){
+        setError(
+          t(
+            "password must be at least 8 characters long contain a number and an uppercase letter"
+          )
+        );
+        return
+      }else if(!valid2){
+        setError(t("invalid password"));
+        return
+      } else if (!valid3){
+        setError(t("not match"));
+        return
+      }
            valid1 && valid2 && valid3 && axios.post(
                   _CHANGE_PWD_URL,
                   {
@@ -57,7 +72,7 @@ const PwdChange = ({navigation}) =>{
         setChanged(false);
         navigation.navigate("More")
       },1500)
-    },[changed])
+    },[changed]);
     useEffect(()=>{
         setValid1(REGEX_PWD.test(oldPwd));
         setValid2(REGEX_PWD.test(newPwd));
@@ -65,74 +80,91 @@ const PwdChange = ({navigation}) =>{
     },[oldPwd,newPwd,confirmPwd]);
     return (
       <View style={styles.PwdContainer}>
-        <ChangeModel changed={changed}/>
-        <View style={styles.pwdInputCon}>
-          <TextInput
-            secureTextEntry={showPwd1}
-            value={oldPwd}
-            onChangeText={(e) => setOldPwd(e)}
-            placeholder={t("enter old password")}
-            style={styles.pwdChangeInput}
-          />
-          <TouchableOpacity
-            style={styles.Eye1}
-            onPress={() => (showPwd1 ? setShowPwd1(false) : setShowPwd1(true))}
-          >
-            <FontAwesome
-              name={showPwd1 ? "eye-slash" : "eye"}
-              size={24}
-              color={colors.app_1}
+        <ChangeModel modal={changed} setModal={setChanged} />
+        <View style={styles.pwdInputConM}>
+          <View style={styles.pwdInputCon}>
+            <TextInput
+              secureTextEntry={showPwd1}
+              value={oldPwd}
+              onChangeText={(e) => setOldPwd(e)}
+              placeholderTextColor={colors.text_3}
+              placeholder={t("enter old password")}
+              style={styles.pwdChangeInput}
             />
+            <TouchableOpacity
+              style={styles.Eye1}
+              onPress={() =>
+                showPwd1 ? setShowPwd1(false) : setShowPwd1(true)
+              }
+            >
+              <FontAwesome
+                name={showPwd1 ? "eye-slash" : "eye"}
+                size={24}
+                color={colors.app_1}
+              />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.pwdInputCon}>
+            <TextInput
+              secureTextEntry={showPwd2}
+              value={newPwd}
+              onChangeText={(e) => setNewPwd(e)}
+              placeholder={t("new password")}
+              style={styles.pwdChangeInput}
+              placeholderTextColor={colors.text_3}
+            />
+            <TouchableOpacity
+              style={styles.Eye1}
+              onPress={() =>
+                showPwd2 ? setShowPwd2(false) : setShowPwd2(true)
+              }
+            >
+              <FontAwesome
+                name={showPwd2 ? "eye-slash" : "eye"}
+                size={24}
+                color={colors.app_1}
+              />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.pwdInputCon}>
+            <TextInput
+              secureTextEntry={showPwd3}
+              value={confirmPwd}
+              onChangeText={(e) => setConfirmPwd(e)}
+              placeholder={t("confirm password")}
+              style={styles.pwdChangeInput}
+              placeholderTextColor={colors.text_3}
+            />
+            <TouchableOpacity
+              style={styles.Eye1}
+              onPress={() =>
+                showPwd3 ? setShowPwd3(false) : setShowPwd3(true)
+              }
+            >
+              <FontAwesome
+                name={showPwd3 ? "eye-slash" : "eye"}
+                size={24}
+                color={colors.app_1}
+              />
+            </TouchableOpacity>
+          </View>
+          <View>
+            <Text style={Styles.Txt4M}>{error}</Text>
+          </View>
+        </View>
+
+        <View>
+          <TouchableOpacity style={styles.pwdChangeBtn} onPress={ChangePwdFnc}>
+            <Text style={styles.pwdChangetxt}>{t("confirm")}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={Styles.forgetBtn}
+            onPress={() => navigation.navigate("2fa")}
+          >
+            <Text style={Styles.Txt5}>{t("forget password?")}</Text>
+            <Text style={Styles.Txt3M}>{" " + t("reset now")}</Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.pwdInputCon}>
-          <TextInput
-            secureTextEntry={showPwd2}
-            value={newPwd}
-            onChangeText={(e) => setNewPwd(e)}
-            placeholder={t("newe password")}
-            style={styles.pwdChangeInput}
-          />
-          <TouchableOpacity
-            style={styles.Eye1}
-            onPress={() => (showPwd2 ? setShowPwd2(false) : setShowPwd2(true))}
-          >
-            <FontAwesome
-              name={showPwd2 ? "eye-slash" : "eye"}
-              size={24}
-              color={colors.app_1}
-            />
-          </TouchableOpacity>
-        </View>
-        <View style={styles.pwdInputCon}>
-          <TextInput
-            secureTextEntry={showPwd3}
-            value={confirmPwd}
-            onChangeText={(e) => setConfirmPwd(e)}
-            placeholder={t("confirm password")}
-            style={styles.pwdChangeInput}
-          />
-          <TouchableOpacity
-            style={styles.Eye1}
-            onPress={() => (showPwd3 ? setShowPwd3(false) : setShowPwd3(true))}
-          >
-            <FontAwesome
-              name={showPwd3 ? "eye-slash" : "eye"}
-              size={24}
-              color={colors.app_1}
-            />
-          </TouchableOpacity>
-        </View>
-        <TouchableOpacity style={styles.pwdChangeBtn} onPress={ChangePwdFnc}>
-          <Text style={styles.pwdChangetxt}>{t("confirm")}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={Styles.forgetBtn}
-          onPress={() => navigation.navigate("2fa")}
-        >
-          <Text style={Styles.Txt2}>{t("forget password?")}</Text>
-          <Text style={Styles.Txt2M}>{t("reset now")}</Text>
-        </TouchableOpacity>
       </View>
     );
 }
