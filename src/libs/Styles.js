@@ -29,6 +29,14 @@ const StylesCon = () => {
       padding:20,
       margin:0
     },
+    datePicker:{
+      // padding:10,
+      // position:"absolute",
+      // right:10,
+      // top:30,
+      
+    },
+    
     btnCon:{
       padding:10,
       borderRadius:5,

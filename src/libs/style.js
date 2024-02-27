@@ -959,13 +959,15 @@ const stylesCon = () => {
      moreItemImg: {
        width: 60,
        height: 60,
+       marginRight:10
      },
      moreItemTxt: {
-       fontSize: 18,
+       fontSize: 17,
        fontFamily: "Roboto_Bold",
-       fontWeight: "600",
+       fontWeight: "800",
        margin: 5,
-       color: colors.app_1,
+       color: colors.text_2,
+
      },
 
      //Me Screen
@@ -1578,7 +1580,7 @@ const stylesCon = () => {
        right: "-5%",
      },
      betnow: {
-       flex: 1,
+       flex: 0.7,
      },
      close: {
        flex: 1,
