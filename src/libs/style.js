@@ -328,8 +328,8 @@ const stylesCon = () => {
        justifyContent: "space-between",
        alignItems: "center",
        paddingHorizontal: 20,
-       paddingTop: 25,
-       flex: 0.8,
+      //  paddingTop: 25,
+       flex: 0.5,
        backgroundColor: colors.bg_2,
      },
      walletTopL: {
@@ -339,13 +339,13 @@ const stylesCon = () => {
      },
 
      walletTopR: {
-       padding: 5,
+       padding: 3,
        borderRadius: "100%",
-       backgroundColor: colors.bg_1,
+       backgroundColor: colors.app_1,
      },
      walletImage: {
-       width: 60,
-       height: 60,
+       width: 55,
+       height: 55,
      },
      wallet: {
        flex: 6,
@@ -399,6 +399,9 @@ const stylesCon = () => {
      ballanceBox: {
        flexDirection: "row",
        marginVertical: 10,
+       justifyContent:"space-between",
+       
+     
      },
      balanceCon: {
        padding: 10,
@@ -442,8 +445,8 @@ const stylesCon = () => {
      eye: {
        justifyContent: "center",
        alignItems: "center",
-       flex: 1,
        paddingVertical: 5,
+       marginRight:25
      },
      ///wallet bottom part
      walletBottomCon: {
@@ -501,12 +504,13 @@ const stylesCon = () => {
        width: "95%",
      },
      paymentHeader: {
-       color: colors.app_4,
+       color: colors.text_3,
        fontSize: 16,
        fontFamily: "Roboto_Bold",
        fontWeight: "700",
        marginBottom: 5,
        textAlign: "center",
+      
      },
      payments: {
        width: "100%",
@@ -526,13 +530,14 @@ const stylesCon = () => {
        justifyContent: "center",
      },
      Payments: {
-       width: 125,
-       height: 250,
+       width: 120,
+       height: 185,
        backgroundColor: colors.bg_3,
        alignItems: "center",
        marginHorizontal: 5,
-       borderRadius: 10,
+       borderRadius: 15,
        justifyContent: "space-between",
+       position:"relative"
      },
      Payment: {
        alignItems: "center",
@@ -541,8 +546,8 @@ const stylesCon = () => {
      },
      PaymentImg: {
        width: "100%",
-       height: 125,
-       borderTopLeftRadius: 10,
+       height: 110,
+       borderTopLeftRadius: 15,
        borderTopRightRadius: 10,
      },
      paymentImg: {
@@ -551,36 +556,40 @@ const stylesCon = () => {
        borderRadius: 5,
      },
      payment: {
-       marginHorizontal: 10,
+       marginHorizontal: 5,
        flex: 1,
      },
      paymentN: {
-       color: colors.app_1,
-       fontSize: 16,
+       color: colors.text_2,
+       fontSize: 14,
        fontFamily: "Roboto_Bold",
        fontWeight: "700",
        margin: 5,
      },
      paymentP: {
-       color: colors.app_1,
+       color: colors.text_3,
        fontSize: 14,
        fontFamily: "Roboto_Bold",
        fontWeight: "500",
+       
      },
      paymentEd: {
-       paddingHorizontal: 25,
-       paddingVertical: 10,
-       alignItems: "center",
-       backgroundColor: colors.app_1,
-       borderRadius: 5,
-       margin: 5,
+       padding:10,
+       backgroundColor: colors.bg_3b,
+       borderBottomLeftRadius:30,
+      //  borderTopRightRadius:15,
+       position:"absolute",
+       top:-5,
+       right:0,
+       zIndex:1
+
      },
-     paymentEdTxt: {
-       color: colors.text_1b,
-       fontSize: 14,
-       fontFamily: "Roboto_Bold",
-       fontWeight: "500",
-     },
+    //  paymentEdTxt: {
+    //    color: colors.text_1b,
+    //    fontSize: 14,
+    //    fontFamily: "Roboto_Bold",
+    //    fontWeight: "500",
+    //  },
 
      ///Screens
      Container: {
@@ -903,6 +912,10 @@ const stylesCon = () => {
      topmeCon: {
        flex: 1,
        backgroundColor: colors.app_1,
+       padding: 10,
+       borderBlockColor: colors.bg_1,
+       borderBottomWidth: 3,
+       borderBottomLeftRadius: -30,
      },
      userProfileCon: {
        width: "90%",
@@ -912,10 +925,10 @@ const stylesCon = () => {
        alignItems: "center",
      },
      userProfile: {
-       width: 100,
-       height: 100,
-       borderColor: colors.bg_3c,
-       borderWidth: 2,
+       width: 75,
+       height: 75,
+       borderColor: colors.app_1,
+       borderWidth: 3,
        borderRadius: 50,
        margin: 10,
      },
@@ -925,22 +938,22 @@ const stylesCon = () => {
        flex: 1,
      },
      userNameTxt: {
-       fontSize: 19,
+       fontSize: 21,
        fontFamily: "Roboto_Bold",
-       fontWeight: "600",
+       fontWeight: "900",
        width: "100%",
-       color: colors.text_1b,
+       color: colors.app_4,
        margin: 5,
      },
      userDataTxt: {
-       fontSize: 18,
+       fontSize: 17,
        fontFamily: "Roboto_Bold",
        fontWeight: "600",
        padding: 5,
-       color: colors.text_2b,
+       color: colors.bg_3c,
      },
      bottomMeCon: {
-       flex: 6,
+       flex: 5,
      },
      moreItemCon: {
        flexDirection: "row",
@@ -959,7 +972,7 @@ const stylesCon = () => {
      moreItemImg: {
        width: 60,
        height: 60,
-       marginRight:10
+       marginRight: 10,
      },
      moreItemTxt: {
        fontSize: 17,
@@ -967,26 +980,30 @@ const stylesCon = () => {
        fontWeight: "800",
        margin: 5,
        color: colors.text_2,
-
      },
 
      //Me Screen
      meTop: {
        flex: 1,
-       backgroundColor: colors.app_1,
+       backgroundColor: colors.bg_2,
      },
      meProfile: {
        flex: 1,
        height: "100%",
        width: "100%",
-       backgroundColor: colors.app_1,
+       backgroundColor: colors.bg_2,
        alignSelf: "center",
        zIndex: 1,
-       // overflow: "hidden",
+       overflow: "hidden",
+       alignItems: "center",
+       justifyContent: "center",
      },
      meImg: {
-       width: "100%",
-       height: "100%",
+       width: 210,
+       height: 210,
+       borderRadius: 210,
+       borderWidth: 4,
+       borderColor: colors.app_1,
      },
      meBottom: {
        flex: 2,
@@ -997,14 +1014,18 @@ const stylesCon = () => {
        flexDirection: "row",
        justifyContent: "space-around",
        alignItems: "center",
+       paddingHorizontal: 20,
      },
      ///Change Profile Btn
      changeProfileBtn: {
        backgroundColor: colors.bg_3,
-       borderRadius: 10,
+       borderRadius: 30,
        justifyContent: "center",
        alignItems: "center",
        padding: 15,
+       paddingHorizontal: 30,
+       borderColor: colors.app_1,
+       borderWidth: 2,
      },
 
      meNameChangeCon: {
@@ -1024,44 +1045,47 @@ const stylesCon = () => {
        marginVertical: 20,
      },
      nameChangeInputCon: {
-       width: "100%",
        alignItems: "center",
+       flexDirection: "row",
+       color: colors.text_1,
+       fontSize: 21,
+       fontFamily: "Roboto_Bold",
+       fontWeight: "700",
      },
      editBtn: {
-       position: "absolute",
-       right: 50,
-       top: 10,
        zIndex: 0,
-       width: 28,
-       height: 28,
+       width: 34,
+       height: 34,
      },
      nameChangeInput: {
-       padding: 15,
+       padding: 17,
        backgroundColor: colors.bg_3,
        width: "85%",
-       color: colors.app_1,
-       fontSize: 18,
        borderRadius: 10,
-       marginVertical: 10,
+       marginVertical: 5,
        borderLeftColor: colors.app_1,
-       borderLeftWidth: 20,
+       borderLeftWidth: 5,
+       borderRightWidth: 5,
+       borderRightColor: colors.app_1,
        shadowColor: colors.bg_1,
        shadowOpacity: 0.9,
        shadowOffset: { x: 10, y: 20 },
        shadowRadius: 10,
        zIndex: 1,
+       flexDirection: "row",
+       justifyContent: "space-between",
      },
      meTxt: {
        fontFamily: "Roboto_Bold",
        fontSize: 19,
        fontWeight: "600",
-       color: colors.app_1,
+       color: colors.text_3,
      },
      nameChangeBtn: {
        backgroundColor: colors.app_4,
        padding: 15,
        width: "80%",
-       borderRadius: "20%",
+       borderRadius: "25%",
        alignItems: "center",
        justifyContent: "center",
        shadowColor: colors.bg_1,

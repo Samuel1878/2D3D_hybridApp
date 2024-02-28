@@ -1,4 +1,4 @@
-import { TouchableOpacity, View ,Text,Image, FlatList, RefreshControl, ScrollView} from "react-native";
+import { TouchableOpacity, View ,Text,Image, FlatList, RefreshControl, ScrollView, SafeAreaView} from "react-native";
 import stylesCon from "../libs/style";
 import LottieView from "lottie-react-native";
 import { useContext, useEffect, useState ,useCallback} from "react";
@@ -15,6 +15,7 @@ import SocketContext from "../services/socket/socketContext";
 import { FETCH_INFO } from "../libs/actions";
 import themeProvider from "../libs/theme";
 import { useTranslation } from "react-i18next";
+import { FontAwesome } from "@expo/vector-icons";
 const Wallet = ()=>{ 
   const styles = stylesCon();
   const colors = themeProvider().colors;
@@ -71,14 +72,13 @@ const Wallet = ()=>{
       }
       return (
         <View style={styles.Payments}>
+          <TouchableOpacity style={styles.paymentEd} onPress={EditPayment}>
+            <FontAwesome name="plus" size={26} color={colors.text_1} />
+          </TouchableOpacity>
           <RenderImg />
           <View style={styles.Payment}>
             <Text style={styles.paymentN}>{item?.name}</Text>
             <Text style={styles.paymentP}> {item?.phone}</Text>
-
-            <TouchableOpacity style={styles.paymentEd} onPress={EditPayment}>
-              <Text style={styles.paymentEdTxt}>{t("edit")}</Text>
-            </TouchableOpacity>
           </View>
         </View>
       );
@@ -94,7 +94,7 @@ const Wallet = ()=>{
     
   
     return (
-      <View style={styles.wallets}>
+      <SafeAreaView style={styles.wallets}>
         {!userToken ? (
           <LogReg navigation={navigation} />
         ) : (
@@ -120,7 +120,10 @@ const Wallet = ()=>{
                   color={colors.app_1}
                 />
               </View>
-              <TouchableOpacity style={styles.walletTopR} onPress={()=>navigation.navigate("me")}>
+              <TouchableOpacity
+                style={styles.walletTopR}
+                onPress={() => navigation.navigate("me")}
+              >
                 <Image
                   style={styles.walletImage}
                   source={require("../../assets/profile.png")}
@@ -131,12 +134,12 @@ const Wallet = ()=>{
               <View style={styles.walletMainCon}>
                 <View style={styles.ballanceCon}>
                   <LinearGradient
-                    start={{ x: 2.1, y: 0.5 }}
+                    start={{ x: 1.5, y: .5}}
                     style={styles.linearCon}
                     colors={[
                       "rgba(243,186,47,.5)",
-                      "rgba(12,14,17,.5)",
-                      "rgba(251,206,41,.5)",
+                      "rgba(145,100,31,.4)",
+                      "rgba(251,206,41,.6)",
                     ]}
                   >
                     {/* <LottieView
@@ -148,7 +151,7 @@ const Wallet = ()=>{
                     <View style={styles.ballanceBox}>
                       <View>
                         <Text style={styles.ballanceHeader}>
-                          {t("wallet balance") + " "+ t("MMK")}
+                          {t("wallet balance") + " " + t("MMK")}
                         </Text>
                         <Text style={styles.ballanceD}>
                           {opened ? money : "**********"}
@@ -169,7 +172,9 @@ const Wallet = ()=>{
                       </TouchableOpacity>
                     </View>
                     <View style={styles.balanceCon}>
-                      <Text style={styles.userTxt}>{level=="1"?t("LEVEL ONE USER"):t("VIP USER")}</Text>
+                      <Text style={styles.userTxt}>
+                        {level == "1" ? t("LEVEL ONE USER") : t("VIP USER")}
+                      </Text>
                       <Text style={styles.balanceNo}>{phone}</Text>
                     </View>
                   </LinearGradient>
@@ -188,7 +193,6 @@ const Wallet = ()=>{
                   <TouchableOpacity
                     onPress={() => navigation.navigate("deposit")}
                     style={styles.scanBtn}
-                  
                   >
                     <MaterialCommunityIcons
                       name="wallet-plus-outline"
@@ -201,7 +205,7 @@ const Wallet = ()=>{
                   <TouchableOpacity
                     onPress={() => navigation.navigate("withdrawl")}
                     style={styles.scanBtn}
-                    disabled={payments && payments.length>0 ?false:true}
+                    disabled={payments && payments.length > 0 ? false : true}
                   >
                     <AntDesign name="export" size={50} color={colors.app_1} />
                     <Text style={styles.walletBtnTxt}>{t("withdraw")}</Text>
@@ -305,26 +309,32 @@ const Wallet = ()=>{
                   />
                 </View>
                 <View style={styles.paymentsCon}>
-                  <Text style={styles.paymentHeader}>{t("payment methods")}</Text>
-                  {
-                  payments.length >0 ?<FlatList
-                    data={payments}
-                    renderItem={RenderPayments}
-                    keyExtractor={(item) => item.name + Math.random()}
-                    extraData={data}
-                    //initialScrollIndex={1}
-                    bounces={false}
-                    horizontal={true}
-                    showsHorizontalScrollIndicator={false}
-                    // refreshControl={
-                    //   <RefreshControl
-                    //
-                    //     refreshing={refreshing}
-                    //     onRefresh={onRefresh}
-                    //   />
-                    // }
-                  />:(
-                    <TouchableOpacity style={styles.gotoPayBtn} onPress={()=>navigation.navigate("payments")}>
+                  <Text style={styles.paymentHeader}>
+                    {t("payment methods")}
+                  </Text>
+                  {payments.length > 0 ? (
+                    <FlatList
+                      data={payments}
+                      renderItem={RenderPayments}
+                      keyExtractor={(item) => item.name + Math.random()}
+                      extraData={data}
+                      //initialScrollIndex={1}
+                      bounces={false}
+                      horizontal={true}
+                      showsHorizontalScrollIndicator={false}
+                      // refreshControl={
+                      //   <RefreshControl
+                      //
+                      //     refreshing={refreshing}
+                      //     onRefresh={onRefresh}
+                      //   />
+                      // }
+                    />
+                  ) : (
+                    <TouchableOpacity
+                      style={styles.gotoPayBtn}
+                      onPress={() => navigation.navigate("payments")}
+                    >
                       <Text>Add Payments</Text>
                     </TouchableOpacity>
                   )}
@@ -333,7 +343,7 @@ const Wallet = ()=>{
             </View>
           </ScrollView>
         )}
-      </View>
+      </SafeAreaView>
     );
 }
 export default Wallet;

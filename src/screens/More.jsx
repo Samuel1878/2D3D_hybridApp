@@ -1,4 +1,4 @@
-import { View, Text, Image,FlatList, SafeAreaView } from "react-native";
+import { View, Text, Image,FlatList, SafeAreaView, ImageBackground } from "react-native";
 import stylesCon from "../libs/style";
 import LogReg from "../layouts/logReg";
 import { useContext, useEffect, useRef} from "react";
@@ -19,6 +19,7 @@ const More = ({ navigation }) => {
   const animation = useRef(null)
   const { profile, proType, name, phone, level } = useContext(GlobalContext);
     const {signOut,userToken} = useContext(AuthContext)
+    console.log(userToken)
     const renderItem = ({item}) =>{
       const pressHandler = ()=>{
         switch (item.id) {
@@ -72,7 +73,7 @@ const More = ({ navigation }) => {
     }
     useEffect(()=>{
       animation?.current.play();
-      console.log(profile,proType);
+      // console.log(profile,proType);
       
     },[])
 
@@ -80,25 +81,31 @@ const More = ({ navigation }) => {
 
   return (
     <View style={styles.Container}>
-      <SafeAreaView style={styles.topmeCon}>
-        {userToken && (
-          <TouchableOpacity
-            onPress={() => navigation.navigate("me")}
-            style={styles.userProfileCon}
-          >
-            <Image style={styles.userProfile} source={profile} />
-            <View style={styles.userDataBox}>
-              <Text style={styles.userNameTxt}>
-                {name}
-              </Text>
-              <Text style={styles.userDataTxt}>
-                {phone}
-                {/* {phone&&(<MaterialIcons name="verified" size={20} color={colors.bg_3b} />)} */}
-              </Text>
-            </View>
-          </TouchableOpacity>
-        )}
-      </SafeAreaView>
+      {/* <SafeAreaView style={styles.topmeCon}> */}
+      <ImageBackground
+        source={require("../../assets/night.jpg")}
+        style={styles.topmeCon}
+        resizeMode="cover"
+      >
+        <SafeAreaView>
+          {userToken && (
+            <TouchableOpacity
+              onPress={() => navigation.navigate("me")}
+              style={styles.userProfileCon}
+            >
+              <Image style={styles.userProfile} source={profile} />
+              <View style={styles.userDataBox}>
+                <Text style={styles.userNameTxt}>{name}</Text>
+                <Text style={styles.userDataTxt}>
+                  {phone}
+                  {/* {phone&&(<MaterialIcons name="verified" size={20} color={colors.bg_3b} />)} */}
+                </Text>
+              </View>
+            </TouchableOpacity>
+          )}
+        </SafeAreaView>
+      </ImageBackground>
+      {/* </SafeAreaView> */}
       <View style={styles.bottomMeCon}>
         <FlatList
           data={DATA()}

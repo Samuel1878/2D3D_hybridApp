@@ -14,7 +14,7 @@ import { useTranslation } from "react-i18next";
 const Me = ()=>{
     const styles = stylesCon();
     const {t} = useTranslation();
-    const {profile,phone,name,navigation,level} = useContext(GlobalContext);
+    const {profile,phone,name,navigation,level,setUserRef} = useContext(GlobalContext);
     const {userToken} = useContext(AuthContext)
     const [nameChange, setNameChange] = useState(name); 
     const [valid, setValid] = useState(false);
@@ -23,11 +23,11 @@ const Me = ()=>{
     const [saved, setSaved] = useState(false);
     const [image, setImage] = useState(null);
 
-    const REG_NAME = /^[a-zA-Z0-9]+$/;
+    const REG_NAME = /^[a-zA-Z ]+$/;
     const changeNameFnc = () => {
       nameRef.current.focus();
     }
-    const saveProfileChange = async() => {
+    const saveProfileChange = () => {
      const formData = new FormData();
      formData.append("image",{
       uri:image.uri,
@@ -36,7 +36,7 @@ const Me = ()=>{
      })
          
     console.debug(formData)
-    await axios.post(_CHANGE_PROFILE_URL, formData, {
+    axios.post(_CHANGE_PROFILE_URL, formData, {
       headers:{
         Accept:"application/json",
         "Content-Type":"multipart/form-data"
@@ -49,8 +49,8 @@ const Me = ()=>{
       if(e.status === 200 || 201){
         //setChanged(true)
       }
-      console.log(e.data)
-    }).catch((err)=>console.log(err));
+      console.log(e.status)
+    }).catch((err)=>console.log(err.message));
     };
     const saveNameChange = () => {
         valid && axios
@@ -76,25 +76,26 @@ const Me = ()=>{
       });
        if (!res.canceled) {
          setImage(res.assets[0]);
-         console.log(image);
-
        }
 
 
     }
+    useEffect(()=>{console.log(image)},[image])
     useEffect(()=>{
         setValid(REG_NAME.test(nameChange));
     },[nameChange]);
     useEffect(()=>{
+      changed && setUserRef(true);
       changed && setTimeout(()=>{
         setChanged(false);
-        navigation.navigate("More");
+        setUserRef(false)
+        // navigation.navigate("More");
       },2000);
     },[changed])
     return (
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <View style={styles.Container}>
-          <ChangeModel modal={changed} setModal={setChanged}/>
+          <ChangeModel modal={changed} setModal={setChanged} />
           <View style={styles.meTop}>
             <View style={styles.meProfile}>
               {image ? (
@@ -126,9 +127,9 @@ const Me = ()=>{
             </View>
             <KeyboardAvoidingView style={styles.meNameChangeCon}>
               <View style={styles.infoChangeCon}>
-                <View style={styles.nameChangeInputCon}>
+                <View style={styles.nameChangeInput}>
                   <TextInput
-                    style={styles.nameChangeInput}
+                    style={styles.nameChangeInputCon}
                     value={nameChange}
                     // defaultValue={name}
                     onChangeText={(e) => setNameChange(e)}
@@ -140,7 +141,7 @@ const Me = ()=>{
                   >
                     <FontAwesome
                       name="edit"
-                      size={26}
+                      size={34}
                       color="rgb(243,186,47)"
                     />
                   </TouchableWithoutFeedback>
@@ -148,9 +149,22 @@ const Me = ()=>{
 
                 <View style={styles.nameChangeInput}>
                   <Text style={styles.meTxt}>{phone}</Text>
+                  {/* <TouchableWithoutFeedback
+                    style={styles.editBtn}
+                    onPress={()=>}
+                  >
+                 
+                    <FontAwesome
+                      name="share-square-o"
+                      size={34}
+                      color="rgb(243,186,47)"
+                    />
+                  </TouchableWithoutFeedback> */}
                 </View>
                 <View style={styles.nameChangeInput}>
-                  <Text style={styles.meTxt}>{t("level")} {level}</Text>
+                  <Text style={styles.meTxt}>
+                    {t("level")} {level}
+                  </Text>
                 </View>
                 {!valid && <Text style={styles.red}>{t("invalid")}</Text>}
                 {level == 1 ? (
