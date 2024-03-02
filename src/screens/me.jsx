@@ -34,8 +34,6 @@ const Me = ()=>{
       name:image.fileName,
       type:image.type
      })
-         
-    console.debug(formData)
     axios.post(_CHANGE_PROFILE_URL, formData, {
       headers:{
         Accept:"application/json",
@@ -108,7 +106,7 @@ const Me = ()=>{
                 <Image
                   resizeMode="cover"
                   style={styles.meImg}
-                  source={profile}
+                  source={{uri:profile}}
                 />
               )}
             </View>

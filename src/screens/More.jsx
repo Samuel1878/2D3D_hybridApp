@@ -93,7 +93,10 @@ const More = ({ navigation }) => {
               onPress={() => navigation.navigate("me")}
               style={styles.userProfileCon}
             >
-              <Image style={styles.userProfile} source={profile} />
+              <Image
+                style={styles.userProfile}
+                source={{uri:profile}}
+              />
               <View style={styles.userDataBox}>
                 <Text style={styles.userNameTxt}>{name}</Text>
                 <Text style={styles.userDataTxt}>

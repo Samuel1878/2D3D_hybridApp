@@ -18,7 +18,6 @@ const SocketProvider = ({children})=>{
         setIsLoading,
         setProfile,
         setPayments,
-        setProType,
         setPin}= useContext(GlobalContext)
      useEffect(() => {
         cleanUp()
@@ -48,14 +47,13 @@ const SocketProvider = ({children})=>{
     }
     function connectionCallBack (socket){
         socket.on(RECEIVE_INFO,(data)=>{
-            console.debug(data);
             if(data.code===201){
               setLevel(data.level);
                   setName(data.name);
                   setMoney(data.money);
                   setPhone(data.phone);
                   setProfile(data.profile);
-                  setProType(data.profilePath);
+                //   setProType(data.profilePath);
                   setPayments(data.payments);
                   setPin(data.pin);
                   setIsLoading(false);

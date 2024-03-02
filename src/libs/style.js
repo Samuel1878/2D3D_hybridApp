@@ -339,9 +339,11 @@ const stylesCon = () => {
      },
 
      walletTopR: {
-       padding: 3,
-       borderRadius: "100%",
-       backgroundColor: colors.app_1,
+     
+      borderRadius: "100%",
+      borderWidth:2,
+      borderColor:colors.app_1,
+      overflow:"hidden"
      },
      walletImage: {
        width: 55,
@@ -400,8 +402,6 @@ const stylesCon = () => {
        flexDirection: "row",
        marginVertical: 10,
        justifyContent:"space-between",
-       
-     
      },
      balanceCon: {
        padding: 10,
@@ -473,6 +473,7 @@ const stylesCon = () => {
      walletBtnImg: {
        width: 60,
        height: 60,
+       borderRadius:60
      },
      scanLoti: {
        width: 70,

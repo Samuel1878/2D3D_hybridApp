@@ -5,6 +5,7 @@ export const LOGIN_URL = HOST + "/api/auth/login";
 export const OTP_URL = HOST + "/api/auth/verification";
 export const USER_DATA = HOST + "/api/auth/userData";
 
+
 export const _2d_URL = HOST + "/api/data/2d";
 //API DATA 
 export const _Live = "https://api.thaistock2d.com/live";
@@ -33,6 +34,7 @@ export const TRANSFER = HOST + "/api/admin/transfer";
 export const PIN = HOST + "/api/admin/changePin";
 export const DEPOSIT = HOST + "/api/admin/deposit";
 export const WITHDRAWL = HOST + "/api/admin/withdrawl";
+export const ADD_DEPOSIT = HOST + "api/auth/addDepo";
 
 export const PAYMENTS = HOST + "/api/admin/payments";
 export const CASHINOUTHIS = HOST + "/api/admin/cashinout";

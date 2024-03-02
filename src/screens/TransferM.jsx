@@ -1,4 +1,4 @@
-import { View,Text, TouchableOpacity,TextInput, TouchableWithoutFeedback, Keyboard, Modal, Pressable } from "react-native";
+import { View,Text, TouchableOpacity,TextInput, TouchableWithoutFeedback, Keyboard, Modal, Pressable, Image } from "react-native";
 import StylesCon from "../libs/Styles";
 import { useContext, useEffect, useState } from "react";
 import LocalContext from "../services/localization/localContext";
@@ -10,6 +10,7 @@ import { amountREGEX, pinREGEX } from "../libs/data";
 import { BlurView } from "expo-blur";
 import { useTranslation } from "react-i18next";
 import { NoPinErr } from "../components/modals";
+import themeProvider from "../libs/theme";
 
 
 const TransferMain = ()=>{
@@ -19,13 +20,14 @@ const TransferMain = ()=>{
     const {navigation,phone,money} = useContext(GlobalContext)
     const {sendTo} = useContext(LocalContext);
     const [isUser, setIsUser] = useState(false);
-    const [name,setName] = useState("");
     const [pin,setPin] = useState("");
     const [validPin, setValidPin] = useState(false);
     const [amounT, setAmounT] = useState("");
+    const [toData, setToData] = useState({});
     const [modal,setModal] = useState(false);
     const [noPin, setNoPin] = useState(false);
     const [validMoney, setValidMoney] = useState(false);
+    const colors = themeProvider().colors;
     const transferFnc = () =>{
       validMoney&&
        validPin &&
@@ -34,7 +36,7 @@ const TransferMain = ()=>{
          axios
            .post(
              TRANSFER,
-             { phone: sendTo, name: name, amount: parseInt(amounT), pin: pin },
+             { phone: sendTo, name: toData?.name, amount: parseInt(amounT), pin: pin },
              { headers: { "Content-Type": "application/json" } ,params:{userToken:userToken}}
            )
            .then((e) => {
@@ -56,10 +58,11 @@ const TransferMain = ()=>{
           headers: { "Content-Type": "application/json" },
         }).then((e)=>{
             if(e.status===200){
-                setName(e.data.name)
-                setIsUser(true)
+                setToData(e.data);
+                setIsUser(true);
                 return
             } 
+            setIsUser(false);
         }).catch((err)=>console.log(err))
     },[])
     useEffect(()=>{
@@ -93,7 +96,7 @@ const TransferMain = ()=>{
                     " " +
                     t("to") +
                     " " +
-                    name +
+                    toData?.name +
                     ": " +
                     sendTo}
                 </Text>
@@ -104,12 +107,16 @@ const TransferMain = ()=>{
               </View>
             </BlurView>
           </Modal>
-          {isUser ? (
+          {toData ? (
             <View style={Styles.tranCon}>
               <View style={Styles.ToCon}>
-                
-                <Text style={Styles.toName}>{name}</Text>
-                <Text style={Styles.toName}>{sendTo}</Text>
+                <Image
+                  style={Styles.Toimg}
+                  source={{uri:toData?.profile}}/>
+                <View>
+                  <Text style={Styles.toName}>{toData?.name}</Text>
+                  <Text style={Styles.toName}>{sendTo}</Text>
+                </View>
               </View>
               <View style={Styles.amountCon}>
                 <Text style={Styles.amountH}>{t("Amount")}</Text>
@@ -118,11 +125,10 @@ const TransferMain = ()=>{
                   textContentType="telephoneNumber"
                   autoFocus
                   placeholder="Enter Amount"
-                  placeholderTextColor={"#f4f2f1"}
+                  placeholderTextColor={colors.text_3}
                   style={Styles.amountInput}
                   value={amounT}
                   onChangeText={(e) => setAmounT(e)}
-                  
                 />
                 <View style={Styles.rowCon}>
                   <Text style={Styles.Txt4}>

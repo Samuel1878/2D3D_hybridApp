@@ -7,7 +7,7 @@ import { TouchableOpacity } from "react-native"
 import { Footer } from "./footer";
 import * as ImagePicker from "expo-image-picker";
 import axios from "axios"
-import { DEPOSIT, PAYMENTS } from "../hooks/config"
+import { ADD_DEPOSIT, DEPOSIT, PAYMENTS } from "../hooks/config"
 import AuthContext from "../services/auth/authContext"
 import AnimatedLoader from "react-native-animated-loader";
 import * as Clipboard from "expo-clipboard";
@@ -52,11 +52,36 @@ const submitFnc = () =>{
         }
       ).then((e)=>{
         if(e.status === 201 || 200){
+            addPhoto(e.data.id);
             setModal(true);
         }
       }).catch((e)=>console.log(e));
 };
-
+const addPhoto = (id) => {
+  if(image){
+    const formData = new FormData();
+    formData.append("image", {
+      uri: image.uri,
+      name: image.fileName,
+      type: image.type,
+    });
+    axios
+    .post(ADD_DEPOSIT, formData, {
+      params: {
+        id: id,
+      },
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Accept: "application/json",
+      },
+    })
+    .then((e)=>{
+      console.debug(e.status);
+    });
+    return
+  }
+ 
+};
 const hideModalFnc = async()=> {
     setModal(!modal);
   await navigation.navigate("Wallet")
@@ -70,7 +95,7 @@ const uploadImage = async() => {
     });
     console.log(result);
      if (!result.canceled){
-       setImage(result.assets[0].uri);
+       setImage(result.assets[0]);
      }
 };
 const callback = downloadProgress => {
@@ -106,7 +131,6 @@ const downloadFnc = ()=>{
      useEffect(() => {
             console.log(index);
         if(index>=payments?.length-1){
-        
             setIndex(0)
         }
         
@@ -201,7 +225,7 @@ const downloadFnc = ()=>{
               {loaded ? (
                 <View style={Styles.depositPaymentsCon}>
                   <Text style={Styles.depositNameTxt}>
-                    {payments[index].name}
+                    {payments[index]?.name}
                   </Text>
                   <Text style={Styles.depositNameTxt}>
                     {payments[index]?.phone}
@@ -240,7 +264,7 @@ const downloadFnc = ()=>{
               ) : (
                 <Image
                   style={Styles.qrCode}
-                  source={{ uri: payments[index].qr }}
+                  source={{ uri: payments[index]?.qr }}
                 />
               )}
               <TouchableOpacity
@@ -304,7 +328,7 @@ const downloadFnc = ()=>{
                 <View style={Styles.depositImageCon}>
                   {image && (
                     <Image
-                      source={{ uri: image }}
+                      source={{ uri: image.uri }}
                       style={Styles.depositImage}
                     />
                   )}

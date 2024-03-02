@@ -13,48 +13,46 @@ const StylesCon = () => {
       flex: 1,
       backgroundColor: colors.app_1,
       width: "100%",
-      alignItems:"center",
-      justifyContent:"center"
+      alignItems: "center",
+      justifyContent: "center",
     },
     liveNo: {
       fontSize: 75,
       color: colors.text_1b,
       fontFamily: "Roboto_Bold",
-      fontWeight:"800"
+      fontWeight: "800",
     },
-    item:{
-      flexDirection:"row",
-      alignItems:"center",
-      justifyContent:"space-between",
-      padding:20,
-      margin:0
+    item: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+      padding: 20,
+      margin: 0,
     },
-    datePicker:{
+    datePicker: {
       // padding:10,
       // position:"absolute",
       // right:10,
       // top:30,
-      
     },
-    
-    btnCon:{
-      padding:10,
-      borderRadius:5,
-      backgroundColor:colors.bg_2,
-      minWidth:150,
-      justifyContent:"center",
-      alignItems:"center",
 
+    btnCon: {
+      padding: 10,
+      borderRadius: 5,
+      backgroundColor: colors.bg_2,
+      minWidth: 150,
+      justifyContent: "center",
+      alignItems: "center",
     },
     analHeader: {
-       width: "100%",
-       backgroundColor: colors.app_1,
-       flexDirection: "row",
-       justifyContent: "space-around",
-       alignItems: "center",
-       borderBottomRightRadius: 20,
-       borderBottomLeftRadius: 20,
-     },
+      width: "100%",
+      backgroundColor: colors.app_1,
+      flexDirection: "row",
+      justifyContent: "space-around",
+      alignItems: "center",
+      borderBottomRightRadius: 20,
+      borderBottomLeftRadius: 20,
+    },
     bottom: {
       flex: 4,
       width: "100%",
@@ -514,6 +512,14 @@ const StylesCon = () => {
       backgroundColor: colors.bg_3b,
       borderTopLeftRadius: 10,
       borderTopRightRadius: 10,
+      flexDirection:"row",
+      alignItems:"center",
+      justifyContent:"space-between"
+    },
+    Toimg: {
+      width: 65,
+      height: 65,
+      borderRadius:65
     },
 
     toName: {

@@ -16,11 +16,12 @@ import { FETCH_INFO } from "../libs/actions";
 import themeProvider from "../libs/theme";
 import { useTranslation } from "react-i18next";
 import { FontAwesome } from "@expo/vector-icons";
+import QRCode from "react-native-qrcode-svg";
 const Wallet = ()=>{ 
   const styles = stylesCon();
   const colors = themeProvider().colors;
   const {t} = useTranslation();
-  const {money,navigation,payments,level,phone,name,userRef,setUserRef} = useContext(GlobalContext);
+  const {money,navigation,payments,level,phone,profile,userRef,setUserRef} = useContext(GlobalContext);
   const {userToken} = useContext(AuthContext);
   const {socket} = useContext(SocketContext)
   const [data,setData]= useState([]);
@@ -124,17 +125,14 @@ const Wallet = ()=>{
                 style={styles.walletTopR}
                 onPress={() => navigation.navigate("me")}
               >
-                <Image
-                  style={styles.walletImage}
-                  source={require("../../assets/profile.png")}
-                />
+                <Image style={styles.walletImage} source={{ uri: profile }} />
               </TouchableOpacity>
             </View>
             <View style={styles.wallet}>
               <View style={styles.walletMainCon}>
                 <View style={styles.ballanceCon}>
                   <LinearGradient
-                    start={{ x: 1.5, y: .5}}
+                    start={{ x: 1.5, y: 0.5 }}
                     style={styles.linearCon}
                     colors={[
                       "rgba(243,186,47,.5)",
@@ -182,11 +180,12 @@ const Wallet = ()=>{
                     style={!qr ? styles.qrCodeBtn : styles.qrCodePressed}
                     onPress={() => (!qr && setQr(true)) || (qr && setQr(false))}
                   >
-                    <MaterialCommunityIcons
+                    {/* <MaterialCommunityIcons
                       name="qrcode"
                       size={qr ? 200 : 45}
                       color={colors.app_1}
-                    />
+                    /> */}
+                    <QRCode value={phone} size={qr ? 200 : 45} logo={require("../../assets/logo.png")} logoSize={qr?65:25}/>
                   </TouchableOpacity>
                 </View>
                 <View style={styles.walletMain}>
