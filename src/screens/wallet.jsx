@@ -24,10 +24,13 @@ const Wallet = ()=>{
   const {money,navigation,payments,level,phone,profile,userRef,setUserRef} = useContext(GlobalContext);
   const {userToken} = useContext(AuthContext);
   const {socket} = useContext(SocketContext)
-  const [data,setData]= useState([]);
   const [opened, setOpened] = useState(false);
   const [qr,setQr] = useState(false);
+  const [facing, setFacing] = useState("back");
 
+  useEffect(()=>{
+
+  },[])
     const scanFunc = ()=>{
 
     }
@@ -58,18 +61,14 @@ const Wallet = ()=>{
              break;
            case "wave":
                navigation.navigate("wavePay");
-         
              break;
            case "aya":
                navigation.navigate("ayaPay");
-             
              break;
            default:
                navigation.navigate("cbPay");
-       
              break;
          }
-        
       }
       return (
         <View style={styles.Payments}>
@@ -114,13 +113,13 @@ const Wallet = ()=>{
             }
           >
             <View style={styles.walletTopCon}>
-              <View style={styles.walletTopL}>
+              <TouchableOpacity style={styles.walletTopL} onPress={scanFunc}>
                 <MaterialCommunityIcons
                   name="line-scan"
                   size={45}
                   color={colors.app_1}
                 />
-              </View>
+              </TouchableOpacity>
               <TouchableOpacity
                 style={styles.walletTopR}
                 onPress={() => navigation.navigate("me")}
@@ -185,7 +184,12 @@ const Wallet = ()=>{
                       size={qr ? 200 : 45}
                       color={colors.app_1}
                     /> */}
-                    <QRCode value={phone} size={qr ? 200 : 45} logo={require("../../assets/logo.png")} logoSize={qr?65:25}/>
+                    <QRCode
+                      value={phone||"09"}
+                      size={qr ? 200 : 45}
+                      logo={require("../../assets/logo.png")}
+                      logoSize={qr ? 65 : 25}
+                    />
                   </TouchableOpacity>
                 </View>
                 <View style={styles.walletMain}>
@@ -316,7 +320,7 @@ const Wallet = ()=>{
                       data={payments}
                       renderItem={RenderPayments}
                       keyExtractor={(item) => item.name + Math.random()}
-                      extraData={data}
+                      extraData={payments}
                       //initialScrollIndex={1}
                       bounces={false}
                       horizontal={true}

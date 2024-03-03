@@ -1864,14 +1864,14 @@ const stylesCon = () => {
      },
      pickerCon: {
        width: "80%",
-       height: 100,
+       height: 60,
        alignItems: "center",
        justifyContent: "space-around",
        flexDirection: "row",
      },
      HistContainer: {
        flex: 1,
-       width: 350,
+       width: 360,
      },
      hisItem: {
        width: "100%",
@@ -1880,12 +1880,25 @@ const stylesCon = () => {
        marginVertical: 5,
        borderRadius: 5,
        flexDirection: "row",
-       justifyContent: "space-around",
+       justifyContent: "space-between",
      },
      hisTxt: {
        fontSize: 18,
        color: colors.text_1,
      },
+     hisImg:{
+      width:35,
+      height:35
+     },
+     empty:{
+      width:"100%",
+      height:65,
+      alignItems:"center",
+      justifyContent:"center",
+      backgroundColor:colors.bg_3,
+      borderRadius:10
+     },
+
 
      ///TWO_D ANALYSIS
      TwoD_AnalysisCon: {

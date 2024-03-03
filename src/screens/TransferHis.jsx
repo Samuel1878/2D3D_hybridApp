@@ -27,11 +27,15 @@ const TransferHis = ()=> {
   const [end, setEnd] = useState(false);
 
   const viewDetailFnc = (item) => {
+    setRefresh(true)
     setDetail(item);
-    navigation.navigate("detail");
+    setTimeout(()=>{
+      setRefresh(false);
+      navigation.navigate("detail");
+    },500)
   };
   const fetchFnc = () => {
-    setRefresh(true)
+    setRefresh(true);
  socket && socket.emit(TRANSACTION, {userToken:userToken,page:page});
     socket.off(TRANSACTION).on(TRANSACTION, async({length,data}) => {
       setTransactions(data);
@@ -61,11 +65,6 @@ const TransferHis = ()=> {
   useEffect(()=>{
     fetchFnc();
   },[]);
-  useEffect(()=>{
-    console.log(refresh)
-  },[refresh])
-
-
   const emptyListFnc = () => {
     return (
       <View style={Styles.emptyListCon}>
@@ -74,7 +73,6 @@ const TransferHis = ()=> {
     );
   };
   const renderTransactions = ({ item }) => {
-    console.log(item);
     if(item.number && item.owner) {
       return (
         <TouchableOpacity

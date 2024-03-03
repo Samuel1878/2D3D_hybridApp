@@ -34,7 +34,7 @@ import WithDrawl from "../screens/withDrawl";
 import DepositLayout from "../components/deposit";
 import Payments from "../screens/payments";
 import { ForgetMain } from "../components/forgets";
-import Vouchers from "../hooks/vouchers";
+import Vouchers from "../components/vouchers";
 import { Forget, ForgetPassword, ForgetPin } from "../components/forget";
 import themeProvider from "../libs/theme";
 import LanguageChoose from "../components/language";

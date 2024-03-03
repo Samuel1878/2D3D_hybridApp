@@ -1463,7 +1463,7 @@ const StylesCon = () => {
     },
     Vounumber: {
       marginVertical: 25,
-      fontSize: 30,
+      fontSize: 55,
       fontFamily: "Roboto_Bold",
       fontWeight: "600",
       color: colors.app_1,
@@ -1474,6 +1474,10 @@ const StylesCon = () => {
       justifyContent: "space-between",
       padding: 10,
       width: "90%",
+    },
+    winner:{
+      width:150,
+      height:150
     },
 
     //HOLIDAY PAGE /////////
