@@ -33,7 +33,7 @@ const Form = () => {
     const emptyListFnc = () => {
         return (
            <View style={Styles.emptyListCon}>
-             <Text style={Styles.Txt1}>No data found</Text>
+             <Text style={Styles.Txt1}>{t("no data found")}</Text>
            </View>
          );
     };
@@ -65,24 +65,18 @@ const Form = () => {
           )}
 
           <View style={Styles.itemCashInOut}>
-            {/* <Text style={Styles.hisH}>{item.name}</Text>
-            <Text style={Styles.hisDate}>{item.phone}</Text> */}
             <Text style={Styles.hisH}>
-              {item.type !== "deposit"
-                ? t("withraw")
-                : t("deposit") + " " + "to"}
+              {item.type !== "deposit" ? t("via withrawl") : t("via deposit")}
             </Text>
-            <Text style={Styles.hisDate}>{item.phone}</Text>
-            <Text style={Styles.hisDate}>{item.name}</Text>
+            <Text style={Styles.hisDate}>{item.updatedAt.slice(0, 10)}</Text>
+            <Text style={Styles.hisDate}>{item.updatedAt.slice(11, 19)}</Text>
           </View>
-
           <Text style={Styles.hisAmount}>
             {item.type === "withdrawl" ? (
               <AntDesign name="minus" size={24} color={colors.app_1} />
             ) : (
               <AntDesign name="plus" size={24} color={colors.app_4} />
             )}
-            {"  "}
             {item.amount}
           </Text>
           {item.status === "pending" ? (

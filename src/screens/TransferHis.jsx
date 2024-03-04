@@ -68,7 +68,7 @@ const TransferHis = ()=> {
   const emptyListFnc = () => {
     return (
       <View style={Styles.emptyListCon}>
-        <Text style={Styles.Txt1}>No data found</Text>
+        <Text style={Styles.Txt1}>{t("no data found")}</Text>
       </View>
     );
   };
@@ -87,14 +87,11 @@ const TransferHis = ()=> {
               loop
             />
             <View style={Styles.hisItem}>
-              <Text style={Styles.hisH}>
-                {t("bought number ") + item.number}
+              <Text style={Styles.hisDate}>
+                {item.date + " /" + item.month + " /" + item.year + " " + item.createdAt.slice(11,19)}
               </Text>
               <Text style={Styles.hisDate}>
-                {item.date + " /" + item.month + " /" + item.year}
-              </Text>
-              <Text style={Styles.hisDate}>
-                {item.section === "ev"
+                { t("lottery")+ " " + item.section === "ev"
                   ? t("evening section")
                   : t("morning section")}
               </Text>
@@ -132,7 +129,7 @@ const TransferHis = ()=> {
                   : t("received from") + " " + item.toPhone}
               </Text>
               <Text style={Styles.hisDate}>
-                {item.date + " /" + item.month + " /" + item.year} { " " +item.time}
+                {item.date + " /" + item.month + " /" + item.year} { " " + item.createdAt.slice(11,19)}
               </Text>
             </View>
           </View>
@@ -158,11 +155,8 @@ const TransferHis = ()=> {
                loop
              />
              <View style={Styles.hisItem}>
-               <Text style={Styles.hisH}>{t("number ") + item.luckyNo}</Text>
-               {/* <Text style={Styles.hisDate}>
-               {item.dayId}
-             </Text> */}
-               <Text style={Styles.hisDate}>{item.capital}</Text>
+               <Text style={Styles.hisH}>{t("earn lottery")}</Text>
+               <Text style={Styles.hisDate}>{item?.createdAt.slice(0,10) + " " + item?.createdAt.slice(11,19)}</Text>
              </View>
              <Text style={Styles.times}>{item.times + "X"}</Text>
            </View>
@@ -183,22 +177,17 @@ const TransferHis = ()=> {
               loop
             />
             <View style={Styles.hisItem}>
-              <Text style={Styles.hisH}>{item.type==="deposit"?"Deposit via ":"Withdraw via " + item.method + " method."}</Text>
+              <Text style={Styles.hisH}>{item.type==="deposit"?t("via deposit"):t("via withdrawl")}</Text>
               <Text style={Styles.hisDate}>
-               {item.name}
+               {item.updatedAt.slice(0,10) + " " + item.updatedAt.slice(11,19)}
              </Text>
-              <Text style={Styles.hisDate}>{item.phone}</Text>
             </View>
           </View>
           <Text style={Styles.hisAmount}>{item.type==="deposit"?" + ":" - " }{item.amount}</Text>
         </TouchableOpacity>
       );
     }
-    
   };
-  // if(!transactions || !transactions.length){
-  //   return <Loader/>
-  // }
   return (
     <View style={Styles.Container}>
       <XDLoader setModal={setRefresh} modal={refresh}/>
